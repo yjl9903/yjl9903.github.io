@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="rank solved A B C D E F G H I J K L M     30 5 O . . O ! . . O . ! ! O O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2019 ICPC 沈阳现场赛">
+<meta property="og:url" content="https://xlor.cn/2019/11/2019syonsite/index.html">
+<meta property="og:site_name" content="XLor&#39;s Blog">
+<meta property="og:description" content="rank solved A B C D E F G H I J K L M     30 5 O . . O ! . . O . ! ! O O">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-11-20T01:58:03.000Z">
+<meta property="article:modified_time" content="2019-11-22T06:19:46.179Z">
+<meta property="article:author" content="XLor">
+<meta property="article:tag" content="Trainings">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xlor.cn/2019/11/2019syonsite/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>2019 ICPC 沈阳现场赛 | XLor's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150361094-2"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-150361094-2');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XLor's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">跃迁引擎启动</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-训练">
+
+    <a href="/trainings/" rel="section"><i class="fa fa-fw fa-keyboard-o"></i>训练</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/11/2019syonsite/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          2019 ICPC 沈阳现场赛
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-20 09:58:03" itemprop="dateCreated datePublished" datetime="2019-11-20T09:58:03+08:00">2019-11-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-11-22 14:19:46" itemprop="dateModified" datetime="2019-11-22T14:19:46+08:00">2019-11-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
+                    <span itemprop="name">训练</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/11/2019syonsite/" class="post-meta-item leancloud_visitors" data-flag-title="2019 ICPC 沈阳现场赛" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">rank</th>
+<th style="text-align:center">solved</th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+<th style="text-align:center">F</th>
+<th style="text-align:center">G</th>
+<th style="text-align:center">H</th>
+<th style="text-align:center">I</th>
+<th style="text-align:center">J</th>
+<th style="text-align:center">K</th>
+<th style="text-align:center">L</th>
+<th style="text-align:center">M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">!</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">!</td>
+<td style="text-align:center">!</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">O</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a id="more"></a>
+<h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>Solved by Henry.</p>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><p>UpSolved by Forsaken(?).</p>
+<p>考虑每个位置为 good position 的贡献。</p>
+<p>对于确定的 $k$，$ans=\sum_{m=1}^{n}lim^{n-m}f(m,k)$，其中 $f(m,k)$ 表示前 $m-1$ 个数至少 $k$ 个数比第 $m$ 个数小的方案数。</p>
+<p>求 $f(m,k)$ :</p>
+<ul>
+<li><p>令 $g(m,k)$ 为前 $m-1$ 个数恰好 $k$ 个数比第 $m$ 个数小的方案数，显然有 $g(m,k)=f(m,k)-f(m,k+1)$。</p>
+</li>
+<li><p>考虑枚举 $a<em>m=x$，利用算两次思想可得：$C(m-1,k)(x-1)^klim^{m-1-k}=\sum</em>{i=k}^{m-1}C(i,k)g(m,i,x)$,其中 $g(m,i,x)$ 表示前 $m-1$ 个数恰好有 $i$ 个比 $x$ 小的方案数，显然 $g(m,k)=\sum_{x=1}^{lim}g(m,k,x)$。</p>
+</li>
+<li><p>简单证明一下上述恒等式:等式左侧为前 $m-1$ 个数选 $k$ 个小于 $x$ 其他随意的方案数，显然有重复，右面则考虑每个前 $m-1$ 个恰好有 $i$ 个比 $x$ 小的方案会被算 $C(i,k)$ 次，证明完毕。</p>
+</li>
+<li><p>将 $x=1,2 ,\dots ,lim$ 带入上述恒等式再将得到所有恒等式相加可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i,k)g(m,i)$，其中 $S<em>k(x)=\sum</em>{i=0}^{x}i^k$。</p>
+</li>
+<li><p>将 $g(m,i)=f(m,i)-f(m,i+1)$ 代入上式可得: $C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i,k)(f(m,i)-f(m,i+1))$。</p>
+</li>
+<li><p>对上式利用 $C(n,m)=C(n-1,m)+C(n-1,m-1)$ 合并 $f(m,i)$ 的系数可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i-1,k-1)f(m,i)$。</p>
+</li>
+<li><p>将上式的右式中的组合数拆开可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}f(m,i)\frac{(i-1)!}{(k-1)!(i-k)!}$.</p>
+</li>
+<li><p>整理上式可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)(k-1)!=\sum</em>{i=k}^{m-1}f(m,i)(i-1)!\frac{1}{(i-k)!}$,令$S(m,k)=C(m-1,k)lim^{m-1-k}S<em>k(lim-1)(k-1)!$，等式右面为2个差值为定值 $k$ 的多项式的卷积，所以上式从多项式角度看形式大概为 $S=F/C$，所以$F=S*C$，所以可得：$f(m,k)=\frac{1}{(k-1)!}\sum</em>{i=0}^kS(m,i)\frac{1}{(k-i)!}$.</p>
+</li>
+</ul>
+<p>将 $f(m,k)$ 带入 $ans$ 可得：对于确定的 $k$，$ans=\frac{1}{(k-1)!}\sum<em>{m=1}^{n}lim^{n-m}\sum</em>{i=0}^{k}S(m,i)\frac{1}{(k-i)!}$.</p>
+<p>将 $S(m,i)=C(m-1,i)lim^{m-1-i}S<em>i(lim-1)(i-1)!$ 代入得：$ans=\frac{1}{(k-1)!}\sum</em>{m=1}^{n}lim^{n-m}\sum_{i=0}^k C(m-1,i)lim^{m-1-i}S_i(lim-1)(i-1)!\frac{1}{(k-i)!}$。</p>
+<p>对 $ans$ 进行化简可得：$ans=\frac{1}{(k-1)!}lim^{n-1}\sum<em>{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!\frac{1}{(k-i)!}\sum</em>{m=1}^{n}C(m-1,i)$。</p>
+<p>由恒等式 $\sum<em>{i=r}^{n}C(i,r)=C(n+1,r+1)$ 可化简 $ans=\frac{1}{(k-1)!}lim^{n-1}\sum</em>{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!C(n+1,i+1)\frac{1}{(k-i)!}$。</p>
+<p>显然上式为一个和为定值 $k$ 的卷积形式，并且每一项除了 $S_i(lim-1)$ 都很容易求得.</p>
+<p>而 $S<em>i(lim-1)=\sum</em>{x=0}^{lim-1}x^i$，根据伯努利数可知 $S<em>i(lim-1)=\frac{1}{i+1}\sum</em>{j=0}^{i}(-1)^j C(i+1,j)B_j(lim-1)^{i+1-j}$，显然右式为2个和为定值$i$的卷积形式，所以只要知道了伯努利数做一次 $ntt$ 就可以求出所有的 $S_i(lim-1)$。</p>
+<p>伯努利数的指数生成函数：$\sum_{i=0}^{\infty}B_i\frac{x^i}{i!}=\frac{x}{e^x-1}$，所以多项式求逆即可求出所有的伯努利数.</p>
+<p>求所有 $S_i(lim-1)$ 后，由于 $ans$ 也是一个卷积形式，做一次 $ntt$ 就可以求出所有的 $ans$ 。</p>
+<h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><p>Solved by Forsaken.</p>
+<h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><p>UnSolved by Henry.</p>
+<p>二分出包含每个点的线段，排序后扫描线即可。</p>
+<p>可惜不能二分，必须用反演直接算出线段。</p>
+<h1 id="H"><a href="#H" class="headerlink" title="H"></a>H</h1><p>Solved by Forsaken.</p>
+<h1 id="J"><a href="#J" class="headerlink" title="J"></a>J</h1><p>UnSolved by XLor.</p>
+<p>线段树分治。</p>
+<p>可是不知道询问怎么批量做。</p>
+<h1 id="K"><a href="#K" class="headerlink" title="K"></a>K</h1><p>UnSolved by Henry and Forsaken.</p>
+<p>整数划分。</p>
+<p>可是没带五边形的板子。</p>
+<h1 id="L"><a href="#L" class="headerlink" title="L"></a>L</h1><p>Solved by Henry and Forsaken.</p>
+<p>二分答案。</p>
+<h1 id="M"><a href="#M" class="headerlink" title="M"></a>M</h1><p>Solved by XLor</p>
+<p>回文树上 $\log$ 段等差数列 $border$ 的 $dp$。</p>
+<p>可是被 ** 出题人出成了大水题呢。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>XLor
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xlor.cn/2019/11/2019syonsite/" title="2019 ICPC 沈阳现场赛">https://xlor.cn/2019/11/2019syonsite/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Trainings/" rel="tag"># Trainings</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/round601/" rel="next" title="Codeforces Round 601 题解">
+                  <i class="fa fa-chevron-left"></i> Codeforces Round 601 题解
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/11/mpf/" rel="prev" title="最小回文划分">
+                  最小回文划分 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">2.</span> <span class="nav-text">C</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#D"><span class="nav-number">3.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E"><span class="nav-number">4.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#H"><span class="nav-number">5.</span> <span class="nav-text">H</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#J"><span class="nav-number">6.</span> <span class="nav-text">J</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#K"><span class="nav-number">7.</span> <span class="nav-text">K</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#L"><span class="nav-number">8.</span> <span class="nav-text">L</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#M"><span class="nav-number">9.</span> <span class="nav-text">M</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XLor"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">XLor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">261</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yjl9903" title="GitHub &rarr; https://github.com/yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:xlor1912@gmail.com" title="E-Mail &rarr; mailto:xlor1912@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://einsturing.top/" title="http://einsturing.top/" rel="noopener" target="_blank">Einsturing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://houwenda.github.io/" title="http://houwenda.github.io/" rel="noopener" target="_blank">漏断</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://hadeseve.github.io/" title="http://hadeseve.github.io/" rel="noopener" target="_blank">Hadeseve</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/guaguastandup" title="https://www.cnblogs.com/guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XLor</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz',
+            'X-LC-Key': 'L1NlHmYVsJjI0IDUy2337S8I',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>
