@@ -224,6 +224,131 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/8/Splay/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/8/Splay/" class="post-title-link" itemprop="url">伸展树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-07 22:59:22" itemprop="dateCreated datePublished" datetime="2018-08-07T22:59:22+08:00">2018-08-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-10 13:38:27" itemprop="dateModified" datetime="2018-11-10T13:38:27+08:00">2018-11-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%B9%B3%E8%A1%A1%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">平衡树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/8/Splay/" class="post-meta-item leancloud_visitors" data-flag-title="伸展树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>cnt[x] 表示 x 的出现次数，size[x] 表示以 x 为根节点的子树大小。</p>
+<ul>
+<li><h2 id="clean-int-x"><a href="#clean-int-x" class="headerlink" title="clean(int x)"></a>clean(int x)</h2></li>
+<li><p>清除当前节点</p>
+</li>
+<li><h2 id="get-int-x"><a href="#get-int-x" class="headerlink" title="get(int x)"></a>get(int x)</h2></li>
+<li><p>获取当前节点是父节点的左右孩子</p>
+</li>
+<li><h2 id="update-int-x"><a href="#update-int-x" class="headerlink" title="update(int x)"></a>update(int x)</h2></li>
+<li><p>更新当前节点的 size </p>
+</li>
+<li><h2 id="rot-int-x"><a href="#rot-int-x" class="headerlink" title="rot(int x)"></a>rot(int x)</h2></li>
+<li><p>将当前节点向上旋转</p>
+</li>
+<li><h2 id="splay-int-x"><a href="#splay-int-x" class="headerlink" title="splay(int x)"></a>splay(int x)</h2></li>
+<li><p>将当前节点伸展为根节点</p>
+</li>
+<li><h2 id="insert-int-v"><a href="#insert-int-v" class="headerlink" title="insert(int v)"></a>insert(int v)</h2></li>
+<li><p>创建一个新的节点，并将其旋转至根</p>
+</li>
+<li><h2 id="find-int-v"><a href="#find-int-v" class="headerlink" title="find(int v)"></a>find(int v)</h2></li>
+<li><p>返回键为 v 的节点的名次，并将其旋转至根节点</p>
+</li>
+<li><h2 id="findx-int-x"><a href="#findx-int-x" class="headerlink" title="findx(int x)"></a>findx(int x)</h2></li>
+<li><p>返回排名为 x 的键</p>
+</li>
+<li><h2 id="prev"><a href="#prev" class="headerlink" title="prev()"></a>prev()</h2></li>
+<li><p>返回根节点的前驱</p>
+</li>
+<li><h2 id="succ"><a href="#succ" class="headerlink" title="succ()"></a>succ()</h2></li>
+<li><p>返回根节点的后继</p>
+</li>
+<li><h2 id="del-int-v"><a href="#del-int-v" class="headerlink" title="del(int v)"></a>del(int v)</h2></li>
+<li><p>删除一个键为 v 的节点</p>
+</li>
+</ul>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板:"></a>模板:</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Splay</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> f[maxn], ch[maxn][<span class="number">2</span>], key[maxn], cnt[maxn], <span class="built_in">size</span>[maxn], sz = <span class="number">0</span>, root = <span class="number">0</span>;</span><br><span class="line">    Splay()&#123;sz = root = <span class="number">0</span>;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        ch[x][<span class="number">0</span>] = ch[x][<span class="number">1</span>] = f[x] = key[x] = cnt[x] = <span class="built_in">size</span>[x] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">get</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ch[f[x]][<span class="number">1</span>] == x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!x) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">size</span>[x] = cnt[x];</span><br><span class="line">        <span class="keyword">if</span> (ch[x][<span class="number">0</span>]) <span class="built_in">size</span>[x] += <span class="built_in">size</span>[ch[x][<span class="number">0</span>]];</span><br><span class="line">        <span class="keyword">if</span> (ch[x][<span class="number">1</span>]) <span class="built_in">size</span>[x] += <span class="built_in">size</span>[ch[x][<span class="number">1</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rot</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> old = f[x], oldf = f[old], tp = <span class="built_in">get</span>(x);</span><br><span class="line">        ch[old][tp] = ch[x][tp ^ <span class="number">1</span>]; f[ch[old][tp]] = old;</span><br><span class="line">        f[old] = x; ch[x][tp ^ <span class="number">1</span>] = old;</span><br><span class="line">        f[x] = oldf;</span><br><span class="line">        <span class="keyword">if</span> (oldf) ch[oldf][ch[oldf][<span class="number">1</span>] == old] = x;</span><br><span class="line">        update(old); update(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> fa; fa = f[x]; rot(x))</span><br><span class="line">            <span class="keyword">if</span> (f[fa]) rot(<span class="built_in">get</span>(x) == <span class="built_in">get</span>(fa) ? fa : x);</span><br><span class="line">        root = x;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="number">0</span>)&#123;</span><br><span class="line">            sz++; ch[sz][<span class="number">0</span>] = ch[sz][<span class="number">1</span>] = f[sz] = <span class="number">0</span>;</span><br><span class="line">            key[sz] = v; cnt[sz] = <span class="number">1</span>; <span class="built_in">size</span>[sz] = <span class="number">1</span>; </span><br><span class="line">            root = sz;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> tot = root, fa = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (key[tot] == v)&#123;</span><br><span class="line">                cnt[tot]++; update(tot); update(fa);</span><br><span class="line">                splay(tot);</span><br><span class="line">                <span class="keyword">return</span> cnt[tot];</span><br><span class="line">            &#125;</span><br><span class="line">            fa = tot;</span><br><span class="line">            tot = ch[tot][v &gt; key[tot]];</span><br><span class="line">            <span class="keyword">if</span> (tot == <span class="number">0</span>)&#123;</span><br><span class="line">                sz++; ch[sz][<span class="number">0</span>] = ch[sz][<span class="number">1</span>] = <span class="number">0</span>; </span><br><span class="line">                key[sz] = v; cnt[sz] = <span class="built_in">size</span>[sz] = <span class="number">1</span>;</span><br><span class="line">                f[sz] = fa; ch[fa][v &gt; key[fa]] = sz;</span><br><span class="line">                update(fa); splay(sz);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>, tot = root;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (v &lt; key[tot]) tot = ch[tot][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                ans += (ch[tot][<span class="number">0</span>] ? <span class="built_in">size</span>[ch[tot][<span class="number">0</span>]] : <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span> (v == key[tot])&#123;</span><br><span class="line">                    splay(tot); <span class="keyword">return</span> ans + <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                ans += cnt[tot];</span><br><span class="line">                tot = ch[tot][<span class="number">1</span>];</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findx</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tot = root;</span><br><span class="line">        <span class="keyword">while</span> (<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span> (ch[tot][<span class="number">0</span>] &amp;&amp; x &lt;= <span class="built_in">size</span>[ch[tot][<span class="number">0</span>]]) tot = ch[tot][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> t = (ch[tot][<span class="number">0</span>] ? <span class="built_in">size</span>[ch[tot][<span class="number">0</span>]] : <span class="number">0</span>) + cnt[tot];</span><br><span class="line">                <span class="keyword">if</span> (x &lt;= t) <span class="keyword">return</span> key[tot];</span><br><span class="line">                x -= t; tot = ch[tot][<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">prev</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tot = ch[root][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">while</span> (ch[tot][<span class="number">1</span>]) tot = ch[tot][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">return</span> tot;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">succ</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> tot = ch[root][<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">while</span> (ch[tot][<span class="number">0</span>]) tot = ch[tot][<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">return</span> tot;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">del</span><span class="params">(<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">        <span class="built_in">find</span>(v);</span><br><span class="line">        <span class="keyword">if</span> (cnt[root] &gt; <span class="number">1</span>)&#123;</span><br><span class="line">            cnt[root]--; <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!ch[root][<span class="number">0</span>] &amp;&amp; !ch[root][<span class="number">1</span>])&#123;</span><br><span class="line">            clean(root); root = <span class="number">0</span>; <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!ch[root][<span class="number">0</span>])&#123;</span><br><span class="line">            <span class="keyword">int</span> old = root; root = ch[root][<span class="number">1</span>]; f[root] = <span class="number">0</span>;</span><br><span class="line">            clean(old); <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (!ch[root][<span class="number">1</span>])&#123;</span><br><span class="line">            <span class="keyword">int</span> old = root; root = ch[root][<span class="number">0</span>]; f[root] = <span class="number">0</span>;</span><br><span class="line">            clean(old); <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> lf = prev(), old = root;</span><br><span class="line">        splay(lf); f[ch[old][<span class="number">1</span>]] = root; ch[root][<span class="number">1</span>] = ch[old][<span class="number">1</span>];</span><br><span class="line">        clean(old); update(root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/8/segTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -360,7 +485,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">261</span>
+          <span class="site-state-item-count">262</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
