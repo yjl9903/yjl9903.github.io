@@ -224,6 +224,226 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/steinerTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/steinerTree/" class="post-title-link" itemprop="url">斯坦纳树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-02-12 00:10:20 / 修改时间：00:26:11" itemprop="dateCreated datePublished" datetime="2019-02-12T00:10:20+08:00">2019-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/steinerTree/" class="post-meta-item leancloud_visitors" data-flag-title="斯坦纳树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>给定带权图 $G$，求让 $k$ 个关键点联通的权值最小的子图（$1 \le k \le 10$）。</p>
+<p>关键点的个数很少，考虑状压 $dp$。</p>
+<p>设 $dp[mask][i]$ 表示关键点的点集 $mask$ 连到顶点 $i$ 最小权值和。</p>
+<p>转移的时候有两种情况：</p>
+<ol>
+<li><p>固定顶点 $i$，合并 $mask$ 的子集 $T$ 和 $T$ 的补集两个 $dp$ 状态，相当于顶点分叉。</p>
+</li>
+<li><p>固定点集 $mask$，顶点 $i$ 向周围的点用最短路进行转移，相当于节点向外生长。</p>
+</li>
+</ol>
+<p>时间复杂度：$O(3^k \cdot n+2^k \cdot m \log n)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/steinerTree/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round538/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/round538/" class="post-title-link" itemprop="url">Codeforces Round 538 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-11 18:07:27" itemprop="dateCreated datePublished" datetime="2019-02-11T18:07:27+08:00">2019-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-05 20:00:48" itemprop="dateModified" datetime="2019-03-05T20:00:48+08:00">2019-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/round538/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 538 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Got-Any-Grapes"><a href="#A-Got-Any-Grapes" class="headerlink" title="A Got Any Grapes?"></a>A Got Any Grapes?</h1><h1 id="B-Yet-Another-Array-Partitioning-Task"><a href="#B-Yet-Another-Array-Partitioning-Task" class="headerlink" title="B Yet Another Array Partitioning Task"></a>B Yet Another Array Partitioning Task</h1><p>给一个序列，分成恰好 $k$ 个连续段，每个连续段至少有 $m$ 个，每个段的贡献是其前 $m$ 大之和，求所有段贡献之和的最大值。</p>
+<p>所有值拖进去排序，取前 $mk$ 大之和就是答案。</p>
+<p>构造只需要维护哪些位置是前 $mk$ 大即可。</p>
+<p>证明的话，考虑把除了前 $mk$ 大的元素都删除，他们的有无对于答案没有影响。</p>
+<p>全场最难。</p>
+<h1 id="C-Trailing-Loves-or-L’oeufs"><a href="#C-Trailing-Loves-or-L’oeufs" class="headerlink" title="C Trailing Loves (or L’oeufs?)"></a>C Trailing Loves (or L’oeufs?)</h1><p>求十进制数 $n!$ 在 $b$ 进制下有多少个尾 $0$。</p>
+<p>题目等价于求最大的 $x$，使得 $n! =k \cdot b^x$ 成立，等价于对 $b$ 质因数分解后的每一个素因子，$n!$ 中对应素因子的幂次与其幂次之比的最小值。</p>
+<p>于是，我们需要计算出 $n!$ 对于一个素因子 $p$ 的幂次。</p>
+<p>显然，$1$ 到 $n$ 中 $p$ 的倍数有 $n \over p$ 个，$p^2$ 的倍数有 $n \over p^2$ 个，又由于 $p^2$ 的倍数在前面一次已经计算过一个了，只需要加上 $n \over p^2$ 即可。以此类推，于是有</p>
+<script type="math/tex; mode=display">
+\alpha=\sum {n \over p^i}</script><p>注意别爆掉 $long long$。</p>
+<h1 id="D-Flood-Fill"><a href="#D-Flood-Fill" class="headerlink" title="D Flood Fill"></a>D Flood Fill</h1><p>给一个序列，一串连续的相同数字视作一个联通块，你需要先选择一个联通块，然后每次将这个联通块颜色变成另外一个以此扩大一开始的联通块，直到所有颜色都相同，求最小操作次数。</p>
+<p>考虑 $dp[l][r][0/1]$，表示将 $[l,r]$ 区间全部变成 $l$ 处或者 $r$ 处的颜色所需要的最小操作次数。</p>
+<p>因为只有一个起点，每次操作只需要考虑扩大一个位置即可，即 $dp[l][r][0/1]$ 只会从 $dp[l+1][r][0/1]$ 和 $dp[l][r-1][0/1]$ 转移过来。</p>
+<p>不妨令第三个维度为 $0$，只有三种情况：</p>
+<ol>
+<li><p>$[l+1,r]$ 全部变成 $l+1$ 处的颜色，如果 $l+1$ 和 $l$ 处颜色不同，那么需要多操作一次；</p>
+</li>
+<li><p>$[l+1,r]$ 全部变成 $r$ 处颜色，也是类似；</p>
+</li>
+<li><p>$[l,r-1]$ 全部变成 $l$ 处颜色，如果 $l$ 和 $r$ 处颜色不同，我们需要一次操作将 $[l,r-1]$ 先变成 $r$ 处的颜色，再一次操作变回 $l$ 处的颜色。</p>
+</li>
+</ol>
+<p>第三种情况考虑错了 T^T。</p>
+<h1 id="E-Arithmetic-Progression"><a href="#E-Arithmetic-Progression" class="headerlink" title="E Arithmetic Progression"></a>E Arithmetic Progression</h1><p>交互题，给定长度 $n$，$60$ 次询问，猜一个打乱过位置的等差数列的首项和公差，有两种询问方式：</p>
+<ol>
+<li><p><code>? i</code>：询问位置 $i$ 上的数字；</p>
+</li>
+<li><p><code>&gt; x</code>：询问是否有大于 $x$ 的数字。</p>
+</li>
+</ol>
+<p>先用 $30$ 次询问二分出最大值，然后随机取 $30$ 个位置，做差后全部 $gcd$ 起来就是公差。</p>
+<p>随机别用 <code>rand()</code>， 用 <code>mt19937</code>。</p>
+<h1 id="F-Please-another-Queries-on-Array"><a href="#F-Please-another-Queries-on-Array" class="headerlink" title="F Please, another Queries on Array?"></a>F Please, another Queries on Array?</h1><p>给一个序列 $a$，其中 $1 \le a_i \le 300$，维护区间乘，询问区间乘的欧拉函数。</p>
+<p>线段树裸题（误。</p>
+<p>由于小于 $300$ 的素数只有 $62$ 个，欧拉函数算的时候只和乘积后的值以及这个值有哪些素因子有关。</p>
+<p>因此只需要用 <code>bitset</code> 维护有哪些素因子，线段树维护乘法即可。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/round538/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/zoj4059/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1050,334 +1270,6 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/treebag/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/treebag/" class="post-title-link" itemprop="url">树形依赖背包</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-01-30 19:10:16 / 修改时间：22:47:44" itemprop="dateCreated datePublished" datetime="2019-01-30T19:10:16+08:00">2019-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/treebag/" class="post-meta-item leancloud_visitors" data-flag-title="树形依赖背包" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>树上的每个节点均有各自的重量和价值，除了容量限制外，还要求选择一个节点时，其父节点也要被选择，求最大价值。</p>
-<p>时间复杂度：$O(nm^2)$（其中 $n$ 为树的大小，$m$ 为容量限制）。</p>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>对于枚举到的每个节点，记录一下其子树大小。</p>
-<p>$dp$ 状态转移时，枚举的个数是当前这个子树大小，对应儿子节点的子树的大小，最后更新子树大小。</p>
-<p>相当于每次转移都是从节点枚举过的子树，将没有枚举的儿子合并进来。这个过程对应于枚举以这个点为 $lca$ 的所有点对，总体上它枚举了树上所有点对。</p>
-<p>时间复杂度：$O(n^2)$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/treebag/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/wannaflywinter2019/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/wannaflywinter2019/" class="post-title-link" itemprop="url">2019 CCPC-Wannafly Winter Camp</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-28 14:44:00" itemprop="dateCreated datePublished" datetime="2019-01-28T14:44:00+08:00">2019-01-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-01-23 12:49:19" itemprop="dateModified" datetime="2020-01-23T12:49:19+08:00">2020-01-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/Wannafly-Camp/" itemprop="url" rel="index">
-                    <span itemprop="name">Wannafly Camp</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/wannaflywinter2019/" class="post-meta-item leancloud_visitors" data-flag-title="2019 CCPC-Wannafly Winter Camp" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">Name</th>
-<th style="text-align:center">Rank</th>
-<th style="text-align:center">Solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D1/">Day1</a></td>
-<td style="text-align:center">4/52</td>
-<td style="text-align:center">6/11</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D2/">Day2</a></td>
-<td style="text-align:center">29/99</td>
-<td style="text-align:center">2/12</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D3/">Day3</a></td>
-<td style="text-align:center">9/55</td>
-<td style="text-align:center">5/10</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D4/">Day4</a></td>
-<td style="text-align:center">11/64</td>
-<td style="text-align:center">6/11</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D5/">Day5</a></td>
-<td style="text-align:center">28/56</td>
-<td style="text-align:center">3/10</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D6/">Day6</a></td>
-<td style="text-align:center">3/60</td>
-<td style="text-align:center">8/10</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D7/">Day7</a></td>
-<td style="text-align:center">6/57</td>
-<td style="text-align:center">5/10</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/wannaflywinter2019/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1428,7 +1320,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">263</span>
+          <span class="site-state-item-count">265</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1441,7 +1333,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">50</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
