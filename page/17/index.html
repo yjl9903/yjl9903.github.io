@@ -224,6 +224,99 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/LinearBase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/LinearBase/" class="post-title-link" itemprop="url">线性基</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-13 00:38:58" itemprop="dateCreated datePublished" datetime="2019-02-13T00:38:58+08:00">2019-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-07-27 20:53:32" itemprop="dateModified" datetime="2019-07-27T20:53:32+08:00">2019-07-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/LinearBase/" class="post-meta-item leancloud_visitors" data-flag-title="线性基" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><a href="https://oi.men.ci/linear-basis-notes/" target="_blank" rel="noopener">Menci</a></p>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LinearBase</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> maxl = <span class="number">63</span>;</span><br><span class="line">    ll a[maxl + <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">    LinearBase() &#123; cnt=<span class="number">0</span>; ms(a, <span class="number">0</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123; cnt=<span class="number">0</span>; ms(a, <span class="number">0</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x &amp; (<span class="number">1l</span>l &lt;&lt; i)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[i]) x ^= a[i];</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; i; k++) </span><br><span class="line">                        <span class="keyword">if</span> (x &amp; (<span class="number">1l</span>l &lt;&lt; k)) x ^= a[k];</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> k = i + <span class="number">1</span>; k &lt; maxl; k++) </span><br><span class="line">                        <span class="keyword">if</span> (a[k] &amp; (<span class="number">1l</span>l &lt;&lt; i)) a[k] ^= x;</span><br><span class="line">                    a[i] = x; cnt++;</span><br><span class="line">                    <span class="keyword">return</span> ;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x &gt;&gt; i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[i]) x ^= a[i];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ll <span class="title">qmax</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        ll res = x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = maxl - <span class="number">1</span> ; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((res ^ a[i]) &gt; res) res ^= a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// #define QUERY_KTH</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> QUERY_KTH</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;ll&gt; v;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init_kth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        v.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxl; i++) <span class="keyword">if</span> (a[i]) v.push_back(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ll <span class="title">query</span><span class="params">(ll k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (v.<span class="built_in">size</span>() != n) k--;</span><br><span class="line">        <span class="keyword">if</span> (k &gt;= (<span class="number">1l</span>l &lt;&lt; v.<span class="built_in">size</span>())) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        ll ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); i++) <span class="keyword">if</span> (k &amp; (<span class="number">1l</span>l &lt;&lt; i))</span><br><span class="line">            ans ^= v[i];</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="区间线性基"><a href="#区间线性基" class="headerlink" title="区间线性基"></a>区间线性基</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LinearBase</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">int</span> a[M + <span class="number">1</span>], pos[M + <span class="number">1</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ms(a, <span class="number">0</span>); ms(pos, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LinearBase() &#123; </span><br><span class="line">        <span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> id = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = M; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x &gt;&gt; i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[i]) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (id &gt; pos[i]) swap(id, pos[i]), swap(x, a[i]);</span><br><span class="line">                    x ^= a[i];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    a[i] = x; pos[i] = id;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> l)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = x;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = M; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pos[i] &lt; l) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> ((ans ^ a[i]) &gt;= ans) ans ^= a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="线性基求交"><a href="#线性基求交" class="headerlink" title="线性基求交"></a>线性基求交</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinearBase <span class="title">intersect</span><span class="params">(<span class="keyword">const</span> LinearBase&amp; A, <span class="keyword">const</span> LinearBase&amp; B)</span> </span>&#123;</span><br><span class="line">	LinearBase all, C, D;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		all.a[i] = A.a[i];</span><br><span class="line">		D.a[i] = <span class="number">1l</span>l &lt;&lt; i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span> (B.a[i]) &#123;</span><br><span class="line">			ll v = B.a[i], k = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">bool</span> can = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">60</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">				<span class="keyword">if</span> (v &amp; (<span class="number">1l</span>l &lt;&lt; j)) &#123;</span><br><span class="line">					<span class="keyword">if</span> (all.a[j]) &#123;</span><br><span class="line">						v ^= all.a[j];</span><br><span class="line">						k ^= D.a[j];</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						can = <span class="literal">false</span>;</span><br><span class="line">						all.a[j] = v;</span><br><span class="line">						D.a[j] = k;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (can) &#123;</span><br><span class="line">				ll v = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">60</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">					<span class="keyword">if</span> (k &amp; (<span class="number">1l</span>l &lt;&lt; j)) &#123;</span><br><span class="line">						v ^= A.a[j];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				C.insert(v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/LinearBase/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/steinerTree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1160,116 +1253,6 @@ dp[a[i].d + 1][j]=min(dp[a[i].d+1][j], dp[i][j]+a[i].w)</script>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/zoj4069/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/zoj4069/" class="post-title-link" itemprop="url">ZOJ4069 Sub-cycle Graph</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-01-31 19:09:57 / 修改时间：19:52:43" itemprop="dateCreated datePublished" datetime="2019-01-31T19:09:57+08:00">2019-01-31</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
-                    <span itemprop="name">组合数学</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/zoj4069/" class="post-meta-item leancloud_visitors" data-flag-title="ZOJ4069 Sub-cycle Graph" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>求 $n$ 个点 $m$ 条边的带标号图是某个 $n$ 个点的环的子图的个数。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>把几个情况特判掉：</p>
-<ol>
-<li>$m&gt;n$：图上已经有环。</li>
-<li>$m=n$：图本身就是一个 $n$ 个点的环，答案为 ${n!\over2}$。</li>
-<li>$m=0$：答案为 $1​$（底下的公式会挂在这个地方）。</li>
-</ol>
-<p>题目等价于求将一个带标号的图分成 $n-m$ 条链的方案数（块内有序，块间无序）。</p>
-<p>先给块间加一个有序条件，最后乘上 $n! \over (n-m)!​$ 即可去除掉块间的序，因此可以使用指数生成函数先算出块内块间有序的方案数。</p>
-<p>考虑一条链的情况，只有一个点时，方案数为 $1$，有 $n$ 个点时 $(n \ge 2)$，方案数为 $n! \over 2$。因此得到对应的指数生成函数</p>
-<script type="math/tex; mode=display">
-\begin{array}{}
-f(x)&=&x+{2! \over 2}{x^2 \over 2!}+{3! \over 2}{x^3 \over 3!}+\dots \\
- &=&x+{1\over2}x^2+{1\over2}x^3+\dots \\
- &=&{x\over 2}+{1\over2}x(1+x+x^2+x^3+\dots) \\
- &=&{x\over 2}+{1\over2}{x \over 1-x}
-\end{array}</script><p>答案为</p>
-<script type="math/tex; mode=display">
-\begin{array}{}
-ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
-&=&{n! \over (n-m)!}[x^n]({x \over 2}(1+{1 \over 1-x}))^{n-m} \\
-&=&{n! \over (n-m)!2^{n-m}}[x^n]x^{n-m}(1+{1 \over 1-x})^{n-m} \\
-&=&{n! \over (n-m)!2^{n-m}}[x^m](1+{1 \over 1-x})^{n-m} \\
-&=&{n! \over (n-m)!2^{n-m}}[x^m]\sum_{i=0}^{n-m} {n-m \choose i} ({1 \over 1-x})^i \\
-&=&{n! \over (n-m)!2^{n-m}}[x^m]\sum_{i=0}^{n-m} {n-m \choose i} (1+x+x^2+\dots)^i \\
-&=&{n! \over (n-m)!2^{n-m}}\sum_{i=0}^{n-m} {n-m \choose i}{m+i-1 \choose m} \\
-\end{array}</script>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/zoj4069/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1320,7 +1303,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">265</span>
+          <span class="site-state-item-count">266</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
