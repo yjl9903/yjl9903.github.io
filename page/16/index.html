@@ -224,6 +224,122 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/3/edu61/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/3/edu61/" class="post-title-link" itemprop="url">Educational Round 61 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-03-06 16:46:08" itemprop="dateCreated datePublished" datetime="2019-03-06T16:46:08+08:00">2019-03-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-23 13:23:22" itemprop="dateModified" datetime="2019-04-23T13:23:22+08:00">2019-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
+                    <span itemprop="name">Educational Round</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/3/edu61/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 61 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Regular-Bracket-Sequence"><a href="#A-Regular-Bracket-Sequence" class="headerlink" title="A Regular Bracket Sequence"></a>A Regular Bracket Sequence</h1><h1 id="B-Discounts"><a href="#B-Discounts" class="headerlink" title="B Discounts"></a>B Discounts</h1><h1 id="C-Painting-the-Fence"><a href="#C-Painting-the-Fence" class="headerlink" title="C Painting the Fence"></a>C Painting the Fence</h1><p>给定长度 $n$ 的序列上的 $q$ 条线段，从中删除两端使得剩余被覆盖位置数量最大。</p>
+<p>枚举两个线段，要求计算这两段上有多少个位置只被覆盖一次，线段重合部分上有多少个位置只被覆盖两次。</p>
+<h1 id="D-Stressful-Training"><a href="#D-Stressful-Training" class="headerlink" title="D Stressful Training"></a>D Stressful Training</h1><p>给定 $n$ 台电脑，每台电脑初始有电量 $a_i$，每小时消耗电量 $b_i$，有一个充电器每小时可为一台电脑充电，求使得所有电脑工作 $k$ 天所需要充电器的最小每小时充电量。</p>
+<p>考虑二分，贪心构造。每天将没电时刻最早的那台电脑拿出来充电，并且如果某天有多台电脑在此刻没电，那么构造失败。</p>
+<p>注意：二分边界，使用数组和指针来维护，而不是上数据结构！</p>
+<p>二分不出来的我 T^T。</p>
+<h1 id="F-Clear-the-String"><a href="#F-Clear-the-String" class="headerlink" title="F Clear the String"></a>F Clear the String</h1><p>给定一个字符串 $s$，每次可以删除一个相同的连续段，求最小删除次数。</p>
+<p>区间 DP 裸题。</p>
+<p>考虑 $f[l][r]$ 表示删除区间 $[l,r]$ 的花费。</p>
+<p>转移时，若 $s[l]=s[r]$</p>
+<script type="math/tex; mode=display">
+f[l][r]=min(f[l][r-1],f[l+1][r],f[l+1][r-1]+1)</script><p>否则</p>
+<script type="math/tex; mode=display">
+f[l][r]=min(f[l][j],f[j+1][r])</script><p>区间 DP 不出来的我 T^T。</p>
+<h1 id="G-Greedy-Subsequences"><a href="#G-Greedy-Subsequences" class="headerlink" title="G Greedy Subsequences"></a>G Greedy Subsequences</h1><p>定义贪心子序列 $a<em>{p_1},a</em>{p<em>2},a</em>{p<em>3},\dots$ ，满足，$p</em>{i+1}$ 是大于 $p<em>i$ 的第一个满足 $a</em>{p<em>{i+1}} &gt; a</em>{p_i}$ 的下标。</p>
+<p>求序列 $a$ 的每一个长度为 $k$ 连续子区间的最长贪心子序列长度。</p>
+<p>可以发现，对于整个区间而言，贪心子序列实际上构成的一个树的结构，每个点都会连向唯一一个点，且可能存在前面的若干点连到这个点上。</p>
+<p>考虑维护一个单调递减的单调栈，来建出这棵树（森林）。</p>
+<p>对于每次询问实际上是在顶点编号在 $[i,i+k-1]$ 范围内的对应虚树上，询问树（森林）的最大高度。</p>
+<p>使用线段树维护每个点的高度，区间左指针移动表示虚树上删除了一个点，右指针移动表示虚树扩大，需要给对应子树区间内所有点高度 $+1$。</p>
+<p>妙啊！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/3/edu61/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/3/mobius/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1099,100 +1215,6 @@ b_i=a_i+a_{n-i+1}</script><p>要求恢复出序列 $a$。</p>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/cf741D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/2/cf741D/" class="post-title-link" itemprop="url">Codeforces 741D  题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-02-13 23:23:17" itemprop="dateCreated datePublished" datetime="2019-02-13T23:23:17+08:00">2019-02-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-02-20 14:09:34" itemprop="dateModified" datetime="2019-02-20T14:09:34+08:00">2019-02-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/2/cf741D/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces 741D  题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给一棵有根树，每条边有一个 $a$ 到 $v$ 的字母作为权值，询问每个点子树内最长的简单路径，满足经过的边权可以打乱顺序拼成回文串。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>一串字母能否变成回文串的条件是最多只能有一个字母出现了奇数次，因此对于一个路径，我们只需要记录上面每个字母出现次数的奇偶性即可。</p>
-<p>因为最多只有 $22$ 种字母，因此我们可以把这个状态压成 $bitmasks$，开一个数组记录。</p>
-<p>考虑启发式合并，对于每一种状态，我们需要维护的是这种状态出现的最大深度，状态合并时就是二进制异或。</p>
-<p>子树信息合并时，只需要询问 $23$ 次对应合法合并状态的最大深度，然后用 $LCA$ 进行差分得到路径长度，更新答案。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/2/cf741D/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1243,7 +1265,7 @@ b_i=a_i+a_{n-i+1}</script><p>要求恢复出序列 $a$。</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">267</span>
+          <span class="site-state-item-count">268</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
