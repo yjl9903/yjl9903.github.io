@@ -224,6 +224,97 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/12/round528/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/round528/" class="post-title-link" itemprop="url">Codeforces Round 528 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2018-12-24 00:31:17 / 修改时间：00:49:27" itemprop="dateCreated datePublished" datetime="2018-12-24T00:31:17+08:00">2018-12-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/12/round528/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 528 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Right-Left-Cipher"><a href="#A-Right-Left-Cipher" class="headerlink" title="A Right-Left Cipher"></a>A Right-Left Cipher</h1><p>模拟。</p>
+<h1 id="B-Div-Times-Mod"><a href="#B-Div-Times-Mod" class="headerlink" title="B Div Times Mod"></a>B Div Times Mod</h1><p>求解关于 $x$ 的不定方程 $(x / k) * (x \% k) = n$ 的最小解。</p>
+<p>对 $n​$ 质因数分解即可。</p>
+<h1 id="C-Connect-Three"><a href="#C-Connect-Three" class="headerlink" title="C Connect Three"></a>C Connect Three</h1><p>平面分成了无数 $1 \times 1$ 的方格，给定 3 个方格的坐标，用最少的方格让这三个联通。</p>
+<p>枚举两两之间的 6 个最近点，找这个最近点与第三个点的最短路径。</p>
+<h1 id="D-Minimum-Diameter-Tree"><a href="#D-Minimum-Diameter-Tree" class="headerlink" title="D Minimum Diameter Tree"></a>D Minimum Diameter Tree</h1><p>给一棵树，给树上每条边加一个非负实数范围上的权值，权值总和为 $S$，最小化树的直径。</p>
+<p>显然，对于任意一条直径，都会经过两个度数为 1 的顶点，那么必须要给每个这样的叶子上的边平均分配 $S$。</p>
+<p>二分了一个小时是怎么回事啊？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/12/round528/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/12/avito2018/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1105,105 +1196,11 @@ dp[i][j] = dp[i-1][j]+(m-1)dp[i-1][j-1]</script><h1 id="D-Maximum-Distance"><a h
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/dsu-on-tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/dsu-on-tree/" class="post-title-link" itemprop="url">树上启发式合并</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-09 00:18:06" itemprop="dateCreated datePublished" datetime="2018-11-09T00:18:06+08:00">2018-11-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-01-12 20:00:05" itemprop="dateModified" datetime="2019-01-12T20:00:05+08:00">2019-01-12</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/11/dsu-on-tree/" class="post-meta-item leancloud_visitors" data-flag-title="树上启发式合并" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>树上启发式合并是用于解决一类树上无修改的子树信息离线查询问题的一种有力工具。</p>
-<p>其时间复杂度由轻重链剖分来保证，轻儿子的大小会小于父亲大小的一半，也就是一条链上最多有 $\log$ 数量级的轻儿子。</p>
-<p>树上启发式合并，优化自一个 $O(n^2)$ 的想法，对于一个节点，递归计算这棵子树，更新答案，然后消除其所有子树的贡献，防止儿子之间相互影响。</p>
-<p>但是，这样做实际上有些答案的贡献是多删除的，应该保留一些贡献不删除，根据树链剖分选择保留重儿子的信息回溯到父亲节点。</p>
-<p>之后我们得到了这样的过程，递归进入一个节点，先计算其轻儿子的答案，最后计算重儿子，之后将重儿子的信息上传到父亲，结合这些信息再递归计算这棵子树的轻儿子位置，得到该节点的答案，最后根据递归参数调整是否要上传子树信息。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/11/dsu-on-tree/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/20/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/22/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1249,7 +1246,7 @@ dp[i][j] = dp[i-1][j]+(m-1)dp[i-1][j-1]</script><h1 id="D-Maximum-Distance"><a h
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">270</span>
+          <span class="site-state-item-count">271</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

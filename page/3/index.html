@@ -224,6 +224,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/2/round620/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/2/round620/" class="post-title-link" itemprop="url">Codeforces Round 620 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-16 01:33:00 / 修改时间：02:20:14" itemprop="dateCreated datePublished" datetime="2020-02-16T01:33:00+08:00">2020-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/2/round620/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 620 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Two-Rabbits"><a href="#A-Two-Rabbits" class="headerlink" title="A Two Rabbits"></a>A Two Rabbits</h1><h1 id="B-Longest-Palindrome"><a href="#B-Longest-Palindrome" class="headerlink" title="B Longest Palindrome"></a>B Longest Palindrome</h1><p>给你 $n$ 个长度为 $m$ 的串，你挑一些出来构造一个最长的回文串。</p>
+<p>注意到是每个串长度相同，所以一定是两两配对，加上中间可能会有一个回文串。</p>
+<h1 id="C-Air-Conditioner"><a href="#C-Air-Conditioner" class="headerlink" title="C Air Conditioner"></a>C Air Conditioner</h1><p>你有一个权值，你每天可以选择把他 $+1,-1$ 或者不变，有 $n$ 个条件，第 $t$ 天，权值范围在 $[l_i,r_i]$ 中。</p>
+<p>维护一下你的权值的范围即可。</p>
+<h1 id="D-Shortest-and-Longest-LIS"><a href="#D-Shortest-and-Longest-LIS" class="headerlink" title="D Shortest and Longest LIS"></a>D Shortest and Longest LIS</h1><p>你有长度为 $n-1$ 的 $&lt;$ 和 $&gt;$ 组成的串，表示 $a<em>i$ 和 $a</em>{i+1}$ 的大小关系，你现在需要构造出 LIS 最大和最小两个排列。</p>
+<p>我的构造方式过于复杂，以致于没来得及交上去（呲牙）。</p>
+<p>一种简单的方式，以 LIS 最小为例，你肯定希望整体是在往上走的，因此对于小于号，权值 $+\infty$，大于号权值 $-1$，这样你每次都是往上升的状态，最后每个值必定不同，离散化即可。LIS 最大，考虑整体往下即可。</p>
+<h1 id="E-1-Trees-and-Queries"><a href="#E-1-Trees-and-Queries" class="headerlink" title="E 1-Trees and Queries"></a>E 1-Trees and Queries</h1><p>你有一棵无根树，$q$ 次询问，独立连一条 $x$ 到 $y$ 的边，询问 $a$ 到 $b$ 是否存在一条长度为 $k$ 的路径，路径可以随意走，可以走重复的点或边。</p>
+<p>有 $3$ 种路径，$a \to b$，$a \to x \to y \to b$ 和 $a \to y \to x \to b$，只需要满足长度不超过 $k$，且模 $2$ 同余即可。</p>
+<h1 id="F-Animal-Observation"><a href="#F-Animal-Observation" class="headerlink" title="F Animal Observation"></a>F Animal Observation</h1><p>给你一个 $n \times m$ 的网格，每行最多选一个长度为 $k$，高度为 $2$ 的矩形（往上延伸一格）（特别地，最后一行可以只选一行），求最大的选中权值和。</p>
+<p>加一个空行，简化一下变成 $2$ 到 $n+1$ 行。记 $dp(i,j)$ 表示在第 $i$ 行选择 $j$ 开始的那个矩形的最大权值。</p>
+<p>转移分成 $3$ 个部分，首先在所有与左下角是 $(i,j)$ 的矩形没有交的的位置的 $dp$ 值，取一个 $\max$。</p>
+<p>剩下两个部分是左边相交和右边相交，两种类似，下面讨论右边相交的情况。($Rect(i,j)$ 为这个位置的矩形权值)</p>
+<script type="math/tex; mode=display">
+dp(i,j) = Rect(i,j) + \max_{i \le j < i + k}(dp(i-1,j) - \sum_{k=j}^{i+k-1} a_{i-1,k})</script><p>将上述转移用前缀和差分后，实际上就是一个滑动窗口取 $\max$ 的问题，单调优化即可。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/2/round620/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/2/convex-hull-trick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1207,107 +1305,11 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/1/round612/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/1/round612/" class="post-title-link" itemprop="url">Codeforces Round 612 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-01-06 21:50:43" itemprop="dateCreated datePublished" datetime="2020-01-06T21:50:43+08:00">2020-01-06</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-20 13:33:31" itemprop="dateModified" datetime="2020-02-20T13:33:31+08:00">2020-02-20</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/1/round612/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 612 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="E-Fedya-the-Potter-Strikes-Back"><a href="#E-Fedya-the-Potter-Strikes-Back" class="headerlink" title="E Fedya the Potter Strikes Back"></a>E Fedya the Potter Strikes Back</h1><p>强制在线，维护一个串和一个数组，每次向后加一个字母和一个值，定义一个子串的权值为数组对应区间的最小值，求出所有和串的子串，满足等于相应长度的前缀条件，价值之和。</p>
-<p>显然，只需要算出每次 <code>push back</code> 产生的贡献即可。</p>
-<p>首先，可以动态维护一下每个前缀的 <code>border</code> 集合，遍历一遍得到答案，但是 <code>border</code> 集合的总大小可能是 $O(n^2)$ 的。因此，我们可以考虑维护 <code>border</code> 集合的变化，显然这部分是均摊 $O(n)$ 的（参考 KMP 算法证明）。</p>
-<p>考虑 KMP 的过程，从上一点的 <code>fail</code>，暴力往上跳找到第一个点，其对应前缀的下一个字母等于当前字母，显然上跳的中间过程，这些前一次的 <code>border</code> 无法扩展，需要从 <code>border</code> 集合中被删除。</p>
-<p>但是，这部分是不够的。还需要考虑，当前的最长 <code>border</code> 之前的转移情况，实际上等同于这个 <code>border</code> 作为前缀时的转移情况，将其丢进被删除集合即可。</p>
-<p>官方题解这里给出了另外一个做法，多维护一个上跳指针，表示往上第一个后继字母与当前不同的点，每次暴力往上跳即可（次数等价于变化大小）。</p>
-<p>最后，考虑如何维护出答案的增量。加入新的 <code>border</code>，删除 <code>border</code>，<code>border</code> 集合保留未删除的部分，相当于每个权值对于新加入元素对于 $w$ 取 $\min$。使用 <code>std::map</code> 维护每种取值的个数，取 $\min$ 就暴力枚举比 $w$ 大的元素。这样复杂度是均摊 $O(n \log n)$ 的，因为如果我们对同一个 <code>std::map</code> 取 $\min$，其大小（种类数）不会增加，而操作代价实质是大小的变化量。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/1/round612/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1353,7 +1355,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">270</span>
+          <span class="site-state-item-count">271</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

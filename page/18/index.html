@@ -224,6 +224,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round537/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/round537/" class="post-title-link" itemprop="url">Codeforces Round 537 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-02-06 00:16:31 / 修改时间：00:51:38" itemprop="dateCreated datePublished" datetime="2019-02-06T00:16:31+08:00">2019-02-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/round537/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 537 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Superhero-Transformation"><a href="#A-Superhero-Transformation" class="headerlink" title="A Superhero Transformation"></a>A Superhero Transformation</h1><h1 id="B-Average-Superhero-Gang-Power"><a href="#B-Average-Superhero-Gang-Power" class="headerlink" title="B Average Superhero Gang Power"></a>B Average Superhero Gang Power</h1><p>给一个序列，你有 $m$ 次操作，每次操作可以选择删除一个数或者给某一个数 $+1$，但是一个数最多被加 $k$ 次，要求序列平均值的最大值。</p>
+<p>显然，排个序，枚举删除了多少个，剩下的全部都是加到后面即可。</p>
+<p>注意，加到哪个数并不重要，总量不超过上限即可。</p>
+<p>Hackforces，插了 $5$ 个，最后又 FST 了上千个2333。</p>
+<h1 id="C-Creative-Snap"><a href="#C-Creative-Snap" class="headerlink" title="C Creative Snap"></a>C Creative Snap</h1><p>一排长度为 $2^n$ 的位置，某些位置上有人占领（一个位置可以被多人占领），现在你要毁灭整个区间，你有两种毁灭方式：</p>
+<ol>
+<li>将当前要毁灭的区间分成左右两部分，分别毁灭；</li>
+<li>毁灭当前区间，如果区间内没人占领，费用为 $A$，如果区间内有人占领，费用为 $B \times m \times l$，其中 $A,B$ 为常数，$m$ 为当前区间内的人数，$l$ 为区间长度。</li>
+</ol>
+<p>求最小花费。</p>
+<p>直接根据题意模拟分治过程即可。</p>
+<p>关键是要询问一个区间内的人数，对所有人的位置排序，询问时做两次二分即可。</p>
+<p>分治时，注意两个细节：</p>
+<ol>
+<li>区间内没人时，直接返回，无需分治；</li>
+<li>区间长度为 $1$ 时，注意这个位置可能有很多人。</li>
+</ol>
+<p>第二点 $wa$ 了一年 T^T。</p>
+<h1 id="E-Tree"><a href="#E-Tree" class="headerlink" title="E Tree"></a>E Tree</h1><p>给一棵无根树，现在有 $q$ 次询问，每次询问无根树以 $r$ 为根时，有 $k$ 个关键点，将关键点分为最多 $m$ 块，要求满足每块内没有点对互为这棵有根树上的子孙，求这样的分块方案。</p>
+<p>其中 $n, q,\sum k \le 1e5,m\le300$。</p>
+<p>首先，考虑根固定为 $1$ 的做法，将关键点按照 $dfs$ 序排序，设 $h[i]$ 表示关键内是 $i$ 的祖先节点的个数，$dp[i][j]$ 表示前 $i$ 个点分成 $j$ 块的方案数，有转移方程</p>
+<script type="math/tex; mode=display">
+dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每个关键点，我们只需要知道有多少关键点是它的祖先即可，这部分可以搞出 $dfs$ 序，在树状数组上差分即可。</p>
+<p>之后，我们考虑这个 $dp$ 的正确性条件，必须满足计算 $i$ 的 $dp$ 状态时，他的祖先必须全部都计算过了。然后，这个条件实际上不需要用 $dfs$ 序来排序，可以考虑用深度或者说祖先的个数来排序，按照这个顺序 $dp$ 即可。</p>
+<p>最后，我们考虑换根操作，换根后我们实质上是询问了，某个关键点到根的路径上出现了多少关键点，这个部分用 $LCA​$ 差分即可。</p>
+<p>好！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/round537/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/yxstone/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1328,101 +1437,11 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/ntt/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/ntt/" class="post-title-link" itemprop="url">快速数论变换</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-25 23:09:54" itemprop="dateCreated datePublished" datetime="2019-01-25T23:09:54+08:00">2019-01-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-03-05 19:44:25" itemprop="dateModified" datetime="2019-03-05T19:44:25+08:00">2019-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
-                    <span itemprop="name">数学</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/ntt/" class="post-meta-item leancloud_visitors" data-flag-title="快速数论变换" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll n)</span> </span>&#123;</span><br><span class="line">    ll r = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) r = r * x % mod;</span><br><span class="line">        x = x * x % mod; n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">inv</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> qpow(x, mod - <span class="number">2</span>); &#125;</span><br><span class="line">ll rev[maxn &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">step</span> = <span class="number">0</span>, n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; n &lt; m; n &lt;&lt;= <span class="number">1</span>) ++<span class="built_in">step</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) </span><br><span class="line">        rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (<span class="built_in">step</span> - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span> n;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ntt</span><span class="params">(<span class="built_in">vector</span>&lt;ll&gt;&amp; a, <span class="keyword">int</span> n, <span class="keyword">int</span> op)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="keyword">if</span> (i &lt; rev[i]) swap(a[i], a[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">2</span>; h &lt;= n; h &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        ll wn = qpow(<span class="number">3</span>, (mod - <span class="number">1</span>) / h);</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">-1</span>) wn = inv(wn);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += h) &#123;</span><br><span class="line">            ll w = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; i + h / <span class="number">2</span>; j++) &#123;</span><br><span class="line">                ll u = a[j], t = a[j + h / <span class="number">2</span>] * w % mod;</span><br><span class="line">                a[j] = (u + t) % mod;</span><br><span class="line">                a[j + h / <span class="number">2</span>] = (u - t + mod) % mod;</span><br><span class="line">                w = w * wn % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (op == <span class="number">-1</span>) &#123;</span><br><span class="line">        ll rn = inv(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) a[i] = a[i] * rn % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/ntt/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/17/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/19/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1468,7 +1487,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">270</span>
+          <span class="site-state-item-count">271</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
