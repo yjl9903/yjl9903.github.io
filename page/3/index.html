@@ -224,6 +224,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/4/xjoi2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/4/xjoi2020/" class="post-title-link" itemprop="url">学军信友队趣味网络邀请赛 C 病毒研究 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-05 23:35:45" itemprop="dateCreated datePublished" datetime="2020-04-05T23:35:45+08:00">2020-04-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-07-09 21:42:58" itemprop="dateModified" datetime="2020-07-09T21:42:58+08:00">2020-07-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/4/xjoi2020/" class="post-meta-item leancloud_visitors" data-flag-title="学军信友队趣味网络邀请赛 C 病毒研究 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给你一个病毒，他的强度为 $x$，你不知道 $x$ 的值，但是你知道它在 $n$ 个区间中的某一个 $[1, a<em>1],[a_1+1, a_2], \dots, [ a</em>{n-1} + 1, a_n ]$。</p>
+<p>你现在有 $m$ 种操作，第 $i$ 个操作是强度减少 $w_i$，花费 $v_i$。你需要通过操作将病毒强度控制到区间 $[1, a_1]$ 中。</p>
+<p>你现在要求 $x$ 是 $[1, a_n]$ 中等概率取一个的最小的花费期望（答案乘 $a_n$ 变成整数）。</p>
+<p>其中 $1 \le a_n, m \le 2000$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>显然病毒通过一系列操作病毒的强度一直是数轴上的某一段区间，我们令状态是 $f(l,r)$ 表示病毒强度在 $[l,r]$ 范围内的最小的花费期望。</p>
+<p>如果 $[l,r]$ 在第一个区间内，则花费为 $0$。</p>
+<p>如果 $[l,r]$ 没有跨越任何区间，则枚举下一次操作的花费进行转移。</p>
+<p>如果 $[l,r]$ 跨越了区间，则用原来的分段点，将区间分段，每段单独算再加起来。</p>
+<p>显然一共有 $n^2$ 种状态，转移是 $O(m)$ 的，时间复杂度是 $O(n^2m)$。</p>
+<p>但是，我们考虑 $[l,r]$ 跨越区间的情况，它是由一堆连续的完整区间，开头的一个完整区间的后缀和结尾的一个完整区间的前缀组成。我们转移时实际上是将当前区间向左平移了一段距离，如果该区间平移后没有发生跨越，那么这个区间的转移还要继续重复枚举所有操作，产生了冗余。当一个区间产生了跨越后，这个区间的计算就会被拆解成上面的段，不再是简单地枚举操作。</p>
+<p>因此，我们对 $[l,r]$ 区间进行转移时，强制钦定他转移到跨越的情况（或者某个区间的前缀或后缀，或者到状态一）。两头的区间我们使用记忆化搜索进行转移，而中间的完整区间可以用前缀和直接算出来。所以总体状态数就是 $O(a_n)$。</p>
+<p>时间复杂度：$O(n^2)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/4/xjoi2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/3/swerc2019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1203,111 +1304,6 @@ G(x)P(s_i)x^m = \sum_{j=1}^n \sum_{k=1}^m [ s_i[1 \dots k]=s_j[ m - k + 1 \dots 
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/1/cometoj12/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/1/cometoj12/" class="post-title-link" itemprop="url">Comet OJ Contest 12 F Substring Query 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-01-25 19:05:04 / 修改时间：19:25:27" itemprop="dateCreated datePublished" datetime="2020-01-25T19:05:04+08:00">2020-01-25</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/KMP/" itemprop="url" rel="index">
-                    <span itemprop="name">KMP</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/1/cometoj12/" class="post-meta-item leancloud_visitors" data-flag-title="Comet OJ Contest 12 F Substring Query 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>定义 <code>half border</code> 为长度不超过一半的 <code>border</code>。</p>
-<p>给定一个长度为 $n$ 的字符串 $s$，$q$ 次询问，每次独立地删除一个子串 $[l_i,r_i]$，左右连起来，询问这个串的 <code>half border</code> 长度和。 </p>
-<p>其中 $1 \le n, q \le 5 \cdot 10^5$。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>不妨设左半边比右半边长。</p>
-<p>有两部分贡献：</p>
-<ol>
-<li><p><code>border</code> 不跨过边界，这部分就是原串长度小于 $\min(l_i, n-r_i+1)$ 的 <code>border</code> 之和，预处理后二分即可。</p>
-</li>
-<li><p><code>border</code> 跨过边界了边界，下面分析这部分如何计算。</p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2020/01/25/jTgrQIwvhizW3cJ.png" alt="coj12-1.png"></p>
-<p>观察到，实际上是前缀的 <code>border</code> 位置和后缀的 <code>border</code> 位置求了交。</p>
-<p>对前缀和后缀分别建立 KMP 的 fail 树。询问离线到前缀树上的每个点。</p>
-<p>设有询问 $[1, l_i]$ 和 $[r_i, n]$，在前缀树上根到 $l_i$ 的所有点，若其出现在后缀树上 $r_i$ 的子树内，则其会被算一次长度的贡献。</p>
-<p>但是，上面没有考虑到 <code>half border</code> 的长度限制，设路径上的一个点 $k$，$2(k+n-r_i+1) \le l_i+n-r_i+1$，也就是 $k$ 小于某个值。对于这个限制，在路径上二分，把询问二次离线到对应的点，使用树状数组容易计算答案。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/1/cometoj12/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1358,7 +1354,7 @@ G(x)P(s_i)x^m = \sum_{j=1}^n \sum_{k=1}^m [ s_i[1 \dots k]=s_j[ m - k + 1 \dots 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">273</span>
+          <span class="site-state-item-count">274</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

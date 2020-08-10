@@ -224,6 +224,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/5/agc33/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/5/agc33/" class="post-title-link" itemprop="url">AtCoder Grand Contest 33 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-05-04 23:59:46" itemprop="dateCreated datePublished" datetime="2019-05-04T23:59:46+08:00">2019-05-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-05-05 00:20:27" itemprop="dateModified" datetime="2019-05-05T00:20:27+08:00">2019-05-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/AtCoder/" itemprop="url" rel="index">
+                    <span itemprop="name">AtCoder</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/5/agc33/" class="post-meta-item leancloud_visitors" data-flag-title="AtCoder Grand Contest 33 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Darker-and-Darker"><a href="#A-Darker-and-Darker" class="headerlink" title="A Darker and Darker"></a>A Darker and Darker</h1><p>给定一个 $n\times m$ 的 $01$ 矩阵，求 $01$ 之间的最大曼哈顿距离。</p>
+<p>$KD-Tree$ 询问最近点（误</p>
+<p>把黑点加进去 $BFS$ 扩展即可。</p>
+<h1 id="B-LRUD-Game"><a href="#B-LRUD-Game" class="headerlink" title="B LRUD Game"></a>B LRUD Game</h1><p>有 $n\times m$ 的地图，有一个棋子一开始在 $(x,y)$ 处，有两个 <code>LRDU</code> 操作序列 $S,T$，两人分别用这两个操作序列移动棋子，在 $i$ 轮，第一个人可以选择是否用 $s$ 的第 $i$ 个操作，第二个人选择是否用 $t$ 的第 $i$ 个操作，第一个人要将棋子移出地图，第二个人组织第一个人，求第一个人是否能获胜。</p>
+<p>其实上下左右四个方向是独立的，分成 $4$ 个方向贪心即可，注意边界。</p>
+<h1 id="C-Removing-Coins"><a href="#C-Removing-Coins" class="headerlink" title="C Removing Coins"></a>C Removing Coins</h1><p>给定一棵无根树，每个结点上有一枚硬币，两人轮流操作。操作是将一个有硬币的结点上所有硬币拿走，然后其他所有结点上的全部硬币向选择的这个点的方向移动一步，判断是否先手必胜。</p>
+<p>考虑一个操作，如果选择当前的直径的端点，那么直径长度减一，否则选择任何其他点，都会导致直径长度减二。</p>
+<p>因此，我们只需要关注直径的变化即可。每次操作实际上是从 $n$ 个石子里面，要么选 $2$ 个，要么选 $1$ 个。特别地，$2$ 个石子时只会选 $1$ 个。</p>
+<p>也就是说，$1$ 是必胜态，$2$ 是必败态，$3$ 必胜态，$4$ 转移到 $2$，$5$ 转移到 $3$ 和 $4$，因此归纳易得，$n$ 模 $3$ 余 $2$ 时是必败态。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/5/agc33/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/5/polysum/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1188,109 +1286,6 @@ dp[i] = dp[i] \cdot ({m \choose 2} + {n-m \choose 2}+(m-i) \cdot (n-2m+2i)) / {n
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/round551/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/4/round551/" class="post-title-link" itemprop="url">Codeforces Round 551 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-04-14 01:50:24 / 修改时间：02:08:22" itemprop="dateCreated datePublished" datetime="2019-04-14T01:50:24+08:00">2019-04-14</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/4/round551/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 551 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>真 口胡选手（赛后补交全挂了，做了 $3$ 个假题可太 zz 了</p>
-<h1 id="A-Serval-and-Bus"><a href="#A-Serval-and-Bus" class="headerlink" title="A Serval and Bus"></a>A Serval and Bus</h1><p>有 $n$ 个班车，始发时间 $s_i$，之后每隔 $t_i$ 发一班，求一个人在 $t$ 时候最早在何时上车。</p>
-<p>求一下上车时间的最小值。</p>
-<p>如果还未发车，在上车时间为始发时刻；否则，求下一辆车何时到达，上取整即可。</p>
-<h1 id="B-Serval-and-Toy-Bricks"><a href="#B-Serval-and-Toy-Bricks" class="headerlink" title="B Serval and Toy Bricks"></a>B Serval and Toy Bricks</h1><h1 id="C-Serval-and-Parenthesis-Sequence"><a href="#C-Serval-and-Parenthesis-Sequence" class="headerlink" title="C Serval and Parenthesis Sequence"></a>C Serval and Parenthesis Sequence</h1><p>给定一个长度为 $n$ 的括号序列，其中某些位置不确定，求一个匹配的括号序列，使得其自身外每个前缀都不匹配。</p>
-<p>显然尽量选左括号即可。</p>
-<h1 id="D-Serval-and-Rooted-Tree"><a href="#D-Serval-and-Rooted-Tree" class="headerlink" title="D Serval and Rooted Tree"></a>D Serval and Rooted Tree</h1><p>给定一棵 $n$ 个点的有根树，每个点上有一个标记 $\min$ 和 $\max$，有 $k$ 个叶子，每个叶子安排一个 $1$ 到 $k$ 的权值。</p>
-<p>对于每个非叶子结点，他的权值是对其儿子做 $\min$ 或 $\max$ 操作，求根节点的最大权值。</p>
-<p>对于每个结点维护其至少小于等于几个数。</p>
-<p>一开始，对于叶子结点显然小于等于其自身。</p>
-<p>考虑非叶子结点，如果是取 $\max$ 操作，则会从叶子里取一个小于等于个数最少的，如果是取 $\min$ 操作，由于子树之间不相交，需要把每个儿子小于等于个数加起来即可。</p>
-<h1 id="E-Serval-and-Snake"><a href="#E-Serval-and-Snake" class="headerlink" title="E Serval and Snake"></a>E Serval and Snake</h1><p>给了一个 $n \times n$ 的网格图，上面有一条蛇，你需要找到这个蛇的两端。</p>
-<p>询问至多 $2019$ 次，每次询问一个矩形边框和蛇的相交次数，其中 $2\le n \le 1000$。</p>
-<p>首先询问左边一整块，如果相交次数为奇数，那么两端一定分布在分界线两边，否则在同侧。</p>
-<p>假设两端不在同一列，在询问情况一定是，某一个前缀一直是偶数，某一个后缀一直是偶数，只有中间是奇数，则这两个分界线上分别有 $1$ 个端点。</p>
-<p>对于行，同样做这件事，询问次数至多为 $1998$ 次。</p>
-<p>这样，我们会扣出 $4$ 条分界线，就有两组解，询问一下某个点，显然如果是头尾的话，则相交次数一定为 $1$，这样就找到了端点。</p>
-<p>如果在同一行或者同一列，则有一个方向没有分界线。</p>
-<p>最后这 $20$ 次询问，用来二分得到那个对应位置。</p>
-<p>我们注意到同上类似的事情，如果一个矩形内仅有 $1$ 个端点，则相交次数一定为奇数，用这个条件二分即可。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/4/round551/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1341,7 +1336,7 @@ dp[i] = dp[i] \cdot ({m \choose 2} + {n-m \choose 2}+(m-i) \cdot (n-2m+2i)) / {n
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">273</span>
+          <span class="site-state-item-count">274</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

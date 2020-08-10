@@ -224,6 +224,127 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/12/edu57/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/12/edu57/" class="post-title-link" itemprop="url">Educational Round 57 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-12-29 13:40:43" itemprop="dateCreated datePublished" datetime="2018-12-29T13:40:43+08:00">2018-12-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-23 13:23:11" itemprop="dateModified" datetime="2019-04-23T13:23:11+08:00">2019-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
+                    <span itemprop="name">Educational Round</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/12/edu57/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 57 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Find-Divisible"><a href="#A-Find-Divisible" class="headerlink" title="A Find Divisible"></a>A Find Divisible</h1><p>在 $[l,r]$ 内找到 $(x,y)$，满足 $x|y$ ，保证有解。</p>
+<p>输出 $(l,2l)$。</p>
+<h1 id="B-Substring-Removal"><a href="#B-Substring-Removal" class="headerlink" title="B Substring Removal"></a>B Substring Removal</h1><p>在母串中删除一个子串，使得只剩下一种字母，求方案数。</p>
+<p>分类讨论：</p>
+<ol>
+<li>所有字母都相同：${n+1}\choose{2}$；</li>
+<li>第一个和最后一个字母相同：(第一个字母连续区间长度+1)$\times$ (最后一个字母的连续区间长度+1)；</li>
+<li>第一个和最后一个字母不同：第一个字母连续区间长度+最后一个字母连续区间长度+1。</li>
+</ol>
+<h1 id="C-Polygon-for-the-Angle"><a href="#C-Polygon-for-the-Angle" class="headerlink" title="C Polygon for the Angle"></a>C Polygon for the Angle</h1><p>在正 $n$ 边形内取三个顶点连成大小为 $ang$ 的角。给定 $ang$，找最少正多少边形。</p>
+<p>做出外接圆，圆周角对应的弧跨过 $k$ 条边，$ang=\frac{180k}{n}$，即找到最小的 $k$ 使得 $ang|180k$，并且 $k \le n-2$ （最多只能跨过 $n-2$ 条边）。</p>
+<p>枚举一下 $k$ ，注意 $k$ 最大为 $360$。</p>
+<h1 id="D-Easy-Problem"><a href="#D-Easy-Problem" class="headerlink" title="D Easy Problem"></a>D Easy Problem</h1><p>在字符串 $s$ 中删掉一些字符，使得 $s$ 中不含有子序列 “hard”，删掉第 $i$ 个字符的代价是 $a_i$ ，求最小代价。</p>
+<p>考虑 $dp[n][4]$，第一维表示使得前 $n$ 个字符不含 ‘h’ 的最小代价，第二维表示使得前 $n$ 个字符不含 ‘ha’ 的最小代价，第三维表示使得前 $n$ 个字符不含 ‘har’ 的最小代价，第四维表示使得前 $n$ 个字符不含 ‘hard’ 的最小代价。</p>
+<p>转移方程：</p>
+<p>当 $s[i]=$”$hard$”$[j]$ 时，</p>
+<script type="math/tex; mode=display">
+dp[i][j]=min(dp[i-1][j-1],dp[i-1][j]+a[i])</script><p>否则：$dp[i][j]=dp[i-1][j]$。</p>
+<h1 id="F-Inversion-Expectation"><a href="#F-Inversion-Expectation" class="headerlink" title="F Inversion Expectation"></a>F Inversion Expectation</h1><p>$1$ 到 $n$ 的排列中有一些位置未知，求逆序数的期望。</p>
+<p>好题！</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>排列中没有位置已知，那么期望是 $n(n-1)\over 4$ ，因为对排列中的任何一对数他们对逆序数贡献的期望为 $1\over 2$。</p>
+<p>排列中所有位置已知，树状数组维护，倒着数一遍。</p>
+<p>因此，我们只需要知道已知数和未知数之间的逆序数对期望的贡献。</p>
+<p>记未知数有 $m$ 个，对于每个未知位置，他取到任何一个未知数的概率均为 $1 \over m$。</p>
+<p>对于一个已知位置，其右边有 $k$ 个未知位置，那么如果这个数和后面任何一个未知位置对期望有贡献，则未知位置需要取一个小于当前数的未知数，每个位置之间是相互独立的，全部加起来即可。</p>
+<p>对于这个已知位置的左边，也可以类似地 $O(1)$ 求出贡献。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/12/edu57/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/12/pairheap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1088,115 +1209,6 @@ dp[i][j] = dp[i-1][j]+(m-1)dp[i-1][j-1]</script><h1 id="D-Maximum-Distance"><a h
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/edu54/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/edu54/" class="post-title-link" itemprop="url">Educational Round 54 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-13 02:09:12" itemprop="dateCreated datePublished" datetime="2018-11-13T02:09:12+08:00">2018-11-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-04-23 13:22:49" itemprop="dateModified" datetime="2019-04-23T13:22:49+08:00">2019-04-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
-                    <span itemprop="name">Educational Round</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/11/edu54/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 54 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这场题怎么这多锅？题面看起来怎么这么麻烦啊，自闭 T^T。</p>
-<h1 id="A-Minimizing-the-String"><a href="#A-Minimizing-the-String" class="headerlink" title="A Minimizing the String"></a>A Minimizing the String</h1><p>字符串删掉至多一个字符时得到的串中，输出字典序最小的那个。</p>
-<p>显然必须删一个，从左往右必须单调不减，找到第一个断开的位置或者删除最后一个位置即可。</p>
-<h1 id="B-Divisor-Subtraction"><a href="#B-Divisor-Subtraction" class="headerlink" title="B Divisor Subtraction"></a>B Divisor Subtraction</h1><p>日常 B 翻车？</p>
-<p>一开始觉得找到最小素因子，输出 n / 最小素因子 即可，实际上最小素因子会改变。</p>
-<p>在第一次删除最小素因子后，n 变成了一个偶数，这时最小素因子不会再次改变。</p>
-<p>$ans=1+\frac{(n-mindivsor)}{2}$。</p>
-<h1 id="C-Meme-Problem"><a href="#C-Meme-Problem" class="headerlink" title="C Meme Problem"></a>C Meme Problem</h1><p>解一元二次方程，这 BC 位置是不是该换一换啊？</p>
-<h1 id="D-Edge-Deletion"><a href="#D-Edge-Deletion" class="headerlink" title="D Edge Deletion"></a>D Edge Deletion</h1><p>给一个无向带权联通图，记 $d_i$ 表示 1 到 i 的最短路长度，将图上的边删到至多 $k$ 条，最大化最短路长度不变的点的数量。</p>
-<p>感觉上跑一个 dijkstra，然后把出现次数最多的扣出来？挂了，直接在最短路图上 dfs 输出 k 条边就行了？</p>
-<h1 id="E-Vasya-and-a-Tree"><a href="#E-Vasya-and-a-Tree" class="headerlink" title="E Vasya and a Tree"></a>E Vasya and a Tree</h1><p>给一棵树，每个节点初始值为 $0$。</p>
-<p>定义 $k-subtree(i)$ 表示 $i$ 的子树中深度不超过 $dep[i] + k$ 的顶点构成的树。</p>
-<p>$m$ 次询问将 $d-subtree(v)$ 内所有顶点加上 $x$，输出所有点权。</p>
-<p>离线询问，注意到每个顶点的权值只与其祖先有关，所以可以用树状数组，对深度维护的前缀和。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/11/edu54/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1247,7 +1259,7 @@ dp[i][j] = dp[i-1][j]+(m-1)dp[i-1][j-1]</script><h1 id="D-Maximum-Distance"><a h
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">273</span>
+          <span class="site-state-item-count">274</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

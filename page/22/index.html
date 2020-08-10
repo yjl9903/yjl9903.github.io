@@ -224,6 +224,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/edu54/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/edu54/" class="post-title-link" itemprop="url">Educational Round 54 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-13 02:09:12" itemprop="dateCreated datePublished" datetime="2018-11-13T02:09:12+08:00">2018-11-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-23 13:22:49" itemprop="dateModified" datetime="2019-04-23T13:22:49+08:00">2019-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
+                    <span itemprop="name">Educational Round</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/11/edu54/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 54 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这场题怎么这多锅？题面看起来怎么这么麻烦啊，自闭 T^T。</p>
+<h1 id="A-Minimizing-the-String"><a href="#A-Minimizing-the-String" class="headerlink" title="A Minimizing the String"></a>A Minimizing the String</h1><p>字符串删掉至多一个字符时得到的串中，输出字典序最小的那个。</p>
+<p>显然必须删一个，从左往右必须单调不减，找到第一个断开的位置或者删除最后一个位置即可。</p>
+<h1 id="B-Divisor-Subtraction"><a href="#B-Divisor-Subtraction" class="headerlink" title="B Divisor Subtraction"></a>B Divisor Subtraction</h1><p>日常 B 翻车？</p>
+<p>一开始觉得找到最小素因子，输出 n / 最小素因子 即可，实际上最小素因子会改变。</p>
+<p>在第一次删除最小素因子后，n 变成了一个偶数，这时最小素因子不会再次改变。</p>
+<p>$ans=1+\frac{(n-mindivsor)}{2}$。</p>
+<h1 id="C-Meme-Problem"><a href="#C-Meme-Problem" class="headerlink" title="C Meme Problem"></a>C Meme Problem</h1><p>解一元二次方程，这 BC 位置是不是该换一换啊？</p>
+<h1 id="D-Edge-Deletion"><a href="#D-Edge-Deletion" class="headerlink" title="D Edge Deletion"></a>D Edge Deletion</h1><p>给一个无向带权联通图，记 $d_i$ 表示 1 到 i 的最短路长度，将图上的边删到至多 $k$ 条，最大化最短路长度不变的点的数量。</p>
+<p>感觉上跑一个 dijkstra，然后把出现次数最多的扣出来？挂了，直接在最短路图上 dfs 输出 k 条边就行了？</p>
+<h1 id="E-Vasya-and-a-Tree"><a href="#E-Vasya-and-a-Tree" class="headerlink" title="E Vasya and a Tree"></a>E Vasya and a Tree</h1><p>给一棵树，每个节点初始值为 $0$。</p>
+<p>定义 $k-subtree(i)$ 表示 $i$ 的子树中深度不超过 $dep[i] + k$ 的顶点构成的树。</p>
+<p>$m$ 次询问将 $d-subtree(v)$ 内所有顶点加上 $x$，输出所有点权。</p>
+<p>离线询问，注意到每个顶点的权值只与其祖先有关，所以可以用树状数组，对深度维护的前缀和。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/11/edu54/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/edu3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1121,95 +1230,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/mcmf/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/mcmf/" class="post-title-link" itemprop="url">最小费用最大流</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-01 15:32:51" itemprop="dateCreated datePublished" datetime="2018-11-01T15:32:51+08:00">2018-11-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-29 21:24:08" itemprop="dateModified" datetime="2019-07-29T21:24:08+08:00">2019-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/%E7%BD%91%E7%BB%9C%E6%B5%81/" itemprop="url" rel="index">
-                    <span itemprop="name">网络流</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/11/mcmf/" class="post-meta-item leancloud_visitors" data-flag-title="最小费用最大流" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">5000</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxm = <span class="number">100000</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> head[maxn], tot = <span class="number">1</span>;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> to, nxt, flow, cost;</span><br><span class="line">&#125;g[maxm];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> f, <span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">    g[++tot] = edge&#123;y, head[x], f, c&#125;;</span><br><span class="line">    head[x] = tot;</span><br><span class="line">    g[++tot] = edge&#123;x, head[y], <span class="number">0</span>, -c&#125;;</span><br><span class="line">    head[y] = tot;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ms(head, <span class="number">0</span>); tot = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> vis[maxn], cost[maxn], pre[maxn], flow[maxn], last[maxn], mf, mc;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t)</span></span>&#123;</span><br><span class="line">    ms(cost, <span class="number">0x7f</span>); ms(flow, <span class="number">0x7f</span>); ms(vis, <span class="number">0</span>);</span><br><span class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q; q.push(s); vis[s] = <span class="number">1</span>; cost[s] = <span class="number">0</span>; pre[t] = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">while</span> (!q.empty())&#123;</span><br><span class="line">        <span class="keyword">int</span> now = q.front(); q.pop(); vis[now] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head[now]; i; i = g[i].nxt)&#123;</span><br><span class="line">            <span class="keyword">int</span> v = g[i].to;</span><br><span class="line">            <span class="keyword">if</span> (g[i].flow &gt; <span class="number">0</span> &amp;&amp; cost[v] &gt; cost[now] + g[i].cost)&#123;</span><br><span class="line">                cost[v] = cost[now] + g[i].cost;</span><br><span class="line">                pre[v] = now; last[v] = i;</span><br><span class="line">                flow[v] = <span class="built_in">min</span>(flow[now], g[i].flow);</span><br><span class="line">                <span class="keyword">if</span> (!vis[v])&#123;</span><br><span class="line">                    vis[v] = <span class="number">1</span>; q.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> pre[t] != <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> s, t;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mcmf</span><span class="params">()</span></span>&#123;</span><br><span class="line">    mc = mf = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (spfa(s, t))&#123;</span><br><span class="line">        <span class="keyword">int</span> now = t;</span><br><span class="line">        mf += flow[t]; mc += flow[t] * cost[t];</span><br><span class="line">        <span class="keyword">while</span> (now != s)&#123;</span><br><span class="line">            g[last[now]].flow -= flow[t];</span><br><span class="line">            g[last[now] ^ <span class="number">1</span>].flow += flow[t];</span><br><span class="line">            now = pre[now];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="dijkstra-优化"><a href="#dijkstra-优化" class="headerlink" title="dijkstra 优化"></a>dijkstra 优化</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">MCMF</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">edge</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> to, flow, cost, rev;</span><br><span class="line">        edge() &#123; &#125;</span><br><span class="line">        edge(<span class="keyword">int</span> to, <span class="keyword">int</span> f, <span class="keyword">int</span> cost, <span class="keyword">int</span> r): to(to), flow(f), cost(cost), rev(r) &#123; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">int</span> V, H[maxn + <span class="number">5</span>], dis[maxn + <span class="number">5</span>], preV[maxn + <span class="number">5</span>], preE[maxn + <span class="number">5</span>];</span><br><span class="line">    <span class="built_in">vector</span>&lt;edge&gt; G[maxn + <span class="number">5</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        V = n;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= V; ++i) G[i].<span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> from, <span class="keyword">int</span> to, <span class="keyword">int</span> cap, <span class="keyword">int</span> cost)</span> </span>&#123;</span><br><span class="line">        G[from].push_back(edge(to, cap, cost, (<span class="keyword">int</span>)G[to].<span class="built_in">size</span>()));</span><br><span class="line">        G[to].push_back(edge(from, <span class="number">0</span>, -cost, (<span class="keyword">int</span>)G[from].<span class="built_in">size</span>() - <span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getmin</span><span class="params">(<span class="keyword">int</span> s, <span class="keyword">int</span> t, <span class="keyword">int</span> f, <span class="keyword">int</span>&amp; flow)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>; </span><br><span class="line">        <span class="built_in">fill</span>(H, H + <span class="number">1</span> + V, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">while</span> (f) &#123;</span><br><span class="line">            priority_queue&lt;PII,<span class="built_in">vector</span>&lt;PII&gt;,greater&lt;PII&gt; &gt; q;</span><br><span class="line">            <span class="built_in">fill</span>(dis, dis + <span class="number">1</span> + V, inf);</span><br><span class="line">            dis[s] = <span class="number">0</span>; q.push(&#123;<span class="number">0</span>, s&#125;);</span><br><span class="line">            <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">                PII now = q.top(); q.pop();</span><br><span class="line">                <span class="keyword">int</span> v = now.second;</span><br><span class="line">                <span class="keyword">if</span> (dis[v] &lt; now.first) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; G[v].<span class="built_in">size</span>(); ++i) &#123;</span><br><span class="line">                    edge&amp; e = G[v][i];</span><br><span class="line">                    <span class="keyword">if</span> (e.flow &gt; <span class="number">0</span> &amp;&amp; dis[e.to] &gt; dis[v] + e.cost + H[v] - H[e.to]) &#123;</span><br><span class="line">                        dis[e.to] = dis[v] + e.cost + H[v] - H[e.to];</span><br><span class="line">                        preV[e.to] = v;</span><br><span class="line">                        preE[e.to] = i;</span><br><span class="line">                        q.push(&#123;dis[e.to], e.to&#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (dis[t] == inf) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= V; ++i) H[i] += dis[i];</span><br><span class="line">            <span class="keyword">int</span> d = f;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> v = t; v != s; v = preV[v]) d = <span class="built_in">min</span>(d, G[preV[v]][preE[v]].flow);</span><br><span class="line">            f -= d; flow += d; ans += d * H[t];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> v = t; v != s; v = preV[v]) &#123;</span><br><span class="line">                edge&amp; e = G[preV[v]][preE[v]];</span><br><span class="line">                e.flow -= d;</span><br><span class="line">                G[v][e.rev].flow += d;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; f;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1260,7 +1280,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">273</span>
+          <span class="site-state-item-count">274</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
