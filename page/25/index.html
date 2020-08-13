@@ -224,6 +224,204 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/edu19/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/9/edu19/" class="post-title-link" itemprop="url">Educational Round 19 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-29 12:23:05" itemprop="dateCreated datePublished" datetime="2018-09-29T12:23:05+08:00">2018-09-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-23 13:22:35" itemprop="dateModified" datetime="2019-04-23T13:22:35+08:00">2019-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
+                    <span itemprop="name">Educational Round</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/9/edu19/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 19 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-k-Factorization"><a href="#A-k-Factorization" class="headerlink" title="A k-Factorization"></a>A k-Factorization</h1><p>对 $n$ 质因数分解。</p>
+<h1 id="B-Odd-sum"><a href="#B-Odd-sum" class="headerlink" title="B Odd sum"></a>B Odd sum</h1><p>将所有正偶数加在一起。</p>
+<p>排序后从后往前加奇数，判断和是否为奇数，更新最大值。</p>
+<h1 id="C-Minimal-string"><a href="#C-Minimal-string" class="headerlink" title="C Minimal string"></a>C Minimal string</h1><p>预处理 s 串的每个后缀最小值和后缀最小值出现的位置。</p>
+<p>遍历 s 串，找到后缀最小值，如果当前中间栈顶小于等于后缀最小值，则压入答案中。</p>
+<p>之后将当前位置到后缀最小值全部压入中间栈内。</p>
+<p>时间复杂度：$O(n)$。</p>
+<h1 id="D-Broken-BST"><a href="#D-Broken-BST" class="headerlink" title="D Broken BST"></a>D Broken BST</h1><p>对于一棵排序二叉树，每一个节点都有一条从根到当前节点的路径，这条路径决定了一个节点的最大值和最小值，如果这个节点在这个范围内，那么代表他可以通过这颗排序二叉树找到。</p>
+<p>dfs遍历这棵树，维护路径上的最大值和最小值即可，用 set 记录可以到达的节点。</p>
+<p>时间复杂度：$O(n+n\log(n))$。</p>
+<h1 id="E-Array-Queries"><a href="#E-Array-Queries" class="headerlink" title="E Array Queries"></a>E Array Queries</h1><p>首先注意到一种时间复杂度 $O(n^2)$ 暴力的方法。</p>
+<p>第二，注意一种 dp 的方法，时空复杂度均为 $O(n^2)$ 。</p>
+<p>但是发现如果 $k &gt; \sqrt{n}$ ，那么第一种暴力的方法只需要 $O(\sqrt{n})$ 的时间。</p>
+<p>而对于 $k \le \sqrt{n}$ ，使用第二种 dp 的方法，时空复杂度将为 $O(n\sqrt{n})$。</p>
+<p>总体时间复杂度为 $O(n\sqrt{n} + q\sqrt{n})$ 。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/9/edu19/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/eulerpath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/9/eulerpath/" class="post-title-link" itemprop="url">欧拉回路</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2018-09-27 18:44:29 / 修改时间：18:51:38" itemprop="dateCreated datePublished" datetime="2018-09-27T18:44:29+08:00">2018-09-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
+                    <span itemprop="name">图论</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/9/eulerpath/" class="post-meta-item leancloud_visitors" data-flag-title="欧拉回路" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="判断条件"><a href="#判断条件" class="headerlink" title="判断条件"></a>判断条件</h1><h2 id="无向图"><a href="#无向图" class="headerlink" title="无向图"></a>无向图</h2><p>因为欧拉路径中，起点与终点度数为奇数，其它点的度数均为偶数。</p>
+<p>如果是欧拉回路，奇点的个数应该为 0。</p>
+<h2 id="有向图"><a href="#有向图" class="headerlink" title="有向图"></a>有向图</h2><p>欧拉路径中，最多只有两个点的入度不等于出度。起点出度比入度大 1，终点入度比出度大 1。</p>
+<p>如果是欧拉回路，所有点的 入度 = 出度 。</p>
+<h1 id="Hierholzer算法"><a href="#Hierholzer算法" class="headerlink" title="Hierholzer算法"></a>Hierholzer算法</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; edge[u].<span class="built_in">size</span>(); i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> v = edge[u][i];</span><br><span class="line">        <span class="keyword">if</span> (vis[u][i]) <span class="keyword">continue</span>;</span><br><span class="line">        vis[u][i] = <span class="number">1</span>;</span><br><span class="line">        dfs(v);</span><br><span class="line">    &#125;</span><br><span class="line">    ans.push_back(u);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/9/eulerpath/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/lca/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -942,201 +1140,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/sam/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/9/sam/" class="post-title-link" itemprop="url">后缀自动机</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-18 18:41:48" itemprop="dateCreated datePublished" datetime="2018-09-18T18:41:48+08:00">2018-09-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-08-05 23:14:11" itemprop="dateModified" datetime="2019-08-05T23:14:11+08:00">2019-08-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
-                    <span itemprop="name">字符串</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E5%90%8E%E7%BC%80%E8%87%AA%E5%8A%A8%E6%9C%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">后缀自动机</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/9/sam/" class="post-meta-item leancloud_visitors" data-flag-title="后缀自动机" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="后缀自动机"><a href="#后缀自动机" class="headerlink" title="后缀自动机"></a>后缀自动机</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> sam &#123;</span><br><span class="line">    <span class="keyword">int</span> tot, last, cnt[maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> len[maxn &lt;&lt; <span class="number">1</span>], link[maxn &lt;&lt; <span class="number">1</span>], ch[maxn &lt;&lt; <span class="number">1</span>][<span class="number">26</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        tot = last = <span class="number">1</span>; ms(ch[<span class="number">1</span>], <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cur = ++tot, p = last; </span><br><span class="line">        ms(ch[cur], <span class="number">0</span>);</span><br><span class="line">        len[cur] = len[last] + <span class="number">1</span>; </span><br><span class="line">        cnt[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; p &amp;&amp; !ch[p][c]; p = link[p]) ch[p][c] = cur;</span><br><span class="line">        <span class="keyword">if</span> (!p) link[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> q = ch[p][c];</span><br><span class="line">            <span class="keyword">if</span> (len[p] + <span class="number">1</span> == len[q]) link[cur] = q;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> nq = ++tot; </span><br><span class="line">                len[nq] = len[p] + <span class="number">1</span>; </span><br><span class="line">                cnt[nq] = <span class="number">0</span>;</span><br><span class="line">                link[nq] = link[q]; </span><br><span class="line">                link[q] = link[cur] = nq;</span><br><span class="line">                <span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">                <span class="keyword">for</span> (; ch[p][c] == q; p = link[p]) ch[p][c] = nq;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        last = cur;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> c[maxn &lt;&lt; <span class="number">1</span>], a[maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">rsort</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++) c[i] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++) c[len[i]]++;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++) c[i] += c[i - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= tot; i++) a[c[len[i]]--] = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="广义后缀自动机"><a href="#广义后缀自动机" class="headerlink" title="广义后缀自动机"></a>广义后缀自动机</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> gsam &#123;</span><br><span class="line">    <span class="keyword">int</span> tot, last, cnt[maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> len[maxn &lt;&lt; <span class="number">1</span>], link[maxn &lt;&lt; <span class="number">1</span>], ch[maxn &lt;&lt; <span class="number">1</span>][<span class="number">2</span>];</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> last, <span class="keyword">int</span> c)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> cur = ++tot, p = last; </span><br><span class="line">        ms(ch[cur], <span class="number">0</span>);</span><br><span class="line">        len[cur] = len[last] + <span class="number">1</span>; </span><br><span class="line">        cnt[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; p &amp;&amp; !ch[p][c]; p = link[p]) ch[p][c] = cur;</span><br><span class="line">        <span class="keyword">if</span> (!p) link[cur] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">int</span> q = ch[p][c];</span><br><span class="line">            <span class="keyword">if</span> (len[p] + <span class="number">1</span> == len[q]) link[cur] = q;</span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">int</span> nq = ++tot; </span><br><span class="line">                len[nq] = len[p] + <span class="number">1</span>; </span><br><span class="line">                cnt[nq] = <span class="number">0</span>;</span><br><span class="line">                link[nq] = link[q]; </span><br><span class="line">                link[q] = link[cur] = nq;</span><br><span class="line">                <span class="built_in">memcpy</span>(ch[nq], ch[q], <span class="keyword">sizeof</span> ch[q]);</span><br><span class="line">                <span class="keyword">for</span> (; ch[p][c] == q; p = link[p]) ch[p][c] = nq;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> cur;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">namespace</span> Trie &#123;</span><br><span class="line">        <span class="keyword">int</span> tot, ch[maxn][<span class="number">2</span>], pos[maxn];</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            tot = <span class="number">1</span>; ms(ch[<span class="number">1</span>], <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> u = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; s[i]; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> c = s[i] - <span class="string">'0'</span>;</span><br><span class="line">                <span class="keyword">if</span> (!ch[u][c]) &#123;</span><br><span class="line">                    ch[u][c] = ++tot;</span><br><span class="line">                    ms(ch[tot], <span class="number">0</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                u = ch[u][c];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q; q.push(<span class="number">1</span>);</span><br><span class="line">            pos[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (!q.empty()) &#123;</span><br><span class="line">                <span class="keyword">int</span> u = q.front(); q.pop();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (!ch[u][i]) <span class="keyword">continue</span>;</span><br><span class="line">                    <span class="keyword">int</span> v = ch[u][i];</span><br><span class="line">                    pos[v] = gsam::insert(pos[u], i);</span><br><span class="line">                    q.push(v);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">using</span> Trie::insert;</span><br><span class="line">    <span class="keyword">using</span> Trie::build;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123; </span><br><span class="line">        Trie::<span class="built_in">clear</span>();</span><br><span class="line">        tot = last = <span class="number">1</span>;</span><br><span class="line">        ms(ch[<span class="number">1</span>], <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/9/sam/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/round509/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/9/round509/" class="post-title-link" itemprop="url">Codeforces Round 509 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-17 00:25:38" itemprop="dateCreated datePublished" datetime="2018-09-17T00:25:38+08:00">2018-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-10-07 01:21:00" itemprop="dateModified" datetime="2018-10-07T01:21:00+08:00">2018-10-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/9/round509/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 509 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-Heist"><a href="#A-Heist" class="headerlink" title="A Heist"></a>A Heist</h1><p>排序得到左右边界，即为原编号的左右边界，减去序列的长度即可。</p>
-<h1 id="B-Buying-a-TV-Set"><a href="#B-Buying-a-TV-Set" class="headerlink" title="B Buying a TV Set"></a>B Buying a TV Set</h1><p>求满足 $x_0 \le a, y_0 \le b$ 且 $\frac{x_0}{y_0}=\frac{x}{y}$ 的 $(x_0, y_0)$ 方案数，将 $\frac{x}{y}$ 约分， 答案为 $max(\frac{a}{x}, \frac{b}{y})$。</p>
-<h1 id="C-Coffee-Break"><a href="#C-Coffee-Break" class="headerlink" title="C Coffee Break"></a>C Coffee Break</h1><p>自闭题T^T。</p>
-<p>维护一个 set 存放所有咖啡时间点和在原序列中的下标，每次选 set 的第一个元素 $x$ 放在某一天的第一个，之后二分第一个大于等于 $x+d+1$ 的元素放在同一天并将他从 set 中删除，直到没有元素可以放在这一天。</p>
-<h1 id="D-Glider"><a href="#D-Glider" class="headerlink" title="D Glider"></a>D Glider</h1><p>注意到这样一个结论：如果我们从 $x+1$ 处下落，当 $x+1$ 位于上升气流外，假如 $x+1$ 处下落经过的气流和 $x$ 处经过的气流相同，那么他们滑翔的距离也相同，但是对于x轴的一个位置，$x+1$ 下落总比 $x$ 下落高一个单位，因此有可能经过 $x$ 未经过的气流，所以 $ans(x+1) \ge ans(x)$ ；同样的，如果 $x+1$ 位于上升气流内，$ans(x+1) \le ans(x)$。因此可以得出，最长距离一定会在某个上升气流的左端点出取到。</p>
-<p>考虑枚举每个左端点的答案，如果直接计算显然这是 $O(n^2)$ 。</p>
-<p>我们还发现，高度下降只会发生在上升气流之间，落地前必定高度下降 $h$ ，在上升气流之间水平移动 $h$ ，加上在经过的所有上升气流的长度和。因此，预处理上升气流长度的后缀和，上升气流之间距离的后缀和。</p>
-<p>假设枚举到第 $i$ 个位置，如果当前高度大于当前间隔后缀和，那么表示可以滑翔到最后一个上升气流之后，那么答案就是 $len(i) + h$；如果当前高度小于等于当前间隔后缀和，我们需要找到从 $i$ 开始多少个连续间隔距离加起来大于等于 $h$，也就是后缀和小于等于 $h-delta(i)$，因为是后缀和所以满足单调性，二分即可。</p>
-<p>时间复杂度 $O(n+n\log n)$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/9/round509/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1187,7 +1190,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">274</span>
+          <span class="site-state-item-count">276</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
