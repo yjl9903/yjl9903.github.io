@@ -224,6 +224,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round536/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/round536/" class="post-title-link" itemprop="url">Codeforces Round 536 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-01 13:31:40" itemprop="dateCreated datePublished" datetime="2019-02-01T13:31:40+08:00">2019-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-05 19:23:49" itemprop="dateModified" datetime="2019-03-05T19:23:49+08:00">2019-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/round536/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 536 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Lunar-New-Year-and-Cross-Counting"><a href="#A-Lunar-New-Year-and-Cross-Counting" class="headerlink" title="A Lunar New Year and Cross Counting"></a>A Lunar New Year and Cross Counting</h1><p>模拟一下（第一发写错了符号还能过样例是什么鬼？</p>
+<h1 id="B-Lunar-New-Year-and-Food-Ordering"><a href="#B-Lunar-New-Year-and-Food-Ordering" class="headerlink" title="B Lunar New Year and Food Ordering"></a>B Lunar New Year and Food Ordering</h1><h1 id="C-Lunar-New-Year-and-Number-Division"><a href="#C-Lunar-New-Year-and-Number-Division" class="headerlink" title="C Lunar New Year and Number Division"></a>C Lunar New Year and Number Division</h1><p>把 $n$ 个划分成好多个集合（ $n$ 为偶数），记 $S_j$ 表示第 $j$ 个集合内数的和的平方，要求最小化 $\sum S_j$。</p>
+<p>显然，排个序，最大的和最小的组成一组即可（容易证明）。</p>
+<h1 id="D-Lunar-New-Year-and-a-Wander"><a href="#D-Lunar-New-Year-and-a-Wander" class="headerlink" title="D Lunar New Year and a Wander"></a>D Lunar New Year and a Wander</h1><p>一个人在图上走，每次走到一个未经过的点，将其记录下来，求走遍这个图记录下的字典序最小的序列。</p>
+<p>显然，直接贪心地 $dfs$ 是不行的。我们可以用优先队列做一个类似 $Prim$ 的过程，维护一下当前可以走到哪些没有走过的点。</p>
+<h1 id="E-Lunar-New-Year-and-Red-Envelopes"><a href="#E-Lunar-New-Year-and-Red-Envelopes" class="headerlink" title="E Lunar New Year and Red Envelopes"></a>E Lunar New Year and Red Envelopes</h1><p>给一个长度为 $n$ 的时间轴，有 $k$ 个红包，每个红包可以在 $[s,t]$ 的时间内被领取，领取后获得价值 $w$，领取后直到 $d+1$ 时间才能继续领红包。</p>
+<p>一个人贪心的领取红包，能领红包的话，就领价值最大且 $d$ 最大的那个。</p>
+<p>你现在有 $m$ 次机会阻止他在某一个时间拿红包，你非常聪明，求这个人能获得的最小价值。</p>
+<p>首先，线段树（ $set$ + 扫描线）预处理每个位置拿的红包 $a_i$。</p>
+<p>考虑 $dp[i][j]$ 表示在前 $i$ 个时间内，被阻止了 $j$ 次获得的最小价值，转移方程</p>
+<script type="math/tex; mode=display">
+dp[1][0]=0 \\
+dp[i+1][j+1]=min(dp[i+1][j+1],dp[i][j]) \\
+dp[a[i].d + 1][j]=min(dp[a[i].d+1][j], dp[i][j]+a[i].w)</script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/round536/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/zoj4069/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1384,103 +1487,6 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/round534/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/round534/" class="post-title-link" itemprop="url">Codeforces Round 534 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-23 22:18:43" itemprop="dateCreated datePublished" datetime="2019-01-23T22:18:43+08:00">2019-01-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-03-05 19:23:32" itemprop="dateModified" datetime="2019-03-05T19:23:32+08:00">2019-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/round534/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 534 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>下分大失败？</p>
-<h1 id="A-Splitting-into-digits"><a href="#A-Splitting-into-digits" class="headerlink" title="A Splitting into digits"></a>A Splitting into digits</h1><p>输出 $n$ 个 $1$。</p>
-<h1 id="B-Game-with-string"><a href="#B-Game-with-string" class="headerlink" title="B Game with string"></a>B Game with string</h1><p>栈模拟。</p>
-<p>第一次插人失败很难受啊，还好是小号啊？</p>
-<h1 id="C-Grid-game"><a href="#C-Grid-game" class="headerlink" title="C Grid game"></a>C Grid game</h1><p>一个 $4 \times 4$ 的方格图，往里面填 $1 \times 2$ 和 $2 \times 1$ 两种方块，放完后每一行，每一列填满的话就删除，要求填的时候不能无处可填，求一个方案。</p>
-<p>考虑这样一种填法，竖着的都放在最左边，横着的放在右边，这样每进来 $2$ 个竖的都会被消掉，进来的是横的每 $4$ 个会消掉，不会产生冲突。</p>
-<h1 id="D-Game-with-modulo"><a href="#D-Game-with-modulo" class="headerlink" title="D Game with modulo"></a>D Game with modulo</h1><p>猜模数 $a$，每次询问两个数 $x$ 和 $y$，得到 $x \text{ mod } a$ 和 $y \text{ mod } a$ 的大小关系。</p>
-<p>如果 $x &gt; a$，那么 $ x \text{ mod } a &lt; {1 \over 2}x$，因此可以先倍增求出 $a$ 的范围，在这个范围内二分即可。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/round534/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1531,7 +1537,7 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">276</span>
+          <span class="site-state-item-count">277</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
