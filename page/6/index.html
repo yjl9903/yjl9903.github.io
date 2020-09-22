@@ -224,6 +224,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/11/2019nce/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/11/2019nce/" class="post-title-link" itemprop="url">2019 南昌邀请赛 E Interesting Trip</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-11-09 16:21:39 / 修改时间：18:06:35" itemprop="dateCreated datePublished" datetime="2019-11-09T16:21:39+08:00">2019-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/11/2019nce/" class="post-meta-item leancloud_visitors" data-flag-title="2019 南昌邀请赛 E Interesting Trip" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>给定一棵 $n$ 个点的无根树，每个点有点权，求长度为 $D$ 且满足路径点权的 $\gcd$ 大于 $1$ 的路径个数。</p>
+<p>其中 $3 \le n \le 5 \cdot 10^5$，值域 $[1,30000]$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>记 $f(n)$ 表示路径 $\gcd$ 和为 $n$ 的路径数，$g(n)$ 表示路径 $\gcd$ 为 $n$ 的倍数的路径数。</p>
+<p>因此有</p>
+<script type="math/tex; mode=display">
+g(d)=\sum_{d|n} f(d)</script><p>由莫比乌斯反演</p>
+<script type="math/tex; mode=display">
+f(d)=\sum_{d|n} \mu(\frac{n}{d}) g(n)</script><p>因此答案 $S$ 就是</p>
+<script type="math/tex; mode=display">
+S=\sum_{i=2}^\infty f(i)=\sum_{i=2}^\infty \sum_{i|d} \mu(\frac{d}{i}) g(d)</script><p>交换求和顺序</p>
+<script type="math/tex; mode=display">
+S=\sum_{d=1}^\infty g(d) \sum_{i>1 \land i|d} \mu(\frac{d}{i}) = \sum_{d=2}^\infty g(d)(0-\mu(d))</script><p>于是只需要计算 $g(d)$ 即可，枚举值域 $i \in [2,30000]$ 且 $\mu(i) \neq 0$，计算有多少条长度为 $D$ 的路径的点权都是 $i$ 的倍数。将这些点拿出来，显然是这个点集构成一个森林，下面考虑一棵树的情况。记 $dp(u,i)$ 表示以 $u$ 为根节点的子树内距离 $u$ 为 $i$ 的点数。状态数和转移的复杂度都是 $O(n^2)$ 的，套用长链剖分优化关于深度信息合并的技巧，可以做到 $O(n)$ 的时空求出这个 $dp$ 数组。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/11/2019nce/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/10/2019njonsite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1303,103 +1398,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/9/minmax/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/9/minmax/" class="post-title-link" itemprop="url">min-max 容斥</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-09-17 23:50:21" itemprop="dateCreated datePublished" datetime="2019-09-17T23:50:21+08:00">2019-09-17</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 00:15:07" itemprop="dateModified" datetime="2019-09-18T00:15:07+08:00">2019-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
-                    <span itemprop="name">组合数学</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/9/minmax/" class="post-meta-item leancloud_visitors" data-flag-title="min-max 容斥" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="min-max-容斥"><a href="#min-max-容斥" class="headerlink" title="min-max 容斥"></a>min-max 容斥</h1><script type="math/tex; mode=display">
-\max(S) = \sum_{T \subseteq S} (-1)^{|T| - 1} \min(T)</script><h1 id="证明"><a href="#证明" class="headerlink" title="证明"></a>证明</h1><p>设容斥系数为 $f(|T|)$，则 $\max(S) = \sum_{T \subseteq S} f(|T|) \min(T)$。</p>
-<p>考虑整体第 $k$ 小对最大值的贡献，显然当且仅当 $k=n$ 时，最小值有贡献，因此有下式：</p>
-<script type="math/tex; mode=display">
-[n=k]=\sum_{i=0}^{n-k} { n-k \choose i } f(i+1)</script><p>组合意义为对于大于最小值 $n-k$ 个数，可以任意选取。枚举选了 $i$ 个数，再加上固定下来的第 $k$ 小，共 $i+1$ 个数，因此乘上容斥系数 $f(i+1)$。</p>
-<p>变换一下，可得 $[n=0]=\sum_{i=0}^{n} { n \choose i } f(i+1)$。</p>
-<p>套用二项式反演，可知 $f(n+1)=\sum_{i=0}^n (-1)^{n-i} { n \choose i } [i=0] $。</p>
-<p>因此 $f(n+1)=(-1)^n$，即 $f(n)=(-1)^{n-1}$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/9/minmax/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1450,7 +1448,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">277</span>
+          <span class="site-state-item-count">278</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

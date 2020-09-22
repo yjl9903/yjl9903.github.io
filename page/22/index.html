@@ -224,6 +224,98 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/dandiaoque/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/dandiaoque/" class="post-title-link" itemprop="url">单调队列</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-27 21:25:05" itemprop="dateCreated datePublished" datetime="2018-11-27T21:25:05+08:00">2018-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-11-28 03:43:35" itemprop="dateModified" datetime="2018-11-28T03:43:35+08:00">2018-11-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/11/dandiaoque/" class="post-meta-item leancloud_visitors" data-flag-title="单调队列" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="滑动窗口求极值。"><a href="#滑动窗口求极值。" class="headerlink" title="滑动窗口求极值。"></a>滑动窗口求极值。</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++)&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r &amp;&amp; a[q[r]] &lt;= a[i]) r--;</span><br><span class="line">    q[++r] = i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = k; i &lt;= n; i++)&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r &amp;&amp; a[q[r]] &lt;= a[i]) r--;</span><br><span class="line">    q[++r] = i;</span><br><span class="line">    <span class="keyword">while</span> (i - q[l] &gt;= k) l++;</span><br><span class="line">    ans[i] = a[q[l]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="有长度限制的最大连续子序列和"><a href="#有长度限制的最大连续子序列和" class="headerlink" title="有长度限制的最大连续子序列和"></a>有长度限制的最大连续子序列和</h1><p>单调队列维护前缀和的不减单调队列，队首元素为最小值标号，则此时的答案最大。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) pre[i] = pre[i - <span class="number">1</span>] + a[i];</span><br><span class="line"><span class="keyword">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>, ansl = <span class="number">0</span>, ansr = <span class="number">0</span>; ll ans = -inf;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r &amp;&amp; pre[i - <span class="number">1</span>] &lt; pre[q[r]]) r--;</span><br><span class="line">    q[++r] = i - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i - q[l] &gt; k) l++;</span><br><span class="line">    <span class="keyword">if</span> (pre[i] - pre[q[l]] &gt; ans)&#123;</span><br><span class="line">        ans = pre[i] - pre[q[l]];</span><br><span class="line">        ansl = q[l] + <span class="number">1</span>; ansr = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/11/dandiaoque/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/fft/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1133,109 +1225,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/edu23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/edu23/" class="post-title-link" itemprop="url">Educational Round 23 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-03 22:35:54" itemprop="dateCreated datePublished" datetime="2018-11-03T22:35:54+08:00">2018-11-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-04-23 13:22:41" itemprop="dateModified" datetime="2019-04-23T13:22:41+08:00">2019-04-23</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
-                    <span itemprop="name">Educational Round</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/11/edu23/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 23 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-Treasure-Hunt"><a href="#A-Treasure-Hunt" class="headerlink" title="A Treasure Hunt"></a>A Treasure Hunt</h1><p>格点 $(x_1,y_1)$ 是否能走到 $(x_2,y_2)$ ，模 $2$ 是否相等。</p>
-<h1 id="B-Makes-And-The-Product"><a href="#B-Makes-And-The-Product" class="headerlink" title="B Makes And The Product"></a>B Makes And The Product</h1><p>给一个序列 $a_i$，求多少对 $(i,j,k)$ 使得 $a_i \cdot a_j \cdot a_k$ 最小。</p>
-<p>排序之后特判 $a_0=a_1=a_2$和  $a_1=a_2$，组合数数一下。</p>
-<h1 id="C-Really-Big-Numbers"><a href="#C-Really-Big-Numbers" class="headerlink" title="C Really Big Numbers"></a>C Really Big Numbers</h1><p>求有多小于等于 $n$ 的数，其值和各位数和之差大于等于已知常数 $s$ 。</p>
-<p>首先注意到，如果 $n$ 满足以上性质，若其个位数改为其本身一直到 9，差值不变，若发生进位，差值不增，所以 $\forall x \ge n$ 也满足上性质，因此可以二分。</p>
-<h1 id="D-Imbalanced-Array"><a href="#D-Imbalanced-Array" class="headerlink" title="D Imbalanced Array"></a>D Imbalanced Array</h1><p>定义一个序列的最大值最小值之差，求一个序列的所有连续子序列的差值之和。</p>
-<p>可以分开计算最大值和最小值，通过类似单调队列的数据结构维护出一个位置左右能够掌管的长度即可。</p>
-<p>时间复杂度：$O(n)$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/11/edu23/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1286,7 +1275,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">277</span>
+          <span class="site-state-item-count">278</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

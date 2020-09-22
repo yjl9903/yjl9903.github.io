@@ -224,6 +224,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/10/manacher/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/manacher/" class="post-title-link" itemprop="url">Manacher 算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2018-10-22 14:23:50 / 修改时间：14:28:27" itemprop="dateCreated datePublished" datetime="2018-10-22T14:23:50+08:00">2018-10-22</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E5%9B%9E%E6%96%87%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">回文串</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/10/manacher/" class="post-meta-item leancloud_visitors" data-flag-title="Manacher 算法" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> manacher&#123;</span><br><span class="line">    <span class="keyword">char</span> s[maxn &lt;&lt; <span class="number">1</span>] = <span class="string">"##"</span>;</span><br><span class="line">    <span class="keyword">int</span> n, hw[maxn &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="built_in">strlen</span>(a);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++)&#123;</span><br><span class="line">            s[i * <span class="number">2</span> + <span class="number">2</span>] = a[i];</span><br><span class="line">            s[i * <span class="number">2</span> + <span class="number">3</span>] = <span class="string">'#'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        n = len * <span class="number">2</span> + <span class="number">2</span>; s[n] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">manacher</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxr = <span class="number">0</span>, m = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; maxr) hw[i] = <span class="built_in">min</span>(hw[m * <span class="number">2</span> - i], hw[m] + m - i);</span><br><span class="line">            <span class="keyword">else</span> hw[i] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (s[i + hw[i]] == s[i - hw[i]]) hw[i]++;</span><br><span class="line">            <span class="keyword">if</span> (hw[i] + i &gt; maxr)&#123;</span><br><span class="line">                m = i; maxr = hw[i] + i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">getMax</span><span class="params">()</span></span>&#123;</span><br><span class="line">        init(); manacher(); <span class="keyword">int</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) ans = <span class="built_in">max</span>(ans, hw[i]);</span><br><span class="line">        <span class="keyword">return</span> ans - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/10/manacher/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/10/round517/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1099,100 +1189,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/hdu5828/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/9/hdu5828/" class="post-title-link" itemprop="url">HDu6393 Rikka with Sequence 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-09-29 17:18:40 / 修改时间：17:24:28" itemprop="dateCreated datePublished" datetime="2018-09-29T17:18:40+08:00">2018-09-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">线段树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/9/hdu5828/" class="post-meta-item leancloud_visitors" data-flag-title="HDu6393 Rikka with Sequence 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>线段树区间加，区间开根号，区间和查询。</p>
-<p>根据吉老师的直播，我们可以感性的认识到在可以接受的时间内，区间开根号会使得区间逐渐相同。</p>
-<p>对于一些线段树问题，我们不能一开始就把他当成是线段树，需要首先从全局修改查询的方式去思考。</p>
-<p>我们维护区间最大值和区间最小值，在区间开根号操作上如果两者差距小于等于 1，我们进行更新。</p>
-<p>此时，区间开根号的问题被转换成区间加和区间覆盖的双标记问题。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/9/hdu5828/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1243,7 +1239,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">277</span>
+          <span class="site-state-item-count">278</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
