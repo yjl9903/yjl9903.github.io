@@ -294,9 +294,9 @@
 <h1 id="C-Problem-for-Nazar"><a href="#C-Problem-for-Nazar" class="headerlink" title="C Problem for Nazar"></a>C Problem for Nazar</h1><h1 id="D-Stas-and-the-Queue-at-the-Buffet"><a href="#D-Stas-and-the-Queue-at-the-Buffet" class="headerlink" title="D Stas and the Queue at the Buffet"></a>D Stas and the Queue at the Buffet</h1><p>给定 $n$ 对数 $(a_i,b_i)$，为这些数字重新安排位置，假设 $i$ 在位置 $j$ 上，他的权值是 $(j-1)\cdot a_i + (n-j) \cdot a_i$，求最小权值和。</p>
 <p>先假设所有每个位置都选上了 $a_i$，只要在选 $b_i$ 时把 $a_i$ 的影响消除即可。</p>
 <p>注意到越小的数系数应该越小，对 $b_i-a_i$ 排序，乘上贡献即可。</p>
-<h1 id="E-Number-of-Components"><a href="#E-Number-of-Components" class="headerlink" title="E Number of Components"></a>E Number of Components</h1><p>给定 $n$ 个在 $[1,n]$ 范围内的数，记 $f(l,r)$ 表示，选出所有范围在 $[l,r]$ 内的数，剩下的数组成了多少条线段。求 $\sum<em>{l=1}^n \sum</em>{r=l}^n f(l,r)$。</p>
+<h1 id="E-Number-of-Components"><a href="#E-Number-of-Components" class="headerlink" title="E Number of Components"></a>E Number of Components</h1><p>给定 $n$ 个在 $[1,n]$ 范围内的数，记 $f(l,r)$ 表示，选出所有范围在 $[l,r]$ 内的数，剩下的数组成了多少条线段。求 $\sum_{l=1}^n \sum_{r=l}^n f(l,r)$。</p>
 <p>考虑每个点作为一个线段左端点的贡献。</p>
-<p>如果 $a<em>i \ge a</em>{i-1}$，那么左端点的范围是 $[a_{i-1}+1,a_i]$，右端点的范围是 $[a_i,n]$，否则类似的计算贡献。</p>
+<p>如果 $a_i \ge a_{i-1}$，那么左端点的范围是 $[a_{i-1}+1,a_i]$，右端点的范围是 $[a_i,n]$，否则类似的计算贡献。</p>
 <h1 id="F-Sonya-and-Informatics"><a href="#F-Sonya-and-Informatics" class="headerlink" title="F Sonya and Informatics"></a>F Sonya and Informatics</h1><p>给定一个 $01$ 序列，做 $k$ 次操作，每次等概率选一对数交换，求最后排成不减序列的概率。</p>
 <p>显然，顺序不影响，只要前面都是 $0$，后面都是 $1$ 即可，设有 $m$ 个 $0$，考虑 $dp[i]$ 表示前面 $m$ 个有 $i$ 个 $0$。</p>
 <p>于是有转移方程</p>
@@ -411,7 +411,7 @@ dp[i] = dp[i] \cdot ({m \choose 2} + {n-m \choose 2}+(m-i) \cdot (n-2m+2i)) / {n
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

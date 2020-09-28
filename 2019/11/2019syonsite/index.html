@@ -342,27 +342,27 @@
 <ul>
 <li><p>令 $g(m,k)$ 为前 $m-1$ 个数恰好 $k$ 个数比第 $m$ 个数小的方案数，显然有 $g(m,k)=f(m,k)-f(m,k+1)$。</p>
 </li>
-<li><p>考虑枚举 $a<em>m=x$，利用算两次思想可得：$C(m-1,k)(x-1)^klim^{m-1-k}=\sum</em>{i=k}^{m-1}C(i,k)g(m,i,x)$,其中 $g(m,i,x)$ 表示前 $m-1$ 个数恰好有 $i$ 个比 $x$ 小的方案数，显然 $g(m,k)=\sum_{x=1}^{lim}g(m,k,x)$。</p>
+<li><p>考虑枚举 $a_m=x$，利用算两次思想可得：$C(m-1,k)(x-1)^klim^{m-1-k}=\sum_{i=k}^{m-1}C(i,k)g(m,i,x)$,其中 $g(m,i,x)$ 表示前 $m-1$ 个数恰好有 $i$ 个比 $x$ 小的方案数，显然 $g(m,k)=\sum_{x=1}^{lim}g(m,k,x)$。</p>
 </li>
 <li><p>简单证明一下上述恒等式:等式左侧为前 $m-1$ 个数选 $k$ 个小于 $x$ 其他随意的方案数，显然有重复，右面则考虑每个前 $m-1$ 个恰好有 $i$ 个比 $x$ 小的方案会被算 $C(i,k)$ 次，证明完毕。</p>
 </li>
-<li><p>将 $x=1,2 ,\dots ,lim$ 带入上述恒等式再将得到所有恒等式相加可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i,k)g(m,i)$，其中 $S<em>k(x)=\sum</em>{i=0}^{x}i^k$。</p>
+<li><p>将 $x=1,2 ,\dots ,lim$ 带入上述恒等式再将得到所有恒等式相加可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)=\sum_{i=k}^{m-1}C(i,k)g(m,i)$，其中 $S_k(x)=\sum_{i=0}^{x}i^k$。</p>
 </li>
-<li><p>将 $g(m,i)=f(m,i)-f(m,i+1)$ 代入上式可得: $C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i,k)(f(m,i)-f(m,i+1))$。</p>
+<li><p>将 $g(m,i)=f(m,i)-f(m,i+1)$ 代入上式可得: $C(m-1,k)lim^{m-1-k}S_k(lim-1)=\sum_{i=k}^{m-1}C(i,k)(f(m,i)-f(m,i+1))$。</p>
 </li>
-<li><p>对上式利用 $C(n,m)=C(n-1,m)+C(n-1,m-1)$ 合并 $f(m,i)$ 的系数可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i-1,k-1)f(m,i)$。</p>
+<li><p>对上式利用 $C(n,m)=C(n-1,m)+C(n-1,m-1)$ 合并 $f(m,i)$ 的系数可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)=\sum_{i=k}^{m-1}C(i-1,k-1)f(m,i)$。</p>
 </li>
-<li><p>将上式的右式中的组合数拆开可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}f(m,i)\frac{(i-1)!}{(k-1)!(i-k)!}$.</p>
+<li><p>将上式的右式中的组合数拆开可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)=\sum_{i=k}^{m-1}f(m,i)\frac{(i-1)!}{(k-1)!(i-k)!}$.</p>
 </li>
-<li><p>整理上式可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)(k-1)!=\sum</em>{i=k}^{m-1}f(m,i)(i-1)!\frac{1}{(i-k)!}$,令$S(m,k)=C(m-1,k)lim^{m-1-k}S<em>k(lim-1)(k-1)!$，等式右面为2个差值为定值 $k$ 的多项式的卷积，所以上式从多项式角度看形式大概为 $S=F/C$，所以$F=S*C$，所以可得：$f(m,k)=\frac{1}{(k-1)!}\sum</em>{i=0}^kS(m,i)\frac{1}{(k-i)!}$.</p>
+<li><p>整理上式可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)(k-1)!=\sum_{i=k}^{m-1}f(m,i)(i-1)!\frac{1}{(i-k)!}$,令$S(m,k)=C(m-1,k)lim^{m-1-k}S_k(lim-1)(k-1)!$，等式右面为2个差值为定值 $k$ 的多项式的卷积，所以上式从多项式角度看形式大概为 $S=F/C$，所以$F=S*C$，所以可得：$f(m,k)=\frac{1}{(k-1)!}\sum_{i=0}^kS(m,i)\frac{1}{(k-i)!}$.</p>
 </li>
 </ul>
-<p>将 $f(m,k)$ 带入 $ans$ 可得：对于确定的 $k$，$ans=\frac{1}{(k-1)!}\sum<em>{m=1}^{n}lim^{n-m}\sum</em>{i=0}^{k}S(m,i)\frac{1}{(k-i)!}$.</p>
-<p>将 $S(m,i)=C(m-1,i)lim^{m-1-i}S<em>i(lim-1)(i-1)!$ 代入得：$ans=\frac{1}{(k-1)!}\sum</em>{m=1}^{n}lim^{n-m}\sum_{i=0}^k C(m-1,i)lim^{m-1-i}S_i(lim-1)(i-1)!\frac{1}{(k-i)!}$。</p>
-<p>对 $ans$ 进行化简可得：$ans=\frac{1}{(k-1)!}lim^{n-1}\sum<em>{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!\frac{1}{(k-i)!}\sum</em>{m=1}^{n}C(m-1,i)$。</p>
-<p>由恒等式 $\sum<em>{i=r}^{n}C(i,r)=C(n+1,r+1)$ 可化简 $ans=\frac{1}{(k-1)!}lim^{n-1}\sum</em>{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!C(n+1,i+1)\frac{1}{(k-i)!}$。</p>
+<p>将 $f(m,k)$ 带入 $ans$ 可得：对于确定的 $k$，$ans=\frac{1}{(k-1)!}\sum_{m=1}^{n}lim^{n-m}\sum_{i=0}^{k}S(m,i)\frac{1}{(k-i)!}$.</p>
+<p>将 $S(m,i)=C(m-1,i)lim^{m-1-i}S_i(lim-1)(i-1)!$ 代入得：$ans=\frac{1}{(k-1)!}\sum_{m=1}^{n}lim^{n-m}\sum_{i=0}^k C(m-1,i)lim^{m-1-i}S_i(lim-1)(i-1)!\frac{1}{(k-i)!}$。</p>
+<p>对 $ans$ 进行化简可得：$ans=\frac{1}{(k-1)!}lim^{n-1}\sum_{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!\frac{1}{(k-i)!}\sum_{m=1}^{n}C(m-1,i)$。</p>
+<p>由恒等式 $\sum_{i=r}^{n}C(i,r)=C(n+1,r+1)$ 可化简 $ans=\frac{1}{(k-1)!}lim^{n-1}\sum_{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!C(n+1,i+1)\frac{1}{(k-i)!}$。</p>
 <p>显然上式为一个和为定值 $k$ 的卷积形式，并且每一项除了 $S_i(lim-1)$ 都很容易求得.</p>
-<p>而 $S<em>i(lim-1)=\sum</em>{x=0}^{lim-1}x^i$，根据伯努利数可知 $S<em>i(lim-1)=\frac{1}{i+1}\sum</em>{j=0}^{i}(-1)^j C(i+1,j)B_j(lim-1)^{i+1-j}$，显然右式为2个和为定值$i$的卷积形式，所以只要知道了伯努利数做一次 $ntt$ 就可以求出所有的 $S_i(lim-1)$。</p>
+<p>而 $S_i(lim-1)=\sum_{x=0}^{lim-1}x^i$，根据伯努利数可知 $S_i(lim-1)=\frac{1}{i+1}\sum_{j=0}^{i}(-1)^j C(i+1,j)B_j(lim-1)^{i+1-j}$，显然右式为2个和为定值$i$的卷积形式，所以只要知道了伯努利数做一次 $ntt$ 就可以求出所有的 $S_i(lim-1)$。</p>
 <p>伯努利数的指数生成函数：$\sum_{i=0}^{\infty}B_i\frac{x^i}{i!}=\frac{x}{e^x-1}$，所以多项式求逆即可求出所有的伯努利数.</p>
 <p>求所有 $S_i(lim-1)$ 后，由于 $ans$ 也是一个卷积形式，做一次 $ntt$ 就可以求出所有的 $ans$ 。</p>
 <h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><p>Solved by Forsaken.</p>
@@ -479,7 +479,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

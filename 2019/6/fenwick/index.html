@@ -50,12 +50,12 @@
   };
 </script>
 
-  <meta name="description" content="参考博客 树状数组黑科技讲义。 区间加 区间询问令 $bi&#x3D;a_i-a{i-1}$，那么 $ax&#x3D;\sum{i&#x3D;1}^x b_i$。于是，对于区间询问有  \sum_{i&#x3D;l}^r a_i &#x3D; (r-l+1)\sum_{i&#x3D;1}^{l-1} b_i + (r+1) \sum_{i&#x3D;l}^r b_i - \sum_{i&#x3D;l}^r i \cdot b_i分别在树状数组数组上维护 $b_i$ 和 $i">
+  <meta name="description" content="参考博客 树状数组黑科技讲义。 区间加 区间询问令 $b_i&#x3D;a_i-a_{i-1}$，那么 $a_x&#x3D;\sum_{i&#x3D;1}^x b_i$。于是，对于区间询问有  \sum_{i&#x3D;l}^r a_i &#x3D; (r-l+1)\sum_{i&#x3D;1}^{l-1} b_i + (r+1) \sum_{i&#x3D;l}^r b_i - \sum_{i&#x3D;l}^r i \cdot b_i分别在树状数组数组上维护 $b_i$ 和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树状数组上的黑科技">
 <meta property="og:url" content="https://xlor.cn/2019/6/fenwick/index.html">
 <meta property="og:site_name" content="XLor&#39;s Blog">
-<meta property="og:description" content="参考博客 树状数组黑科技讲义。 区间加 区间询问令 $bi&#x3D;a_i-a{i-1}$，那么 $ax&#x3D;\sum{i&#x3D;1}^x b_i$。于是，对于区间询问有  \sum_{i&#x3D;l}^r a_i &#x3D; (r-l+1)\sum_{i&#x3D;1}^{l-1} b_i + (r+1) \sum_{i&#x3D;l}^r b_i - \sum_{i&#x3D;l}^r i \cdot b_i分别在树状数组数组上维护 $b_i$ 和 $i">
+<meta property="og:description" content="参考博客 树状数组黑科技讲义。 区间加 区间询问令 $b_i&#x3D;a_i-a_{i-1}$，那么 $a_x&#x3D;\sum_{i&#x3D;1}^x b_i$。于是，对于区间询问有  \sum_{i&#x3D;l}^r a_i &#x3D; (r-l+1)\sum_{i&#x3D;1}^{l-1} b_i + (r+1) \sum_{i&#x3D;l}^r b_i - \sum_{i&#x3D;l}^r i \cdot b_i分别在树状数组数组上维护 $b_i$ 和">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-06-17T16:33:59.000Z">
 <meta property="article:modified_time" content="2019-06-17T16:45:40.977Z">
@@ -293,7 +293,7 @@
 
       
         <p>参考博客 <a href="https://magolor.github.io/2018/08/27/2018-08-27-blog-01/" target="_blank" rel="noopener">树状数组黑科技讲义</a>。</p>
-<h1 id="区间加-区间询问"><a href="#区间加-区间询问" class="headerlink" title="区间加 区间询问"></a>区间加 区间询问</h1><p>令 $b<em>i=a_i-a</em>{i-1}$，那么 $a<em>x=\sum</em>{i=1}^x b_i$。于是，对于区间询问有</p>
+<h1 id="区间加-区间询问"><a href="#区间加-区间询问" class="headerlink" title="区间加 区间询问"></a>区间加 区间询问</h1><p>令 $b_i=a_i-a_{i-1}$，那么 $a_x=\sum_{i=1}^x b_i$。于是，对于区间询问有</p>
 <script type="math/tex; mode=display">
 \sum_{i=l}^r a_i = (r-l+1)\sum_{i=1}^{l-1} b_i + (r+1) \sum_{i=l}^r b_i - \sum_{i=l}^r i \cdot b_i</script><p>分别在树状数组数组上维护 $b_i$ 和 $i \cdot b_i$ 即可。</p>
 <h1 id="权值树状数组二分第-k-大"><a href="#权值树状数组二分第-k-大" class="headerlink" title="权值树状数组二分第 $k$ 大"></a>权值树状数组二分第 $k$ 大</h1><p>树状数组对应一棵没有右儿子的权值线段树，权值线段树上二分时，只需要和左儿子比较，因此权值线段树上二分可以扩展到树状数组上。</p>
@@ -401,7 +401,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

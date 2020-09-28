@@ -316,7 +316,7 @@
 f[l][r]=min(f[l][r-1],f[l+1][r],f[l+1][r-1]+1)</script><p>否则</p>
 <script type="math/tex; mode=display">
 f[l][r]=min(f[l][j],f[j+1][r])</script><p>区间 DP 不出来的我 T^T。</p>
-<h1 id="G-Greedy-Subsequences"><a href="#G-Greedy-Subsequences" class="headerlink" title="G Greedy Subsequences"></a>G Greedy Subsequences</h1><p>定义贪心子序列 $a<em>{p_1},a</em>{p<em>2},a</em>{p<em>3},\dots$ ，满足，$p</em>{i+1}$ 是大于 $p<em>i$ 的第一个满足 $a</em>{p<em>{i+1}} &gt; a</em>{p_i}$ 的下标。</p>
+<h1 id="G-Greedy-Subsequences"><a href="#G-Greedy-Subsequences" class="headerlink" title="G Greedy Subsequences"></a>G Greedy Subsequences</h1><p>定义贪心子序列 $a_{p_1},a_{p_2},a_{p_3},\dots$ ，满足，$p_{i+1}$ 是大于 $p_i$ 的第一个满足 $a_{p_{i+1}} &gt; a_{p_i}$ 的下标。</p>
 <p>求序列 $a$ 的每一个长度为 $k$ 连续子区间的最长贪心子序列长度。</p>
 <p>可以发现，对于整个区间而言，贪心子序列实际上构成的一个树的结构，每个点都会连向唯一一个点，且可能存在前面的若干点连到这个点上。</p>
 <p>考虑维护一个单调递减的单调栈，来建出这棵树（森林）。</p>
@@ -432,7 +432,7 @@ f[l][r]=min(f[l][j],f[j+1][r])</script><p>区间 DP 不出来的我 T^T。</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

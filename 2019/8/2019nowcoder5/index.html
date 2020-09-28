@@ -349,7 +349,7 @@
 </li>
 <li><p>$a=1$ 时，数列为等差数列 $x_0, x_0+b, x_0+2b, \dots$，即求解 $v \equiv x_0+ xb (\bmod p)$，$x\equiv b^{-1}(v-x_0)(\bmod p)$，预处理逆元。</p>
 </li>
-<li><p>其他情况，令 $y<em>i=x_i+{b \over a-1}$，因此由原式 $y_i=ay</em>{i-1}$，即求解 $v+{b \over a-1} \equiv a^x(x_0+{b \over a-1})(\bmod p)$，等价于求解 $a^x \equiv (v+{b \over a-1})(x_0+{b \over a-1})^{-1}(\bmod p) $，BSGS 求解。</p>
+<li><p>其他情况，令 $y_i=x_i+{b \over a-1}$，因此由原式 $y_i=ay_{i-1}$，即求解 $v+{b \over a-1} \equiv a^x(x_0+{b \over a-1})(\bmod p)$，等价于求解 $a^x \equiv (v+{b \over a-1})(x_0+{b \over a-1})^{-1}(\bmod p) $，BSGS 求解。</p>
 </li>
 </ol>
 <p>注意，情况 $3$ 的 BSGS 需要需处理一些东西，参见题解。</p>
@@ -467,7 +467,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -295,7 +295,7 @@
 <p>考虑二分答案，贪心构造使得每个位置尽量小。</p>
 <h1 id="D-Good-Triple"><a href="#D-Good-Triple" class="headerlink" title="D Good Triple"></a>D Good Triple</h1><p>给定一个 $01$ 串，求有多少子串存在 $3$ 个不同位置间隔相同且字符相同。</p>
 <p>注意到串长大于 $10$ 时已经不可能不满足条件，暴力筛掉错误情况即可。</p>
-<h1 id="E-And-Reachability"><a href="#E-And-Reachability" class="headerlink" title="E And Reachability"></a>E And Reachability</h1><p>给定一个序列，询问 $q$ 次，两个位置 $l$ 和 $r$，存在一条路径 $a<em>l,a</em>{i<em>0}, a</em>{i_1}, \dots , a_r$，满足相邻两个至少二进制表示下有一个共同位置是 $1$。</p>
+<h1 id="E-And-Reachability"><a href="#E-And-Reachability" class="headerlink" title="E And Reachability"></a>E And Reachability</h1><p>给定一个序列，询问 $q$ 次，两个位置 $l$ 和 $r$，存在一条路径 $a_l,a_{i_0}, a_{i_1}, \dots , a_r$，满足相邻两个至少二进制表示下有一个共同位置是 $1$。</p>
 <p>预处理每个位置到下一个第 $i$ 位为 $1$ 的第一个位置。倒序维护一下全局的每一个二进制位的最后出现位置，对于每个数的每个 $1$ 的二进制位，从全局的后一个转移过来。询问的时候，枚举 $r$ 的二进制即可。</p>
 <p>时间复杂度 $\mathcal{O}(n \log^2 n + q \log n)$。</p>
 <a id="more"></a>
@@ -406,7 +406,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -224,6 +224,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/6/lpd/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/6/lpd/" class="post-title-link" itemprop="url">长链剖分</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-06 23:35:22" itemprop="dateCreated datePublished" datetime="2019-06-06T23:35:22+08:00">2019-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-06-07 00:50:12" itemprop="dateModified" datetime="2019-06-07T00:50:12+08:00">2019-06-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/6/lpd/" class="post-meta-item leancloud_visitors" data-flag-title="长链剖分" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="性质一"><a href="#性质一" class="headerlink" title="性质一"></a>性质一</h1><p>所有长链的长度和是 $\mathcal{O}(n)$ 的。</p>
+<h1 id="性质二"><a href="#性质二" class="headerlink" title="性质二"></a>性质二</h1><p>一个点的 $k$ 级祖先所在重链长度至少为 $k$。</p>
+<h1 id="mathcal-O-n-log-n-mathcal-O-1-在线询问-k-级祖先"><a href="#mathcal-O-n-log-n-mathcal-O-1-在线询问-k-级祖先" class="headerlink" title="$\mathcal{O}(n\log{}n)$ - $\mathcal{O}(1)$ 在线询问 $k$ 级祖先"></a>$\mathcal{O}(n\log{}n)$ - $\mathcal{O}(1)$ 在线询问 $k$ 级祖先</h1><p>首先预处理出倍增数组，再预处理每个数的最高位在哪，再预处理每条重链的端点长度为 $l$，顶点往上走 $l$ 步和沿着重链走 $l$ 步是哪些点。</p>
+<p>对于 $k$ 级祖先，令 $r=highbit(k)$，显然 $r&gt;k-r$，用倍增数组将询问点向上跳 $r$ 步到 $y$ 点。</p>
+<p>由性质二，$y$ 所在链长大于等于 $r &gt; k - r$。</p>
+<p>最坏情况下，$y$ 就是一个重链顶点，由于其预处理了往上走至少 $r$ 步的点，因此可以直接回答，否则重链顶点在 $y$ 到答案的路径上，显然也可以直接回答。</p>
+<p>第二种情况，$y$ 的重链端点是答案的祖先，那么显然 $y$ 和答案在一条重链内，也可以直接回答。</p>
+<h1 id="mathcal-O-n-统计每个点子树中以深度为下标的可合并信息"><a href="#mathcal-O-n-统计每个点子树中以深度为下标的可合并信息" class="headerlink" title="$\mathcal{O}(n)$ 统计每个点子树中以深度为下标的可合并信息"></a>$\mathcal{O}(n)$ 统计每个点子树中以深度为下标的可合并信息</h1><p>重儿子继承父亲的信息，由于信息是以深度为下标，因此只需数组指针移位。</p>
+<p>轻儿子暴力将信息与父亲合并。</p>
+<p>复杂度是 $\mathcal{O}(\sum\text{重链长度})$，即 $\mathcal{O}(n)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/6/lpd/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/6/edu66/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -796,7 +895,7 @@
 <p>考虑二分答案，贪心构造使得每个位置尽量小。</p>
 <h1 id="D-Good-Triple"><a href="#D-Good-Triple" class="headerlink" title="D Good Triple"></a>D Good Triple</h1><p>给定一个 $01$ 串，求有多少子串存在 $3$ 个不同位置间隔相同且字符相同。</p>
 <p>注意到串长大于 $10$ 时已经不可能不满足条件，暴力筛掉错误情况即可。</p>
-<h1 id="E-And-Reachability"><a href="#E-And-Reachability" class="headerlink" title="E And Reachability"></a>E And Reachability</h1><p>给定一个序列，询问 $q$ 次，两个位置 $l$ 和 $r$，存在一条路径 $a<em>l,a</em>{i<em>0}, a</em>{i_1}, \dots , a_r$，满足相邻两个至少二进制表示下有一个共同位置是 $1$。</p>
+<h1 id="E-And-Reachability"><a href="#E-And-Reachability" class="headerlink" title="E And Reachability"></a>E And Reachability</h1><p>给定一个序列，询问 $q$ 次，两个位置 $l$ 和 $r$，存在一条路径 $a_l,a_{i_0}, a_{i_1}, \dots , a_r$，满足相邻两个至少二进制表示下有一个共同位置是 $1$。</p>
 <p>预处理每个位置到下一个第 $i$ 位为 $1$ 的第一个位置。倒序维护一下全局的每一个二进制位的最后出现位置，对于每个数的每个 $1$ 的二进制位，从全局的后一个转移过来。询问的时候，枚举 $r$ 的二进制即可。</p>
 <p>时间复杂度 $\mathcal{O}(n \log^2 n + q \log n)$。</p>
           <!--noindex-->
@@ -1072,148 +1171,13 @@
 <h1 id="F-Scalar-Queries"><a href="#F-Scalar-Queries" class="headerlink" title="F Scalar Queries"></a>F Scalar Queries</h1><p>给定一个序列 $a$，定义 $f(l,r)$ 表示把 $a[l\dots r]$ 抠出来排序，生成 $b$ 序列，$f(l,r)=\sum_{i=1}^{r-l+1} i \cdot b_i$，对 $f(l,r)$ 求和。</p>
 <p>考虑每个位置对答案的总贡献，也就是对应位置的权值乘上系数。我们首先注意到，一个点系数之和前后有多少数字比它小有关，因此考虑从小到大枚举。</p>
 <p>记当前枚举的位置为 $pos$，记 $g(l,r)$ 表示 $[l,r]$ 内有多少数字小于等于 $a_{pos}$。</p>
-<p>因此，贡献就等于 $\sum<em>{i=1}^{pos} \sum</em>{j=pos}^{n} g(i, pos) + g(pos, j) - 1$，其中 $pos$ 被算了两次。</p>
-<p>发现这两个维度独立，上式也就是 $\sum<em>{i=1}^{pos} g(i,pos) \times \sum</em>{j=pos}^n g(pos,j) - pos \cdot (n-pos+1)$。</p>
+<p>因此，贡献就等于 $\sum_{i=1}^{pos} \sum_{j=pos}^{n} g(i, pos) + g(pos, j) - 1$，其中 $pos$ 被算了两次。</p>
+<p>发现这两个维度独立，上式也就是 $\sum_{i=1}^{pos} g(i,pos) \times \sum_{j=pos}^n g(pos,j) - pos \cdot (n-pos+1)$。</p>
 <p>最后，先考虑前一部分，发现如果之前已经算过了 $i,i &lt; pos $，他对答案的贡献也就是 $i$，后一部分也是类似。</p>
 <p>单点修改查询前缀和，树状数组维护即可。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/5/edu65/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/5/2019jscpc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/5/2019jscpc/" class="post-title-link" itemprop="url">2019 江苏省大学生程序设计竞赛</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-05-22 19:33:07" itemprop="dateCreated datePublished" datetime="2019-05-22T19:33:07+08:00">2019-05-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 00:38:03" itemprop="dateModified" datetime="2019-09-18T00:38:03+08:00">2019-09-18</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/%E7%8E%B0%E5%9C%BA%E8%B5%9B/" itemprop="url" rel="index">
-                    <span itemprop="name">现场赛</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/5/2019jscpc/" class="post-meta-item leancloud_visitors" data-flag-title="2019 江苏省大学生程序设计竞赛" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">11</td>
-<td style="text-align:center">6</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/5/2019jscpc/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1283,7 +1247,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

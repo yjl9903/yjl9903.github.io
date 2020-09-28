@@ -349,7 +349,7 @@
 <h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><p>Solved by Henry.</p>
 <p>打表。</p>
 <h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><p>Solved by Forsaken.</p>
-<p>枚举偶数数字总个数$2k$,$ans=\sum<em>{k=0}^{\lfloor \frac{n}{2}\rfloor} C(n,2k)cnt</em>{1}^{n-2k}f(2k)$</p>
+<p>枚举偶数数字总个数$2k$,$ans=\sum_{k=0}^{\lfloor \frac{n}{2}\rfloor} C(n,2k)cnt_{1}^{n-2k}f(2k)$</p>
 <p>$f(2k)$为用$cnt_{0}$种球放$2k$个盒子，且每种球个数为偶数的方案数</p>
 <p>考虑$f(n)$为用$m$种球放$n$个盒子的方案：</p>
 <p>则方案数为$\prod_{x_1+x_2+..x_m=n,x_i为偶数} \frac{n!}{x_1!x_2!…x_m!}$</p>
@@ -357,9 +357,9 @@
 <p>则$f(n)=g(x)^m[x^n]*n!$</p>
 <p>$g(x)^m=\frac{\sum_{i=0}^{m}C(m,i)e^{(m-2i)x}}{2^m}$</p>
 <p>所以$g(x)^m[x^n]*n!=\frac{\sum_{i=0}^{m}C(m,i)(m-2i)^n}{2^m}$</p>
-<p>$ans=\sum<em>{k=0}^{\lfloor \frac{n}{2}\rfloor} C(n,2k)cnt</em>{1}^ninvcnt<em>1^{2k}\frac{\sum</em>{i=0}^{cnt_0}C(cnt_0,i)(cnt_0-2i)^{2k}}{2^{cnt_0}}$</p>
-<p>$ans= \frac {cnt<em>{1}^{n}}{2^{cnt_0}}\sum</em>{i=0}^{cnt<em>0}C(cnt_0,i)\sum</em>{k=0}^{\lfloor \frac{n}{2}\rfloor}C(n,2k)(invcnt_1(cnt_0-2i))^{2k}$</p>
-<p>$ans=\frac {cnt<em>{1}^{n}}{2^{cnt_0}}\sum</em>{i=0}^{cnt_0}C(cnt_0,i)\frac{(1+invcnt_1(cnt_0-2i))^n+(1-invcnt_1(cnt_0-2i))^n}{2}$</p>
+<p>$ans=\sum_{k=0}^{\lfloor \frac{n}{2}\rfloor} C(n,2k)cnt_{1}^ninvcnt_1^{2k}\frac{\sum_{i=0}^{cnt_0}C(cnt_0,i)(cnt_0-2i)^{2k}}{2^{cnt_0}}$</p>
+<p>$ans= \frac {cnt_{1}^{n}}{2^{cnt_0}}\sum_{i=0}^{cnt_0}C(cnt_0,i)\sum_{k=0}^{\lfloor \frac{n}{2}\rfloor}C(n,2k)(invcnt_1(cnt_0-2i))^{2k}$</p>
+<p>$ans=\frac {cnt_{1}^{n}}{2^{cnt_0}}\sum_{i=0}^{cnt_0}C(cnt_0,i)\frac{(1+invcnt_1(cnt_0-2i))^n+(1-invcnt_1(cnt_0-2i))^n}{2}$</p>
 <h1 id="F"><a href="#F" class="headerlink" title="F"></a>F</h1><p>Solved by Henry.</p>
 <p>从左到右枚举，计算后缀方案数。</p>
 <h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><p>UnSolved by XLor.</p>
@@ -473,7 +473,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

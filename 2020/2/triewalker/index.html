@@ -300,7 +300,7 @@
 <p>我们要求的就是 $F_i(1),F_i(2),\dots, F_i(n)$。</p>
 <p>考虑在每个尚未停止的时刻，往后走一步的情况，即 $xG(x)$，再加上初始时的概率 $1$，这时要么在此处迎来某个串的结束，要么尚未停止，有下式。</p>
 <script type="math/tex; mode=display">
-1+xG(x)=G(x)+\sum_{i=1}^n F_i(x)</script><p>记 $P(S)$ 表示一个串的出现概率，即 $P(S)=\prod<em>{i=1}^{|S|} P</em>{S_i}$</p>
+1+xG(x)=G(x)+\sum_{i=1}^n F_i(x)</script><p>记 $P(S)$ 表示一个串的出现概率，即 $P(S)=\prod_{i=1}^{|S|} P_{S_i}$</p>
 <p>对于每个串 $i$，在一个未终止时刻，往后加第 $i$ 个串，即 $G(x)P(s_i)x^m$。这时情况很多，因为加这个串的时候可能中途出现已经终止的情况，设第 $j$ 个串在新加串的 $k$ 位置终止，因此 $s_i[1 \dots k]=s_j[ m - k + 1 \dots m]$，即第 $i$ 个串的前缀等于长度为 $k$ 的第 $j$ 个串的后缀，此时的概率生成函数就是 $F_j(x)P(s_i[k+1 \dots m])x^{m-k}$。</p>
 <p>我们枚举每个串 $j$ 和它的前缀长度 $k$，有下式：</p>
 <script type="math/tex; mode=display">
@@ -409,7 +409,7 @@ G(x)P(s_i)x^m = \sum_{j=1}^n \sum_{k=1}^m [ s_i[1 \dots k]=s_j[ m - k + 1 \dots 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

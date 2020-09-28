@@ -337,7 +337,7 @@ dp[i]=1+\min_{ s[j+1..i] \text{ 为回文串} } dp[j]</script><p>由于一个字
 <p><img src="https://i.loli.net/2019/11/21/UxQ6pqB4cviJ7t1.png" alt=""></p>
 <h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><p>$s$ 的所有回文后缀按照长度排序后，可以划分成 $\log |s|$ 段等差数列。</p>
 <p>证明：</p>
-<p>设 $s$ 的所有回文后缀长度从小到大排序为 $l<em>1,l_2,\dots,l_k$ 。对于任意 $2 \le i \le k-1$ ，若 $l</em>{i}-l<em>{i-1}=l</em>{i+1}-l<em>{i}$ ，则 $l</em>{i-1},l<em>{i},l</em>{i+1}$ 构成一个等差数列。否则 $l<em>{i}-l</em>{i-1}\neq l<em>{i+1}-l</em>{i}$ ，由引理 $4$ ，有 $l<em>{i+1}-l</em>{i}&gt;l<em>{i}-l</em>{i-1}$ ，且 $l<em>{i+1}-l</em>{i}&gt;l<em>{i-1}$ ， $l</em>{i+1}&gt;2l_{i-1}$ 。因此，若相邻两对回文后缀的长度之差发生变化，那么这个最大长度一定会相对于最小长度翻一倍。显然，长度翻倍最多只会发生 $O(\log |s|)$ 次，也就是 $s$ 的回文后缀长度可以划分成 $\log |s|$ 段等差数列。</p>
+<p>设 $s$ 的所有回文后缀长度从小到大排序为 $l_1,l_2,\dots,l_k$ 。对于任意 $2 \le i \le k-1$ ，若 $l_{i}-l_{i-1}=l_{i+1}-l_{i}$ ，则 $l_{i-1},l_{i},l_{i+1}$ 构成一个等差数列。否则 $l_{i}-l_{i-1}\neq l_{i+1}-l_{i}$ ，由引理 $4$ ，有 $l_{i+1}-l_{i}&gt;l_{i}-l_{i-1}$ ，且 $l_{i+1}-l_{i}&gt;l_{i-1}$ ， $l_{i+1}&gt;2l_{i-1}$ 。因此，若相邻两对回文后缀的长度之差发生变化，那么这个最大长度一定会相对于最小长度翻一倍。显然，长度翻倍最多只会发生 $O(\log |s|)$ 次，也就是 $s$ 的回文后缀长度可以划分成 $\log |s|$ 段等差数列。</p>
 <p>该推论也可以通过使用弱周期引理，对 $s$ 的最长回文后缀的所有 border 按照长度 $x$ 分类， $x \in [2^0,2^1),[2^1,2^2),\dots,[2^k,n)$ ，考虑这 $\log |s|$ 组内每组的最长 border 进行证明。详细证明可以参考金策的《字符串算法选讲》和陈孙立的 2019 年 IOI 国家候选队论文《子串周期查询问题的相关算法及其应用》。</p>
 <h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>有了上述结论后，我们现在可以考虑如何优化 $dp$ 的转移。</p>
 <p>回文树上的每个节点 $u$ 需要多维护两个信息， $diff[u]$ 和 $slink[u]$ 。 $diff[u]$ 表示节点 $u$ 和 $fail[u]$ 所代表的回文串的长度差，即 $len[u]-len[fail[u]]$ 。 $slink[u]$ 表示 $u$ 一直沿着 fail 向上跳到第一个节点 $v$ ，使得 $diff[v] \neq diff[u]$ ，也就是 $u$ 所在等差数列中长度最小的那个节点。</p>
@@ -468,7 +468,7 @@ dp[i]=1+\min_{ s[j+1..i] \text{ 为回文串} } dp[j]</script><p>由于一个字
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

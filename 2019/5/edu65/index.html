@@ -309,8 +309,8 @@
 <h1 id="F-Scalar-Queries"><a href="#F-Scalar-Queries" class="headerlink" title="F Scalar Queries"></a>F Scalar Queries</h1><p>给定一个序列 $a$，定义 $f(l,r)$ 表示把 $a[l\dots r]$ 抠出来排序，生成 $b$ 序列，$f(l,r)=\sum_{i=1}^{r-l+1} i \cdot b_i$，对 $f(l,r)$ 求和。</p>
 <p>考虑每个位置对答案的总贡献，也就是对应位置的权值乘上系数。我们首先注意到，一个点系数之和前后有多少数字比它小有关，因此考虑从小到大枚举。</p>
 <p>记当前枚举的位置为 $pos$，记 $g(l,r)$ 表示 $[l,r]$ 内有多少数字小于等于 $a_{pos}$。</p>
-<p>因此，贡献就等于 $\sum<em>{i=1}^{pos} \sum</em>{j=pos}^{n} g(i, pos) + g(pos, j) - 1$，其中 $pos$ 被算了两次。</p>
-<p>发现这两个维度独立，上式也就是 $\sum<em>{i=1}^{pos} g(i,pos) \times \sum</em>{j=pos}^n g(pos,j) - pos \cdot (n-pos+1)$。</p>
+<p>因此，贡献就等于 $\sum_{i=1}^{pos} \sum_{j=pos}^{n} g(i, pos) + g(pos, j) - 1$，其中 $pos$ 被算了两次。</p>
+<p>发现这两个维度独立，上式也就是 $\sum_{i=1}^{pos} g(i,pos) \times \sum_{j=pos}^n g(pos,j) - pos \cdot (n-pos+1)$。</p>
 <p>最后，先考虑前一部分，发现如果之前已经算过了 $i,i &lt; pos $，他对答案的贡献也就是 $i$，后一部分也是类似。</p>
 <p>单点修改查询前缀和，树状数组维护即可。</p>
 <a id="more"></a>
@@ -419,7 +419,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

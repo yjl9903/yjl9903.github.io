@@ -345,7 +345,7 @@
 <p>去重前的总方案数 $R(n)=\sum_{i=0}^{n-1} k^{\lceil \frac{i}{2} \rceil} k^{\lceil \frac{n-i}{2} \rceil }$。</p>
 <p>但是，存在一些串有多种弱双回文划分，例如 $abaaba$ 有两种划分方式。有一个结论，这样的串一定是整周期串，且最小周期是 $p$，方案数为 $|s|/p$。</p>
 <p>考虑 $D(n)$ 表示只有一种划分方式的本源串，则 $D(n)=R(n)-\sum_{l|n \land l&lt;n} \frac{n}{l} D(l) $。</p>
-<p>最终答案，考虑周期串后为 $\sum<em>{i=1}^n \sum</em>{l|i} D(l)$。</p>
+<p>最终答案，考虑周期串后为 $\sum_{i=1}^n \sum_{l|i} D(l)$。</p>
 <h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><p>Solved by XLor.</p>
 <p>$m$ 个关键点一起 $bfs$，每个点维护一下最短距离和多少个关键点能够以最短距离到达该点，转移时分从未访问过和最短距离相同，若出现一个点次数为关键点个数，即为答案。</p>
 <h1 id="H"><a href="#H" class="headerlink" title="H"></a>H</h1><p>Solved by Forsaken.</p>
@@ -461,7 +461,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

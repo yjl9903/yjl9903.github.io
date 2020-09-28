@@ -291,7 +291,7 @@
 <p>注意到是每个串长度相同，所以一定是两两配对，加上中间可能会有一个回文串。</p>
 <h1 id="C-Air-Conditioner"><a href="#C-Air-Conditioner" class="headerlink" title="C Air Conditioner"></a>C Air Conditioner</h1><p>你有一个权值，你每天可以选择把他 $+1,-1$ 或者不变，有 $n$ 个条件，第 $t$ 天，权值范围在 $[l_i,r_i]$ 中。</p>
 <p>维护一下你的权值的范围即可。</p>
-<h1 id="D-Shortest-and-Longest-LIS"><a href="#D-Shortest-and-Longest-LIS" class="headerlink" title="D Shortest and Longest LIS"></a>D Shortest and Longest LIS</h1><p>你有长度为 $n-1$ 的 $&lt;$ 和 $&gt;$ 组成的串，表示 $a<em>i$ 和 $a</em>{i+1}$ 的大小关系，你现在需要构造出 LIS 最大和最小两个排列。</p>
+<h1 id="D-Shortest-and-Longest-LIS"><a href="#D-Shortest-and-Longest-LIS" class="headerlink" title="D Shortest and Longest LIS"></a>D Shortest and Longest LIS</h1><p>你有长度为 $n-1$ 的 $&lt;$ 和 $&gt;$ 组成的串，表示 $a_i$ 和 $a_{i+1}$ 的大小关系，你现在需要构造出 LIS 最大和最小两个排列。</p>
 <p>我的构造方式过于复杂，以致于没来得及交上去（呲牙）。</p>
 <p>一种简单的方式，以 LIS 最小为例，你肯定希望整体是在往上走的，因此对于小于号，权值 $+\infty$，大于号权值 $-1$，这样你每次都是往上升的状态，最后每个值必定不同，离散化即可。LIS 最大，考虑整体往下即可。</p>
 <h1 id="E-1-Trees-and-Queries"><a href="#E-1-Trees-and-Queries" class="headerlink" title="E 1-Trees and Queries"></a>E 1-Trees and Queries</h1><p>你有一棵无根树，$q$ 次询问，独立连一条 $x$ 到 $y$ 的边，询问 $a$ 到 $b$ 是否存在一条长度为 $k$ 的路径，路径可以随意走，可以走重复的点或边。</p>
@@ -409,7 +409,7 @@ dp(i,j) = Rect(i,j) + \max_{i \le j < i + k}(dp(i-1,j) - \sum_{k=j}^{i+k-1} a_{i
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

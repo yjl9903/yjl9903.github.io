@@ -296,8 +296,8 @@
 <a id="more"></a>
 <h1 id="IOI-2018-islands"><a href="#IOI-2018-islands" class="headerlink" title="IOI 2018 islands"></a>IOI 2018 islands</h1><p>求基环树森林的直径总和。</p>
 <p>抠出每个联通块的环，环上每棵子树求最大深度和子树直径。</p>
-<p>考虑 $dp[i]$ 表示到 $i$ 的最大长度，转移就是 $dp[i]=depth[i]+\max { depth[j]+distance(i,j) }$，</p>
-<p>将环补成链，$dp[i]=depth[i]+distance(i)+\max { depth[j]-distance(j) }$，$j$ 有一个取值范围，单调队列优化转移即可。</p>
+<p>考虑 $dp[i]$ 表示到 $i$ 的最大长度，转移就是 $dp[i]=depth[i]+\max \{ depth[j]+distance(i,j) \}$，</p>
+<p>将环补成链，$dp[i]=depth[i]+distance(i)+\max \{ depth[j]-distance(j) \}$，$j$ 有一个取值范围，单调队列优化转移即可。</p>
 <h1 id="2018-牛客多校第二场-B-discount"><a href="#2018-牛客多校第二场-B-discount" class="headerlink" title="2018 牛客多校第二场 B discount"></a>2018 牛客多校第二场 B discount</h1><p>$n$ 个物品，价格为 $p_i$，购买一个物品可以使用两种优惠，价格减 $d_i$ 和 免费获得一个 $f_i$，求拥有所有物品的最小花费。</p>
 <p>第二种优惠组成了一个基环内向树，并查集找到每个联通块的环边。</p>
 <p>对于环上每个子树做一个 Tree dp。</p>
@@ -402,7 +402,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

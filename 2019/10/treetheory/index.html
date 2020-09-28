@@ -442,7 +442,7 @@
 <p>其中 $1 \le n,q \le 3 \cdot 10^5,  1 \le k,x\le 10^9$。</p>
 <p>来源：<a href="https://codeforces.com/contest/1076" target="_blank" rel="noopener">Educational Codeforces Round 54  E. Vasya and a Tree</a></p>
 <p>将所有操作离线到每个结点上，我们可以发现每个结点的权值，只和它的所有祖先上的操作有关。$dfs$ 时，栈中的结点就是当前遍历的点到根的路径，而操作就是 $dep[u]$ 到 $dep[u]+k$ 这一段深度区间上加 $x$，单点查询某个点的权值，进出栈时用树状数组维护操作即可。</p>
-<h3 id="例题5"><a href="#例题5" class="headerlink" title="例题5"></a>例题5</h3><p>给定一棵 $n$ 个结点带点权 $w<em>i$ 的有根树，将树划分成满足条件的垂直路径，路径上的点数小于等于 $L$，路径上的点权和小于等于 $S$，垂直路径为一个结点序列 $v_1,v_2,\dots,v_k$，满足 $v_i(2\le i \le k)$ 是 $v</em>{i-1}$ 的父亲。每个点都必须属于一个垂直路径内，求最少能分割成多少个这样的路径。</p>
+<h3 id="例题5"><a href="#例题5" class="headerlink" title="例题5"></a>例题5</h3><p>给定一棵 $n$ 个结点带点权 $w_i$ 的有根树，将树划分成满足条件的垂直路径，路径上的点数小于等于 $L$，路径上的点权和小于等于 $S$，垂直路径为一个结点序列 $v_1,v_2,\dots,v_k$，满足 $v_i(2\le i \le k)$ 是 $v_{i-1}$ 的父亲。每个点都必须属于一个垂直路径内，求最少能分割成多少个这样的路径。</p>
 <p>其中 $1 \le n \le 10^5,1\le w_i \le 10^9,1\le L \le 10^5,1\le S \le 10^{18}$。</p>
 <p>来源：<a href="https://codeforces.com/problemset/problem/1059/E" target="_blank" rel="noopener">Codeforces Round #514 E. Split the Tree</a></p>
 <p>题目路径的条件比较特殊，不会出现在某个点分叉的情况，因此，每个叶子结点都必须在一个垂直路径中，考虑一个贪心的做法，对于任何一个点，在满足限制的条件下尽量往上爬，这样肯定是优的。但是，会出现多个叶子的路径重叠的情况，这是不影响答案的，只需要在重合位置断掉一条路径即可，并且显然没有办法把一条路径优化掉。</p>
@@ -462,7 +462,7 @@
 <h3 id="倍增"><a href="#倍增" class="headerlink" title="倍增"></a>倍增</h3><p>倍增算法是最经典的 $LCA$ 求法，他改进了第二个朴素算法。</p>
 <p>我们可以看到朴素算法的瓶颈在于如何快速地向根进行跳转。朴素算法中每次跳转只能往上跳一步，我们考虑让结点跳转时能够多跳几步。但是，在第一个过程，我们不可能开一个数组记录下所有点往上跳几步是哪个点，这样空间复杂度是 $O(n^2)$ 的；在第二个过程中，如果每次跳了超过一步，那么可能相遇位置不是 $LCA$。</p>
 <p>我们预处理出每个结点 $x$ 的第 $2^i$ 个祖先 <code>fa[x][i]</code>。然后，我们每次就可以在 $O(\log h)$ 的时间内将任意一个点往上跳 $h$ 步。</p>
-<p>我们知道，$h$ 拆成二进制数的位数是 $O(\log h)$ 的。于是，将 $h$ 二进制分解，例如 $h=(5)<em>{10}=(101)</em>{2}$，这意味着我们需要将 $x$ 往上跳转 $2^0,2^2$ 次，即 $x \rightarrow  fa[x][0]$， $x \rightarrow fa[x][2]$。</p>
+<p>我们知道，$h$ 拆成二进制数的位数是 $O(\log h)$ 的。于是，将 $h$ 二进制分解，例如 $h=(5)_{10}=(101)_{2}$，这意味着我们需要将 $x$ 往上跳转 $2^0,2^2$ 次，即 $x \rightarrow  fa[x][0]$， $x \rightarrow fa[x][2]$。</p>
 <p>查询两个点 $u,v$ 的 $LCA$ 时，第一步将深度较大的结点 $u$ 往上跳 $dep[u]-dep[v]$ 步，如果两个点有祖孙关系，这步两个点已经重合，返回答案。</p>
 <p>否则，我们需要将两个点一起往上跳，但是这时我们不知道需要跳多少步才行。于是，可以想到二分，找到最大的深度差，使得两个点跳转上去仍然是不同的点，这是以 $LCA$ 为界的。如果我们跳 $2^i$ 步到了一个相同的祖先上，那么距离最近公共祖先的距离一定小于等于 $2^i$ ，要么恰好是距离 $2^i$，要么可以拆分成 $2^{i-1}+\dots$ ，于是我们再尝试跳转 $2^{i-1}$ 步，以此类推，一定可以跳到两个点的父亲相同。这个过程实际上也等价于二分。答案就是 $fa[u][0]$ 或 $fa[v][0]$。</p>
 <p>那么现在问题是如何预处理出 <code>fa[x][i]</code>。我们首先需要知道每个结点的父亲是什么，即 <code>fa[x][0]</code>。然后对于 $2^i(i&gt;0)$，有这样的 $dp$ 转移方程</p>
@@ -472,7 +472,7 @@ fa[x][i]=fa[fa[x][i-1]][i-1]</script><p>也就是，结点 $x$ 的第 $2^i$ 个�
 <p>单次询问的时间复杂度 $O(\log n)$。</p>
 <h4 id="参考代码-1"><a href="#参考代码-1" class="headerlink" title="参考代码"></a>参考代码</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> LCA &#123;</span><br><span class="line">    <span class="keyword">int</span> fa[maxn][<span class="number">20</span>], dep[maxn];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">        fa[u][<span class="number">0</span>] = f; dep[u] = dep[f] + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x: edge[u]) &#123;</span><br><span class="line">            <span class="keyword">int</span> v = x.first;</span><br><span class="line">            <span class="keyword">if</span> (v == f) <span class="keyword">continue</span>;</span><br><span class="line">            dfs(v, u);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        dfs(<span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">20</span>; j++) <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) </span><br><span class="line">            fa[i][j] = fa[fa[i][j - <span class="number">1</span>]][j - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">qlca</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (dep[u] &lt; dep[v]) swap(u, v);</span><br><span class="line">        <span class="keyword">int</span> tmp = dep[u] - dep[v];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; tmp; i++, tmp &gt;&gt;= <span class="number">1</span>) </span><br><span class="line">            <span class="keyword">if</span> (tmp &amp; <span class="number">1</span>) </span><br><span class="line">                u = fa[u][i];</span><br><span class="line">        <span class="keyword">if</span> (u == v) <span class="keyword">return</span> u;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">19</span>; i &gt;= <span class="number">0</span>; i--) </span><br><span class="line">            <span class="keyword">if</span> (fa[u][i] != fa[v][i]) </span><br><span class="line">                u = fa[u][i], v = fa[v][i];</span><br><span class="line">        <span class="keyword">return</span> fa[u][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="路径长度"><a href="#路径长度" class="headerlink" title="路径长度"></a>路径长度</h4><p>$LCA$ 的一个重要应用就是可以计算树上两点之间路径长度。</p>
-<p>在算法竞赛中，一个很重要的思路是前缀和思想。在序列 $a$ 上，如果我们预处理出所有 $\sum<em>{i=1}^k a_i(1\le k\le n)$，那么就可以 $O(1)$ 的时间内，回答任意一个区间的和 $\sum</em>{i=l}^r a<em>i=\sum</em>{i=1}^{r} a<em>i -\sum</em>{i=1}^{l-1}a_i$。</p>
+<p>在算法竞赛中，一个很重要的思路是前缀和思想。在序列 $a$ 上，如果我们预处理出所有 $\sum_{i=1}^k a_i(1\le k\le n)$，那么就可以 $O(1)$ 的时间内，回答任意一个区间的和 $\sum_{i=l}^r a_i=\sum_{i=1}^{r} a_i -\sum_{i=1}^{l-1}a_i$。</p>
 <p>我们可以把序列也看成一棵树，即一条链，区间求和代表端点之间的距离，上面这件事相应的也可以放到一般树上来做，同样预处理出所有点到根的路径长度。观察一下， $4$ 和 $10$ 之间的路径，可以拆开看成 $3$ 个部分，$1$ 到 $4$ 的路径，$1$ 到 $10$ 的路径，$1$ 到 $2$ 的路径，$2$ 是路径上的拐点，其实也是 $4$ 和 $10$ 的最近公共祖先。</p>
 <p>记 $path(u,v)$ 表示 $u$ 到 $v$ 的路径长度。如下图， $path(4,10)=path(1,4)+path(1,10)-2\cdot path(1,2)$。</p>
 <p>一般地，$path(u,v)=path(root,u)+path(root,v)-2\cdot path(root,LCA(u,v))$，我们将任意路径长度的计算全部都转移到了到根的距离，这部分可以预处理出来。应用倍增算法可以在 $O(\log n)$ 的时间内找到最近公共祖先，于是就可以相应的快速得到树上任意两点之间的距离。</p>
@@ -497,7 +497,7 @@ fa[x][i]=fa[fa[x][i-1]][i-1]</script><p>也就是，结点 $x$ 的第 $2^i$ 个�
 <p>最后，考虑动态加点和删点，用一个 $set$ 进行维护，因此每次插入和删除时，至多只会影响左右两个点的情况。</p>
 <h4 id="树上差分"><a href="#树上差分" class="headerlink" title="树上差分"></a>树上差分</h4><p>$LCA$ 可以用于树上打标记差分。</p>
 <p>我们知道树状数组是维护一个序列的前缀和，支持单点更新和单点查询，但是通过差分，我们可以使树状数组支持区间更新和单点查询（在之前的题目已经出现过）。</p>
-<p>使用树状数组维护序列 $a<em>i$，树状数组内存的每个位置 $i$ 的定义变为 $a_i-a</em>{i-1}$ ，即当前位置和前一个位置的差值。考虑区间更新时，连续区间 $(l,r]$ 内的差值并没有变化，变化的只有 $l$ 位置和 $r+1$ 位置，在 $l$ 上加 $x$，在 $r+1$ 上相应 $-x$ ，即代表 $[l,r]$ 区间内全体都加上了 $x$。查询时，直接查询前缀和即可。</p>
+<p>使用树状数组维护序列 $a_i$，树状数组内存的每个位置 $i$ 的定义变为 $a_i-a_{i-1}$ ，即当前位置和前一个位置的差值。考虑区间更新时，连续区间 $(l,r]$ 内的差值并没有变化，变化的只有 $l$ 位置和 $r+1$ 位置，在 $l$ 上加 $x$，在 $r+1$ 上相应 $-x$ ，即代表 $[l,r]$ 区间内全体都加上了 $x$。查询时，直接查询前缀和即可。</p>
 <p>在树上也可以做同样的事情去更新一条路径的权值，不过要注意一点，标记的定义是一个点和其儿子之间的差值，标记是从叶子结点往根结点上传。</p>
 <h5 id="例题1-2"><a href="#例题1-2" class="headerlink" title="例题1"></a>例题1</h5><p>给定一棵 $n$ 个点 $m$ 条边的无向联通图，有 $n-1$ 条边是树边，剩余边是环边。你现在需要斩断一条树边和一条环边，使得这张图不连通。求有多少种切割方案。</p>
 <p>其中 $1 \le n \le 10^5,1\le m \le 2 \cdot 10^5$。</p>
@@ -885,7 +885,7 @@ dp[u][i+j][1]=min(dp[u][i][1]+dp[v][j][1])</script><p>第一个方程意义是�
 <p>记 $size(u)$ 表示子树 $u$ 的大小。</p>
 <p>假设我们在进行子树 $u$ 中的转移，当前已经遍历过 $v_1,v_2,\dots ,v_k$，因此此时最多有物品数 $sum$</p>
 <script type="math/tex; mode=display">
-sum=1+size(v_1)+size(v_2)+\dots+size(v_k)</script><p>那么，遍历完 $v<em>{k+1}$，合并状态时，对于 $u$ 的状态只需要遍历 $1$ 到 $sum$ 个，对于 $v</em>{k+1} $ 的状态只需要遍历 $1$ 到 $size(v_{k+1})$。</p>
+sum=1+size(v_1)+size(v_2)+\dots+size(v_k)</script><p>那么，遍历完 $v_{k+1}$，合并状态时，对于 $u$ 的状态只需要遍历 $1$ 到 $sum$ 个，对于 $v_{k+1} $ 的状态只需要遍历 $1$ 到 $size(v_{k+1})$。</p>
 <p>看起来复杂度没什么变化？但是，实际上，在子树 $u$ 的每次转移过程中，我们只两两合并了子树内 $LCA $ 为 $u$ 的点对状态，而这个点对的总数 $O(n^2)$ 的。于是，时间复杂度为 $O(n^2) $。</p>
 <blockquote>
 <p>树形依赖背包其它例题：</p>
@@ -1058,7 +1058,7 @@ sum=1+size(v_1)+size(v_2)+\dots+size(v_k)</script><p>那么，遍历完 $v<em>{k
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

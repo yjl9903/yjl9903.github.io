@@ -224,6 +224,109 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/2/triewalker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/2/triewalker/" class="post-title-link" itemprop="url">Trie 图上的随机游走</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-02-06 22:48:20" itemprop="dateCreated datePublished" datetime="2020-02-06T22:48:20+08:00">2020-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-22 22:21:05" itemprop="dateModified" datetime="2020-02-22T22:21:05+08:00">2020-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/2/triewalker/" class="post-meta-item leancloud_visitors" data-flag-title="Trie 图上的随机游走" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定 $n$ 个长度均为 $m$ 的字符串，现在你开始投骰子，有 $P_c$ 的概率投出字符 $c$，求第一次出现的串是第 $i$ 个的概率。</p>
+<h2 id="一般做法"><a href="#一般做法" class="headerlink" title="一般做法"></a>一般做法</h2><p>对这个字符串集合建出 Trie 图后，问题等价于给定一些终点的无向图随机游走问题。</p>
+<p>令结点数为 $s$，建出概率转移矩阵后，实际上只有 $s-1$ 条有效的方程，因为无法转移到根节点。但是，随机游走必定会在某个时刻终结，也就是走到所有终止结点的概率和为 $1$。添加这么一条方程后，高斯消元，即可解出在每个终止结点结束的概率。</p>
+<p>时间复杂度：$O(nm|\Sigma|+n^3m^3)$。</p>
+<h2 id="加强做法"><a href="#加强做法" class="headerlink" title="加强做法"></a>加强做法</h2><p>令概率生成函数 $[x^k]G(x)$ 表示在 $k$ 时刻尚未停止的概率，$[x^k]F_i(x)$ 表示在 $k$ 时刻末尾是第 $i$ 个串的概率。</p>
+<p>我们要求的就是 $F_i(1),F_i(2),\dots, F_i(n)$。</p>
+<p>考虑在每个尚未停止的时刻，往后走一步的情况，即 $xG(x)$，再加上初始时的概率 $1$，这时要么在此处迎来某个串的结束，要么尚未停止，有下式。</p>
+<script type="math/tex; mode=display">
+1+xG(x)=G(x)+\sum_{i=1}^n F_i(x)</script><p>记 $P(S)$ 表示一个串的出现概率，即 $P(S)=\prod_{i=1}^{|S|} P_{S_i}$</p>
+<p>对于每个串 $i$，在一个未终止时刻，往后加第 $i$ 个串，即 $G(x)P(s_i)x^m$。这时情况很多，因为加这个串的时候可能中途出现已经终止的情况，设第 $j$ 个串在新加串的 $k$ 位置终止，因此 $s_i[1 \dots k]=s_j[ m - k + 1 \dots m]$，即第 $i$ 个串的前缀等于长度为 $k$ 的第 $j$ 个串的后缀，此时的概率生成函数就是 $F_j(x)P(s_i[k+1 \dots m])x^{m-k}$。</p>
+<p>我们枚举每个串 $j$ 和它的前缀长度 $k$，有下式：</p>
+<script type="math/tex; mode=display">
+G(x)P(s_i)x^m = \sum_{j=1}^n \sum_{k=1}^m [ s_i[1 \dots k]=s_j[ m - k + 1 \dots m] ] F_j(x)P(s_i[k+1 \dots m])x^{m-k}</script><p>结合我们要求的，带入 $x=1$，可以得到 $n$ 个方程，但是 $G(1)$ 也是未知量，因此有 $n+1$ 个未知量，联立 $\sum_{i=1} F_i(1)=1$，即可得到 $n+1$ 个方程，高斯消元。注意这里我们的变量数是 $n+1$，不是一般做法的最大 $nm$。</p>
+<p>时间复杂度：$O(n^2m+n^3)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/2/triewalker/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/2/hdu5320/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -837,7 +940,7 @@
       
           <h1 id="徐州-D-Rikka-with-Subsequences"><a href="#徐州-D-Rikka-with-Subsequences" class="headerlink" title="徐州 D Rikka with Subsequences"></a>徐州 D Rikka with Subsequences</h1><p>UpSolved by XLor.</p>
 <p>求每种本质不同好子序列的出现次数立方和。</p>
-<p>令 $f(a)$ 表示子序列 $a$ 的出现次数，立方和展开一下，$\sum<em>{i=1}^{f(a)} \sum</em>{j=1}^{f(a)} \sum_{k=1}^{f(a)} 1$。观察上式的实际意义，等价于将序列复制三份，求公共好子序列的个数。举例来说，假如 $a$ 作为子序列出现了 $2$ 次，分别出现在位置序列 $a_1,a_2$，那么有公共子序列 $(a_1,a_1,a_1)$ 一直到 $(a_2,a_2,a_2)$ 共 $8$ 种对应。</p>
+<p>令 $f(a)$ 表示子序列 $a$ 的出现次数，立方和展开一下，$\sum_{i=1}^{f(a)} \sum_{j=1}^{f(a)} \sum_{k=1}^{f(a)} 1$。观察上式的实际意义，等价于将序列复制三份，求公共好子序列的个数。举例来说，假如 $a$ 作为子序列出现了 $2$ 次，分别出现在位置序列 $a_1,a_2$，那么有公共子序列 $(a_1,a_1,a_1)$ 一直到 $(a_2,a_2,a_2)$ 共 $8$ 种对应。</p>
 <p>记 $dp(i,j,k)$ 表示在第一个串以 $i$ 结尾，第二个 $j$ 结尾，第三个 $k$ 结尾的方案数。$dp(i,j,k)$ 有值当且仅当 $a_i=a_j=a_k$。</p>
 <script type="math/tex; mode=display">
 dp(i,j,k)=[ a_i=a_j=a_k ]( \sum_{i'=1}^{i-1} \sum_{j'=1}^{j-1} \sum_{k'=1}^{k-1} dp(i',j',k') [M(a_{j'},a_i)] )</script><p>转移过程相当于同时从 $(i’,j’,k’)$ 走到 $(i,j,k)$，我们将这个过程拆开变成 $3$ 个阶段，钦定先走 $i$，再走 $k$，最后走 $j$。也就是说最后一步的 $j’$ 和 $i$ 两个之间必须可以走。</p>
@@ -860,7 +963,7 @@ dp(i,j,k)=[ a_i=a_j=a_k ] ( \sum_{j'=1}^{j-1} \sum_{k'=1}^{k-1} g(i,j',k')) \\</
 <p>记 $dp(i,0/1)$ 表示 $i$ 位置是否被用过的最小最大值，当前下界为 $D$。</p>
 <script type="math/tex; mode=display">
 dp(i,0)=dp(i-1,1) \\
-dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上式中的 $a<em>i,a_i+a</em>{i-1}$ 均会在 $&lt; D$ 时，被换成 $\infty$。最终最小的最大值为 $dp(n,1)$。</p>
+dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上式中的 $a_i,a_i+a_{i-1}$ 均会在 $&lt; D$ 时，被换成 $\infty$。最终最小的最大值为 $dp(n,1)$。</p>
 <p>上面的 $dp$ 状态改成可以线段树动态维护的，允许区间合并的状态。</p>
 <p>令 $dp(l,r,0/1,0/1)$ 表示：</p>
 <ul>
@@ -1202,132 +1305,6 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/12/bytedace2020selection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/bytedace2020selection/" class="post-title-link" itemprop="url">2020 ByteDance 网络选拔赛</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-12-21 22:39:05 / 修改时间：23:06:36" itemprop="dateCreated datePublished" datetime="2019-12-21T22:39:05+08:00">2019-12-21</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/12/bytedace2020selection/" class="post-meta-item leancloud_visitors" data-flag-title="2020 ByteDance 网络选拔赛" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-<th style="text-align:center">M</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">36</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><a href="http://opentrains.mipt.ru/~ejudge/showres.cgi?data=bytedance2020online" target="_blank" rel="noopener">榜单</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/bytedace2020selection/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1378,7 +1355,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

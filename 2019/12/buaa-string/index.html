@@ -355,9 +355,9 @@
 <p>结论：一个串的本源平方串最多只有 $2n$ 个。</p>
 <p>扣出所有的本源平方串，维护出以每个点开始的最短平方串，每个点结束的最短平方串，然后就是一个类似于二维数点的过程。</p>
 <p>注意：某个点开始和结尾可能有多个串，因此扣出本源平方后要预处理一下。</p>
-<h2 id="J-Cool-Slogans"><a href="#J-Cool-Slogans" class="headerlink" title="J Cool Slogans"></a>J Cool Slogans</h2><p>给定一个串 $S$，构造一个最长的序列 $s<em>1,s_2,\dots,s_k$，满足 $\forall 1\le i \le k$，$s_i$ 是 $S$ 的子串，且 $\forall 2 \le i \le k$，$s</em>{i-1}$ 在 $s_i$ 中出现至少两次。</p>
+<h2 id="J-Cool-Slogans"><a href="#J-Cool-Slogans" class="headerlink" title="J Cool Slogans"></a>J Cool Slogans</h2><p>给定一个串 $S$，构造一个最长的序列 $s_1,s_2,\dots,s_k$，满足 $\forall 1\le i \le k$，$s_i$ 是 $S$ 的子串，且 $\forall 2 \le i \le k$，$s_{i-1}$ 在 $s_i$ 中出现至少两次。</p>
 <p>首先，需要注意到一个结论：可以构造一个序列，每个都是后一个的后缀，成为满足题意的最长序列。</p>
-<p>证明：如果 $s<em>k$ 不是 $s</em>{k+1}$ 的后缀，考虑 $s<em>k$ 在 $s</em>{k+1}$ 的最后一个出现位置，把 $s<em>{k+1}$ 的这一部分全部削掉。显然，削过的 $s</em>{k+1}$ 在 $s_{k+2}$ 仍然出现至少两次，同样考虑最后一个出现位置进行处理，直到最后一个。</p>
+<p>证明：如果 $s_k$ 不是 $s_{k+1}$ 的后缀，考虑 $s_k$ 在 $s_{k+1}$ 的最后一个出现位置，把 $s_{k+1}$ 的这一部分全部削掉。显然，削过的 $s_{k+1}$ 在 $s_{k+2}$ 仍然出现至少两次，同样考虑最后一个出现位置进行处理，直到最后一个。</p>
 <p>考虑后缀自动机的结点（等价类），发现有一个性质：等价类中不可能有一个串在最长的串中出现两次。</p>
 <p>证明：假设 $A$ 是某个等价类中的最长串，$B$ 属于这个等价类，且 $B$ 在 $A$ 中出现两次。那么根据等价类的定义，$A$ 也会在 $B$ 所有位置出现，这会导致 $A$ 串无限向左延伸，直到到达最左端。那么此时，$B$ 会在 $A$ 中某个位置出现，而 $A$ 不可能继续延伸，因此 $A$ 和 $B$ 的结束位置集合不同，矛盾。</p>
 <p>因此，一个等价类集合，我们只需要考虑一个串即可，不妨考虑最长串，在 fail 树上从上往下贪心地转移。</p>
@@ -467,7 +467,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">278</span>
+          <span class="site-state-item-count">279</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
