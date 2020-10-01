@@ -224,6 +224,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/10/2020gf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/10/2020gf/" class="post-title-link" itemprop="url">Grakn Forces 2020 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-10-01 12:23:34 / 修改时间：12:54:56" itemprop="dateCreated datePublished" datetime="2020-10-01T12:23:34+08:00">2020-10-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/10/2020gf/" class="post-meta-item leancloud_visitors" data-flag-title="Grakn Forces 2020 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Circle-Coloring"><a href="#A-Circle-Coloring" class="headerlink" title="A Circle Coloring"></a>A Circle Coloring</h1><p>每个点有 $3$ 种选择，一个点需要与前后不同，显然遍历一遍即可。</p>
+<h1 id="B-Arrays-Sum"><a href="#B-Arrays-Sum" class="headerlink" title="B Arrays Sum"></a>B Arrays Sum</h1><p>注意到，每种数有多个并没有用，假设一共有 $n$ 种数。</p>
+<p>考虑 $k=2$ 的时候情况，如果 $n \le 2$，那么一次操作就能完成，否则之后每次前面一部分填 $0$，然后构造下一个数。</p>
+<p>因此 $k&gt;2$ 也是类似的，第一步制造 $k$ 个，然后每次制造 $k-1$。</p>
+<h1 id="C-Discrete-Acceleration"><a href="#C-Discrete-Acceleration" class="headerlink" title="C Discrete Acceleration"></a>C Discrete Acceleration</h1><p>直接对着题意模拟即可。</p>
+<h1 id="D-Searchlights"><a href="#D-Searchlights" class="headerlink" title="D Searchlights"></a>D Searchlights</h1><p>注意到，被控制的区域呈现一种下降台阶的形状。于是，每个人，要么往上走，要么往右走，要么走到某个拐角处。</p>
+<p>于是，每个人有很多种选择 $(x_j,y_j)$，表示他两个方向需要的步数。</p>
+<p>按 $x$ 从小到大枚举，如果所有人都满足过了，在所有人 $y$ 的最小值，取最大值。</p>
+<h1 id="E-Avoid-Rainbow-Cycles"><a href="#E-Avoid-Rainbow-Cycles" class="headerlink" title="E Avoid Rainbow Cycles"></a>E Avoid Rainbow Cycles</h1><p>注意到，对于每个集合，不需要真的搞出最大团，只要按顺序连成一条链，如果这个图有环，那么原图必有环。</p>
+<p>因此题目要求的是，删除最小的边，使得原图没有环，也就是加入最多的树边。</p>
+<p>做一个类似 MST 的过程即可。</p>
+<h1 id="F-Two-Different"><a href="#F-Two-Different" class="headerlink" title="F Two Different"></a>F Two Different</h1><p>考虑 $n=2^k$，我们可以每次将数组对半分，如果左右半边都分别被弄成了同样的数，那么我们通过左右两边一一对应，就能将整个区间弄成同一个数。</p>
+<p>进一步，考虑 $n$ 的最高位，类似 ST 表，做两次即可。</p>
+<h1 id="G-Clusterization-Counting"><a href="#G-Clusterization-Counting" class="headerlink" title="G Clusterization Counting"></a>G Clusterization Counting</h1><p>给定一个无向带权完全图，每条边边权不同，求有多少种点集的划分方案，使得每个团内的所有边权小于该团所有向外的出边。</p>
+<p>观察 Kruskal 建最小生成树的过程，每次合并两个连通块，新加入那条边的权值一定大于两个连通块内的所有边，于是我们可以合并两个连通块的 <code>dp</code> 值。</p>
+<p>合并 <code>dp</code> 值只需要做一个类似卷积的过程即可。</p>
+<p>特别地，如果某个连通块本身就是 $1$ 个团，那么其分成 $1$ 块的方案数 $+1$。</p>
+<p>具体实现可以构造一棵 Kruskal 重构树，做树形背包的 <code>dp</code>。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/10/2020gf/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/9/2018nwerc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -247,10 +348,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-09-29 01:30:41 / 修改时间：02:11:49" itemprop="dateCreated datePublished" datetime="2020-09-29T01:30:41+08:00">2020-09-29</time>
+              <time title="创建时间：2020-09-29 01:30:41" itemprop="dateCreated datePublished" datetime="2020-09-29T01:30:41+08:00">2020-09-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-10-01 12:32:12" itemprop="dateModified" datetime="2020-10-01T12:32:12+08:00">2020-10-01</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -1367,133 +1474,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/8/2020nowcoder8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/8/2020nowcoder8/" class="post-title-link" itemprop="url">2020 牛客暑期多校训练营第 8 场</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-03 22:52:43 / 修改时间：23:02:50" itemprop="dateCreated datePublished" datetime="2020-08-03T22:52:43+08:00">2020-08-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/%E7%89%9B%E5%AE%A2%E5%A4%9A%E6%A0%A1/" itemprop="url" rel="index">
-                    <span itemprop="name">牛客多校</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/8/2020nowcoder8/" class="post-meta-item leancloud_visitors" data-flag-title="2020 牛客暑期多校训练营第 8 场" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">129</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/8/2020nowcoder8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1544,7 +1524,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">279</span>
+          <span class="site-state-item-count">280</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1557,7 +1537,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

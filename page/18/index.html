@@ -224,6 +224,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/matrix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/matrix/" class="post-title-link" itemprop="url">矩阵运算</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-19 13:37:23" itemprop="dateCreated datePublished" datetime="2019-02-19T13:37:23+08:00">2019-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-05 19:21:32" itemprop="dateModified" datetime="2019-03-05T19:21:32+08:00">2019-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/matrix/" class="post-meta-item leancloud_visitors" data-flag-title="矩阵运算" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Mat</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">2</span>;</span><br><span class="line">    ll a[M][M];</span><br><span class="line">    Mat() &#123; ms(a, <span class="number">0</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123; ms(a, <span class="number">0</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">eye</span><span class="params">()</span> </span>&#123; <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++) a[i][i] = <span class="number">1</span>; &#125;</span><br><span class="line">    ll* <span class="keyword">operator</span> [] (ll x) &#123; <span class="keyword">return</span> a[x]; &#125;</span><br><span class="line">    <span class="keyword">const</span> ll* <span class="keyword">operator</span> [] (ll x) <span class="keyword">const</span> &#123; <span class="keyword">return</span> a[x]; &#125;</span><br><span class="line">    Mat <span class="keyword">operator</span> * (<span class="keyword">const</span> Mat&amp; b) &#123;</span><br><span class="line">        <span class="keyword">const</span> Mat&amp; a = *<span class="keyword">this</span>; Mat r;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M; j++)</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; M; k++)</span><br><span class="line">                    r[i][j] = (r[i][j] + a[i][k] * b[k][j]) % mod;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">Mat <span class="title">pow</span><span class="params">(ll n)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        Mat a = *<span class="keyword">this</span>, r; r.eye();</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (n &amp; <span class="number">1</span>)  r = r * a;</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span>; a = a * a;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">    Mat <span class="keyword">operator</span> + (<span class="keyword">const</span> Mat&amp; b) &#123;</span><br><span class="line">        <span class="keyword">const</span> Mat&amp; a = *<span class="keyword">this</span>; Mat r;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M; j++)</span><br><span class="line">                r[i][j] = (a[i][j] + b[i][j]) % mod;</span><br><span class="line">        <span class="keyword">return</span> r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; M; i++) <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; M; j++)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%lld%c"</span>, (*<span class="keyword">this</span>)[i][j], j == M - <span class="number">1</span> ? <span class="string">'\n'</span> : <span class="string">' '</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/matrix/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round539/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1130,93 +1220,6 @@ dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每�
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/yxstone/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/2/yxstone/" class="post-title-link" itemprop="url">异象石</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-02-04 15:59:45 / 修改时间：16:06:41" itemprop="dateCreated datePublished" datetime="2019-02-04T15:59:45+08:00">2019-02-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/2/yxstone/" class="post-meta-item leancloud_visitors" data-flag-title="异象石" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给一棵带边权的无根树，维护关键点的增加和删除，询问使得所有关键点联通的最小边集的权值和。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>考虑 $dfs$ 遍历一棵树的过程，每一条树边恰好一进一出，走过了两次。</p>
-<p>对于树的一个子联通块，遍历的过程也是如此，按照 $dfs$ 序经过了其最小边集中的每条边两次。</p>
-<p>于是，我们只需要按照 $dfs$ 序维护一个 $set$，增加和删除时根据前驱和后继更新答案即可。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/2/yxstone/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1267,7 +1270,7 @@ dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">279</span>
+          <span class="site-state-item-count">280</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1280,7 +1283,7 @@ dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每�
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
