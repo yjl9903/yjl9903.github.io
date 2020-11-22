@@ -224,6 +224,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/ntt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/1/ntt/" class="post-title-link" itemprop="url">快速数论变换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-25 23:09:54" itemprop="dateCreated datePublished" datetime="2019-01-25T23:09:54+08:00">2019-01-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-05 19:44:25" itemprop="dateModified" datetime="2019-03-05T19:44:25+08:00">2019-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/1/ntt/" class="post-meta-item leancloud_visitors" data-flag-title="快速数论变换" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll n)</span> </span>&#123;</span><br><span class="line">    ll r = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) r = r * x % mod;</span><br><span class="line">        x = x * x % mod; n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">inv</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> qpow(x, mod - <span class="number">2</span>); &#125;</span><br><span class="line">ll rev[maxn &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">step</span> = <span class="number">0</span>, n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; n &lt; m; n &lt;&lt;= <span class="number">1</span>) ++<span class="built_in">step</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) </span><br><span class="line">        rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (<span class="built_in">step</span> - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span> n;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ntt</span><span class="params">(<span class="built_in">vector</span>&lt;ll&gt;&amp; a, <span class="keyword">int</span> n, <span class="keyword">int</span> op)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="keyword">if</span> (i &lt; rev[i]) swap(a[i], a[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">2</span>; h &lt;= n; h &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        ll wn = qpow(<span class="number">3</span>, (mod - <span class="number">1</span>) / h);</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">-1</span>) wn = inv(wn);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += h) &#123;</span><br><span class="line">            ll w = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; i + h / <span class="number">2</span>; j++) &#123;</span><br><span class="line">                ll u = a[j], t = a[j + h / <span class="number">2</span>] * w % mod;</span><br><span class="line">                a[j] = (u + t) % mod;</span><br><span class="line">                a[j + h / <span class="number">2</span>] = (u - t + mod) % mod;</span><br><span class="line">                w = w * wn % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (op == <span class="number">-1</span>) &#123;</span><br><span class="line">        ll rn = inv(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) a[i] = a[i] * rn % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/1/ntt/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/round535/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1296,117 +1386,11 @@ a_{j},a_{j+1},\dots,a_{j+k-1}</script><p>这两个不同的序列同构，询问
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/eoj12/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/eoj12/" class="post-title-link" itemprop="url">EOJ Monthly 2018.12 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-12 00:20:37" itemprop="dateCreated datePublished" datetime="2019-01-12T00:20:37+08:00">2019-01-12</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-02-22 23:14:05" itemprop="dateModified" datetime="2019-02-22T23:14:05+08:00">2019-02-22</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/eoj12/" class="post-meta-item leancloud_visitors" data-flag-title="EOJ Monthly 2018.12 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>咕咕咕了一个月的补题。</p>
-<h1 id="A-仰望星空"><a href="#A-仰望星空" class="headerlink" title="A 仰望星空"></a>A 仰望星空</h1><p>总共 $n$ 天，已知第一天权值为 $b$，最后一天权值为 $a$，每天权值不会增加，问一共有多少种可能的权值总和。</p>
-<p>中间 $n-2$ 天的权值和的范围是 $[ (n-2) \times a, (n-2) \times b ]$，一共有 $(n-2)(b-a)+1$ 种。</p>
-<h1 id="B-清点星辰"><a href="#B-清点星辰" class="headerlink" title="B 清点星辰"></a>B 清点星辰</h1><p>$n$ 个点随机均匀地撒在 $1 \times 1$ 的矩形内，求最短距离的期望。</p>
-<p>随机模拟，注意保证总的复杂度为 $1e8$。</p>
-<h1 id="C-她的名字"><a href="#C-她的名字" class="headerlink" title="C 她的名字"></a>C 她的名字</h1><p>给一个长度为 $2000$ 的数字串，每次询问从母串中取出 $N$ 个字符，组成结尾为 $XY$ 的子序列方案数。</p>
-<p>预处理每种数字的出现次数的后缀和。</p>
-<p>预处理每一种 $XY$ 的情况，即每一个数字为 $X$ 的位置的后缀有多少 $Y$，前面有多少个数字。</p>
-<p>对于每个询问，每个 $X$ 的位置 $pos$，对应后缀 $Y$ 的个数 $cnt$，答案为 $\sum {pos-1 \choose N-2 } \times cnt$。</p>
-<p>注意保存一下重复的询问答案。</p>
-<h1 id="E-管理孩子"><a href="#E-管理孩子" class="headerlink" title="E 管理孩子"></a>E 管理孩子</h1><p>二分答案。</p>
-<p>对于每个子树，维护一个权值：这棵子树中的某个节点最多还能够覆盖多少节点（+）或者这棵子树还有多少个顶点没有被覆盖到（-），可以用正负号表示这两种权值（不会同时出现）。</p>
-<p>dfs 到某一个节点时，考虑这个节点所有儿子的权值，这些权值有正有负，所有负的权值的和，也就是这个子树总共还有多个点没有被覆盖。</p>
-<p>显然最多只有一个带有正权值的儿子对这个子树的覆盖有贡献，因为如果覆盖到了根节点，那么其他正儿子就不能再覆盖根节点了（不联通），所以需要选择一个权值最大的正儿子。</p>
-<p>如果正儿子权值比较大，就让这个顶点覆盖这个子树所有未覆盖顶点，然后将还能够覆盖的个数回溯到当前子树的父亲。</p>
-<p>如果正儿子权值比较小，那么就需要当前子树的父亲来覆盖自己，将还需覆盖的个数回溯回去。</p>
-<p>如果构造成功，那么根节点会返回一个非负值。否则，表示根节点的父亲需要提供一些覆盖给这棵树，即构造失败。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/eoj12/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1452,14 +1436,14 @@ a_{j},a_{j+1},\dots,a_{j+k-1}</script><p>这两个不同的序列同构，询问
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">280</span>
+          <span class="site-state-item-count">281</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">36</span>
+        <span class="site-state-item-count">37</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
