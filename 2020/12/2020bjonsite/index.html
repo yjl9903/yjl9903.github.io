@@ -50,22 +50,20 @@
   };
 </script>
 
-  <meta name="description" content="题面给定一个长度为 $n$ 的数组，对于所有子数组求最大子段和。 其中 $2 \le n \le 10^5$。 分析考虑分治，也就是需要统计跨越中点 $m$ 的贡献。 注意到，跨越中点的区间的最大子段和位置，它要么完全在左半边，要么完全在右半边，要么是中点往左右延申得到的。 我们在区间 $[l,m]$ 枚举左端点的位置，可以发现右端点从左往右移动的过程中：首先是一段使用完全在左半边，然后是一段左右">
+  <meta name="description" content="rank solved A B C D E F G H I J K L M     54 8 Ø Ø . . O . O . O Ø O . Ø">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解">
-<meta property="og:url" content="https://xlor.cn/2020/11/2020bjonsiteB/index.html">
+<meta property="og:title" content="2020 ICPC 小米邀请赛决赛">
+<meta property="og:url" content="https://xlor.cn/2020/12/2020bjonsite/index.html">
 <meta property="og:site_name" content="XLor&#39;s Blog">
-<meta property="og:description" content="题面给定一个长度为 $n$ 的数组，对于所有子数组求最大子段和。 其中 $2 \le n \le 10^5$。 分析考虑分治，也就是需要统计跨越中点 $m$ 的贡献。 注意到，跨越中点的区间的最大子段和位置，它要么完全在左半边，要么完全在右半边，要么是中点往左右延申得到的。 我们在区间 $[l,m]$ 枚举左端点的位置，可以发现右端点从左往右移动的过程中：首先是一段使用完全在左半边，然后是一段左右">
+<meta property="og:description" content="rank solved A B C D E F G H I J K L M     54 8 Ø Ø . . O . O . O Ø O . Ø">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-22T11:45:24.000Z">
-<meta property="article:modified_time" content="2020-12-10T14:37:59.062Z">
+<meta property="article:published_time" content="2020-12-10T14:39:58.000Z">
+<meta property="article:modified_time" content="2020-12-10T14:47:08.598Z">
 <meta property="article:author" content="XLor">
-<meta property="article:tag" content="DP">
-<meta property="article:tag" content="Solution">
-<meta property="article:tag" content="Divide and Conquer">
+<meta property="article:tag" content="Trainings">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://xlor.cn/2020/11/2020bjonsiteB/">
+<link rel="canonical" href="https://xlor.cn/2020/12/2020bjonsite/">
 
 
 <script id="page-configurations">
@@ -79,7 +77,7 @@
   };
 </script>
 
-  <title>2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解 | XLor's Blog</title>
+  <title>2020 ICPC 小米邀请赛决赛 | XLor's Blog</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150361094-2"></script>
     <script>
@@ -231,7 +229,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/11/2020bjonsiteB/">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/2020bjonsite/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -244,7 +242,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解
+          2020 ICPC 小米邀请赛决赛
         </h2>
 
         <div class="post-meta">
@@ -253,30 +251,30 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-22 19:45:24" itemprop="dateCreated datePublished" datetime="2020-11-22T19:45:24+08:00">2020-11-22</time>
+              <time title="创建时间：2020-12-10 22:39:58 / 修改时间：22:47:08" itemprop="dateCreated datePublished" datetime="2020-12-10T22:39:58+08:00">2020-12-10</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-10 22:37:59" itemprop="dateModified" datetime="2020-12-10T22:37:59+08:00">2020-12-10</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
+                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
+                    <span itemprop="name">训练</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%AD%E7%BB%83/%E7%8E%B0%E5%9C%BA%E8%B5%9B/" itemprop="url" rel="index">
+                    <span itemprop="name">现场赛</span>
                   </a>
                 </span>
             </span>
 
           
-            <span id="/2020/11/2020bjonsiteB/" class="post-meta-item leancloud_visitors" data-flag-title="2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解" title="阅读次数">
+            <span id="/2020/12/2020bjonsite/" class="post-meta-item leancloud_visitors" data-flag-title="2020 ICPC 小米邀请赛决赛" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -293,14 +291,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>给定一个长度为 $n$ 的数组，对于所有子数组求最大子段和。</p>
-<p>其中 $2 \le n \le 10^5$。</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>考虑分治，也就是需要统计跨越中点 $m$ 的贡献。</p>
-<p>注意到，跨越中点的区间的最大子段和位置，它要么完全在左半边，要么完全在右半边，要么是中点往左右延申得到的。</p>
-<p>我们在区间 $[l,m]$ 枚举左端点的位置，可以发现右端点从左往右移动的过程中：首先是一段使用完全在左半边，然后是一段左右拼接，最后是完全在右半边。</p>
-<p>二分出 $2$ 个边界的位置即可。</p>
+        <div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">rank</th>
+<th style="text-align:center">solved</th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+<th style="text-align:center">F</th>
+<th style="text-align:center">G</th>
+<th style="text-align:center">H</th>
+<th style="text-align:center">I</th>
+<th style="text-align:center">J</th>
+<th style="text-align:center">K</th>
+<th style="text-align:center">L</th>
+<th style="text-align:center">M</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">54</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">Ø</td>
+<td style="text-align:center">Ø</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">Ø</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">Ø</td>
+</tr>
+</tbody>
+</table>
+</div>
 <a id="more"></a>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cassert&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="keyword">long</span> <span class="keyword">long</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf = <span class="number">1l</span>l &lt;&lt; <span class="number">60</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">200000</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, a[maxn];</span><br><span class="line">ll suf1[maxn], suf2[maxn], pre1[maxn], pre2[maxn];</span><br><span class="line">ll pre3[maxn], pre4[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function">ll <span class="title">solve</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">    <span class="keyword">return</span> a[l];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (l &gt; r) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> m = (l + r) / <span class="number">2</span>;</span><br><span class="line">  ll ans = <span class="number">0</span>;</span><br><span class="line">  &#123;</span><br><span class="line">    ll sum = <span class="number">0</span>, dp = <span class="number">0</span>;</span><br><span class="line">    suf1[m + <span class="number">1</span>] = -inf;</span><br><span class="line">    suf2[m + <span class="number">1</span>] = -inf;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &gt;= l; i--) &#123;</span><br><span class="line">      sum += a[i];</span><br><span class="line">      dp = <span class="built_in">max</span>(dp, <span class="number">0l</span>l) + a[i];</span><br><span class="line">      suf1[i] = <span class="built_in">max</span>(suf1[i + <span class="number">1</span>], sum);</span><br><span class="line">      suf2[i] = <span class="built_in">max</span>(suf2[i + <span class="number">1</span>], dp);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#123;</span><br><span class="line">    ll sum = <span class="number">0</span>, dp = <span class="number">0</span>;</span><br><span class="line">    pre1[m] = -inf;</span><br><span class="line">    pre2[m] = -inf;</span><br><span class="line">    pre3[m] = <span class="number">0</span>;</span><br><span class="line">    pre4[m] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = m + <span class="number">1</span>; i &lt;= r; i++) &#123;</span><br><span class="line">      sum += a[i];</span><br><span class="line">      dp = <span class="built_in">max</span>(dp, <span class="number">0l</span>l) + a[i];</span><br><span class="line">      pre1[i] = <span class="built_in">max</span>(pre1[i - <span class="number">1</span>], sum);</span><br><span class="line">      pre2[i] = <span class="built_in">max</span>(pre2[i - <span class="number">1</span>], dp);</span><br><span class="line">      pre3[i] = pre1[i] + pre3[i - <span class="number">1</span>];</span><br><span class="line">      pre4[i] = pre2[i] + pre4[i - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = m; i &gt;= l; i--) &#123;</span><br><span class="line">    <span class="keyword">int</span> p1 = upper_bound(pre1 + m + <span class="number">1</span>, pre1 + r + <span class="number">1</span>, suf2[i] - suf1[i]) - pre1;</span><br><span class="line">    <span class="keyword">int</span> p2 = upper_bound(pre2 + m + <span class="number">1</span>, pre2 + r + <span class="number">1</span>, suf2[i]) - pre2;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> pos1 = <span class="built_in">min</span>(p1, p2);</span><br><span class="line">    ans += <span class="number">1l</span>l * (pos1 - m) * suf2[i];</span><br><span class="line">    <span class="comment">// suf2 =&gt; [m, pos1)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ql = pos1, qr = r, pos2 = pos1 - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (ql &lt;= qr) &#123;</span><br><span class="line">      <span class="keyword">int</span> m = (ql + qr) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span> (pre1[m] + suf1[i] &gt;= pre2[m]) &#123;</span><br><span class="line">        pos2 = m;</span><br><span class="line">        ql = m + <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        qr = m - <span class="number">1</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (pos1 &lt;= pos2) &#123;</span><br><span class="line">      ans += <span class="number">1l</span>l * (pos2 - pos1 + <span class="number">1</span>) * suf1[i] + pre3[pos2] - pre3[pos1 - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// suf1 + pre1 =&gt; [pos1, pos2]</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (pos2 &lt; r) &#123;</span><br><span class="line">      ans += pre4[r] - pre4[pos2];</span><br><span class="line">      <span class="comment">// pre2 =&gt; (pos2, r]</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ans += solve(l, m - <span class="number">1</span>);</span><br><span class="line">  ans += solve(m + <span class="number">1</span>, r);</span><br><span class="line">  <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, a + i);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%llu\n"</span>, solve(<span class="number">1</span>, n));</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>UpSolved by miaojie.</p>
+<p>一般图匹配博弈。</p>
+<h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><p>UpSolved by XLor.</p>
+<p><a href="https://xlor.cn/2020/11/2020bjonsite/">2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解</a>。</p>
+<h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><p>Solved by miaojie.</p>
+<p>答案一定是长度或长度 $-1$。模 $11$ 分类，剩余分别讨论构造。</p>
+<h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><p>Solved by ytriayggg (03:41:24).</p>
+<p>注意到，每次选择一定都是一个极大的独立集。</p>
+<p>状压 DP 前预处理了一些独立集。</p>
+<p>正解是省去一维状态，直接枚举子集的子集。</p>
+<h1 id="I"><a href="#I" class="headerlink" title="I"></a>I</h1><p>Solved by XLor (04:29:42).</p>
+<p>单调队列优化 DP（赛场写了线段树）。</p>
+<h1 id="J"><a href="#J" class="headerlink" title="J"></a>J</h1><p>UpSolved by XLor.</p>
+<p>最终书本形成的形状一定是一个横过来的人字形。</p>
+<p>直接状压 DP。</p>
+<h1 id="M"><a href="#M" class="headerlink" title="M"></a>M</h1><p>UpSolved by XLor.</p>
+<p><a href="https://xlor.cn/2020/11/2020bjonsiteM/">2020 ICPC 小米邀请赛决赛 M Rikka with Employees 题解</a>。</p>
 
     </div>
 
@@ -316,7 +366,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://xlor.cn/2020/11/2020bjonsiteB/" title="2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解">https://xlor.cn/2020/11/2020bjonsiteB/</a>
+    <a href="https://xlor.cn/2020/12/2020bjonsite/" title="2020 ICPC 小米邀请赛决赛">https://xlor.cn/2020/12/2020bjonsite/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -327,25 +377,23 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/DP/" rel="tag"># DP</a>
-              <a href="/tags/Solution/" rel="tag"># Solution</a>
-              <a href="/tags/Divide-and-Conquer/" rel="tag"># Divide and Conquer</a>
+              <a href="/tags/Trainings/" rel="tag"># Trainings</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
-                <a href="/2020/10/2020gf/" rel="next" title="Grakn Forces 2020 题解">
-                  <i class="fa fa-chevron-left"></i> Grakn Forces 2020 题解
+                <a href="/2020/11/2020bjonsiteM/" rel="next" title="2020 ICPC 小米邀请赛决赛 M Rikka with Employees 题解">
+                  <i class="fa fa-chevron-left"></i> 2020 ICPC 小米邀请赛决赛 M Rikka with Employees 题解
                 </a>
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-                <a href="/2020/11/2020bjonsiteM/" rel="prev" title="2020 ICPC 小米邀请赛决赛 M Rikka with Employees 题解">
-                  2020 ICPC 小米邀请赛决赛 M Rikka with Employees 题解 <i class="fa fa-chevron-right"></i>
+                <a href="/2020/12/2020bjonsiteB/" rel="prev" title="2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解">
+                  2020 ICPC 小米邀请赛决赛 B Rikka with Maximum Segment Sum 题解 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -385,7 +433,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题面"><span class="nav-number">1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#A"><span class="nav-number">1.</span> <span class="nav-text">A</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#B"><span class="nav-number">2.</span> <span class="nav-text">B</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#E"><span class="nav-number">3.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#G"><span class="nav-number">4.</span> <span class="nav-text">G</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#I"><span class="nav-number">5.</span> <span class="nav-text">I</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#J"><span class="nav-number">6.</span> <span class="nav-text">J</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#M"><span class="nav-number">7.</span> <span class="nav-text">M</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -401,7 +449,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">282</span>
+          <span class="site-state-item-count">283</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
