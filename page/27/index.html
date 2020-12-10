@@ -224,6 +224,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/8/hdu6438/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/8/hdu6438/" class="post-title-link" itemprop="url">HDu6438 Buy and Resell</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-08-27 08:37:37" itemprop="dateCreated datePublished" datetime="2018-08-27T08:37:37+08:00">2018-08-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-09-18 00:33:30" itemprop="dateModified" datetime="2018-09-18T00:33:30+08:00">2018-09-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/8/hdu6438/" class="post-meta-item leancloud_visitors" data-flag-title="HDu6438 Buy and Resell" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>原题：codeforces867E</p>
+<p>不考虑每天实际是否持有股票。</p>
+<p>使用一个最小堆，维护每天可能会买进的股票价格，扫一遍整个序列，如果当前的股票价格大于堆顶的价格，那么我们可以买入这个股票，相当于更新最终答案ans，弹出堆顶。</p>
+<p>再将新的价格入两次堆，第一次入堆代表卖出的是当前可以买入的，如果后面在购买这支股票，考虑股价之间的差值，使当前股票变为一个中转站，并不会影响最终答案。第二次入堆代表的是购买当前的股票，前一次入堆实际上只是一次中转，并没有实际在此处购买。</p>
+<p>两次入堆之间不会相互影响，如果当前入堆的两个后来被卖出了，那么第一次相当于在这个位置做了中转，第二次又买了这个位置则是忽略了那次中转进行再次卖出。</p>
+<p>对于记录操作的次数，对于每次买进操作都会对应一个卖出操作，为节点增加一个维度，表示是否是中转站，对于每次真实的买进都会更新操作数量。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/8/hdu6438/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/8/bigIntegar/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -985,83 +1080,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/8/isomorphicGraph/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/8/isomorphicGraph/" class="post-title-link" itemprop="url">同构图的判定</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-08-16 09:34:09 / 修改时间：09:36:48" itemprop="dateCreated datePublished" datetime="2018-08-16T09:34:09+08:00">2018-08-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/8/isomorphicGraph/" class="post-meta-item leancloud_visitors" data-flag-title="同构图的判定" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>枚举映射。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">int</span> x, y;&#125;;</span><br><span class="line"><span class="keyword">using</span> G = <span class="built_in">vector</span>&lt;edge&gt;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">inline</span> G <span class="title">read</span><span class="params">(<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">    G a;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> x, y; <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;x, &amp;y);</span><br><span class="line">        a.push_back(edge &#123;x, y&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(<span class="keyword">const</span> G&amp; b, <span class="keyword">const</span> G&amp; a)</span></span>&#123;</span><br><span class="line">    ms(vis, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.size(); i++) vis[a[i].x][a[i].y] = vis[a[i].y][a[i].x] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) f[i] = i;</span><br><span class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">do</span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; b.size(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!vis[f[b[i].x]][f[b[i].y]])&#123;</span><br><span class="line">                flag = <span class="literal">false</span>; <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (flag) res++;</span><br><span class="line">    &#125; <span class="keyword">while</span> (next_permutation(f + <span class="number">1</span>, f + <span class="number">1</span> + n));</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1112,7 +1130,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">281</span>
+          <span class="site-state-item-count">282</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
