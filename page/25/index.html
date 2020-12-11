@@ -224,6 +224,110 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/10/hash/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/10/hash/" class="post-title-link" itemprop="url">哈希</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-10-18 19:41:57" itemprop="dateCreated datePublished" datetime="2018-10-18T19:41:57+08:00">2018-10-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-02-11 21:54:37" itemprop="dateModified" datetime="2019-02-11T21:54:37+08:00">2019-02-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E5%93%88%E5%B8%8C/" itemprop="url" rel="index">
+                    <span itemprop="name">哈希</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/10/hash/" class="post-meta-item leancloud_visitors" data-flag-title="哈希" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h1><h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ull;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> seed = <span class="number">135</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000000</span> + <span class="number">10</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> p1 = <span class="number">1e9</span> + <span class="number">7</span>, p2 = <span class="number">1e9</span> + <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">ull xp1[maxn], xp2[maxn], xp[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    xp1[<span class="number">0</span>] = xp2[<span class="number">0</span>] = xp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; maxn; ++i) &#123;</span><br><span class="line">        xp1[i] = xp1[i - <span class="number">1</span>] * seed % p1;</span><br><span class="line">        xp2[i] = xp2[i - <span class="number">1</span>] * seed % p2;</span><br><span class="line">        xp[i] = xp[i - <span class="number">1</span>] * seed;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ENABLE_DOUBLE_HASH</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// index start at 0</span></span><br><span class="line">ull h[maxn], hl[maxn];</span><br><span class="line"><span class="function">ull <span class="title">Hash</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123; </span><br><span class="line">    <span class="keyword">int</span> length = <span class="built_in">strlen</span>(s);</span><br><span class="line">    ull res1 = <span class="number">0</span>, res2 = <span class="number">0</span>;</span><br><span class="line">    h[length] = <span class="number">0</span>;  <span class="comment">// ATTENTION!</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = length - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> ENABLE_DOUBLE_HASH</span></span><br><span class="line">        res1 = (res1 * seed + s[j]) % p1;</span><br><span class="line">        res2 = (res2 * seed + s[j]) % p2;</span><br><span class="line">        h[j] = (res1 &lt;&lt; <span class="number">32</span>) | res2;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">        res1 = res1 * seed + s[j];</span><br><span class="line">        h[j] = res1;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> h[<span class="number">0</span>];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// get hash of s[left...right-1]</span></span><br><span class="line"><span class="function">ull <span class="title">get</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = right - left;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> ENABLE_DOUBLE_HASH</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> mask32 = ~(<span class="number">0u</span>);</span><br><span class="line">    ull left1 = h[left] &gt;&gt; <span class="number">32</span>, right1 = h[right] &gt;&gt; <span class="number">32</span>;</span><br><span class="line">    ull left2 = h[left] &amp; mask32, right2 = h[right] &amp; mask32;</span><br><span class="line">    <span class="keyword">return</span> (((left1 - right1 * xp1[len] % p1 + p1) % p1) &lt;&lt; <span class="number">32</span>) |</span><br><span class="line">           (((left2 - right2 * xp2[len] % p2 + p2) % p2));</span><br><span class="line"><span class="meta">#<span class="meta-keyword">else</span></span></span><br><span class="line">    <span class="keyword">return</span> h[left] - h[right] * xp[len];</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="注意："><a href="#注意：" class="headerlink" title="注意："></a>注意：</h2><ol>
+<li><p>第 $n$ 位哈希值置 0，从 $n-1$ 开始逆序计算哈希值。</p>
+</li>
+<li><p>获取子串 $[l,r)$ 的哈希值，注意预处理和取模细节。</p>
+</li>
+<li><p>注意不要将字符映射到 $0$ 上。</p>
+</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/10/hash/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/10/tarjan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1075,89 +1179,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/lca/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/9/lca/" class="post-title-link" itemprop="url">最近公共祖先</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-09-24 21:53:29" itemprop="dateCreated datePublished" datetime="2018-09-24T21:53:29+08:00">2018-09-24</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-29 21:25:01" itemprop="dateModified" datetime="2019-07-29T21:25:01+08:00">2019-07-29</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/9/lca/" class="post-meta-item leancloud_visitors" data-flag-title="最近公共祖先" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="倍增LCA"><a href="#倍增LCA" class="headerlink" title="倍增LCA"></a>倍增LCA</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> head[maxn], to[maxn * <span class="number">2</span>], nxt[maxn * <span class="number">2</span>], d[maxn * <span class="number">2</span>], tot;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> w)</span></span>&#123;</span><br><span class="line">    to[++tot] = y; nxt[tot] = head[x]; d[tot] = w; head[x] = tot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dp[maxn][<span class="number">20</span>], dep[maxn], dis[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">    dp[u][<span class="number">0</span>] = fa; dep[u] = dep[fa] + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = head[u]; i; i = nxt[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> v = to[i];</span><br><span class="line">        <span class="keyword">if</span> (v == fa) <span class="keyword">continue</span>;</span><br><span class="line">        dis[v] = dis[u] + d[i];</span><br><span class="line">        dfs(v, u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ms(dp, <span class="number">0</span>); dep[<span class="number">0</span>] = dis[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    dfs(<span class="number">1</span>, <span class="number">0</span>); </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; <span class="number">20</span>; j++) </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) </span><br><span class="line">            dp[i][j] = dp[dp[i][j - <span class="number">1</span>]][j - <span class="number">1</span>];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lca</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (dep[x] &lt; dep[y]) swap(x, y);</span><br><span class="line">    <span class="keyword">int</span> tmp = dep[x] - dep[y];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; tmp; i++, tmp &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">if</span> (tmp &amp; <span class="number">1</span>) x = dp[x][i];</span><br><span class="line">    <span class="keyword">if</span> (x == y) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">19</span>; i &gt;= <span class="number">0</span>; i--)&#123;</span><br><span class="line">        <span class="keyword">if</span> (dp[x][i] != dp[y][i])&#123;</span><br><span class="line">            x = dp[x][i]; y = dp[y][i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[x][<span class="number">0</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="树链剖分LCA"><a href="#树链剖分LCA" class="headerlink" title="树链剖分LCA"></a>树链剖分LCA</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> hld &#123;</span><br><span class="line">    <span class="keyword">int</span> siz[maxn], dep[maxn], fa[maxn], son[maxn], top[maxn];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f)</span> </span>&#123;</span><br><span class="line">        dep[u] = dep[f] + <span class="number">1</span>; fa[u] = f; siz[u] = <span class="number">1</span>; son[u] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> m = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; v: edge[u]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (v == f) <span class="keyword">continue</span>;</span><br><span class="line">            dfs(v, u);</span><br><span class="line">            siz[u] += siz[v];</span><br><span class="line">            <span class="keyword">if</span> (siz[v] &gt; m) son[u] = v, m = siz[v];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> f, <span class="keyword">int</span> tp)</span> </span>&#123;</span><br><span class="line">        top[u] = tp;</span><br><span class="line">        <span class="keyword">if</span> (!son[u]) <span class="keyword">return</span>;</span><br><span class="line">        dfs(son[u], u, tp); <span class="comment">// !</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; v: edge[u]) &#123;</span><br><span class="line">            <span class="keyword">if</span> (v == f || v == son[u]) <span class="keyword">continue</span>; <span class="comment">// !</span></span><br><span class="line">            dfs(v, u, v);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        dfs(<span class="number">1</span>, <span class="number">0</span>); dfs(<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">qlca</span><span class="params">(<span class="keyword">int</span> u, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (top[u] != top[v])&#123;</span><br><span class="line">            <span class="keyword">if</span> (dep[top[u]] &lt; dep[top[v]]) swap(u, v);</span><br><span class="line">            u = fa[top[u]];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dep[u] &lt; dep[v] ? u : v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1208,7 +1229,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">283</span>
+          <span class="site-state-item-count">284</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
