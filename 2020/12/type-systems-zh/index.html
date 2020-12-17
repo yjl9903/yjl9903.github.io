@@ -50,15 +50,15 @@
   };
 </script>
 
-  <meta name="description" content="Type Systems作者：Luca Cardelli">
+  <meta name="description" content="类型系统作者：Luca Cardelli 英文原文 PDF：Type Systems。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Type Systems 中文翻译">
 <meta property="og:url" content="https://xlor.cn/2020/12/type-systems-zh/index.html">
 <meta property="og:site_name" content="XLor&#39;s Blog">
-<meta property="og:description" content="Type Systems作者：Luca Cardelli">
+<meta property="og:description" content="类型系统作者：Luca Cardelli 英文原文 PDF：Type Systems。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-17T06:03:22.000Z">
-<meta property="article:modified_time" content="2020-12-17T06:08:29.964Z">
+<meta property="article:modified_time" content="2020-12-17T06:11:12.009Z">
 <meta property="article:author" content="XLor">
 <meta property="article:tag" content="Type System">
 <meta name="twitter:card" content="summary">
@@ -253,7 +253,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-12-17 14:03:22 / 修改时间：14:08:29" itemprop="dateCreated datePublished" datetime="2020-12-17T14:03:22+08:00">2020-12-17</time>
+              <time title="创建时间：2020-12-17 14:03:22 / 修改时间：14:11:12" itemprop="dateCreated datePublished" datetime="2020-12-17T14:03:22+08:00">2020-12-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -285,9 +285,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Type-Systems"><a href="#Type-Systems" class="headerlink" title="Type Systems"></a>Type Systems</h1><p>作者：Luca Cardelli</p>
+        <h1 id="类型系统"><a href="#类型系统" class="headerlink" title="类型系统"></a>类型系统</h1><p>作者：Luca Cardelli</p>
+<p>英文原文 PDF：<a href="https://xlor.cn/uploads/pdf/TypeSystems.pdf">Type Systems</a>。</p>
 <a id="more"></a>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><strong>类型系统</strong>的根本目的在于防止程序动态运行时发生执行错误。这个不够形式化的陈述推动了类型系统的研究，因此接下来对类型系统进行详细地说明。类型系统的准确性首先取决于一个相当微妙的问题，即什么是执行错误。即便弄清楚了它的定义，我们仍然必须知道判断程序不会发生执行错误不是一件容易的事情。当我们能够证明任何这种程序语言表达的合法程序都不会发生执行错误，我们就说这种程序语言是<strong>类型 sound</strong>（健全）。事实证明，需要大量的仔细分析，才能避免错误地声称一个程序语言是类型 sound 的。因此，类型系统的分类、描述和研究已经成为了一门正式的学科。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p><strong>类型系统</strong>的根本目的在于防止程序动态运行时发生执行错误。这个不够形式化的陈述推动了类型系统的研究，因此接下来对类型系统进行详细地说明。类型系统的准确性首先取决于一个相当微妙的问题，即什么是执行错误。即便弄清楚了它的定义，我们仍然必须知道判断程序不会发生执行错误不是一件容易的事情。当我们能够证明任何这种程序语言表达的合法程序都不会发生执行错误，我们就说这种程序语言是<strong>类型 sound</strong>（健全）。事实证明，需要大量的仔细分析，才能避免错误地声称一个程序语言是类型 sound 的。因此，类型系统的分类、描述和研究已经成为了一门正式的学科。</p>
 <p>类型系统的形式化需要制定精确的符号和定义，对于形式化属性的详细证明。有时，这门学科会变得十分抽象。但是，我们必须明确，我们最初的动机是实际的，任何抽象的描述总是会和具体的直觉相关联。类型系统的核心原则是帮助避免明显或不明显的陷阱，以推动程序语言设计的发展。</p>
 <p>如果类型系统能够充分发展，那么它将提供概念性的工具，用以判断程序语言的关键部分是否充分地定义。非形式化的语言描述往往无法规范地描述类型结构，因此经常发生不同编译器对于同一种程序语言实现了不同的类型系统。此外，许多语言的定义本身就是类型 unsound 的，即使程序已经通过了类型检查，它仍然会在运行时发生错误。在理想情况下，形式化的类型系统应该是所有包含类型的编程语言定义中的一部分。这样一来，就可以根据准确的规范来明确地对程序进行类型检查，如果可能的话，整个语言就可以说是类型 sound 的。</p>
 <p>在这个介绍章节，我们提出了一个关于类型、执行错误和相关概念的非形式定义。我们讨论了类型系统的预期的属性和带来的好处，并且回顾了如何将类型系统形式化。在介绍章节中使用的术语并不是完全标准的，这是由于不同来源的标准术语内在并不一致。在第二章节，我们解释了描述类型系统的常用符号。我们还解释了判断，即关于程序类型的形式化断言，类型规则，即判断之间的影响和使用类型规则进行推导。在第三章节，我们回顾了简单类型在程序语言中的深远影响，并且类比了通用语言中的类型规则。在第四章节，我们介绍了一个虽然简单但是完整的命令式编程语言，和它的类型规则。在第五章节，我们讨论了更高级的类型构造的规则，例如堕胎和数据抽象。在第六章节，我们解释了类型系统如何使用子类型来进行扩展。第七章节是关于一些被人们忽略的重要话题。在第八章节，我们讨论了类型推导的问题，并且对于我们之前讨论的语言给出了一个类型推导算法。最后，第九章节是对目前成果的总结和对未来方向的展望。</p>
@@ -376,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Type-Systems"><span class="nav-number">1.</span> <span class="nav-text">Type Systems</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行错误"><span class="nav-number">1.1.1.</span> <span class="nav-text">执行错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型和无类型程序语言"><span class="nav-number">1.1.2.</span> <span class="nav-text">类型和无类型程序语言</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类型系统"><span class="nav-number">1.</span> <span class="nav-text">类型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行错误"><span class="nav-number">1.1.1.</span> <span class="nav-text">执行错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型和无类型程序语言"><span class="nav-number">1.1.2.</span> <span class="nav-text">类型和无类型程序语言</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
