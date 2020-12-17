@@ -58,7 +58,7 @@
 <meta property="og:description" content="类型系统作者：Luca Cardelli 英文原文 PDF：Type Systems。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-17T06:03:22.000Z">
-<meta property="article:modified_time" content="2020-12-17T06:11:12.009Z">
+<meta property="article:modified_time" content="2020-12-17T06:31:38.562Z">
 <meta property="article:author" content="XLor">
 <meta property="article:tag" content="Type System">
 <meta name="twitter:card" content="summary">
@@ -253,7 +253,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-12-17 14:03:22 / 修改时间：14:11:12" itemprop="dateCreated datePublished" datetime="2020-12-17T14:03:22+08:00">2020-12-17</time>
+              <time title="创建时间：2020-12-17 14:03:22 / 修改时间：14:31:38" itemprop="dateCreated datePublished" datetime="2020-12-17T14:03:22+08:00">2020-12-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -298,6 +298,10 @@
 <p><strong>不限制变量范围的语言被称为无类型语言</strong>，它们没有类型或者只拥有一个泛用的类型来表示所有变量的值。在这种程序语言中，操作可能会被应用不匹配的参数上，得到一个随机的结果，一个运行时异常或者未定义的副作用。纯粹的 $\lambda$ 演算就是一种无类型语言，但是不会有错误发生，因为唯一的操作只有函数应用，并且所有值都是函数，函数应用只是在其作用域中进行替换，因此不会发生错误。</p>
 <p>类型系统是类型语言的组成部分，它追踪了变量的类型以及所有程序表达式的类型。<strong>类型系统用来判断一个程序的行为是否是行为良好的</strong>（well behaved）。只有通过类型系统检查的源程序才能被认为是类型语言的真正程序，其它源程序应该在运行前就被丢弃。</p>
 <p>一个语言是凭借类型系统才被称为类型语言，无论类型是否显示出现在程序的语法定义之中。如果类型是语法的一部分，那么类型语言就是显式类型语言，相反就是隐式类型语言。目前，没有任何主流的编程语言是完全隐式的，但是 ML 和 Haskell 等语言支持编写省略类型信息的大型程序，这类语言的类型系统会自动为这些程序推导类型。</p>
+<h3 id="执行错误和安全性"><a href="#执行错误和安全性" class="headerlink" title="执行错误和安全性"></a>执行错误和安全性</h3><p>我们需要区分两种执行错误：一种是导致程序立刻停止的错误；另一种是，可能没有被发现，但是随后导致任意错误行为的。前者被称为陷阱错误（trapped errors），后者被称为未捕获错误（untrapped errors）。</p>
+<p>一个未捕获错误的例子是不合法地访问内存地址。例如，在没有运行时边界检查的情况下，访问超过数组容量的下标；或者是跳转到了错误的地址，这片内存空间可能表示一段其它位置的程序代码或者单纯是程序数据。陷阱错误的例子除 $0$ 或者访问非法内存，在很多计算机架构中，这种错误会立刻终止计算。</p>
+<p>如果一个程序片段不会发生未捕获的错误，那么我们称它是安全的。如果这种语言表达的所有程序片段都是安全的，我们称这种语言是安全的语言。因此，安全语言派出了隐含的执行错误。对于无类型语言，可以在运行时动态检查来加强安全性。类型语言可以通过静态分析拒绝执行可能不安全的程序片段。当然，类型语言可以混合静态分析和运行时动态检查。</p>
+<p>虽然安全是程序的一个重要属性，但是类型语言很少只关注排除未捕获错误。类型语言的目标是排除尽可能多种类的陷阱错误和未捕获错误。</p>
 
     </div>
 
@@ -377,7 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类型系统"><span class="nav-number">1.</span> <span class="nav-text">类型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行错误"><span class="nav-number">1.1.1.</span> <span class="nav-text">执行错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型和无类型程序语言"><span class="nav-number">1.1.2.</span> <span class="nav-text">类型和无类型程序语言</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#类型系统"><span class="nav-number">1.</span> <span class="nav-text">类型系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#执行错误"><span class="nav-number">1.1.1.</span> <span class="nav-text">执行错误</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型和无类型程序语言"><span class="nav-number">1.1.2.</span> <span class="nav-text">类型和无类型程序语言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行错误和安全性"><span class="nav-number">1.1.3.</span> <span class="nav-text">执行错误和安全性</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
