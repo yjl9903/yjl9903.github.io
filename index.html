@@ -224,6 +224,224 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/2021bytecamponlineM/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/2021bytecamponlineM/" class="post-title-link" itemprop="url">2021 Byte Camp 2021 Qualification Round M Expected area 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-20 03:00:44 / 修改时间：03:24:50" itemprop="dateCreated datePublished" datetime="2020-12-20T03:00:44+08:00">2020-12-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/12/2021bytecamponlineM/" class="post-meta-item leancloud_visitors" data-flag-title="2021 Byte Camp 2021 Qualification Round M Expected area 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给定 $2n$ 个线段 $[l_i,r_i]$ $(1 \le i \le n)$ 和 $[s_i,t_i]$ $(1 \le i \le n)$，对于所有排列 $p$ 求 $\bigcup_{i=1}^{n} [l_i,r_i] \times [s_{p_i}, t_{p_i}]$ （面积并）之和。其中 $1 \le n \le 2 \times 10^5$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>拆开来算贡献。</p>
+<p>对于第一维（$x$ 轴），将其通过左闭右开区间离散化为小块。假设每块被覆盖了 $s_i$ 次，也就意味着这一个块对应了 $s_i$ 个 $y$ 轴线段。比如说，$s_i=0$，那么上面没有任何线段；$s_i=1$，对应了 $1$ 个线段，也就是所有线段均有可能竖着放在它上面，对答案的总贡献为所有线段的总长度；类似地，$s_i=2$ 就是枚举一对线段计算贡献之和。</p>
+<p>可以发现，对于每一个小块只有参数 $s_i$ 有效。于是，我们将问题转化为了一个一维的问题，即对于从线段集合中选择 $k=0,1,\dots,n$ 条线段产生的总贡献，形式化地 $f(k)=\sum_{S \subseteq U, |S|=k} |\bigcup_{i \in S} [s_i, t_i]|$。</p>
+<p>再拆开来算一次贡献，同样离散化。假设每块被覆盖了 $s_i$ 次，这个块产生贡献当且仅当选出的 $k$ 个块包含 $s_i$ 中的某一个，即方案数就是 $\binom{n}{k} - \binom{n-s_i}{k}$，对于贡献还要乘上块的长度。观察上面的式子，第一部分是平凡的，关键是第二部分，因为我们最终计算的是 $f(k)$ 每个点的值，因此同样的 $n-s_i$ 产生的长度贡献可以记录在一起。于是，我们定义这部分的贡献函数 $g(k)=\sum_{i=k}^n a_i C(i,k)$，其中 $a_i$ 就是长度和。</p>
+<p>将 $g$ 展开</p>
+<script type="math/tex; mode=display">
+\begin{eqnarray}
+g(k) & = & \sum_{i = k}^n a_i \frac{i!}{k!(i-k)!} \\
+g(k) & = & \frac{1}{k!} \sum_{i = k}^{n} (a_i \cdot  i!) \times \frac{1}{(i-k)!} 
+\end{eqnarray}</script><p>注意到上式的下标分别为 $i$ 和 $i-k$，即差为定值 $k$，使用 <code>FFT</code> 计算即可。</p>
+<p>最后，还有一点小问题，$f(k)$ 的贡献是无序的。它表示从第二个集合中选择了 $k$ 条线段去和横轴某一小块的 $k$ 次覆盖对应，剩余随便，也就是需要乘上两部分内部的排列，即 $k! \times (n-k)!$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/2021bytecamponlineM/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/2020jscpc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/2020jscpc/" class="post-title-link" itemprop="url">2020 江苏省大学生程序设计竞赛</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-17 19:52:58 / 修改时间：20:12:41" itemprop="dateCreated datePublished" datetime="2020-12-17T19:52:58+08:00">2020-12-17</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
+                    <span itemprop="name">训练</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/12/2020jscpc/" class="post-meta-item leancloud_visitors" data-flag-title="2020 江苏省大学生程序设计竞赛" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">rank</th>
+<th style="text-align:center">solved</th>
+<th style="text-align:center">A</th>
+<th style="text-align:center">B</th>
+<th style="text-align:center">C</th>
+<th style="text-align:center">D</th>
+<th style="text-align:center">E</th>
+<th style="text-align:center">F</th>
+<th style="text-align:center">G</th>
+<th style="text-align:center">H</th>
+<th style="text-align:center">I</th>
+<th style="text-align:center">J</th>
+<th style="text-align:center">K</th>
+<th style="text-align:center">L</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">.</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">O</td>
+<td style="text-align:center">Ø</td>
+<td style="text-align:center">.</td>
+</tr>
+</tbody>
+</table>
+</div>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/2020jscpc/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/type-systems-zh/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1085,260 +1303,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/8/2020hdu9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/8/2020hdu9/" class="post-title-link" itemprop="url">2020 杭电多校训练第 9 场</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-18 18:16:43 / 修改时间：18:21:05" itemprop="dateCreated datePublished" datetime="2020-08-18T18:16:43+08:00">2020-08-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1/" itemprop="url" rel="index">
-                    <span itemprop="name">杭电多校</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/8/2020hdu9/" class="post-meta-item leancloud_visitors" data-flag-title="2020 杭电多校训练第 9 场" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">45</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/8/2020hdu9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/8/2020hdu8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/8/2020hdu8/" class="post-title-link" itemprop="url">2020 杭电多校训练第 8 场</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-08-13 21:36:46 / 修改时间：21:44:01" itemprop="dateCreated datePublished" datetime="2020-08-13T21:36:46+08:00">2020-08-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/%E6%9D%AD%E7%94%B5%E5%A4%9A%E6%A0%A1/" itemprop="url" rel="index">
-                    <span itemprop="name">杭电多校</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/8/2020hdu8/" class="post-meta-item leancloud_visitors" data-flag-title="2020 杭电多校训练第 8 场" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">22</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/8/2020hdu8/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1389,7 +1353,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">285</span>
+          <span class="site-state-item-count">287</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

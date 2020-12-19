@@ -224,6 +224,194 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/fft/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/fft/" class="post-title-link" itemprop="url">快速傅里叶变换</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-27 21:13:55" itemprop="dateCreated datePublished" datetime="2018-11-27T21:13:55+08:00">2018-11-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-03-05 19:11:37" itemprop="dateModified" datetime="2019-03-05T19:11:37+08:00">2019-03-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/11/fft/" class="post-meta-item leancloud_visitors" data-flag-title="快速傅里叶变换" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">complex</span>&#123;</span></span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line">    <span class="built_in">complex</span>(<span class="keyword">double</span> a = <span class="number">0</span>, <span class="keyword">double</span> b = <span class="number">0</span>):x(a), y(b)&#123;&#125;</span><br><span class="line">    <span class="built_in">complex</span> <span class="keyword">operator</span>+(<span class="keyword">const</span> <span class="built_in">complex</span>&amp; b)&#123;<span class="keyword">return</span> <span class="built_in">complex</span>&#123;x + b.x, y + b.y&#125;;&#125;</span><br><span class="line">    <span class="built_in">complex</span> <span class="keyword">operator</span>-(<span class="keyword">const</span> <span class="built_in">complex</span>&amp; b)&#123;<span class="keyword">return</span> <span class="built_in">complex</span>&#123;x - b.x, y - b.y&#125;;&#125;</span><br><span class="line">    <span class="built_in">complex</span> <span class="keyword">operator</span>*(<span class="keyword">const</span> <span class="built_in">complex</span>&amp; b)&#123;<span class="keyword">return</span> <span class="built_in">complex</span>&#123;x * b.x - y * b.y, x * b.y + y * b.x&#125;;&#125;</span><br><span class="line">&#125;a[maxn], b[maxn]; <span class="keyword">int</span> rev[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fft</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">complex</span> a[], <span class="keyword">int</span> op = <span class="number">1</span>)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="keyword">if</span> (i &lt; rev[i]) swap(a[i], a[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i &lt;&lt;= <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="function"><span class="built_in">complex</span> <span class="title">t</span><span class="params">(<span class="built_in">cos</span>(pi / i), op * <span class="built_in">sin</span>(pi / i))</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j += (i &lt;&lt; <span class="number">1</span>))&#123;</span><br><span class="line">            <span class="function"><span class="built_in">complex</span> <span class="title">w</span><span class="params">(<span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; i; k++, w = w * t)&#123;</span><br><span class="line">                <span class="built_in">complex</span> x = a[j + k], y = w * a[j + k + i];</span><br><span class="line">                a[j + k] = x + y; a[j + k + i] = x - y;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">if</span> (op == <span class="number">-1</span>) <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) a[i].x /= n, a[i].y /= n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(<span class="keyword">int</span> n, <span class="built_in">complex</span> a[], <span class="keyword">int</span> m, <span class="built_in">complex</span> b[], <span class="keyword">int</span> ans[])</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> l = <span class="number">0</span>, lim = <span class="number">1</span>; <span class="keyword">while</span> (lim &lt;= n + m) l++, lim &lt;&lt;= <span class="number">1</span>; </span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; lim; i++) rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (l - <span class="number">1</span>));</span><br><span class="line">    fft(lim, a); fft(lim, b);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= lim; i++) a[i] = a[i] * b[i];</span><br><span class="line">    fft(lim, a, <span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n + m; i++) ans[i] = (<span class="keyword">int</span>)(a[i].x + <span class="number">0.5</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/11/fft/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/round523/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/11/round523/" class="post-title-link" itemprop="url">Codeforces Round 523 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-11-23 03:42:57" itemprop="dateCreated datePublished" datetime="2018-11-23T03:42:57+08:00">2018-11-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-01-12 01:08:16" itemprop="dateModified" datetime="2019-01-12T01:08:16+08:00">2019-01-12</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/11/round523/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 523 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Coins"><a href="#A-Coins" class="headerlink" title="A Coins"></a>A Coins</h1><h1 id="B-Views-Matter"><a href="#B-Views-Matter" class="headerlink" title="B Views Matter"></a>B Views Matter</h1><p>最开始想肯定是维护一个递增的序列，后面的只保留一个即可，但是测一测并不对，然后发现前面维护递增的高度的同时可以在维护每列多用了了多少块，这些多用的块可以放在后面，让一列实际上可以全部清空。</p>
+<h1 id="C-Multiplicity"><a href="#C-Multiplicity" class="headerlink" title="C Multiplicity"></a>C Multiplicity</h1><p>拆出每个数的因子然后dp。</p>
+<p>时间复杂度： $O(n\sqrt{n})$</p>
+<h1 id="F-Lost-Root"><a href="#F-Lost-Root" class="headerlink" title="F Lost Root"></a>F Lost Root</h1><p>交互题，有一棵 $n$ 个节点的满 $k$ 叉树，标号 $1-n$，现在你需要找到树的根。</p>
+<p>每次你可以询问两个点 $a,c$ 之间的路径上是否含有 $b$。</p>
+<p>首先想到必须要任取两个点，然后枚举其他点看是否在这条路径上，然后我们注意到任取两个点之后，我们很能够不断调整将这两个点移动到叶子上去。</p>
+<p>因此，我们可以在 $O(n)$ 次询问内得到一条叶子结点之间的路径，然后我们又可以知道如果这条路径的长度为 $2*dep-1$，那么他必定经过根节点，然后对于根节点，恰好有 $dep-2$ 个节点在分别在两个叶子结点中间，因此如果我们能获得一条经过叶子结点的路径，就能很快计算出他的根节点。</p>
+<p>这里我一开始考虑是不断调整，但是这个复杂度很玄学？</p>
+<p>实际上，根据其他人提交的代码我们可以注意到一个事实，在树上任取两个点，这两个点 lca 不是根节点的概率实际上是 $\frac{k-1}{k}$，所以直接随机即可。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/11/round523/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/luogu2680/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1048,205 +1236,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/2018ncpc-e/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/2018ncpc-e/" class="post-title-link" itemprop="url">Explosion Exploit 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-02 02:52:40" itemprop="dateCreated datePublished" datetime="2018-11-02T02:52:40+08:00">2018-11-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-03-05 19:06:05" itemprop="dateModified" datetime="2019-03-05T19:06:05+08:00">2019-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A6%82%E7%8E%87/" itemprop="url" rel="index">
-                    <span itemprop="name">概率</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/11/2018ncpc-e/" class="post-meta-item leancloud_visitors" data-flag-title="Explosion Exploit 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>传送门：<a href="http://codeforces.com/gym/101933/problem/E" target="_blank" rel="noopener">http://codeforces.com/gym/101933/problem/E</a></p>
-<h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>奥术飞弹！</p>
-<p>自己和对方场地分别有 $n,m$ 只随从（$1 \le n,m \le 5$），已知每个随从的血量（$1 \le hp \le 6$）。</p>
-<p>求 $d$ 个奥术飞弹将对面场地清空的概率。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>概率状压 $dp$ 。</p>
-<p>显然要状压 $dp$ 一下，但是状态数有 $7^{10}$ 好像不大可做？</p>
-<p>但是注意到有类似于 $2,1,4$ 和 $2,4,1$ 之类的重复状态，因此对于所有状态压成一个字典序最小的 5 位数。</p>
-<p>跑一下 dp 转移即可。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/11/2018ncpc-e/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/2018ncpc-a/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/2018ncpc-a/" class="post-title-link" itemprop="url">Altruistic Amphibians 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-02 02:36:10" itemprop="dateCreated datePublished" datetime="2018-11-02T02:36:10+08:00">2018-11-02</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-03-05 19:06:00" itemprop="dateModified" datetime="2019-03-05T19:06:00+08:00">2019-03-05</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/11/2018ncpc-a/" class="post-meta-item leancloud_visitors" data-flag-title="Altruistic Amphibians 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>传送门：<a href="http://codeforces.com/gym/101933/problem/A" target="_blank" rel="noopener">http://codeforces.com/gym/101933/problem/A</a></p>
-<h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>井底之蛙想要跳出井底，已知井的深度 $d$。</p>
-<p>给出 $n$ 个三元组 $(l_i,w_i,h_i)$ ，表示一只青蛙的跳跃高度，重量和高度。</p>
-<p>每次青蛙可以一层一层叠成一个塔，那么最顶层的青蛙跳跃高度为 $ {l}_{i} + \sum h$，其中塔必须满足每层的青蛙重量必须大于上面所有青蛙的重量之和。每次叠成塔送顶层跳出去之后，可以立马重新堆一个新的塔送顶层青蛙跳出去。</p>
-<p>问最多能送多少只青蛙出去。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>可以感觉到限制青蛙能否堆在一起跳出去的条件是重量限制。</p>
-<p>先对三元组按照重量排序，倒着做，重量越大肯定越往后跳出去，最重的那个肯定最后一个跳出去。</p>
-<p>然后处理倒数第二重的那个，他肯定至多倒数第二个跳出去，此时只剩最重的那个作为跳板跳出去，因此可以得出 $dp$ 状态。</p>
-<p>令 $dp[i]$ 表示可以在放一个 $重量 &lt; i$ 的青蛙在上面时，塔的最大高度。</p>
-<p>转移方程：$dp[j]=max(dp[j+1],dp[j],dp[j+w_i]+h_i)$ ，其中 $1 \le j \le w_i$。</p>
-<p>转移时更新答案，当且仅当 $dp[w_i+1] + l_i &gt; d$ 。</p>
-<p>边界条件：$dp[j]=h_0$，其中 $1 \le j \le w_0$。</p>
-<p>这样时间复杂度显然是 $O(n \log n + n \max(w))$ ，好像不大可做啊？但是注意到题面 $\sum w \le 10^8$ ，那么实际上时间复杂度是 $O(n \log n + \sum w)$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/11/2018ncpc-a/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1297,7 +1286,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">285</span>
+          <span class="site-state-item-count">287</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
