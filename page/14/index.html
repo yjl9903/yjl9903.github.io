@@ -224,6 +224,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/6/edu66/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/6/edu66/" class="post-title-link" itemprop="url">Educational Round 66 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-06-06 22:55:53" itemprop="dateCreated datePublished" datetime="2019-06-06T22:55:53+08:00">2019-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-02-04 16:49:12" itemprop="dateModified" datetime="2020-02-04T16:49:12+08:00">2020-02-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
+                    <span itemprop="name">Educational Round</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/6/edu66/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 66 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-From-Hero-to-Zero"><a href="#A-From-Hero-to-Zero" class="headerlink" title="A From Hero to Zero"></a>A From Hero to Zero</h1><h1 id="B-Catch-Overflow"><a href="#B-Catch-Overflow" class="headerlink" title="B Catch Overflow!"></a>B Catch Overflow!</h1><h1 id="C-Electrification"><a href="#C-Electrification" class="headerlink" title="C Electrification"></a>C Electrification</h1><p>给定 $x$ 正半轴的 $n$ 个点，求一个点 $x$ 到所有点距离的第 $k+1$ 大的最小值。</p>
+<p>二分答案，当前值为 $m$，考虑线段 $[a_i-m,a_i+m]$，就是判是否有一个点被覆盖了 $k+1$ 次。</p>
+<p>判断过程可以双指针扫一下，具体参考代码。</p>
+<h1 id="D-Array-Splitting"><a href="#D-Array-Splitting" class="headerlink" title="D Array Splitting"></a>D Array Splitting</h1><p>给定一个序列 $a$，将一个区间分成 $k$ 个连续段，记 $f(i)$ 表示 $i$ 属于第几个段，最大化 $\sum_{i=1}^n a_if(i)$。</p>
+<p>考虑贡献，首先每个位置都加了一次，某些后缀多加一些次。</p>
+<p>其实就是对所有后缀排序，取前 $k$ 大，注意整体是必选的即可。</p>
+<h1 id="E-Minimal-Segment-Cover"><a href="#E-Minimal-Segment-Cover" class="headerlink" title="E Minimal Segment Cover"></a>E Minimal Segment Cover</h1><p>给定 $n$ 条线段，询问 $q$ 次一个线段内所有点是否被覆盖，包含非整数点。</p>
+<p>因为要包含整数之间的部分，因此考虑一个贪心的跳转的过程，每个点跳一次到最右端点，然后从这个位置继续往后跳。</p>
+<p>这个跳转过程可以用倍增进行加速，预处理每个位置被一条线段覆盖到的最右端点，倍增一下。</p>
+<h1 id="F-The-Number-of-Subpermutations"><a href="#F-The-Number-of-Subpermutations" class="headerlink" title="F The Number of Subpermutations"></a>F The Number of Subpermutations</h1><p>给定序列 $a_1, a_2, \dots, a_n$，求有多少个子区间是对应长度的排列。</p>
+<p>观察一下，要么 $1$ 很少，要么重复的数字很多。枚举包含 $1$ 的子区间，向右跑到出现相同数字停止，判断这个点为右端点的子区间是否是一个排列，即判断两个集合是否相同。随机一个权值异或判断即可。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/6/edu66/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/6/fwt/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1127,129 +1233,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/5/2019bit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/5/2019bit/" class="post-title-link" itemprop="url">2019 北京理工大学程序设计竞赛</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-05-10 16:23:49 / 修改时间：18:01:59" itemprop="dateCreated datePublished" datetime="2019-05-10T16:23:49+08:00">2019-05-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/5/2019bit/" class="post-meta-item leancloud_visitors" data-flag-title="2019 北京理工大学程序设计竞赛" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">10</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/5/2019bit/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1300,7 +1283,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">287</span>
+          <span class="site-state-item-count">288</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -224,6 +224,102 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/2020ccpconlineA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/12/2020ccpconlineA/" class="post-title-link" itemprop="url">2020 CCPC 网络选拔赛 A Art Class</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-12-21 01:00:30 / 修改时间：01:39:39" itemprop="dateCreated datePublished" datetime="2020-12-21T01:00:30+08:00">2020-12-21</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
+                    <span itemprop="name">数据结构</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">线段树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/12/2020ccpconlineA/" class="post-meta-item leancloud_visitors" data-flag-title="2020 CCPC 网络选拔赛 A Art Class" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>依次将 $n$ 个下边界在 $x$ 轴上的矩形涂黑，求每次涂色后总图形的周长。</p>
+<p>其中 $1 \le n \le 2 \times 10^5$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>横线部分就是线段覆盖，这是平凡的。</p>
+<p>竖线部分，更新操作就是区间取 $\max$，对于线段树节点 $[l,r]$，需要维护 $\sum_{i=l}^{r-1} |a_{i}-a_{i+1}|$。</p>
+<p>考虑 Segment Tree Beats，我们在线段树节点维护了区间最小值和区间次小值。当最大值更新为 $x$，$x$ 小于节点次大值，将区间内所有最小值提升为 $x$，可以发现这个过程中改变的是最小值和相邻高点之间的差。因此，我们对于一个线段树节点区间，维护所有相邻的是否是最小值导致间断点，假设我们维护了这样的间断点个数，那么对于区间答案的容易进行更新。</p>
+<p>间断点的个数容易维护，首先它可能从左右子树上传得到，然后在考虑将左右区间拼接点的贡献即可。</p>
+<p>最后，注意我们区间覆盖最小值时打的标记，也包含了懒标记效果，记得下传信息。注意维护次小值的细节。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/12/2020ccpconlineA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/2021bytecamponlineM/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1176,133 +1272,6 @@ g(k) & = & \frac{1}{k!} \sum_{i = k}^{n} (a_i \cdot  i!) \times \frac{1}{(i-k)!}
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/9/2020uncpc/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/9/2020uncpc/" class="post-title-link" itemprop="url">2020 ICPC Universidad Nacional de Colombia Programming Contest</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-09-22 19:12:36 / 修改时间：19:27:42" itemprop="dateCreated datePublished" datetime="2020-09-22T19:12:36+08:00">2020-09-22</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/9/2020uncpc/" class="post-meta-item leancloud_visitors" data-flag-title="2020 ICPC Universidad Nacional de Colombia Programming Contest" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-<th style="text-align:center">M</th>
-<th style="text-align:center">N</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">13</td>
-<td style="text-align:center">11</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/9/2020uncpc/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1353,7 +1322,7 @@ g(k) & = & \frac{1}{k!} \sum_{i = k}^{n} (a_i \cdot  i!) \times \frac{1}{(i-k)!}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">287</span>
+          <span class="site-state-item-count">288</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

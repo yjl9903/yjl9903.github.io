@@ -224,6 +224,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/2/hdu5320/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/2/hdu5320/" class="post-title-link" itemprop="url">HDu5320 Fan Li 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-05 18:42:21 / 修改时间：18:56:26" itemprop="dateCreated datePublished" datetime="2020-02-05T18:42:21+08:00">2020-02-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2020/2/hdu5320/" class="post-meta-item leancloud_visitors" data-flag-title="HDu5320 Fan Li 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给定一个序列，求选出一堆不相交的子区间，每个子区间的 $\gcd$ 相同，要求最大化选出的个数，并求出对应方案数。</p>
+<p>其中 $1 \le n \le 10^5, 1 \le a_i \le 2333333$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>首先我们知道一个结论，对于固定的左端点，它后面所有区间的 $\gcd$ 最多变化 $\log$ 次。</p>
+<p>考虑四元组 $(x,i,l,r)$ 表示左端点为 $i$，右端点在区间 $[l,r]$，所有区间的 $\gcd$ 为 $x$，枚举端点二分即可。</p>
+<p>将相同 $x$ 并在一起按顺序处理，令 $dp(i)$ 表示以 $i$ 结尾的最大值和方案数。</p>
+<p>加一个四元组也就是从 $[1, i - 1]$ 中选一个最优决策（并且维护最优决策的方案数），覆盖（越往后越优）到 $[l,r]$ 中的每个位置。</p>
+<p>线段树需要支持区间覆盖，维护区间和（最大值），并且打时间戳标记删除之前枚举的 $\gcd$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/2/hdu5320/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/2/round616/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1238,125 +1328,6 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/12/edu78/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/edu78/" class="post-title-link" itemprop="url">Educational Round 78 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-20 16:15:50" itemprop="dateCreated datePublished" datetime="2019-12-20T16:15:50+08:00">2019-12-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-12-28 17:18:51" itemprop="dateModified" datetime="2019-12-28T17:18:51+08:00">2019-12-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
-                    <span itemprop="name">Educational Round</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/12/edu78/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 78 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-Shuffle-Hashing"><a href="#A-Shuffle-Hashing" class="headerlink" title="A Shuffle Hashing"></a>A Shuffle Hashing</h1><p>给定一个串 $s$，随机打乱顺序后，询问是否可能是 $t$ 的子串。</p>
-<p>暴力枚举 $t$ 的每个子串。</p>
-<h1 id="B-A-and-B"><a href="#B-A-and-B" class="headerlink" title="B A and B"></a>B A and B</h1><p>智商没对上 T^T。</p>
-<p>给定两个整数 $a,b$，第 $i$ 轮选一个数加 $i$，最小多少轮两数相同。</p>
-<p>相当于将 $1,2,\dots,n$ 分配到两个数组中，一个和为 $s$ 另一个和为 $t$，且 $s+t=n(n+1)/2,s-t=|a-b|$。</p>
-<h1 id="C-Berry-Jam"><a href="#C-Berry-Jam" class="headerlink" title="C Berry Jam"></a>C Berry Jam</h1><h1 id="D-Segment-Tree"><a href="#D-Segment-Tree" class="headerlink" title="D Segment Tree"></a>D Segment Tree</h1><p>给定 $n$ 条线段，两条线段之间连边当且仅当相交不包含，端点为 $1$ 到 $2n$ 的排列。</p>
-<p>扫描线，枚举所有与给线段相交不包含的部分，并查集合并，如果出现环则停止。最多暴力合并 $n$ 次。</p>
-<p>最后检查一下并查集完全联通。</p>
-<h1 id="E-Tests-for-problem-D"><a href="#E-Tests-for-problem-D" class="headerlink" title="E Tests for problem D"></a>E Tests for problem D</h1><p>给定一张图，生成一下 D 题的线段。</p>
-<p>递归地进行构造，对于子树 $u$，他的左端点为 $l_u$，右端点位置是 $r_u+deg_u+1$（$l_u,r_u$ 为递归参数）。</p>
-<p>对于他的所有儿子结点，都与 $u$ 线段相交，并且兄弟结点依次包含，左端点会从右边 $r_u+deg_u$ 一直放到 $r_u+1$。</p>
-<p>考虑右端点的限制，因为需要包含前面的兄弟的子树内结点，因此右端点需要往右偏移一段，即上一个兄弟的子树大小的两倍减一（减一由于根节点的左端点在 $u$ 的内部，$u$ 外部的点数为两倍减一）。</p>
-<p>初始时，$l_1=r_1=1$。</p>
-<h1 id="F-Cards"><a href="#F-Cards" class="headerlink" title="F Cards"></a>F Cards</h1><p>随机变量 $X$ 服从 $B(n,p)$，求 $E(X^k)$。</p>
-<p>根据斯特林数展开</p>
-<script type="math/tex; mode=display">
-E[X^k]=\sum_{i=0}^k S(k,i) E[X(X-1)\dots (X-i+1)]</script><p>伯努利分布的 $i$ 次下降幂</p>
-<script type="math/tex; mode=display">
-E[X(X-1)\dots (X-i+1)]=A(n,i)p^i</script><p>带入得到答案。</p>
-<p>参考资料：<a href="https://en.wikipedia.org/wiki/Factorial_moment#Binomial_distribution" target="_blank" rel="noopener">Factorial_moment</a> 和 <a href="https://math.stackexchange.com/questions/524050/what-is-the-kth-factorial-moment-of-the-binomial-distribution" target="_blank" rel="noopener">What is the kth factorial moment of the binomial distribution?</a>。</p>
-<p>考虑直接推式子，实际上等价于上面下降幂的推导过程</p>
-<script type="math/tex; mode=display">
-E(X^k)=\sum_{i=0}^n  {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} i^k  \\
-=\sum_{j=0}^{k} S(k,j) \sum_{i=0}^n {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} A(i,j)</script>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/edu78/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1407,7 +1378,7 @@ E(X^k)=\sum_{i=0}^n  {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} i^k  \\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">287</span>
+          <span class="site-state-item-count">288</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

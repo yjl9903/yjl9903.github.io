@@ -224,6 +224,101 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/luogu5021/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/1/luogu5021/" class="post-title-link" itemprop="url">NOIp2018 赛道修建</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-08 18:34:17" itemprop="dateCreated datePublished" datetime="2019-01-08T18:34:17+08:00">2019-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-02-20 14:33:03" itemprop="dateModified" datetime="2019-02-20T14:33:03+08:00">2019-02-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/1/luogu5021/" class="post-meta-item leancloud_visitors" data-flag-title="NOIp2018 赛道修建" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给一棵 $n$ 个点带权边权的无根树，要求在在树上选一些边，构成树上的正好 $m$ 条路径，并且每条边最多只能在一条路径中出现，要求最大化每个选择方案中的最小路径长度。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>二分答案。</p>
+<h2 id="链"><a href="#链" class="headerlink" title="链"></a>链</h2><p>二分答案，$check(mid)$ 判断能不能将一条链划分成 $m$ 个最小值为 $mid$ 的段，每段可以贪心的选取大于等于 $mid$ 的最小段。</p>
+<h2 id="菊花"><a href="#菊花" class="headerlink" title="菊花"></a>菊花</h2><p>只有两种情况，一种是只选择一条边，第二种是选择跨过根节点的两条边。</p>
+<p>对于长度大于等于 $mid$ 的边，单独构成一条链，对于长度小于 $mid$ 的边，贪心地去和最小的能连在一起长度大于等于 $mid$ 的边组成一条链。</p>
+<h2 id="回到一般的树上"><a href="#回到一般的树上" class="headerlink" title="回到一般的树上"></a>回到一般的树上</h2><p>树上每个节点与其父亲只有一条边，因此在一个节点完成类似于菊花情况的匹配的时候，可能会剩下多条边，而这些边中选一个最大的传递到父节点，与当前节点到父节点的边组成一条链，在父亲节点类似的做菊花情况的操作。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/1/luogu5021/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/h2019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1157,98 +1252,6 @@ dp[i][j] = dp[i-1][j]+(m-1)dp[i-1][j-1]</script><h1 id="D-Maximum-Distance"><a h
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/11/dandiaoque/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/11/dandiaoque/" class="post-title-link" itemprop="url">单调队列</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2018-11-27 21:25:05" itemprop="dateCreated datePublished" datetime="2018-11-27T21:25:05+08:00">2018-11-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2018-11-28 03:43:35" itemprop="dateModified" datetime="2018-11-28T03:43:35+08:00">2018-11-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/11/dandiaoque/" class="post-meta-item leancloud_visitors" data-flag-title="单调队列" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="滑动窗口求极值。"><a href="#滑动窗口求极值。" class="headerlink" title="滑动窗口求极值。"></a>滑动窗口求极值。</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> l = <span class="number">0</span>, r = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++)&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r &amp;&amp; a[q[r]] &lt;= a[i]) r--;</span><br><span class="line">    q[++r] = i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = k; i &lt;= n; i++)&#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r &amp;&amp; a[q[r]] &lt;= a[i]) r--;</span><br><span class="line">    q[++r] = i;</span><br><span class="line">    <span class="keyword">while</span> (i - q[l] &gt;= k) l++;</span><br><span class="line">    ans[i] = a[q[l]];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="有长度限制的最大连续子序列和"><a href="#有长度限制的最大连续子序列和" class="headerlink" title="有长度限制的最大连续子序列和"></a>有长度限制的最大连续子序列和</h1><p>单调队列维护前缀和的不减单调队列，队首元素为最小值标号，则此时的答案最大。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) pre[i] = pre[i - <span class="number">1</span>] + a[i];</span><br><span class="line"><span class="keyword">int</span> l = <span class="number">1</span>, r = <span class="number">0</span>, ansl = <span class="number">0</span>, ansr = <span class="number">0</span>; ll ans = -inf;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    <span class="keyword">while</span> (l &lt;= r &amp;&amp; pre[i - <span class="number">1</span>] &lt; pre[q[r]]) r--;</span><br><span class="line">    q[++r] = i - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i - q[l] &gt; k) l++;</span><br><span class="line">    <span class="keyword">if</span> (pre[i] - pre[q[l]] &gt; ans)&#123;</span><br><span class="line">        ans = pre[i] - pre[q[l]];</span><br><span class="line">        ansl = q[l] + <span class="number">1</span>; ansr = i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/11/dandiaoque/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1299,7 +1302,7 @@ dp[i][j] = dp[i-1][j]+(m-1)dp[i-1][j-1]</script><h1 id="D-Maximum-Distance"><a h
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">287</span>
+          <span class="site-state-item-count">288</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
