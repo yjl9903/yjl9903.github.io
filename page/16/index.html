@@ -224,6 +224,118 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/2019futurecup/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/4/2019futurecup/" class="post-title-link" itemprop="url">Forethought Future Cup - Elimination Round 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-04-22 21:11:02" itemprop="dateCreated datePublished" datetime="2019-04-22T21:11:02+08:00">2019-04-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-23 13:20:52" itemprop="dateModified" datetime="2019-04-23T13:20:52+08:00">2019-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/4/2019futurecup/" class="post-meta-item leancloud_visitors" data-flag-title="Forethought Future Cup - Elimination Round 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Love-“A”"><a href="#A-Love-“A”" class="headerlink" title="A Love “A”"></a>A Love “A”</h1><h1 id="B-Hate-“A”"><a href="#B-Hate-“A”" class="headerlink" title="B Hate “A”"></a>B Hate “A”</h1><h1 id="C-Tree-Diameter"><a href="#C-Tree-Diameter" class="headerlink" title="C Tree Diameter"></a>C Tree Diameter</h1><p>给一棵 $100$ 个点的树，询问 $9$ 次，每次询问两个点集之间的最大距离，猜树的直径。</p>
+<p>按照线段树类似的分治结构，每层的左区间放在一边询问，右区间放在另一边询问，层数最大为 $9$ 层。</p>
+<h1 id="D-Frog-Jumping"><a href="#D-Frog-Jumping" class="headerlink" title="D Frog Jumping"></a>D Frog Jumping</h1><p>青蛙在数轴上跳，每次正方向跳 $a$ 步或者反向跳 $b$ 步，记 $f(x)$ 表示青蛙跳在 $[0,x]$ 区间内最多能走到多少个点。</p>
+<p>求 $\sum_{i=1}^m f(i)$。</p>
+<p>显然当 $x$ 很大时，所有 $\gcd(a,b)$ 的倍数都可以被跳到，贡献可以枚举右端点。</p>
+<p>考虑这个分界线可能会在哪，发现 $x \ge a+b$ 时，所有 $\gcd(a,b)$ 的倍数都跳到了。</p>
+<p>证明：</p>
+<p>对于任意一个可能跳到的位置 $p=ax-by$ 且 $0 \le p \le a+b$。</p>
+<p>若 $p \ge b$，则它肯定可以往回跳 $b$。</p>
+<p>若 $p \le b$，则它肯定可以往后跳 $a$。</p>
+<p>于是，由于初始位置 $0$ 可以被跳到，那么这里面所有位置都可以被跳到。</p>
+<p>回到原题，对于在 $[0,a+b)$ 内范围的点对答案贡献，只要暴力模拟出每个位置的第最近位置，若回到一个去过的地方则停止。</p>
+<p>对于 $[a+b,m]$ 的贡献，考虑一个公差为 $\gcd(a,b)$ 的等差数列，求和即可。</p>
+<h1 id="E-Hot-is-Cold"><a href="#E-Hot-is-Cold" class="headerlink" title="E Hot is Cold"></a>E Hot is Cold</h1><p>给定一个序列，有 $q$ 次操作，每次操作将 $ &gt; x $ 或 $ &lt; x$ 的数变成相反数。</p>
+<p>对正值域维护线段树，维护区间赋值和区间翻转标记，以及单纯的区间翻转标记。</p>
+<p>以大于为例，大于正的就是区间赋值，大于负的就是一部分区间翻转，一部分区间赋值。</p>
+<p>注意打标记的细节。</p>
+<h1 id="F-Leaf-Partition"><a href="#F-Leaf-Partition" class="headerlink" title="F Leaf Partition"></a>F Leaf Partition</h1><p>将一颗有根树的叶子划分到几个不相交的子图中，子图为包含叶子的最小子图，求方案数。</p>
+<p>考虑树形 $dp$，一个点 $u$ 划分为 $3$ 种不相交的状态，$u$ 不在儿子中的任何一个子图，$u$ 在儿子中的子图内，但是只连了一条边，不满足最小子图条件，$u$ 和儿子连成子图，依次为 $dp[u][0,1,2]$。</p>
+<p>初始状态为 $dp[leaf][2]=1$，否则 $dp[u][2]=0$。</p>
+<p>考虑状态转移，假设对于 $u$ 已经计算了 $dp[u][0,1,2]$，枚举到下一个儿子。</p>
+<p>对于 $dp[u][2]$，假如结点 $v$ 连接到 $u$ 上，那么可以和 $dp[u][1]$ 和 $dp[u][2]$ 的状态连接，$v$ 的状态也是 $dp[v][1]$ 和 $dp[v][2]$，假如 $v$ 没有连接到 $u$ 上，那么就是用 $dp[u][2]$ 的状态和 $v$ 不连接上来的状态合并，也就是 $dp[v][0]$ 和 $dp[v][2]$。</p>
+<p>对于 $dp[u][1]$ 和 $dp[u][0]$ 也能类似的考虑，注意转移之间的影响。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/4/2019futurecup/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/2019nanchang/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1164,107 +1276,6 @@ dp[i] = dp[i] \cdot ({m \choose 2} + {n-m \choose 2}+(m-i) \cdot (n-2m+2i)) / {n
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/round549/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/4/round549/" class="post-title-link" itemprop="url">Codeforces Round 549 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-04-09 15:40:16" itemprop="dateCreated datePublished" datetime="2019-04-09T15:40:16+08:00">2019-04-09</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-04-14 01:50:39" itemprop="dateModified" datetime="2019-04-14T01:50:39+08:00">2019-04-14</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/4/round549/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 549 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-The-Doors"><a href="#A-The-Doors" class="headerlink" title="A The Doors"></a>A The Doors</h1><h1 id="B-Nirvana"><a href="#B-Nirvana" class="headerlink" title="B Nirvana"></a>B Nirvana</h1><h1 id="C-Queen"><a href="#C-Queen" class="headerlink" title="C Queen"></a>C Queen</h1><p>给定一棵 $n$ 个点的有根树，每个点有一个权值 $c_i$ 表示是否尊重它的父亲，删除满足它自己不尊重父亲且它的孩子也不尊重它的的结点，然后将这个点的儿子连向该点的父亲，直到不能删除为止，如果同时有多个点可以删除，则删除标号最小的点。</p>
-<p>$dfs$ 扫一遍，维护一下每个点被多少个儿子尊重，将所有尊重数为 $0$ 且自己不尊重父亲的点拿出来排序即可。</p>
-<h1 id="D-The-Beatles"><a href="#D-The-Beatles" class="headerlink" title="D The Beatles"></a>D The Beatles</h1><p>给定一个长度为 $n\cdot k$ 的环，环上编号为 $1,k+1,2k+1,\dots$ 的点为汉堡王，一个人从环上某个点出发，每次走 $l$ 步直到回到起点。</p>
-<p>我们不知道出发点和步长，只知道一开始距离汉堡王的最近距离，以及跳一步后与最近的汉堡王距离。</p>
-<p>求最少和最多跳多少次回到起点。</p>
-<p>随便枚举一下起点和终点，注意到起点并不重要，只有相对位置重要，对于步长 $l$，跳的步数为 $nk \over \gcd(nk,l)$。</p>
-<h1 id="E-Lynyrd-Skynyrd"><a href="#E-Lynyrd-Skynyrd" class="headerlink" title="E Lynyrd Skynyrd"></a>E Lynyrd Skynyrd</h1><p>给定 $1$ 到 $n$ 的排列 $p$，给定一个长度为 $m$ 的序列 $a$，每次询问 $a$ 的子串是否含有一个子序列是 $p$ 的一个循环串。</p>
-<p>对于序列 $a$ 内的每个位置，搞出其下一步跳到哪里为在 $p$ 串上对应的下一个位置。</p>
-<p>考虑倍增，设 $dp[i][j]$ 表示第 $i$ 个位置在 $p$ 上跳 $2^j$ 个到达的位置。</p>
-<p>之后容易得到，每个点跳 $n-1$ 步到达的位置，即从某一个位置开始，最短一个子串，包含了子序列是 $p$ 的一个循环串。</p>
-<p>对于每个询问 $[l,r]$，即在这个区间内选一个右端点最小的子串满足条件，如果这个右端点在 $r$ 的左边，即含有这样的循环串，反之不含有，这部分也可以预处理得到。</p>
-<p>时间复杂度：$O(m\log n + q)$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/4/round549/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1315,7 +1326,7 @@ dp[i] = dp[i] \cdot ({m \choose 2} + {n-m \choose 2}+(m-i) \cdot (n-2m+2i)) / {n
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">289</span>
+          <span class="site-state-item-count">290</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
