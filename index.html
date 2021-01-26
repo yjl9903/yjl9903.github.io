@@ -249,7 +249,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2021-01-26 02:15:11 / 修改时间：02:28:56" itemprop="dateCreated datePublished" datetime="2021-01-26T02:15:11+08:00">2021-01-26</time>
+              <time title="创建时间：2021-01-26 02:15:11 / 修改时间：09:02:17" itemprop="dateCreated datePublished" datetime="2021-01-26T02:15:11+08:00">2021-01-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,9 +286,7 @@
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>显然有一个 $f(i,j,0/1)$ 的 $O(nm^2)$ 的树形背包做法，无法通过。</p>
 <p>我们考虑在 dfs 序上进行 DP，注意到一个点能否被选择只和它到根的链上的状态有关，于是我们按照 dfs 序枚举时，同时记录每种链上的状态的信息。但是，这样仍然难易通过，因为可能会存在一个长链。</p>
 <p>对于树进行轻重链剖分，不同于传统的剖分后标号方式，我们首先标记轻子树的 dfs 序，然后标记重子树。对于这样的标号方式，当我们考虑 dfs 序上的第 $i$ 个转移到第 $i+1$ 个时，要么是沿着向下的边走了一步，要么是跳到该重链链头的父亲后，往下走了一步，或者重复往上跳链头的父亲，然后往下走一步。那么，以这样的方式标号后，每个点到根的路径上有用的点，就只有每条重链的底部节点（每条重链链头的父节点）。于是，我们对这些关键点进行状压。</p>
-<blockquote>
-<p>TODO: 插图。</p>
-</blockquote>
+<p><img src="https://i.loli.net/2021/01/26/LobzJIvGRYy8Fw1.png" alt="标号和 dfs"></p>
 <p>转移时，需要考虑第 $i$ 个点上的关键点集合和第 $i+1$ 个点上的关键点集合的重复部分，得到具体的转移状态，分成使用节点 $i+1$ 和不使用节点 $i+1$ 两种进行转移。</p>
           <!--noindex-->
             <div class="post-button">
