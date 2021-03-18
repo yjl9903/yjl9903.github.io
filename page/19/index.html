@@ -224,6 +224,113 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/edu60/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/edu60/" class="post-title-link" itemprop="url">Educational Round 60 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-19 22:27:19" itemprop="dateCreated datePublished" datetime="2019-02-19T22:27:19+08:00">2019-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-04-23 13:23:18" itemprop="dateModified" datetime="2019-04-23T13:23:18+08:00">2019-04-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/Educational-Round/" itemprop="url" rel="index">
+                    <span itemprop="name">Educational Round</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/edu60/" class="post-meta-item leancloud_visitors" data-flag-title="Educational Round 60 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Best-Subsegment"><a href="#A-Best-Subsegment" class="headerlink" title="A Best Subsegment"></a>A Best Subsegment</h1><p>给一个序列，找平均值最大且最长的连续区间的长度。</p>
+<p>差点没反应过来？平均值最大一定是序列的最大值，就是找最长的连续最大值。</p>
+<h1 id="B-Emotes"><a href="#B-Emotes" class="headerlink" title="B Emotes"></a>B Emotes</h1><h1 id="C-Magic-Ship"><a href="#C-Magic-Ship" class="headerlink" title="C Magic Ship"></a>C Magic Ship</h1><p>给一个长度为 $n$ 的 <code>UDLR</code> 风向序列周期出现，每天你会被风向吹一格，你自己可以移动一格，两者独立，求从起点走到终点最少需要多少天。</p>
+<p>二分天数。当天数大于最小值时，显然可以反方向走风向，也可以到达终点，因此可以二分。</p>
+<p>预处理出，周期序列上每天的风向偏移量，可以得到 $mid$ 天后总共偏移了多少，最后判断一下曼哈顿距离即可。</p>
+<h1 id="D-Magic-Gems"><a href="#D-Magic-Gems" class="headerlink" title="D Magic Gems"></a>D Magic Gems</h1><p>求长度为 $n$ 的满足条件的不同 01 串个数，0 必须是连续的 $m$ 个位置。</p>
+<p>考虑 $dp[i]$ 表示长度为 $i$ 的答案，有转移方程 $dp[i]=dp[i-1]+dp[i-m]$。</p>
+<p>由于 $n$ 很大，$m$ 很小，矩阵快速幂加速 $dp$ 转移即可。</p>
+<h1 id="E-Decypher-the-String"><a href="#E-Decypher-the-String" class="headerlink" title="E Decypher the String"></a>E Decypher the String</h1><p>给定一个串，要你猜某个 $1$ 到 $n$ 的排列，按照这个排列做一个映射得到的加密串是什么。</p>
+<p>你只有 $3$ 次询问，$1 \le n \le 10000$。</p>
+<p>由于 $26^3 &gt; 10000$，对每个位置 $26$ 进制拆分后，最多 $3$ 位数。</p>
+<p>第一次询问，$abc…zabc…z…$，则 $a$ 相同的位置无法确定，第二次询问即是 $26$ 进制拆分的第二位，第三次询问同样。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/edu60/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/matrix/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1111,120 +1218,11 @@ c_i=c_{i-1}+c_{i+1}-c_i</script><p>判断一下 $c$ 通过这样的操作变成 
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round537/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/2/round537/" class="post-title-link" itemprop="url">Codeforces Round 537 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-02-06 00:16:31 / 修改时间：00:51:38" itemprop="dateCreated datePublished" datetime="2019-02-06T00:16:31+08:00">2019-02-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/2/round537/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 537 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-Superhero-Transformation"><a href="#A-Superhero-Transformation" class="headerlink" title="A Superhero Transformation"></a>A Superhero Transformation</h1><h1 id="B-Average-Superhero-Gang-Power"><a href="#B-Average-Superhero-Gang-Power" class="headerlink" title="B Average Superhero Gang Power"></a>B Average Superhero Gang Power</h1><p>给一个序列，你有 $m$ 次操作，每次操作可以选择删除一个数或者给某一个数 $+1$，但是一个数最多被加 $k$ 次，要求序列平均值的最大值。</p>
-<p>显然，排个序，枚举删除了多少个，剩下的全部都是加到后面即可。</p>
-<p>注意，加到哪个数并不重要，总量不超过上限即可。</p>
-<p>Hackforces，插了 $5$ 个，最后又 FST 了上千个2333。</p>
-<h1 id="C-Creative-Snap"><a href="#C-Creative-Snap" class="headerlink" title="C Creative Snap"></a>C Creative Snap</h1><p>一排长度为 $2^n$ 的位置，某些位置上有人占领（一个位置可以被多人占领），现在你要毁灭整个区间，你有两种毁灭方式：</p>
-<ol>
-<li>将当前要毁灭的区间分成左右两部分，分别毁灭；</li>
-<li>毁灭当前区间，如果区间内没人占领，费用为 $A$，如果区间内有人占领，费用为 $B \times m \times l$，其中 $A,B$ 为常数，$m$ 为当前区间内的人数，$l$ 为区间长度。</li>
-</ol>
-<p>求最小花费。</p>
-<p>直接根据题意模拟分治过程即可。</p>
-<p>关键是要询问一个区间内的人数，对所有人的位置排序，询问时做两次二分即可。</p>
-<p>分治时，注意两个细节：</p>
-<ol>
-<li>区间内没人时，直接返回，无需分治；</li>
-<li>区间长度为 $1$ 时，注意这个位置可能有很多人。</li>
-</ol>
-<p>第二点 $wa$ 了一年 T^T。</p>
-<h1 id="E-Tree"><a href="#E-Tree" class="headerlink" title="E Tree"></a>E Tree</h1><p>给一棵无根树，现在有 $q$ 次询问，每次询问无根树以 $r$ 为根时，有 $k$ 个关键点，将关键点分为最多 $m$ 块，要求满足每块内没有点对互为这棵有根树上的子孙，求这样的分块方案。</p>
-<p>其中 $n, q,\sum k \le 1e5,m\le300$。</p>
-<p>首先，考虑根固定为 $1$ 的做法，将关键点按照 $dfs$ 序排序，设 $h[i]$ 表示关键内是 $i$ 的祖先节点的个数，$dp[i][j]$ 表示前 $i$ 个点分成 $j$ 块的方案数，有转移方程</p>
-<script type="math/tex; mode=display">
-dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每个关键点，我们只需要知道有多少关键点是它的祖先即可，这部分可以搞出 $dfs$ 序，在树状数组上差分即可。</p>
-<p>之后，我们考虑这个 $dp$ 的正确性条件，必须满足计算 $i$ 的 $dp$ 状态时，他的祖先必须全部都计算过了。然后，这个条件实际上不需要用 $dfs$ 序来排序，可以考虑用深度或者说祖先的个数来排序，按照这个顺序 $dp$ 即可。</p>
-<p>最后，我们考虑换根操作，换根后我们实质上是询问了，某个关键点到根的路径上出现了多少关键点，这个部分用 $LCA​$ 差分即可。</p>
-<p>好！</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/2/round537/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/18/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/20/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1270,7 +1268,7 @@ dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每�
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">290</span>
+          <span class="site-state-item-count">291</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1290,10 +1288,10 @@ dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每�
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/yjl9903" title="GitHub &rarr; https://github.com/yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/yjl9903" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:xlor1912@gmail.com" title="E-Mail &rarr; mailto:xlor1912@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:xlor1912@gmail.com" title="E-Mail &amp;rarr; mailto:xlor1912@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
   </div>
 
@@ -1305,16 +1303,16 @@ dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每�
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://einsturing.top/" title="http://einsturing.top/" rel="noopener" target="_blank">Einsturing</a>
+          <a href="http://einsturing.top/" title="http:&#x2F;&#x2F;einsturing.top&#x2F;" rel="noopener" target="_blank">Einsturing</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="http://houwenda.github.io/" title="http://houwenda.github.io/" rel="noopener" target="_blank">漏断</a>
+          <a href="http://houwenda.github.io/" title="http:&#x2F;&#x2F;houwenda.github.io&#x2F;" rel="noopener" target="_blank">漏断</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="http://hadeseve.github.io/" title="http://hadeseve.github.io/" rel="noopener" target="_blank">Hadeseve</a>
+          <a href="http://hadeseve.github.io/" title="http:&#x2F;&#x2F;hadeseve.github.io&#x2F;" rel="noopener" target="_blank">Hadeseve</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://www.cnblogs.com/guaguastandup" title="https://www.cnblogs.com/guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
+          <a href="https://www.cnblogs.com/guaguastandup" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
         </li>
     </ul>
   </div>
@@ -1346,10 +1344,10 @@ dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每�
   </span>
   <span class="author" itemprop="copyrightHolder">XLor</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
   </div>
 
         

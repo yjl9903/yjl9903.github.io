@@ -224,6 +224,112 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/eoj12/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/1/eoj12/" class="post-title-link" itemprop="url">EOJ Monthly 2018.12 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-12 00:20:37" itemprop="dateCreated datePublished" datetime="2019-01-12T00:20:37+08:00">2019-01-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-02-22 23:14:05" itemprop="dateModified" datetime="2019-02-22T23:14:05+08:00">2019-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/1/eoj12/" class="post-meta-item leancloud_visitors" data-flag-title="EOJ Monthly 2018.12 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>咕咕咕了一个月的补题。</p>
+<h1 id="A-仰望星空"><a href="#A-仰望星空" class="headerlink" title="A 仰望星空"></a>A 仰望星空</h1><p>总共 $n$ 天，已知第一天权值为 $b$，最后一天权值为 $a$，每天权值不会增加，问一共有多少种可能的权值总和。</p>
+<p>中间 $n-2$ 天的权值和的范围是 $[ (n-2) \times a, (n-2) \times b ]$，一共有 $(n-2)(b-a)+1$ 种。</p>
+<h1 id="B-清点星辰"><a href="#B-清点星辰" class="headerlink" title="B 清点星辰"></a>B 清点星辰</h1><p>$n$ 个点随机均匀地撒在 $1 \times 1$ 的矩形内，求最短距离的期望。</p>
+<p>随机模拟，注意保证总的复杂度为 $1e8$。</p>
+<h1 id="C-她的名字"><a href="#C-她的名字" class="headerlink" title="C 她的名字"></a>C 她的名字</h1><p>给一个长度为 $2000$ 的数字串，每次询问从母串中取出 $N$ 个字符，组成结尾为 $XY$ 的子序列方案数。</p>
+<p>预处理每种数字的出现次数的后缀和。</p>
+<p>预处理每一种 $XY$ 的情况，即每一个数字为 $X$ 的位置的后缀有多少 $Y$，前面有多少个数字。</p>
+<p>对于每个询问，每个 $X$ 的位置 $pos$，对应后缀 $Y$ 的个数 $cnt$，答案为 $\sum {pos-1 \choose N-2 } \times cnt$。</p>
+<p>注意保存一下重复的询问答案。</p>
+<h1 id="E-管理孩子"><a href="#E-管理孩子" class="headerlink" title="E 管理孩子"></a>E 管理孩子</h1><p>二分答案。</p>
+<p>对于每个子树，维护一个权值：这棵子树中的某个节点最多还能够覆盖多少节点（+）或者这棵子树还有多少个顶点没有被覆盖到（-），可以用正负号表示这两种权值（不会同时出现）。</p>
+<p>dfs 到某一个节点时，考虑这个节点所有儿子的权值，这些权值有正有负，所有负的权值的和，也就是这个子树总共还有多个点没有被覆盖。</p>
+<p>显然最多只有一个带有正权值的儿子对这个子树的覆盖有贡献，因为如果覆盖到了根节点，那么其他正儿子就不能再覆盖根节点了（不联通），所以需要选择一个权值最大的正儿子。</p>
+<p>如果正儿子权值比较大，就让这个顶点覆盖这个子树所有未覆盖顶点，然后将还能够覆盖的个数回溯到当前子树的父亲。</p>
+<p>如果正儿子权值比较小，那么就需要当前子树的父亲来覆盖自己，将还需覆盖的个数回溯回去。</p>
+<p>如果构造成功，那么根节点会返回一个非负值。否则，表示根节点的父亲需要提供一些覆盖给这棵树，即构造失败。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/1/eoj12/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/round531/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1159,102 +1265,11 @@ dp[i][j]=min(dp[i-1][j-1],dp[i-1][j]+a[i])</script><p>否则：$dp[i][j]=dp[i-1]
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/12/round528/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/12/round528/" class="post-title-link" itemprop="url">Codeforces Round 528 题解</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-12-24 00:31:17 / 修改时间：00:49:27" itemprop="dateCreated datePublished" datetime="2018-12-24T00:31:17+08:00">2018-12-24</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
-                    <span itemprop="name">Codeforces</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/12/round528/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 528 题解" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="A-Right-Left-Cipher"><a href="#A-Right-Left-Cipher" class="headerlink" title="A Right-Left Cipher"></a>A Right-Left Cipher</h1><p>模拟。</p>
-<h1 id="B-Div-Times-Mod"><a href="#B-Div-Times-Mod" class="headerlink" title="B Div Times Mod"></a>B Div Times Mod</h1><p>求解关于 $x$ 的不定方程 $(x / k) * (x \% k) = n$ 的最小解。</p>
-<p>对 $n​$ 质因数分解即可。</p>
-<h1 id="C-Connect-Three"><a href="#C-Connect-Three" class="headerlink" title="C Connect Three"></a>C Connect Three</h1><p>平面分成了无数 $1 \times 1$ 的方格，给定 3 个方格的坐标，用最少的方格让这三个联通。</p>
-<p>枚举两两之间的 6 个最近点，找这个最近点与第三个点的最短路径。</p>
-<h1 id="D-Minimum-Diameter-Tree"><a href="#D-Minimum-Diameter-Tree" class="headerlink" title="D Minimum Diameter Tree"></a>D Minimum Diameter Tree</h1><p>给一棵树，给树上每条边加一个非负实数范围上的权值，权值总和为 $S$，最小化树的直径。</p>
-<p>显然，对于任意一条直径，都会经过两个度数为 1 的顶点，那么必须要给每个这样的叶子上的边平均分配 $S$。</p>
-<p>二分了一个小时是怎么回事啊？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/12/round528/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/21/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/23/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1300,7 +1315,7 @@ dp[i][j]=min(dp[i-1][j-1],dp[i-1][j]+a[i])</script><p>否则：$dp[i][j]=dp[i-1]
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">290</span>
+          <span class="site-state-item-count">291</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1320,10 +1335,10 @@ dp[i][j]=min(dp[i-1][j-1],dp[i-1][j]+a[i])</script><p>否则：$dp[i][j]=dp[i-1]
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/yjl9903" title="GitHub &rarr; https://github.com/yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <a href="https://github.com/yjl9903" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:xlor1912@gmail.com" title="E-Mail &rarr; mailto:xlor1912@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <a href="mailto:xlor1912@gmail.com" title="E-Mail &amp;rarr; mailto:xlor1912@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
       </span>
   </div>
 
@@ -1335,16 +1350,16 @@ dp[i][j]=min(dp[i-1][j-1],dp[i-1][j]+a[i])</script><p>否则：$dp[i][j]=dp[i-1]
     </div>
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
-          <a href="http://einsturing.top/" title="http://einsturing.top/" rel="noopener" target="_blank">Einsturing</a>
+          <a href="http://einsturing.top/" title="http:&#x2F;&#x2F;einsturing.top&#x2F;" rel="noopener" target="_blank">Einsturing</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="http://houwenda.github.io/" title="http://houwenda.github.io/" rel="noopener" target="_blank">漏断</a>
+          <a href="http://houwenda.github.io/" title="http:&#x2F;&#x2F;houwenda.github.io&#x2F;" rel="noopener" target="_blank">漏断</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="http://hadeseve.github.io/" title="http://hadeseve.github.io/" rel="noopener" target="_blank">Hadeseve</a>
+          <a href="http://hadeseve.github.io/" title="http:&#x2F;&#x2F;hadeseve.github.io&#x2F;" rel="noopener" target="_blank">Hadeseve</a>
         </li>
         <li class="links-of-blogroll-item">
-          <a href="https://www.cnblogs.com/guaguastandup" title="https://www.cnblogs.com/guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
+          <a href="https://www.cnblogs.com/guaguastandup" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
         </li>
     </ul>
   </div>
@@ -1376,10 +1391,10 @@ dp[i][j]=min(dp[i-1][j-1],dp[i-1][j]+a[i])</script><p>否则：$dp[i][j]=dp[i-1]
   </span>
   <span class="author" itemprop="copyrightHolder">XLor</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
   </div>
 
         
