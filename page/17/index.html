@@ -224,6 +224,96 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/luogu2048/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/4/luogu2048/" class="post-title-link" itemprop="url">NOI2010 超级钢琴</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-04-11 12:35:01 / 修改时间：12:46:39" itemprop="dateCreated datePublished" datetime="2019-04-11T12:35:01+08:00">2019-04-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/4/luogu2048/" class="post-meta-item leancloud_visitors" data-flag-title="NOI2010 超级钢琴" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给定一个长度为 $n$ 的序列，求长度在 $[L,R]$ 范围内的子区间权值和的前 $k$ 大之和。</p>
+<p>其中 $1 \le n,k \le 5 \times 10^5$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>前 $k$ 大等价于每次选一个没有选择过的子区间中有最大权值的。</p>
+<p>记三元组 $(o,l,r)$ 表示左端点为 $o$，右端点在区间 $[l,r]$ 范围内的一段区间，即询问 $[l,r]$ 范围内前缀和的最大值，RMQ 预处理。</p>
+<p>用一个堆来维护最大值，显然当前时刻的最大值对应某一个三元组 $(i,L,R)$。</p>
+<p>当我们删除这个三元组时，还需要考虑 $i$ 为左端点的其它情况。</p>
+<p>设最大值位置为 $t$，那么可能存在次大值在 $(i,L,t-1)$ 和 $(i,t+1,R)$，特判区间是否存在，加进堆里维护。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/4/luogu2048/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/persistent-trie/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1138,101 +1228,6 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/3/luogu2371/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/3/luogu2371/" class="post-title-link" itemprop="url">墨墨的等式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-03-19 20:55:13 / 修改时间：21:24:32" itemprop="dateCreated datePublished" datetime="2019-03-19T20:55:13+08:00">2019-03-19</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
-                    <span itemprop="name">题解</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/3/luogu2371/" class="post-meta-item leancloud_visitors" data-flag-title="墨墨的等式" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>感谢 <span style="color:black">E</span><span style="color:red">llery</span> 贡献的题解。</p>
-<h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给定系数序列 $a$ 和 $B$ 的范围 $[mn,mx]$，求不定方程</p>
-<script type="math/tex; mode=display">
-a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n = B</script><p>的非负整数解数。</p>
-<p>其中 $1 \le n \le 12, 0 \le a_i \le 5 \times 10^5, 1 \le B \le 10^{12}$。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>先任意取一 $a_i$，当我们找到一个符合条件的 $B$ 有 $B \text{ mod } ai = d $ 时，因为符合条件所以有一组整数解 $(x_1,x_2,x_3,\dots,x_i,\dots,x_n)$。</p>
-<p>此时 $B+a_i$ 必定也是符合条件的，这个时候的整数解会变成 $(x_1,x_2,x_3,\dots,x_i+1,\dots,x_n)$。</p>
-<p>所以我们对于每一个余数 $0,1,2,3,\dots,\min(a)-1$，只需要找到符合条件的最小的B即可。</p>
-<p>在余数 $[0,\min(a)-1]$ 上建立点集，用 $dist[i]$ 来表示模 $min(a)$ 的余数为 $i$ 的最小 $B$ 值。</p>
-<p>为了求出 $dist$ 数组，考虑 dijkstra 的松弛操作，对于 $i$，加上其他任意一个 $a_j$ 时，会出现一个新的余数 $k = (i + a_j) \text{ mod } \min(a)$，可以理解为由点 $i$ 向点 $k$ 连接了边权为 $a_j$ 的边。</p>
-<p>对于每个点 $i$ 都有了一个 $dist[i]$。如果 $dist[i]$ 大于 $B$，则其对答案是没有贡献的；若小于则对答案贡献为 $(B – dist[i]) / \min(a) + 1$。</p>
-<p>区间前缀和差分一下得到最终答案。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/3/luogu2371/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1283,7 +1278,7 @@ a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n = B</scrip
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">291</span>
+          <span class="site-state-item-count">292</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
