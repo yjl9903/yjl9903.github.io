@@ -224,6 +224,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2021/3/2020petrcampd9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/3/2020petrcampd9/" class="post-title-link" itemprop="url">XXI Open Cup, Grand Prix of Suwon G. Generate The Array 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-27 19:03:06 / 修改时间：19:33:06" itemprop="dateCreated datePublished" datetime="2021-03-27T19:03:06+08:00">2021-03-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2021/3/2020petrcampd9/" class="post-meta-item leancloud_visitors" data-flag-title="XXI Open Cup, Grand Prix of Suwon G. Generate The Array 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>有一个长度为 $n$ 的未知数组，第 $i$ 个位置的值有有 $k_i$ 种选择，这个位置选择 $V(i,j)$ 的代价 $C(i,j)$。</p>
+<p>当你确定数组后，有 $q$ 次询问 $[l, r]$ 区间内的最大值，这个数组的价值就是所有询问的和减去选数时的代价。</p>
+<p>数据范围：$1 \le n \le 300, n \le \sum_{i=1}^n k_i \le 3 \cdot 10^5$。</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>考虑区间 DP，令 $f(l, r)$ 表示确定完区间 $[l, r]$ 的价值。</p>
+<p>预处理每个位置 $i$ 被区间 $[l, r]$ 内所有询问覆盖的次数。转移时可以枚举这个区间的某一个位置作为最大值，但是每一个位置有多种选择，这个位置不仅要在价值上比较优，还需要满足比上一层小的限制。</p>
+<p>无视上面的区间 DP，我们对于一个点，可以发现这个点产生的贡献关于覆盖次数是一堆一次函数的 $\max$，也就是一个下凸壳。回到上面的 DP，我们在枚举最大值，使用预处理的覆盖次数，可以在凸壳上二分出对应的一次函数，得到最优价值。</p>
+<p>其实，我们已经做完了，上面的算法已经能够得到最优解，且最优解一定是合法的。</p>
+<p>简单证明一下，我们考虑点 $i$ 和点 $j$，假设点 $i$ 作为大区间时的被覆盖次数为 $x_1$，小区间 $x_2$，点 $j$ 类似地为 $x_3$ 和 $x_4$，显然 $x_1 &gt; x_2, x_3 &gt; x_4$。不妨设两个点 $i &lt; j$ 分别只有两条线段 $f(x) = k_i x - b_i$ 和 $f(x) = k_j x - b_j$，且 $k_i &gt; k_j$。因此，$i$ 必须作为大区间的最大值，而 $j$ 需要在内层。</p>
+<p>合法解时的价值为 $k_i x_1 - b_i + k_j x_4 - b_j$，非法解时的价值为 $k_i x_2 - b_i + k_j x_3 - b_j$。</p>
+<p>注意到 $x_1 - x_2 = x_3 - x_4$，因为这个差是所有区间左端点在 $i$ 左侧和右端点在 $j$ 右侧。</p>
+<p>因此 $k_i (x_1 - x_2) &gt; k_j (x_3 - x_4)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/3/2020petrcampd9/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2021/3/round709/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1116,143 +1210,6 @@ g(k) & = & \frac{1}{k!} \sum_{i = k}^{n} (a_i \cdot  i!) \times \frac{1}{(i-k)!}
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/2020bjonsite/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/2020bjonsite/" class="post-title-link" itemprop="url">2020 ICPC 小米邀请赛决赛</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-10 22:39:58" itemprop="dateCreated datePublished" datetime="2020-12-10T22:39:58+08:00">2020-12-10</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-11 17:09:23" itemprop="dateModified" datetime="2020-12-11T17:09:23+08:00">2020-12-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/%E7%8E%B0%E5%9C%BA%E8%B5%9B/" itemprop="url" rel="index">
-                    <span itemprop="name">现场赛</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/12/2020bjonsite/" class="post-meta-item leancloud_visitors" data-flag-title="2020 ICPC 小米邀请赛决赛" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-<th style="text-align:center">M</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">54</td>
-<td style="text-align:center">9</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/2020bjonsite/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1303,7 +1260,7 @@ g(k) & = & \frac{1}{k!} \sum_{i = k}^{n} (a_i \cdot  i!) \times \frac{1}{(i-k)!}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">292</span>
+          <span class="site-state-item-count">293</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -224,6 +224,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/cf1055f/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/4/cf1055f/" class="post-title-link" itemprop="url">Codeforces 1055F Tree and XOR 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-04-12 16:35:20 / 修改时间：16:49:01" itemprop="dateCreated datePublished" datetime="2019-04-12T16:35:20+08:00">2019-04-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E5%AD%97%E5%85%B8%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">字典树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/4/cf1055f/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces 1055F Tree and XOR 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给定一个长度为 $n$ 的序列求两两异或值的第 $k$ 小。</p>
+<p>其中 $2 \le n \le 10^6$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>显然需要建一棵字典树出来。</p>
+<p>在字典树上从大到小地往下爬，如果当前 $k$ 大于该位异或值为 $0$ 的对数，那么表示这个位置应该选 $1$，否则选 $0$。</p>
+<p>但是把字典树建出来空间是不够的，考虑将字典树滚动掉。</p>
+<p>从高位往低位枚举，维护序列每个点在字典树上爬的标号，这个标号是滚动的，并且记录每个结点的大小。</p>
+<p>再维护序列上每个位置与哪个结点配对，计算每层的大小时，累加一下选择与这个数字在该位异或为 $0$ 的结点总数。</p>
+<p>根据大小关系，更新答案和 $k$ 值，并将每个结点的配对位置往下爬。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/4/cf1055f/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/4/luogu2048/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1131,103 +1228,6 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/3/flow24/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/3/flow24/" class="post-title-link" itemprop="url">网络流 24 题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-03-20 20:45:25 / 修改时间：20:58:19" itemprop="dateCreated datePublished" datetime="2019-03-20T20:45:25+08:00">2019-03-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/%E7%BD%91%E7%BB%9C%E6%B5%81/" itemprop="url" rel="index">
-                    <span itemprop="name">网络流</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/3/flow24/" class="post-meta-item leancloud_visitors" data-flag-title="网络流 24 题" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="搭配飞行员"><a href="#搭配飞行员" class="headerlink" title="搭配飞行员"></a>搭配飞行员</h1><p>二分图匹配。</p>
-<h1 id="太空飞行计划"><a href="#太空飞行计划" class="headerlink" title="太空飞行计划"></a>太空飞行计划</h1><p>最大权闭合子图。</p>
-<p>闭合子图：子图中每个点的出边指向的结点也在子图内。</p>
-<p>有 $n$ 个商品，$m$ 个物资，生产一个商品需要某些物资，商品有价值，物资有费用（出现时只算一次），求最大利益。</p>
-<p>建一个超级源点 $S$ 指向所有商品，容量为商品权值，建一个超级汇点 $T$，所有物资指向 $T$，容量为物资费用。</p>
-<p>对于依赖关系，建一条容量为无穷大的边。</p>
-<p>最大权闭合子图为商品正权值之和减去最大流（最小割）。</p>
-<p>最大权闭合子图为最后所有与超级源点相连的点。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/3/flow24/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1278,7 +1278,7 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">292</span>
+          <span class="site-state-item-count">293</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

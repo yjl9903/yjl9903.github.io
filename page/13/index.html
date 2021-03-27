@@ -224,6 +224,106 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/7/hdu5555/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/7/hdu5555/" class="post-title-link" itemprop="url">HDu5555 Immortality of Frog 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-04 19:14:29" itemprop="dateCreated datePublished" datetime="2019-07-04T19:14:29+08:00">2019-07-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-18 00:37:08" itemprop="dateModified" datetime="2019-09-18T00:37:08+08:00">2019-09-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/7/hdu5555/" class="post-meta-item leancloud_visitors" data-flag-title="HDu5555 Immortality of Frog 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>妙啊！</p>
+<h1 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h1><p>给了一个 $n \times n$ 的网格，第一行排着 $n$ 个青蛙，青蛙同时往上跳。</p>
+<p>每行有一个线段，一个线段当且仅当完全覆盖一行时是好的，一个青蛙上跳的过程不能经过超过 $10$ 个坏的线段。</p>
+<p>每个线段的每个位置等概率出现一个糖果，求每个青蛙恰好拿到一个糖并且能够走完全程的概率。</p>
+<p>其中 $1 \le n \le 1000$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>如果一个青蛙上面有超过 $10$ 个坏线段，显然概率为 $0$。</p>
+<p>显然，每一行和每一列恰好有一个糖。</p>
+<p>我们从左往右按列 dp，记 $dp[i][s]$ 表示当前到达第 $i$ 列，状态为 $s$ 的概率。</p>
+<p>状态代表这列的坏线段依次选与不选，转移时需要将当前列的状态改变成下一列状态，并且需要判断掉一行终止且未选的无效情况。</p>
+<p>转移时，将当前状态加到改变后的状态，并枚举下一列的一个位置进行选择，条件是不在当前列上或者当前列未选。</p>
+<p>最后，计算出了所有坏线段的情况，乘上好线段的阶乘，即坏线段确定后，好线段可以任意取。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/7/hdu5555/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/7/2019summer5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1265,103 +1365,6 @@ f(u,1)
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/6/fenwick/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/6/fenwick/" class="post-title-link" itemprop="url">树状数组上的黑科技</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-06-18 00:33:59 / 修改时间：00:45:40" itemprop="dateCreated datePublished" datetime="2019-06-18T00:33:59+08:00">2019-06-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" itemprop="url" rel="index">
-                    <span itemprop="name">树状数组</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/6/fenwick/" class="post-meta-item leancloud_visitors" data-flag-title="树状数组上的黑科技" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>参考博客 <a href="https://magolor.github.io/2018/08/27/2018-08-27-blog-01/" target="_blank" rel="noopener">树状数组黑科技讲义</a>。</p>
-<h1 id="区间加-区间询问"><a href="#区间加-区间询问" class="headerlink" title="区间加 区间询问"></a>区间加 区间询问</h1><p>令 $b_i=a_i-a_{i-1}$，那么 $a_x=\sum_{i=1}^x b_i$。于是，对于区间询问有</p>
-<script type="math/tex; mode=display">
-\sum_{i=l}^r a_i = (r-l+1)\sum_{i=1}^{l-1} b_i + (r+1) \sum_{i=l}^r b_i - \sum_{i=l}^r i \cdot b_i</script><p>分别在树状数组数组上维护 $b_i$ 和 $i \cdot b_i$ 即可。</p>
-<h1 id="权值树状数组二分第-k-大"><a href="#权值树状数组二分第-k-大" class="headerlink" title="权值树状数组二分第 $k$ 大"></a>权值树状数组二分第 $k$ 大</h1><p>树状数组对应一棵没有右儿子的权值线段树，权值线段树上二分时，只需要和左儿子比较，因此权值线段树上二分可以扩展到树状数组上。</p>
-<p>更新时，正常单点更新即可；二分时，每个点的权值对应线段树上结点的权值。</p>
-<p>树状数组上结点 $p$ 的左儿子为 $p - lowbit(p) / 2$，右儿子为 $p + lowbit(p) / 2$。</p>
-<p>注意边界上的细节，数组大小建议放大到 $2$ 的幂次。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/6/fenwick/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1412,7 +1415,7 @@ f(u,1)
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">292</span>
+          <span class="site-state-item-count">293</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
