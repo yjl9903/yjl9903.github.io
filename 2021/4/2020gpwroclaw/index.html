@@ -58,7 +58,7 @@
 <meta property="og:description" content="rank solved A B C D E F G H I J K L M     96 9 Ø . O Ø Ø O O . O . O . O">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-04T15:46:01.000Z">
-<meta property="article:modified_time" content="2021-04-04T15:59:22.162Z">
+<meta property="article:modified_time" content="2021-04-04T16:34:13.912Z">
 <meta property="article:author" content="XLor">
 <meta property="article:tag" content="Trainings">
 <meta name="twitter:card" content="summary">
@@ -251,10 +251,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2021-04-04 23:46:01 / 修改时间：23:59:22" itemprop="dateCreated datePublished" datetime="2021-04-04T23:46:01+08:00">2021-04-04</time>
+              <time title="创建时间：2021-04-04 23:46:01" itemprop="dateCreated datePublished" datetime="2021-04-04T23:46:01+08:00">2021-04-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-04-05 00:34:13" itemprop="dateModified" datetime="2021-04-05T00:34:13+08:00">2021-04-05</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -329,12 +335,32 @@
 </div>
 <a id="more"></a>
 <h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>UpSolved by XLor.</p>
+<p>求母串 $s$ 和目标串 $t$ 的编辑距离，如果编辑距离不超过 $k$ 输出方案，否则输出不存在。</p>
+<p>注意到本题，串长为 $10^6$ 但是 $k$ 只有 $1000$，因此 DP 时的复杂度尽量来自 $k$。</p>
+<p>观察到结论：每次修改操作完成后，都会向后贪心地匹配。</p>
+<p>假设母串匹配到位置 $x$，目标串匹配到 $y$，显然 $|x-y| \le k$。</p>
+<p>因为，替换字符不会改变位置差，插入一个字符和删除字符只会导致位置 $+1$ 或者 $-1$。</p>
+<p>因此，我们令 $f(i,j)$ 表示操作了 $i$ 次，位置差为 $j$ $(-i \le j \le i)$ 时，最大的匹配位置。</p>
+<ul>
+<li><p>替换字符：将 $s[f(i, j) + 1]$ 替换为 $t[f(i, j) + 1 + j]$，$f(i, j) \to f(i+1, j)$；</p>
+</li>
+<li><p>插入字符：在 $f(i, j)$ 位置之后插入字符 $t[f(i, j) + 1 + j]$，$f(i, j) \to f(i + 1, j + 1)$；</p>
+</li>
+<li><p>删除字符：删除 $f(i, j) + 1$ 处的字符，$f(i, j) \to f(i + 1, j - 1)$。</p>
+</li>
+</ul>
+<p>注意：特判完全不需要修改的情况。</p>
 <h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><p>Solved by XLor and miaojie.</p>
 <p>对于树，我们选所有叶子是最优的。</p>
 <p>对于环，只能选 $3$ 个点。</p>
 <p>基环树，环上至多选 $2$ 个连续的孤立点。</p>
 <h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><p>UpSolved by czswez.</p>
+<p>竞赛图 SCC 缩点后，是一个链状的 DAG，每个点会向所有后缀连边。</p>
+<p>SCC 缩点后，设置正向边边权为 $0$，反向边边权为权值本身。</p>
+<p>从终点往起点跑一条最短路，将最短路经过的反边翻一下，就能产生一个大环。</p>
 <h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><p>UpSolved by XLor and czswez.</p>
+<p>对于每个树，发射角度的正切值是一个区间，把区间解出来即可。</p>
+<p>注意：本题二分时有很大的精度误差，输出的又是正切值。</p>
 <h1 id="F"><a href="#F" class="headerlink" title="F"></a>F</h1><p>Solved by XLor.</p>
 <p>在 $26$ 进制下加 $1$，至多 $26$ 次个位一定会出现想要的数字。</p>
 <h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><p>Solved by XLor and czswez.</p>
