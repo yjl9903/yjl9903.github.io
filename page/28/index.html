@@ -224,6 +224,104 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/round509/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/9/round509/" class="post-title-link" itemprop="url">Codeforces Round 509 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2018-09-17 00:25:38" itemprop="dateCreated datePublished" datetime="2018-09-17T00:25:38+08:00">2018-09-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2018-10-07 01:21:00" itemprop="dateModified" datetime="2018-10-07T01:21:00+08:00">2018-10-07</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/9/round509/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 509 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Heist"><a href="#A-Heist" class="headerlink" title="A Heist"></a>A Heist</h1><p>排序得到左右边界，即为原编号的左右边界，减去序列的长度即可。</p>
+<h1 id="B-Buying-a-TV-Set"><a href="#B-Buying-a-TV-Set" class="headerlink" title="B Buying a TV Set"></a>B Buying a TV Set</h1><p>求满足 $x_0 \le a, y_0 \le b$ 且 $\frac{x_0}{y_0}=\frac{x}{y}$ 的 $(x_0, y_0)$ 方案数，将 $\frac{x}{y}$ 约分， 答案为 $max(\frac{a}{x}, \frac{b}{y})$。</p>
+<h1 id="C-Coffee-Break"><a href="#C-Coffee-Break" class="headerlink" title="C Coffee Break"></a>C Coffee Break</h1><p>自闭题T^T。</p>
+<p>维护一个 set 存放所有咖啡时间点和在原序列中的下标，每次选 set 的第一个元素 $x$ 放在某一天的第一个，之后二分第一个大于等于 $x+d+1$ 的元素放在同一天并将他从 set 中删除，直到没有元素可以放在这一天。</p>
+<h1 id="D-Glider"><a href="#D-Glider" class="headerlink" title="D Glider"></a>D Glider</h1><p>注意到这样一个结论：如果我们从 $x+1$ 处下落，当 $x+1$ 位于上升气流外，假如 $x+1$ 处下落经过的气流和 $x$ 处经过的气流相同，那么他们滑翔的距离也相同，但是对于x轴的一个位置，$x+1$ 下落总比 $x$ 下落高一个单位，因此有可能经过 $x$ 未经过的气流，所以 $ans(x+1) \ge ans(x)$ ；同样的，如果 $x+1$ 位于上升气流内，$ans(x+1) \le ans(x)$。因此可以得出，最长距离一定会在某个上升气流的左端点出取到。</p>
+<p>考虑枚举每个左端点的答案，如果直接计算显然这是 $O(n^2)$ 。</p>
+<p>我们还发现，高度下降只会发生在上升气流之间，落地前必定高度下降 $h$ ，在上升气流之间水平移动 $h$ ，加上在经过的所有上升气流的长度和。因此，预处理上升气流长度的后缀和，上升气流之间距离的后缀和。</p>
+<p>假设枚举到第 $i$ 个位置，如果当前高度大于当前间隔后缀和，那么表示可以滑翔到最后一个上升气流之后，那么答案就是 $len(i) + h$；如果当前高度小于等于当前间隔后缀和，我们需要找到从 $i$ 开始多少个连续间隔距离加起来大于等于 $h$，也就是后缀和小于等于 $h-delta(i)$，因为是后缀和所以满足单调性，二分即可。</p>
+<p>时间复杂度 $O(n+n\log n)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/9/round509/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/9/dinic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1029,82 +1127,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2018/8/kruskal/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2018/8/kruskal/" class="post-title-link" itemprop="url">Kruskal</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2018-08-18 10:47:34 / 修改时间：10:48:38" itemprop="dateCreated datePublished" datetime="2018-08-18T10:47:34+08:00">2018-08-18</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%9B%BE%E8%AE%BA/" itemprop="url" rel="index">
-                    <span itemprop="name">图论</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2018/8/kruskal/" class="post-meta-item leancloud_visitors" data-flag-title="Kruskal" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">edge</span>&#123;</span><span class="keyword">char</span> x, y; <span class="keyword">int</span> d;&#125;;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> edge&amp; a, <span class="keyword">const</span> edge&amp; b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a.d &lt; b.d;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">vector</span>&lt;edge&gt; v;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, pre[maxn];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxn; i++) pre[i] = i;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;<span class="keyword">return</span> x == pre[x] ? x : pre[x] = find(pre[x]);&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">join</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>&#123;</span><br><span class="line">    x = find(x), y = find(y);</span><br><span class="line">    pre[x] = y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">kruskal</span><span class="params">()</span></span>&#123;</span><br><span class="line">    sort(v.begin(), v.end(), cmp);</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>, a, b; i &lt; v.size(); i++)&#123;</span><br><span class="line">        a = find(v[i].x - <span class="string">'A'</span>), b = find(v[i].y - <span class="string">'A'</span>);</span><br><span class="line">        <span class="keyword">if</span> (a == b) <span class="keyword">continue</span>;</span><br><span class="line">        join(a, b); ans += v[i].d;</span><br><span class="line">    &#125;   </span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1155,7 +1177,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">294</span>
+          <span class="site-state-item-count">295</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1168,7 +1190,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1378,7 +1400,7 @@
 
 
   
-<script src="/js/local-search.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/js/local-search.js"></script>
 
 
 
@@ -1396,6 +1418,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
 
   
 

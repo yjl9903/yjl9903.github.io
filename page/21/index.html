@@ -224,6 +224,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/treebag/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/1/treebag/" class="post-title-link" itemprop="url">树形依赖背包</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-01-30 19:10:16 / 修改时间：22:47:44" itemprop="dateCreated datePublished" datetime="2019-01-30T19:10:16+08:00">2019-01-30</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/1/treebag/" class="post-meta-item leancloud_visitors" data-flag-title="树形依赖背包" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>树上的每个节点均有各自的重量和价值，除了容量限制外，还要求选择一个节点时，其父节点也要被选择，求最大价值。</p>
+<p>时间复杂度：$O(nm^2)$（其中 $n$ 为树的大小，$m$ 为容量限制）。</p>
+<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>对于枚举到的每个节点，记录一下其子树大小。</p>
+<p>$dp$ 状态转移时，枚举的个数是当前这个子树大小，对应儿子节点的子树的大小，最后更新子树大小。</p>
+<p>相当于每次转移都是从节点枚举过的子树，将没有枚举的儿子合并进来。这个过程对应于枚举以这个点为 $lca$ 的所有点对，总体上它枚举了树上所有点对。</p>
+<p>时间复杂度：$O(n^2)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/1/treebag/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/wannaflywinter2019/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1413,142 +1502,6 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/wannaflywinter2019D2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/wannaflywinter2019D2/" class="post-title-link" itemprop="url">CCPC-Wannafly Winter Camp Day2</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-01-21 22:37:49" itemprop="dateCreated datePublished" datetime="2019-01-21T22:37:49+08:00">2019-01-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-07-01 16:27:40" itemprop="dateModified" datetime="2019-07-01T16:27:40+08:00">2019-07-01</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/" itemprop="url" rel="index">
-                    <span itemprop="name">训练</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AE%AD%E7%BB%83/Wannafly-Camp/" itemprop="url" rel="index">
-                    <span itemprop="name">Wannafly Camp</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/wannaflywinter2019D2/" class="post-meta-item leancloud_visitors" data-flag-title="CCPC-Wannafly Winter Camp Day2" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">29/99</td>
-<td style="text-align:center">2/12</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>自闭了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/wannaflywinter2019D2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1599,7 +1552,7 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">294</span>
+          <span class="site-state-item-count">295</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1612,7 +1565,7 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -224,6 +224,100 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/steinerTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/steinerTree/" class="post-title-link" itemprop="url">斯坦纳树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-02-12 00:10:20 / 修改时间：00:26:11" itemprop="dateCreated datePublished" datetime="2019-02-12T00:10:20+08:00">2019-02-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/steinerTree/" class="post-meta-item leancloud_visitors" data-flag-title="斯坦纳树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>给定带权图 $G$，求让 $k$ 个关键点联通的权值最小的子图（$1 \le k \le 10$）。</p>
+<p>关键点的个数很少，考虑状压 $dp$。</p>
+<p>设 $dp[mask][i]$ 表示关键点的点集 $mask$ 连到顶点 $i$ 最小权值和。</p>
+<p>转移的时候有两种情况：</p>
+<ol>
+<li><p>固定顶点 $i$，合并 $mask$ 的子集 $T$ 和 $T$ 的补集两个 $dp$ 状态，相当于顶点分叉。</p>
+</li>
+<li><p>固定点集 $mask$，顶点 $i$ 向周围的点用最短路进行转移，相当于节点向外生长。</p>
+</li>
+</ol>
+<p>时间复杂度：$O(3^k \cdot n+2^k \cdot m \log n)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/steinerTree/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round538/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1176,95 +1270,6 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/1/treebag/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/1/treebag/" class="post-title-link" itemprop="url">树形依赖背包</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-01-30 19:10:16 / 修改时间：22:47:44" itemprop="dateCreated datePublished" datetime="2019-01-30T19:10:16+08:00">2019-01-30</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2019/1/treebag/" class="post-meta-item leancloud_visitors" data-flag-title="树形依赖背包" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>树上的每个节点均有各自的重量和价值，除了容量限制外，还要求选择一个节点时，其父节点也要被选择，求最大价值。</p>
-<p>时间复杂度：$O(nm^2)$（其中 $n$ 为树的大小，$m$ 为容量限制）。</p>
-<h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><p>对于枚举到的每个节点，记录一下其子树大小。</p>
-<p>$dp$ 状态转移时，枚举的个数是当前这个子树大小，对应儿子节点的子树的大小，最后更新子树大小。</p>
-<p>相当于每次转移都是从节点枚举过的子树，将没有枚举的儿子合并进来。这个过程对应于枚举以这个点为 $lca$ 的所有点对，总体上它枚举了树上所有点对。</p>
-<p>时间复杂度：$O(n^2)$。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/1/treebag/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1315,7 +1320,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">294</span>
+          <span class="site-state-item-count">295</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1328,7 +1333,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">52</span>
+        <span class="site-state-item-count">53</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
