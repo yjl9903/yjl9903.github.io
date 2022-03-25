@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -50,15 +50,15 @@
   };
 </script>
 
-  <meta name="description" content="rank solved A B C D E F G H I J K L M     30 5 O . . O ! . . O . ! ! O O">
+  <meta name="description" content="rank solved A B C D E F G H I J K L M    30 5 O . . O ! . . O . ! ! O O">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019 ICPC 沈阳现场赛">
 <meta property="og:url" content="https://xlor.cn/2019/11/2019syonsite/index.html">
 <meta property="og:site_name" content="XLor&#39;s Blog">
-<meta property="og:description" content="rank solved A B C D E F G H I J K L M     30 5 O . . O ! . . O . ! ! O O">
+<meta property="og:description" content="rank solved A B C D E F G H I J K L M    30 5 O . . O ! . . O . ! ! O O">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-11-20T01:58:03.000Z">
-<meta property="article:modified_time" content="2022-03-25T17:51:16.540Z">
+<meta property="article:modified_time" content="2022-03-25T17:53:58.851Z">
 <meta property="article:author" content="XLor">
 <meta property="article:tag" content="Trainings">
 <meta name="twitter:card" content="summary">
@@ -259,7 +259,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -291,79 +291,76 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="table-container">
-<table>
+        <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-<th style="text-align:center">M</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">K</th>
+<th align="center">L</th>
+<th align="center">M</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">30</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
+<tbody><tr>
+<td align="center">30</td>
+<td align="center">5</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">!</td>
+<td align="center">O</td>
+<td align="center">O</td>
 </tr>
-</tbody>
-</table>
-</div>
-<a id="more"></a>
+</tbody></table>
+<span id="more"></span>
+
 <h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>Solved by Henry.</p>
 <h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><p>UpSolved by Forsaken(?).</p>
 <p>考虑每个位置为 good position 的贡献。</p>
-<p>对于确定的 $k$，$ans=\sum_{m=1}^{n}lim^{n-m}f(m,k)$，其中 $f(m,k)$ 表示前 $m-1$ 个数至少 $k$ 个数比第 $m$ 个数小的方案数。</p>
+<p>对于确定的 $k$，$ans&#x3D;\sum_{m&#x3D;1}^{n}lim^{n-m}f(m,k)$，其中 $f(m,k)$ 表示前 $m-1$ 个数至少 $k$ 个数比第 $m$ 个数小的方案数。</p>
 <p>求 $f(m,k)$ :</p>
 <ul>
-<li><p>令 $g(m,k)$ 为前 $m-1$ 个数恰好 $k$ 个数比第 $m$ 个数小的方案数，显然有 $g(m,k)=f(m,k)-f(m,k+1)$。</p>
+<li><p>令 $g(m,k)$ 为前 $m-1$ 个数恰好 $k$ 个数比第 $m$ 个数小的方案数，显然有 $g(m,k)&#x3D;f(m,k)-f(m,k+1)$。</p>
 </li>
-<li><p>考虑枚举 $a<em>m=x$，利用算两次思想可得：$C(m-1,k)(x-1)^klim^{m-1-k}=\sum</em>{i=k}^{m-1}C(i,k)g(m,i,x)$,其中 $g(m,i,x)$ 表示前 $m-1$ 个数恰好有 $i$ 个比 $x$ 小的方案数，显然 $g(m,k)=\sum_{x=1}^{lim}g(m,k,x)$。</p>
+<li><p>考虑枚举 $a_m&#x3D;x$，利用算两次思想可得：$C(m-1,k)(x-1)^klim^{m-1-k}&#x3D;\sum_{i&#x3D;k}^{m-1}C(i,k)g(m,i,x)$,其中 $g(m,i,x)$ 表示前 $m-1$ 个数恰好有 $i$ 个比 $x$ 小的方案数，显然 $g(m,k)&#x3D;\sum_{x&#x3D;1}^{lim}g(m,k,x)$。</p>
 </li>
 <li><p>简单证明一下上述恒等式:等式左侧为前 $m-1$ 个数选 $k$ 个小于 $x$ 其他随意的方案数，显然有重复，右面则考虑每个前 $m-1$ 个恰好有 $i$ 个比 $x$ 小的方案会被算 $C(i,k)$ 次，证明完毕。</p>
 </li>
-<li><p>将 $x=1,2 ,\dots ,lim$ 带入上述恒等式再将得到所有恒等式相加可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i,k)g(m,i)$，其中 $S<em>k(x)=\sum</em>{i=0}^{x}i^k$。</p>
+<li><p>将 $x&#x3D;1,2 ,\dots ,lim$ 带入上述恒等式再将得到所有恒等式相加可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)&#x3D;\sum_{i&#x3D;k}^{m-1}C(i,k)g(m,i)$，其中 $S_k(x)&#x3D;\sum_{i&#x3D;0}^{x}i^k$。</p>
 </li>
-<li><p>将 $g(m,i)=f(m,i)-f(m,i+1)$ 代入上式可得: $C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i,k)(f(m,i)-f(m,i+1))$。</p>
+<li><p>将 $g(m,i)&#x3D;f(m,i)-f(m,i+1)$ 代入上式可得: $C(m-1,k)lim^{m-1-k}S_k(lim-1)&#x3D;\sum_{i&#x3D;k}^{m-1}C(i,k)(f(m,i)-f(m,i+1))$。</p>
 </li>
-<li><p>对上式利用 $C(n,m)=C(n-1,m)+C(n-1,m-1)$ 合并 $f(m,i)$ 的系数可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}C(i-1,k-1)f(m,i)$。</p>
+<li><p>对上式利用 $C(n,m)&#x3D;C(n-1,m)+C(n-1,m-1)$ 合并 $f(m,i)$ 的系数可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)&#x3D;\sum_{i&#x3D;k}^{m-1}C(i-1,k-1)f(m,i)$。</p>
 </li>
-<li><p>将上式的右式中的组合数拆开可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)=\sum</em>{i=k}^{m-1}f(m,i)\frac{(i-1)!}{(k-1)!(i-k)!}$.</p>
+<li><p>将上式的右式中的组合数拆开可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)&#x3D;\sum_{i&#x3D;k}^{m-1}f(m,i)\frac{(i-1)!}{(k-1)!(i-k)!}$.</p>
 </li>
-<li><p>整理上式可得：$C(m-1,k)lim^{m-1-k}S<em>k(lim-1)(k-1)!=\sum</em>{i=k}^{m-1}f(m,i)(i-1)!\frac{1}{(i-k)!}$,令$S(m,k)=C(m-1,k)lim^{m-1-k}S<em>k(lim-1)(k-1)!$，等式右面为2个差值为定值 $k$ 的多项式的卷积，所以上式从多项式角度看形式大概为 $S=F/C$，所以$F=S*C$，所以可得：$f(m,k)=\frac{1}{(k-1)!}\sum</em>{i=0}^kS(m,i)\frac{1}{(k-i)!}$.</p>
+<li><p>整理上式可得：$C(m-1,k)lim^{m-1-k}S_k(lim-1)(k-1)!&#x3D;\sum_{i&#x3D;k}^{m-1}f(m,i)(i-1)!\frac{1}{(i-k)!}$,令$S(m,k)&#x3D;C(m-1,k)lim^{m-1-k}S_k(lim-1)(k-1)!$，等式右面为2个差值为定值 $k$ 的多项式的卷积，所以上式从多项式角度看形式大概为 $S&#x3D;F&#x2F;C$，所以$F&#x3D;S*C$，所以可得：$f(m,k)&#x3D;\frac{1}{(k-1)!}\sum_{i&#x3D;0}^kS(m,i)\frac{1}{(k-i)!}$.</p>
 </li>
 </ul>
-<p>将 $f(m,k)$ 带入 $ans$ 可得：对于确定的 $k$，$ans=\frac{1}{(k-1)!}\sum<em>{m=1}^{n}lim^{n-m}\sum</em>{i=0}^{k}S(m,i)\frac{1}{(k-i)!}$.</p>
-<p>将 $S(m,i)=C(m-1,i)lim^{m-1-i}S<em>i(lim-1)(i-1)!$ 代入得：$ans=\frac{1}{(k-1)!}\sum</em>{m=1}^{n}lim^{n-m}\sum_{i=0}^k C(m-1,i)lim^{m-1-i}S_i(lim-1)(i-1)!\frac{1}{(k-i)!}$。</p>
-<p>对 $ans$ 进行化简可得：$ans=\frac{1}{(k-1)!}lim^{n-1}\sum<em>{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!\frac{1}{(k-i)!}\sum</em>{m=1}^{n}C(m-1,i)$。</p>
-<p>由恒等式 $\sum<em>{i=r}^{n}C(i,r)=C(n+1,r+1)$ 可化简 $ans=\frac{1}{(k-1)!}lim^{n-1}\sum</em>{i=0}^{k}S_i(lim-1)lim^{-i}(i-1)!C(n+1,i+1)\frac{1}{(k-i)!}$。</p>
+<p>将 $f(m,k)$ 带入 $ans$ 可得：对于确定的 $k$，$ans&#x3D;\frac{1}{(k-1)!}\sum_{m&#x3D;1}^{n}lim^{n-m}\sum_{i&#x3D;0}^{k}S(m,i)\frac{1}{(k-i)!}$.</p>
+<p>将 $S(m,i)&#x3D;C(m-1,i)lim^{m-1-i}S_i(lim-1)(i-1)!$ 代入得：$ans&#x3D;\frac{1}{(k-1)!}\sum_{m&#x3D;1}^{n}lim^{n-m}\sum_{i&#x3D;0}^k C(m-1,i)lim^{m-1-i}S_i(lim-1)(i-1)!\frac{1}{(k-i)!}$。</p>
+<p>对 $ans$ 进行化简可得：$ans&#x3D;\frac{1}{(k-1)!}lim^{n-1}\sum_{i&#x3D;0}^{k}S_i(lim-1)lim^{-i}(i-1)!\frac{1}{(k-i)!}\sum_{m&#x3D;1}^{n}C(m-1,i)$。</p>
+<p>由恒等式 $\sum_{i&#x3D;r}^{n}C(i,r)&#x3D;C(n+1,r+1)$ 可化简 $ans&#x3D;\frac{1}{(k-1)!}lim^{n-1}\sum_{i&#x3D;0}^{k}S_i(lim-1)lim^{-i}(i-1)!C(n+1,i+1)\frac{1}{(k-i)!}$。</p>
 <p>显然上式为一个和为定值 $k$ 的卷积形式，并且每一项除了 $S_i(lim-1)$ 都很容易求得.</p>
-<p>而 $S<em>i(lim-1)=\sum</em>{x=0}^{lim-1}x^i$，根据伯努利数可知 $S<em>i(lim-1)=\frac{1}{i+1}\sum</em>{j=0}^{i}(-1)^j C(i+1,j)B_j(lim-1)^{i+1-j}$，显然右式为2个和为定值$i$的卷积形式，所以只要知道了伯努利数做一次 $ntt$ 就可以求出所有的 $S_i(lim-1)$。</p>
-<p>伯努利数的指数生成函数：$\sum_{i=0}^{\infty}B_i\frac{x^i}{i!}=\frac{x}{e^x-1}$，所以多项式求逆即可求出所有的伯努利数.</p>
+<p>而 $S_i(lim-1)&#x3D;\sum_{x&#x3D;0}^{lim-1}x^i$，根据伯努利数可知 $S_i(lim-1)&#x3D;\frac{1}{i+1}\sum_{j&#x3D;0}^{i}(-1)^j C(i+1,j)B_j(lim-1)^{i+1-j}$，显然右式为2个和为定值$i$的卷积形式，所以只要知道了伯努利数做一次 $ntt$ 就可以求出所有的 $S_i(lim-1)$。</p>
+<p>伯努利数的指数生成函数：$\sum_{i&#x3D;0}^{\infty}B_i\frac{x^i}{i!}&#x3D;\frac{x}{e^x-1}$，所以多项式求逆即可求出所有的伯努利数.</p>
 <p>求所有 $S_i(lim-1)$ 后，由于 $ans$ 也是一个卷积形式，做一次 $ntt$ 就可以求出所有的 $ans$ 。</p>
 <h1 id="D"><a href="#D" class="headerlink" title="D"></a>D</h1><p>Solved by Forsaken.</p>
 <h1 id="E"><a href="#E" class="headerlink" title="E"></a>E</h1><p>UnSolved by Henry.</p>
@@ -555,7 +552,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">XLor</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.1.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0

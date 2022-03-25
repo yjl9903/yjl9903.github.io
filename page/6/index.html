@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -255,7 +255,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -287,48 +287,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <div class="table-container">
-<table>
+          <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-<th style="text-align:center">M</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">K</th>
+<th align="center">L</th>
+<th align="center">M</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">70</td>
-<td style="text-align:center">4</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
+<tbody><tr>
+<td align="center">70</td>
+<td align="center">4</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">Ø</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">Ø</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">O</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/1/2019ec/#more" rel="contents">
@@ -386,7 +382,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -420,34 +416,16 @@
       
           <h1 id="Boruvka-算法"><a href="#Boruvka-算法" class="headerlink" title="Borůvka 算法"></a>Borůvka 算法</h1><p>定义 $E’$ 为我们当前找到的最小生成森林的边。在算法执行过程中，我们逐步向 $E’$ 加边，定义 <strong>连通块</strong> 表示一个点集 $V’\subseteq V$ ，且这个点集中的任意两个点 $u$ , $v$ 在 $E’$ 中的边构成的子图上是连通的（互相可达）。</p>
 <p>定义一个连通块的 <strong>最小边</strong> 为它连向其它连通块的边中权值最小的那一条。</p>
-<p>初始时， $E’=\varnothing$ ，每个点各自是一个连通块：</p>
+<p>初始时， $E’&#x3D;\varnothing$ ，每个点各自是一个连通块：</p>
 <ol>
 <li>计算每个点分别属于哪个连通块。将每个连通块都设为“没有最小边”。</li>
 <li>遍历每条边 $(u, v)$ ，如果 $u$ 和 $v$ 不在同一个连通块，就用这条边的边权分别更新 $u$ 和 $v$ 所在连通块的最小边。</li>
 <li>如果所有连通块都没有最小边，退出程序，此时的 $E’$ 就是原图最小生成森林的边集。否则，将每个有最小边的连通块的最小边加入 $E’$ ，返回第一步。</li>
 </ol>
-<p>当原图连通时，每次迭代连通块数量至少减半，算法只会迭代不超过 $O(\log V)$ 次，而原图不连通时相当于多个子问题，因此算法复杂度是 $O(E\log V)$ 的。给出算法的伪代码：（修改自 <a href="https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm" target="_blank" rel="noopener">维基百科</a> ）</p>
-<script type="math/tex; mode=display">
-\begin{array}{ll}
-1 &  \textbf{Input. } \text{A graph }G\text{ whose edges have distinct weights. } \\
-2 &  \textbf{Output. } \text{The minimum spanning forest of }G .  \\
-3 &  \textbf{Method. }  \\
-4 & \text{Initialize a forest }F\text{ to be a set of one-vertex trees} \\
-5 &  \textbf{while } \text{True} \\
-6 &  \qquad \text{Find the components of }F\text{ and label each vertex of }G\text{ by its component } \\
-7 &  \qquad \text{Initialize the cheapest edge for each component to "None"} \\
-8 &  \qquad  \textbf{for } \text{each edge }(u, v)\text{ of }G  \\
-9 &  \qquad\qquad  \textbf{if }  u\text{ and }v\text{ have different component labels} \\
-10 &  \qquad\qquad\qquad  \textbf{if }  (u, v)\text{ is cheaper than the cheapest edge for the component of }u  \\
-11 &  \qquad\qquad\qquad\qquad\text{ Set }(u, v)\text{ as the cheapest edge for the component of }u \\
-12 &  \qquad\qquad\qquad  \textbf{if }  (u, v)\text{ is cheaper than the cheapest edge for the component of }v  \\
-13 &  \qquad\qquad\qquad\qquad\text{ Set }(u, v)\text{ as the cheapest edge for the component of }v  \\
-14 &  \qquad  \textbf{if }\text{ all components'cheapest edges are "None"} \\
-15 &  \qquad\qquad  \textbf{return }  F \\
-16 &  \qquad  \textbf{for }\text{ each component whose cheapest edge is not "None"} \\
-17 &  \qquad\qquad\text{ Add its cheapest edge to }F \\
-\end{array}</script><blockquote>
-<p>转载自 <a href="https://oi-wiki.org/graph/mst/#boruvka" target="_blank" rel="noopener">最小生成树 - OI Wiki</a></p>
+<p>当原图连通时，每次迭代连通块数量至少减半，算法只会迭代不超过 $O(\log V)$ 次，而原图不连通时相当于多个子问题，因此算法复杂度是 $O(E\log V)$ 的。给出算法的伪代码：（修改自 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Bor%C5%AFvka%27s_algorithm">维基百科</a> ）</p>
+<p>$$<br>\begin{array}{ll}<br>1 &amp;  \textbf{Input. } \text{A graph }G\text{ whose edges have distinct weights. } \<br>2 &amp;  \textbf{Output. } \text{The minimum spanning forest of }G .  \<br>3 &amp;  \textbf{Method. }  \<br>4 &amp; \text{Initialize a forest }F\text{ to be a set of one-vertex trees} \<br>5 &amp;  \textbf{while } \text{True} \<br>6 &amp;  \qquad \text{Find the components of }F\text{ and label each vertex of }G\text{ by its component } \<br>7 &amp;  \qquad \text{Initialize the cheapest edge for each component to “None”} \<br>8 &amp;  \qquad  \textbf{for } \text{each edge }(u, v)\text{ of }G  \<br>9 &amp;  \qquad\qquad  \textbf{if }  u\text{ and }v\text{ have different component labels} \<br>10 &amp;  \qquad\qquad\qquad  \textbf{if }  (u, v)\text{ is cheaper than the cheapest edge for the component of }u  \<br>11 &amp;  \qquad\qquad\qquad\qquad\text{ Set }(u, v)\text{ as the cheapest edge for the component of }u \<br>12 &amp;  \qquad\qquad\qquad  \textbf{if }  (u, v)\text{ is cheaper than the cheapest edge for the component of }v  \<br>13 &amp;  \qquad\qquad\qquad\qquad\text{ Set }(u, v)\text{ as the cheapest edge for the component of }v  \<br>14 &amp;  \qquad  \textbf{if }\text{ all components’cheapest edges are “None”} \<br>15 &amp;  \qquad\qquad  \textbf{return }  F \<br>16 &amp;  \qquad  \textbf{for }\text{ each component whose cheapest edge is not “None”} \<br>17 &amp;  \qquad\qquad\text{ Add its cheapest edge to }F \<br>\end{array}<br>$$</p>
+<blockquote>
+<p>转载自 <a target="_blank" rel="noopener" href="https://oi-wiki.org/graph/mst/#boruvka">最小生成树 - OI Wiki</a></p>
 </blockquote>
           <!--noindex-->
             <div class="post-button">
@@ -506,7 +484,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -617,7 +595,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -651,16 +629,15 @@
       
           <h1 id="徐州-D-Rikka-with-Subsequences"><a href="#徐州-D-Rikka-with-Subsequences" class="headerlink" title="徐州 D Rikka with Subsequences"></a>徐州 D Rikka with Subsequences</h1><p>UpSolved by XLor.</p>
 <p>求每种本质不同好子序列的出现次数立方和。</p>
-<p>令 $f(a)$ 表示子序列 $a$ 的出现次数，立方和展开一下，$\sum<em>{i=1}^{f(a)} \sum</em>{j=1}^{f(a)} \sum_{k=1}^{f(a)} 1$。观察上式的实际意义，等价于将序列复制三份，求公共好子序列的个数。举例来说，假如 $a$ 作为子序列出现了 $2$ 次，分别出现在位置序列 $a_1,a_2$，那么有公共子序列 $(a_1,a_1,a_1)$ 一直到 $(a_2,a_2,a_2)$ 共 $8$ 种对应。</p>
-<p>记 $dp(i,j,k)$ 表示在第一个串以 $i$ 结尾，第二个 $j$ 结尾，第三个 $k$ 结尾的方案数。$dp(i,j,k)$ 有值当且仅当 $a_i=a_j=a_k$。</p>
-<script type="math/tex; mode=display">
-dp(i,j,k)=[ a_i=a_j=a_k ]( \sum_{i'=1}^{i-1} \sum_{j'=1}^{j-1} \sum_{k'=1}^{k-1} dp(i',j',k') [M(a_{j'},a_i)] )</script><p>转移过程相当于同时从 $(i’,j’,k’)$ 走到 $(i,j,k)$，我们将这个过程拆开变成 $3$ 个阶段，钦定先走 $i$，再走 $k$，最后走 $j$。也就是说最后一步的 $j’$ 和 $i$ 两个之间必须可以走。</p>
-<p>枚举 $i$，令 $f(i,j,k) = \sum_{i’=1}^{i=1} dp(i’,j,k)$, $g(i,j,k) = f(i,j,k) [M(a_j, a_i)]$。</p>
-<script type="math/tex; mode=display">
-dp(i,j,k)=[ a_i=a_j=a_k ] ( \sum_{j'=1}^{j-1} \sum_{k'=1}^{k-1} \sum_{i'=1}^{i=1} dp(i',j',k') [M(a_{j'}, a_i)]) \\
-dp(i,j,k)=[ a_i=a_j=a_k ] ( \sum_{j'=1}^{j-1} \sum_{k'=1}^{k-1} g(i,j',k')) \\</script><p>因此，$dp$ 的转移，只需要对 $g$ 数组做一次二维前缀和即可。</p>
+<p>令 $f(a)$ 表示子序列 $a$ 的出现次数，立方和展开一下，$\sum_{i&#x3D;1}^{f(a)} \sum_{j&#x3D;1}^{f(a)} \sum_{k&#x3D;1}^{f(a)} 1$。观察上式的实际意义，等价于将序列复制三份，求公共好子序列的个数。举例来说，假如 $a$ 作为子序列出现了 $2$ 次，分别出现在位置序列 $a_1,a_2$，那么有公共子序列 $(a_1,a_1,a_1)$ 一直到 $(a_2,a_2,a_2)$ 共 $8$ 种对应。</p>
+<p>记 $dp(i,j,k)$ 表示在第一个串以 $i$ 结尾，第二个 $j$ 结尾，第三个 $k$ 结尾的方案数。$dp(i,j,k)$ 有值当且仅当 $a_i&#x3D;a_j&#x3D;a_k$。</p>
+<p>$$<br>dp(i,j,k)&#x3D;[ a_i&#x3D;a_j&#x3D;a_k ]( \sum_{i’&#x3D;1}^{i-1} \sum_{j’&#x3D;1}^{j-1} \sum_{k’&#x3D;1}^{k-1} dp(i’,j’,k’) [M(a_{j’},a_i)] )<br>$$</p>
+<p>转移过程相当于同时从 $(i’,j’,k’)$ 走到 $(i,j,k)$，我们将这个过程拆开变成 $3$ 个阶段，钦定先走 $i$，再走 $k$，最后走 $j$。也就是说最后一步的 $j’$ 和 $i$ 两个之间必须可以走。</p>
+<p>枚举 $i$，令 $f(i,j,k) &#x3D; \sum_{i’&#x3D;1}^{i&#x3D;1} dp(i’,j,k)$, $g(i,j,k) &#x3D; f(i,j,k) [M(a_j, a_i)]$。</p>
+<p>$$<br>dp(i,j,k)&#x3D;[ a_i&#x3D;a_j&#x3D;a_k ] ( \sum_{j’&#x3D;1}^{j-1} \sum_{k’&#x3D;1}^{k-1} \sum_{i’&#x3D;1}^{i&#x3D;1} dp(i’,j’,k’) [M(a_{j’}, a_i)]) \<br>dp(i,j,k)&#x3D;[ a_i&#x3D;a_j&#x3D;a_k ] ( \sum_{j’&#x3D;1}^{j-1} \sum_{k’&#x3D;1}^{k-1} g(i,j’,k’)) \<br>$$</p>
+<p>因此，$dp$ 的转移，只需要对 $g$ 数组做一次二维前缀和即可。</p>
 <h1 id="徐州-F-Rikka-with-Nice-Counting-Striking-Back"><a href="#徐州-F-Rikka-with-Nice-Counting-Striking-Back" class="headerlink" title="徐州 F Rikka with Nice Counting Striking Back"></a>徐州 F Rikka with Nice Counting Striking Back</h1><p>UpSolved by XLor</p>
-<p>求母串的本质不同子串个数，且子串 $T$ 满足，对于任意非空串 $P$，若 $TP=PT$，那么 $TP$ 不是 $S$ 的子串。</p>
+<p>求母串的本质不同子串个数，且子串 $T$ 满足，对于任意非空串 $P$，若 $TP&#x3D;PT$，那么 $TP$ 不是 $S$ 的子串。</p>
 <p>观察一下，对于子串 $T$，当存在 $TT$，$T$ 不合法，存在 $TTT$，$TT$ 不合法，也就是对于这样的一组串只会算一次。</p>
 <p>上述等价于，减去多算的 $TT,TTT,TTTT,\dots$，暴力枚举每个 Runs 内部的每个右端点的周期串，哈希去重。</p>
 <h1 id="徐州-G-Rikka-with-Intersections-of-Paths"><a href="#徐州-G-Rikka-with-Intersections-of-Paths" class="headerlink" title="徐州 G Rikka with Intersections of Paths"></a>徐州 G Rikka with Intersections of Paths</h1><p>UpSolved by XLor</p>
@@ -671,12 +648,11 @@ dp(i,j,k)=[ a_i=a_j=a_k ] ( \sum_{j'=1}^{j-1} \sum_{k'=1}^{k-1} g(i,j',k')) \\</
 <p>给定一个序列，将序列划分为长度为 $1$ 或 $2$ 的子串，最小化每个子串和的极差。</p>
 <p>显然，枚举最小值，dp 出可能的最小的最大值。</p>
 <p>令 $\infty$ 表示情况不存在，$-\infty$ 表示任意。</p>
-<p>记 $dp(i,0/1)$ 表示 $i$ 位置是否被用过的最小最大值，当前下界为 $D$。</p>
-<script type="math/tex; mode=display">
-dp(i,0)=dp(i-1,1) \\
-dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上式中的 $a<em>i,a_i+a</em>{i-1}$ 均会在 $&lt; D$ 时，被换成 $\infty$。最终最小的最大值为 $dp(n,1)$。</p>
+<p>记 $dp(i,0&#x2F;1)$ 表示 $i$ 位置是否被用过的最小最大值，当前下界为 $D$。</p>
+<p>$$<br>dp(i,0)&#x3D;dp(i-1,1) \<br>dp(i,1)&#x3D;\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))<br>$$</p>
+<p>上式中的 $a_i,a_i+a_{i-1}$ 均会在 $&lt; D$ 时，被换成 $\infty$。最终最小的最大值为 $dp(n,1)$。</p>
 <p>上面的 $dp$ 状态改成可以线段树动态维护的，允许区间合并的状态。</p>
-<p>令 $dp(l,r,0/1,0/1)$ 表示：</p>
+<p>令 $dp(l,r,0&#x2F;1,0&#x2F;1)$ 表示：</p>
 <ul>
 <li><p>00：$[l,r]$ 都被用上；</p>
 </li>
@@ -745,7 +721,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -793,7 +769,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
 <ol>
 <li><p>后缀有一个整周期为 Lyndon 分解的长度，即类似 <code>bbbbbb</code>，我们肯定是尽量平均的划分，并且为了左端点最小，也就是取后缀的某几个周期的前缀。</p>
 </li>
-<li><p>$cnt$ 次 $p$ 后还有 Lyndon 分解，即类似 <code>bbbba</code>，如果 $cnt \bmod k = 0$，我们将 $cnt$ 次 $p$ 平均分解，答案为划分后最后一个段。</p>
+<li><p>$cnt$ 次 $p$ 后还有 Lyndon 分解，即类似 <code>bbbba</code>，如果 $cnt \bmod k &#x3D; 0$，我们将 $cnt$ 次 $p$ 平均分解，答案为划分后最后一个段。</p>
 </li>
 <li><p>同情况 $2$，$cnt \bmod k \neq 0$，当成 $cnt + 1$ 段平均分解，答案为该后缀的前缀。</p>
 </li>
@@ -856,7 +832,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -952,7 +928,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1063,7 +1039,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1095,49 +1071,45 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
     <div class="post-body" itemprop="articleBody">
 
       
-          <div class="table-container">
-<table>
+          <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
-<th style="text-align:center">M</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">K</th>
+<th align="center">L</th>
+<th align="center">M</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">36</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
+<tbody><tr>
+<td align="center">36</td>
+<td align="center">8</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
 </tr>
-</tbody>
-</table>
-</div>
-<p><a href="http://opentrains.mipt.ru/~ejudge/showres.cgi?data=bytedance2020online" target="_blank" rel="noopener">榜单</a></p>
+</tbody></table>
+<p><a target="_blank" rel="noopener" href="http://opentrains.mipt.ru/~ejudge/showres.cgi?data=bytedance2020online">榜单</a></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/12/bytedace2020selection/#more" rel="contents">
@@ -1195,7 +1167,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1237,7 +1209,7 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
 <p>暴力枚举 $t$ 的每个子串。</p>
 <h1 id="B-A-and-B"><a href="#B-A-and-B" class="headerlink" title="B A and B"></a>B A and B</h1><p>智商没对上 T^T。</p>
 <p>给定两个整数 $a,b$，第 $i$ 轮选一个数加 $i$，最小多少轮两数相同。</p>
-<p>相当于将 $1,2,\dots,n$ 分配到两个数组中，一个和为 $s$ 另一个和为 $t$，且 $s+t=n(n+1)/2,s-t=|a-b|$。</p>
+<p>相当于将 $1,2,\dots,n$ 分配到两个数组中，一个和为 $s$ 另一个和为 $t$，且 $s+t&#x3D;n(n+1)&#x2F;2,s-t&#x3D;|a-b|$。</p>
 <h1 id="C-Berry-Jam"><a href="#C-Berry-Jam" class="headerlink" title="C Berry Jam"></a>C Berry Jam</h1><h1 id="D-Segment-Tree"><a href="#D-Segment-Tree" class="headerlink" title="D Segment Tree"></a>D Segment Tree</h1><p>给定 $n$ 条线段，两条线段之间连边当且仅当相交不包含，端点为 $1$ 到 $2n$ 的排列。</p>
 <p>扫描线，枚举所有与给线段相交不包含的部分，并查集合并，如果出现环则停止。最多暴力合并 $n$ 次。</p>
 <p>最后检查一下并查集完全联通。</p>
@@ -1245,18 +1217,15 @@ dp(i,1)=\min(\max(a_i+a_{i-1}, dp(i-1,0)), \max(a_i, dp(i-1,1)))</script><p>上�
 <p>递归地进行构造，对于子树 $u$，他的左端点为 $l_u$，右端点位置是 $r_u+deg_u+1$（$l_u,r_u$ 为递归参数）。</p>
 <p>对于他的所有儿子结点，都与 $u$ 线段相交，并且兄弟结点依次包含，左端点会从右边 $r_u+deg_u$ 一直放到 $r_u+1$。</p>
 <p>考虑右端点的限制，因为需要包含前面的兄弟的子树内结点，因此右端点需要往右偏移一段，即上一个兄弟的子树大小的两倍减一（减一由于根节点的左端点在 $u$ 的内部，$u$ 外部的点数为两倍减一）。</p>
-<p>初始时，$l_1=r_1=1$。</p>
+<p>初始时，$l_1&#x3D;r_1&#x3D;1$。</p>
 <h1 id="F-Cards"><a href="#F-Cards" class="headerlink" title="F Cards"></a>F Cards</h1><p>随机变量 $X$ 服从 $B(n,p)$，求 $E(X^k)$。</p>
 <p>根据斯特林数展开</p>
-<script type="math/tex; mode=display">
-E[X^k]=\sum_{i=0}^k S(k,i) E[X(X-1)\dots (X-i+1)]</script><p>伯努利分布的 $i$ 次下降幂</p>
-<script type="math/tex; mode=display">
-E[X(X-1)\dots (X-i+1)]=A(n,i)p^i</script><p>带入得到答案。</p>
-<p>参考资料：<a href="https://en.wikipedia.org/wiki/Factorial_moment#Binomial_distribution" target="_blank" rel="noopener">Factorial_moment</a> 和 <a href="https://math.stackexchange.com/questions/524050/what-is-the-kth-factorial-moment-of-the-binomial-distribution" target="_blank" rel="noopener">What is the kth factorial moment of the binomial distribution?</a>。</p>
-<p>考虑直接推式子，实际上等价于上面下降幂的推导过程</p>
-<script type="math/tex; mode=display">
-E(X^k)=\sum_{i=0}^n  {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} i^k  \\
-=\sum_{j=0}^{k} S(k,j) \sum_{i=0}^n {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} A(i,j)</script>
+<p>$$<br>E[X^k]&#x3D;\sum_{i&#x3D;0}^k S(k,i) E[X(X-1)\dots (X-i+1)]<br>$$</p>
+<p>伯努利分布的 $i$ 次下降幂</p>
+<p>$$<br>E[X(X-1)\dots (X-i+1)]&#x3D;A(n,i)p^i<br>$$</p>
+<p>带入得到答案。</p>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Factorial_moment#Binomial_distribution">Factorial_moment</a> 和 <a target="_blank" rel="noopener" href="https://math.stackexchange.com/questions/524050/what-is-the-kth-factorial-moment-of-the-binomial-distribution">What is the kth factorial moment of the binomial distribution?</a>。</p>
+<p>考虑直接推式子，实际上等价于上面下降幂的推导过程<br>$$<br>E(X^k)&#x3D;\sum_{i&#x3D;0}^n  {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} i^k  \<br>&#x3D;\sum_{j&#x3D;0}^{k} S(k,j) \sum_{i&#x3D;0}^n {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} A(i,j)<br>$$</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/12/edu78/#more" rel="contents">
@@ -1314,7 +1283,7 @@ E(X^k)=\sum_{i=0}^n  {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} i^k  \\
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1512,7 +1481,7 @@ E(X^k)=\sum_{i=0}^n  {n \choose i} \frac{1}{m}^i(1-\frac{1}{m})^{n-i} i^k  \\
   </span>
   <span class="author" itemprop="copyrightHolder">XLor</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.1.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0

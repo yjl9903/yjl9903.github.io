@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -255,7 +255,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -360,7 +360,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -399,9 +399,9 @@
 <p>连接所有非关建边，求一下每块大小即可。</p>
 <h1 id="D-Steps-to-One"><a href="#D-Steps-to-One" class="headerlink" title="D Steps to One"></a>D Steps to One</h1><p>给定整数 $m$，每次在 $[1,m]$ 内随机选择一个数 $x$ 加到序列内，当序列 $\gcd$ 为 $1$ 时，停止操作。求序列长度的期望。</p>
 <p>考虑莫比乌斯反演。</p>
-<p>对于因子 $d$，求序列 $\gcd$ 被 $d$ 整除的期望 $f(d)$，且序列至少选择一个 $d$ 倍数（否则有重复），令 $q=[m/d]/m$ 有下式</p>
-<script type="math/tex; mode=display">
-f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 $d=1$ 的贡献即可。</p>
+<p>对于因子 $d$，求序列 $\gcd$ 被 $d$ 整除的期望 $f(d)$，且序列至少选择一个 $d$ 倍数（否则有重复），令 $q&#x3D;[m&#x2F;d]&#x2F;m$ 有下式</p>
+<p>$$<br>f(d)&#x3D;\sum_{i&#x3D;1}^{\infty} (i+1) \cdot q^i \cdot (1-q)<br>$$</p>
+<p>再特判一下 $d&#x3D;1$ 的贡献即可。</p>
 <h1 id="E-Maximize-Mex"><a href="#E-Maximize-Mex" class="headerlink" title="E Maximize Mex"></a>E Maximize Mex</h1><p>给定 $m$ 个集合和 $n$ 个人，每个人属于集合 $c_i$， 有权值 $p_i$。</p>
 <p>有 $d$ 次操作，每次删除一个人，求从每个集合内选出一个人组成新的集合的 $mex$ 最大值。</p>
 <p>显然，将删除变成插入操作，且易知答案具有单调性。</p>
@@ -465,7 +465,7 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -518,9 +518,8 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
 <p>显然就是找一段区间的众数，加上区间外 $c$ 的出现次数。</p>
 <p>预处理 $c$ 个数的前缀和 $pre$。</p>
 <p>枚举每一种数值 $x$，对于第 $i$ 个 $x$，记为 $x_i$，当前的答案为</p>
-<script type="math/tex; mode=display">
-\max_{j=1\dots i}(pre[n]-pre[x_i]+pre[x_j-1]+i-j+1) \\
-= pre[n]-pre[x_i] + i + 1 + \max_{j=1\dots i}(pre[x_j-1]-j)</script><p>后面一块可以遍历时维护出来。</p>
+<p>$$<br>\max_{j&#x3D;1\dots i}(pre[n]-pre[x_i]+pre[x_j-1]+i-j+1) \<br>&#x3D; pre[n]-pre[x_i] + i + 1 + \max_{j&#x3D;1\dots i}(pre[x_j-1]-j)<br>$$</p>
+<p>后面一块可以遍历时维护出来。</p>
 <h1 id="G-Petya-and-Graph"><a href="#G-Petya-and-Graph" class="headerlink" title="G Petya and Graph"></a>G Petya and Graph</h1><p>给定一个 $n$ 个点 $m$ 条边简单无向图，求权值最大的一个子图，权值为边权和减去点权和。</p>
 <p>注意到 $n,m \le 1000$ 和题目定义的权值，考虑最大权闭合子图模型。</p>
 <p>对所有边建一个点，建立超级源点到每条边上，容量为边权，并将所有点连向一个超级汇点，容量为点权。</p>
@@ -583,7 +582,7 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -686,7 +685,7 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -720,15 +719,15 @@ f(d)=\sum_{i=1}^{\infty} (i+1) \cdot q^i \cdot (1-q)</script><p>再特判一下 
       
           <p>感谢 <span style="color:black">E</span><span style="color:red">llery</span> 贡献的题解。</p>
 <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给定系数序列 $a$ 和 $B$ 的范围 $[mn,mx]$，求不定方程</p>
-<script type="math/tex; mode=display">
-a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n = B</script><p>的非负整数解数。</p>
+<p>$$<br>a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n &#x3D; B<br>$$</p>
+<p>的非负整数解数。</p>
 <p>其中 $1 \le n \le 12, 0 \le a_i \le 5 \times 10^5, 1 \le B \le 10^{12}$。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>先任意取一 $a_i$，当我们找到一个符合条件的 $B$ 有 $B \text{ mod } ai = d $ 时，因为符合条件所以有一组整数解 $(x_1,x_2,x_3,\dots,x_i,\dots,x_n)$。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>先任意取一 $a_i$，当我们找到一个符合条件的 $B$ 有 $B \text{ mod } ai &#x3D; d $ 时，因为符合条件所以有一组整数解 $(x_1,x_2,x_3,\dots,x_i,\dots,x_n)$。</p>
 <p>此时 $B+a_i$ 必定也是符合条件的，这个时候的整数解会变成 $(x_1,x_2,x_3,\dots,x_i+1,\dots,x_n)$。</p>
 <p>所以我们对于每一个余数 $0,1,2,3,\dots,\min(a)-1$，只需要找到符合条件的最小的B即可。</p>
 <p>在余数 $[0,\min(a)-1]$ 上建立点集，用 $dist[i]$ 来表示模 $min(a)$ 的余数为 $i$ 的最小 $B$ 值。</p>
-<p>为了求出 $dist$ 数组，考虑 dijkstra 的松弛操作，对于 $i$，加上其他任意一个 $a_j$ 时，会出现一个新的余数 $k = (i + a_j) \text{ mod } \min(a)$，可以理解为由点 $i$ 向点 $k$ 连接了边权为 $a_j$ 的边。</p>
-<p>对于每个点 $i$ 都有了一个 $dist[i]$。如果 $dist[i]$ 大于 $B$，则其对答案是没有贡献的；若小于则对答案贡献为 $(B – dist[i]) / \min(a) + 1$。</p>
+<p>为了求出 $dist$ 数组，考虑 dijkstra 的松弛操作，对于 $i$，加上其他任意一个 $a_j$ 时，会出现一个新的余数 $k &#x3D; (i + a_j) \text{ mod } \min(a)$，可以理解为由点 $i$ 向点 $k$ 连接了边权为 $a_j$ 的边。</p>
+<p>对于每个点 $i$ 都有了一个 $dist[i]$。如果 $dist[i]$ 大于 $B$，则其对答案是没有贡献的；若小于则对答案贡献为 $(B – dist[i]) &#x2F; \min(a) + 1$。</p>
 <p>区间前缀和差分一下得到最终答案。</p>
           <!--noindex-->
             <div class="post-button">
@@ -787,7 +786,7 @@ a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n = B</scrip
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
 
           
@@ -808,10 +807,10 @@ a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n = B</scrip
     <div class="post-body" itemprop="articleBody">
 
       
-          <p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/9.PNG" alt=""></p>
-<p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/1.PNG" alt=""></p>
-<p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/2.PNG" alt=""></p>
-<p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/3.PNG" alt=""></p>
+          <p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/9.PNG"></p>
+<p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/1.PNG"></p>
+<p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/2.PNG"></p>
+<p><img src="https://github.com/yjl9903/Pictures/raw/master/ef/3.PNG"></p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/3/ifwonder/#more" rel="contents">
@@ -869,7 +868,7 @@ a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n = B</scrip
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -917,8 +916,8 @@ a_1 \cdot x_1 + a_2 \cdot x_2 + a_3 \cdot x_3 + \dots + a_n \cdot x_n = B</scrip
 <p>要求在 $3 \times (t+c)$ 次操作内将这些人移动到起点。</p>
 <p>龟兔赛跑判环。</p>
 <p>取两个点，每次一个点走 $1$ 步，一个点走 $2$ 步，设最后相遇在第 $x$ 步</p>
-<script type="math/tex; mode=display">
-x-t \equiv 2x-t (mod \text{ } c)</script><p>因此，$c|x$，然后起点和相遇点一同往后移动，显然第一次相遇在 $t$ 处。</p>
+<p>$$<br>x-t \equiv 2x-t (mod \text{ } c)<br>$$</p>
+<p>因此，$c|x$，然后起点和相遇点一同往后移动，显然第一次相遇在 $t$ 处。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/3/round545/#more" rel="contents">
@@ -976,7 +975,7 @@ x-t \equiv 2x-t (mod \text{ } c)</script><p>因此，$c|x$，然后起点和相�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1014,8 +1013,8 @@ x-t \equiv 2x-t (mod \text{ } c)</script><p>因此，$c|x$，然后起点和相�
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>发现 $n$ 很小，可以枚举序列的每一对。</p>
 <p>将问题转化为概率，题目变成求逆序对数的期望。</p>
 <p>考虑每一个数对的贡献，记 $f[i][j]$ 表示 $a_i&gt;a_j$ 的概率，最终答案为</p>
-<script type="math/tex; mode=display">
-2^q \cdot \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} f[i][j]</script><p>考虑每次操作 $(x,y)$ 对概率的影响，显然有一半的概率不变，即 $f[x][y]$，有一半的概率交换，即 $f[y][x]$。</p>
+<p>$$<br>2^q \cdot \sum_{i&#x3D;1}^{n-1} \sum_{j&#x3D;i+1}^{n} f[i][j]<br>$$</p>
+<p>考虑每次操作 $(x,y)$ 对概率的影响，显然有一半的概率不变，即 $f[x][y]$，有一半的概率交换，即 $f[y][x]$。</p>
 <p>除此以外，还有一部分是通过某一个位置中转，交换了 $(x,y)$，设中转位置为 $k$。</p>
 <p>$x$ 和 $k$ 先交换，然后交换 $k$ 和 $y$，类似的得到相应概率 $dp$ 转移。</p>
 <p>时间复杂度：$O(n^2+nq)$。</p>
@@ -1076,7 +1075,7 @@ x-t \equiv 2x-t (mod \text{ } c)</script><p>因此，$c|x$，然后起点和相�
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1123,12 +1122,12 @@ x-t \equiv 2x-t (mod \text{ } c)</script><p>因此，$c|x$，然后起点和相�
 <h1 id="F-Clear-the-String"><a href="#F-Clear-the-String" class="headerlink" title="F Clear the String"></a>F Clear the String</h1><p>给定一个字符串 $s$，每次可以删除一个相同的连续段，求最小删除次数。</p>
 <p>区间 DP 裸题。</p>
 <p>考虑 $f[l][r]$ 表示删除区间 $[l,r]$ 的花费。</p>
-<p>转移时，若 $s[l]=s[r]$</p>
-<script type="math/tex; mode=display">
-f[l][r]=min(f[l][r-1],f[l+1][r],f[l+1][r-1]+1)</script><p>否则</p>
-<script type="math/tex; mode=display">
-f[l][r]=min(f[l][j],f[j+1][r])</script><p>区间 DP 不出来的我 T^T。</p>
-<h1 id="G-Greedy-Subsequences"><a href="#G-Greedy-Subsequences" class="headerlink" title="G Greedy Subsequences"></a>G Greedy Subsequences</h1><p>定义贪心子序列 $a<em>{p_1},a</em>{p<em>2},a</em>{p<em>3},\dots$ ，满足，$p</em>{i+1}$ 是大于 $p<em>i$ 的第一个满足 $a</em>{p<em>{i+1}} &gt; a</em>{p_i}$ 的下标。</p>
+<p>转移时，若 $s[l]&#x3D;s[r]$</p>
+<p>$$<br>f[l][r]&#x3D;min(f[l][r-1],f[l+1][r],f[l+1][r-1]+1)<br>$$</p>
+<p>否则</p>
+<p>$$<br>f[l][r]&#x3D;min(f[l][j],f[j+1][r])<br>$$</p>
+<p>区间 DP 不出来的我 T^T。</p>
+<h1 id="G-Greedy-Subsequences"><a href="#G-Greedy-Subsequences" class="headerlink" title="G Greedy Subsequences"></a>G Greedy Subsequences</h1><p>定义贪心子序列 $a_{p_1},a_{p_2},a_{p_3},\dots$ ，满足，$p_{i+1}$ 是大于 $p_i$ 的第一个满足 $a_{p_{i+1}} &gt; a_{p_i}$ 的下标。</p>
 <p>求序列 $a$ 的每一个长度为 $k$ 连续子区间的最长贪心子序列长度。</p>
 <p>可以发现，对于整个区间而言，贪心子序列实际上构成的一个树的结构，每个点都会连向唯一一个点，且可能存在前面的若干点连到这个点上。</p>
 <p>考虑维护一个单调递减的单调栈，来建出这棵树（森林）。</p>
@@ -1192,7 +1191,7 @@ f[l][r]=min(f[l][j],f[j+1][r])</script><p>区间 DP 不出来的我 T^T。</p>
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1224,7 +1223,7 @@ f[l][r]=min(f[l][j],f[j+1][r])</script><p>区间 DP 不出来的我 T^T。</p>
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> mu[maxn], vis[maxn], prime[maxn], tot;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getMu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; maxn; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) prime[++tot] = i, mu[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i * prime[j] &lt; maxn; ++j) &#123;</span><br><span class="line">            vis[i * prime[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mu[i * prime[j]] = -mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> mu[maxn], vis[maxn], prime[maxn], tot;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">getMu</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    mu[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; maxn; ++i) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vis[i]) prime[++tot] = i, mu[i] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= tot &amp;&amp; i * prime[j] &lt; maxn; ++j) &#123;</span><br><span class="line">            vis[i * prime[j]] = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span> (i % prime[j] == <span class="number">0</span>) &#123;</span><br><span class="line">                mu[i * prime[j]] = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            mu[i * prime[j]] = -mu[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/3/mobius/#more" rel="contents">
@@ -1373,7 +1372,7 @@ f[l][r]=min(f[l][j],f[j+1][r])</script><p>区间 DP 不出来的我 T^T。</p>
   </span>
   <span class="author" itemprop="copyrightHolder">XLor</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.1.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0

@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -255,7 +255,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -291,29 +291,12 @@
 <h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>把几个情况特判掉：</p>
 <ol>
 <li>$m&gt;n$：图上已经有环。</li>
-<li>$m=n$：图本身就是一个 $n$ 个点的环，答案为 ${n!\over2}$。</li>
-<li>$m=0$：答案为 $1​$（底下的公式会挂在这个地方）。</li>
+<li>$m&#x3D;n$：图本身就是一个 $n$ 个点的环，答案为 ${n!\over2}$。</li>
+<li>$m&#x3D;0$：答案为 $1​$（底下的公式会挂在这个地方）。</li>
 </ol>
 <p>题目等价于求将一个带标号的图分成 $n-m$ 条链的方案数（块内有序，块间无序）。</p>
 <p>先给块间加一个有序条件，最后乘上 $n! \over (n-m)!​$ 即可去除掉块间的序，因此可以使用指数生成函数先算出块内块间有序的方案数。</p>
-<p>考虑一条链的情况，只有一个点时，方案数为 $1$，有 $n$ 个点时 $(n \ge 2)$，方案数为 $n! \over 2$。因此得到对应的指数生成函数</p>
-<script type="math/tex; mode=display">
-\begin{array}{}
-f(x)&=&x+{2! \over 2}{x^2 \over 2!}+{3! \over 2}{x^3 \over 3!}+\dots \\
- &=&x+{1\over2}x^2+{1\over2}x^3+\dots \\
- &=&{x\over 2}+{1\over2}x(1+x+x^2+x^3+\dots) \\
- &=&{x\over 2}+{1\over2}{x \over 1-x}
-\end{array}</script><p>答案为</p>
-<script type="math/tex; mode=display">
-\begin{array}{}
-ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
-&=&{n! \over (n-m)!}[x^n]({x \over 2}(1+{1 \over 1-x}))^{n-m} \\
-&=&{n! \over (n-m)!2^{n-m}}[x^n]x^{n-m}(1+{1 \over 1-x})^{n-m} \\
-&=&{n! \over (n-m)!2^{n-m}}[x^m](1+{1 \over 1-x})^{n-m} \\
-&=&{n! \over (n-m)!2^{n-m}}[x^m]\sum_{i=0}^{n-m} {n-m \choose i} ({1 \over 1-x})^i \\
-&=&{n! \over (n-m)!2^{n-m}}[x^m]\sum_{i=0}^{n-m} {n-m \choose i} (1+x+x^2+\dots)^i \\
-&=&{n! \over (n-m)!2^{n-m}}\sum_{i=0}^{n-m} {n-m \choose i}{m+i-1 \choose m} \\
-\end{array}</script>
+<p>考虑一条链的情况，只有一个点时，方案数为 $1$，有 $n$ 个点时 $(n \ge 2)$，方案数为 $n! \over 2$。因此得到对应的指数生成函数<br>$$<br>\begin{array}{}<br>f(x)&amp;&#x3D;&amp;x+{2! \over 2}{x^2 \over 2!}+{3! \over 2}{x^3 \over 3!}+\dots \<br> &amp;&#x3D;&amp;x+{1\over2}x^2+{1\over2}x^3+\dots \<br> &amp;&#x3D;&amp;{x\over 2}+{1\over2}x(1+x+x^2+x^3+\dots) \<br> &amp;&#x3D;&amp;{x\over 2}+{1\over2}{x \over 1-x}<br>\end{array}<br>$$<br>答案为<br>$$<br>\begin{array}{}<br>ans&amp;&#x3D;&amp;{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \<br>&amp;&#x3D;&amp;{n! \over (n-m)!}[x^n]({x \over 2}(1+{1 \over 1-x}))^{n-m} \<br>&amp;&#x3D;&amp;{n! \over (n-m)!2^{n-m}}[x^n]x^{n-m}(1+{1 \over 1-x})^{n-m} \<br>&amp;&#x3D;&amp;{n! \over (n-m)!2^{n-m}}[x^m](1+{1 \over 1-x})^{n-m} \<br>&amp;&#x3D;&amp;{n! \over (n-m)!2^{n-m}}[x^m]\sum_{i&#x3D;0}^{n-m} {n-m \choose i} ({1 \over 1-x})^i \<br>&amp;&#x3D;&amp;{n! \over (n-m)!2^{n-m}}[x^m]\sum_{i&#x3D;0}^{n-m} {n-m \choose i} (1+x+x^2+\dots)^i \<br>&amp;&#x3D;&amp;{n! \over (n-m)!2^{n-m}}\sum_{i&#x3D;0}^{n-m} {n-m \choose i}{m+i-1 \choose m} \<br>\end{array}<br>$$</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/1/zoj4069/#more" rel="contents">
@@ -371,7 +354,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -466,7 +449,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -504,150 +487,146 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
     <div class="post-body" itemprop="articleBody">
 
       
-          <div class="table-container">
-<table>
+          <table>
 <thead>
 <tr>
-<th style="text-align:center">Name</th>
-<th style="text-align:center">Rank</th>
-<th style="text-align:center">Solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
+<th align="center">Name</th>
+<th align="center">Rank</th>
+<th align="center">Solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">K</th>
+<th align="center">L</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D1/">Day1</a></td>
-<td style="text-align:center">4/52</td>
-<td style="text-align:center">6/11</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<tbody><tr>
+<td align="center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D1/">Day1</a></td>
+<td align="center">4&#x2F;52</td>
+<td align="center">6&#x2F;11</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">Ø</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D2/">Day2</a></td>
-<td style="text-align:center">29/99</td>
-<td style="text-align:center">2/12</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
+<td align="center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D2/">Day2</a></td>
+<td align="center">29&#x2F;99</td>
+<td align="center">2&#x2F;12</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">Ø</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">.</td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D3/">Day3</a></td>
-<td style="text-align:center">9/55</td>
-<td style="text-align:center">5/10</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D3/">Day3</a></td>
+<td align="center">9&#x2F;55</td>
+<td align="center">5&#x2F;10</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">Ø</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D4/">Day4</a></td>
-<td style="text-align:center">11/64</td>
-<td style="text-align:center">6/11</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center"></td>
+<td align="center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D4/">Day4</a></td>
+<td align="center">11&#x2F;64</td>
+<td align="center">6&#x2F;11</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">!</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D5/">Day5</a></td>
-<td style="text-align:center">28/56</td>
-<td style="text-align:center">3/10</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D5/">Day5</a></td>
+<td align="center">28&#x2F;56</td>
+<td align="center">3&#x2F;10</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">Ø</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">Ø</td>
+<td align="center">O</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D6/">Day6</a></td>
-<td style="text-align:center">3/60</td>
-<td style="text-align:center">8/10</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D6/">Day6</a></td>
+<td align="center">3&#x2F;60</td>
+<td align="center">8&#x2F;10</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td style="text-align:center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D7/">Day7</a></td>
-<td style="text-align:center">6/57</td>
-<td style="text-align:center">5/10</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center"></td>
-<td style="text-align:center"></td>
+<td align="center"><a href="http://xlor.cn/2019/1/wannaflywinter2019D7/">Day7</a></td>
+<td align="center">6&#x2F;57</td>
+<td align="center">5&#x2F;10</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/1/wannaflywinter2019/#more" rel="contents">
@@ -705,7 +684,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -744,42 +723,38 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
 
       
           <p>马神牛逼！（破音</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">6/57</td>
-<td style="text-align:center">5/10</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
+<tbody><tr>
+<td align="center">6&#x2F;57</td>
+<td align="center">5&#x2F;10</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/1/wannaflywinter2019D7/#more" rel="contents">
@@ -837,7 +812,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -876,42 +851,38 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
 
       
           <p>马神牛逼！（破音</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">3/60</td>
-<td style="text-align:center">8/10</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
+<tbody><tr>
+<td align="center">3&#x2F;60</td>
+<td align="center">8&#x2F;10</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/1/wannaflywinter2019D6/#more" rel="contents">
@@ -969,7 +940,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1001,7 +972,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll n)</span> </span>&#123;</span><br><span class="line">    ll r = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) r = r * x % mod;</span><br><span class="line">        x = x * x % mod; n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">inv</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> qpow(x, mod - <span class="number">2</span>); &#125;</span><br><span class="line">ll rev[maxn &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">step</span> = <span class="number">0</span>, n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; n &lt; m; n &lt;&lt;= <span class="number">1</span>) ++<span class="built_in">step</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) </span><br><span class="line">        rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (<span class="built_in">step</span> - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span> n;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ntt</span><span class="params">(<span class="built_in">vector</span>&lt;ll&gt;&amp; a, <span class="keyword">int</span> n, <span class="keyword">int</span> op)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="keyword">if</span> (i &lt; rev[i]) swap(a[i], a[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> h = <span class="number">2</span>; h &lt;= n; h &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        ll wn = qpow(<span class="number">3</span>, (mod - <span class="number">1</span>) / h);</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">-1</span>) wn = inv(wn);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i += h) &#123;</span><br><span class="line">            ll w = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; i + h / <span class="number">2</span>; j++) &#123;</span><br><span class="line">                ll u = a[j], t = a[j + h / <span class="number">2</span>] * w % mod;</span><br><span class="line">                a[j] = (u + t) % mod;</span><br><span class="line">                a[j + h / <span class="number">2</span>] = (u - t + mod) % mod;</span><br><span class="line">                w = w * wn % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (op == <span class="number">-1</span>) &#123;</span><br><span class="line">        ll rn = inv(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) a[i] = a[i] * rn % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ll <span class="title">qpow</span><span class="params">(ll x, ll n)</span> </span>&#123;</span><br><span class="line">    ll r = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) r = r * x % mod;</span><br><span class="line">        x = x * x % mod; n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">inv</span><span class="params">(ll x)</span> </span>&#123; <span class="keyword">return</span> <span class="built_in">qpow</span>(x, mod - <span class="number">2</span>); &#125;</span><br><span class="line">ll rev[maxn &lt;&lt; <span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">init</span><span class="params">(<span class="type">int</span> m)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> step = <span class="number">0</span>, n = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; n &lt; m; n &lt;&lt;= <span class="number">1</span>) ++step;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) </span><br><span class="line">        rev[i] = (rev[i &gt;&gt; <span class="number">1</span>] &gt;&gt; <span class="number">1</span>) | ((i &amp; <span class="number">1</span>) &lt;&lt; (step - <span class="number">1</span>));</span><br><span class="line">    <span class="keyword">return</span> n;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">ntt</span><span class="params">(vector&lt;ll&gt;&amp; a, <span class="type">int</span> n, <span class="type">int</span> op)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="keyword">if</span> (i &lt; rev[i]) <span class="built_in">swap</span>(a[i], a[rev[i]]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> h = <span class="number">2</span>; h &lt;= n; h &lt;&lt;= <span class="number">1</span>) &#123;</span><br><span class="line">        ll wn = <span class="built_in">qpow</span>(<span class="number">3</span>, (mod - <span class="number">1</span>) / h);</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">-1</span>) wn = <span class="built_in">inv</span>(wn);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i += h) &#123;</span><br><span class="line">            ll w = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt; i + h / <span class="number">2</span>; j++) &#123;</span><br><span class="line">                ll u = a[j], t = a[j + h / <span class="number">2</span>] * w % mod;</span><br><span class="line">                a[j] = (u + t) % mod;</span><br><span class="line">                a[j + h / <span class="number">2</span>] = (u - t + mod) % mod;</span><br><span class="line">                w = w * wn % mod;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (op == <span class="number">-1</span>) &#123;</span><br><span class="line">        ll rn = <span class="built_in">inv</span>(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) a[i] = a[i] * rn % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/1/ntt/#more" rel="contents">
@@ -1059,7 +1030,7 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1094,17 +1065,15 @@ ans&=&{n! \over (n-m)!}[x^n]({x\over 2}+{1\over 2}{x \over 1-x})^{n-m} \\
           <p>$div3$ 恢复信心失败。</p>
 <h1 id="A-Two-distinct-points"><a href="#A-Two-distinct-points" class="headerlink" title="A Two distinct points"></a>A Two distinct points</h1><h1 id="B-Divisors-of-Two-Integers"><a href="#B-Divisors-of-Two-Integers" class="headerlink" title="B Divisors of Two Integers"></a>B Divisors of Two Integers</h1><p>给了一个多重集合，存放着两个正整数 $x$ 和 $y$ 的所有因子，让你恢复出这两个数字。</p>
 <p>显然最大值是一个解，对其质因数分解，从多重集合中删除，得到剩下数字中的最大值为另外一个解。</p>
-<h1 id="C-Nice-Garland"><a href="#C-Nice-Garland" class="headerlink" title="C Nice Garland"></a>C Nice Garland</h1><p>给一个只包含字母 $RGB$ 的串，现在要求这个串 $s$ 满足</p>
-<script type="math/tex; mode=display">
-\forall i, j \text{ 满足 } s_i=s_j,|i-j|\mod 3=0</script><p>你可以修改一些位置使得上条件满足，求最小修改数和修改方案。</p>
+<h1 id="C-Nice-Garland"><a href="#C-Nice-Garland" class="headerlink" title="C Nice Garland"></a>C Nice Garland</h1><p>给一个只包含字母 $RGB$ 的串，现在要求这个串 $s$ 满足<br>$$<br>\forall i, j \text{ 满足 } s_i&#x3D;s_j,|i-j|\mod 3&#x3D;0<br>$$<br>你可以修改一些位置使得上条件满足，求最小修改数和修改方案。</p>
 <p>显然，这个串的前 $3$ 个位置只有 $6$ 种情况，后面部分一直重复这个前缀，枚举前缀即可。</p>
 <h1 id="D-Diverse-Garland"><a href="#D-Diverse-Garland" class="headerlink" title="D Diverse Garland"></a>D Diverse Garland</h1><p>给一个只包含字母 $RGB$ 的串，现在要求这个串 $s$ 满足所有相邻位置字母不同。</p>
 <p>你可以修改一些位置使得上条件满足，求最小修改数和修改方案。</p>
 <p>考虑 $dp[i][3]$ 表示前 $i$ 个位置，最后一个为 $RGB$ 的最小修改数，跑一遍 $dp$，再倒着转移把方案构造出来。</p>
 <p>菜鸡选手不会写倒着重构 $dp$。</p>
 <h1 id="E-Array-and-Segments"><a href="#E-Array-and-Segments" class="headerlink" title="E Array and Segments"></a>E Array and Segments</h1><p>给一个序列 </p>
-<script type="math/tex; mode=display">
-a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将区间 $[l,r]$ 所有位置都 $-1$，现在你需要从询问中选择一些执行，使得序列极差最大，即最大化 $\max a_i - \min a_i$。</p>
+<p>$$<br>a_{1},a_{2},\cdot\cdot\cdot,a_{n}<br>$$</p>
+<p>现在有 $q$ 次询问，每次将区间 $[l,r]$ 所有位置都 $-1$，现在你需要从询问中选择一些执行，使得序列极差最大，即最大化 $\max a_i - \min a_i$。</p>
 <p>对于一类求极差的问题，可以转化为枚举一个，快速计算另外一个。</p>
 <p>因此，我们枚举最大值的位置，将所有不包含这个位置的线段全部执行，询问整个区间的最小值，这部分线段树更新和查询即可。</p>
 <p>但是此时复杂度为 $O(nm\log n)$。</p>
@@ -1172,7 +1141,7 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1210,42 +1179,38 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
     <div class="post-body" itemprop="articleBody">
 
       
-          <div class="table-container">
-<table>
+          <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">28/56</td>
-<td style="text-align:center">3/10</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
+<tbody><tr>
+<td align="center">28&#x2F;56</td>
+<td align="center">3&#x2F;10</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">Ø</td>
+<td align="center">.</td>
+<td align="center">!</td>
+<td align="center">.</td>
+<td align="center">Ø</td>
+<td align="center">O</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
 <p>$C$ 卡主席树内存，是不是有点毒瘤啊？不会卡内存，自闭了啊？</p>
           <!--noindex-->
             <div class="post-button">
@@ -1304,7 +1269,7 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1342,44 +1307,40 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
     <div class="post-body" itemprop="articleBody">
 
       
-          <div class="table-container">
-<table>
+          <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">K</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">11/64</td>
-<td style="text-align:center">6/11</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">!</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">!</td>
+<tbody><tr>
+<td align="center">11&#x2F;64</td>
+<td align="center">6&#x2F;11</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">!</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">!</td>
 </tr>
-</tbody>
-</table>
-</div>
+</tbody></table>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2019/1/wannaflywinter2019D4/#more" rel="contents">
@@ -1437,7 +1398,7 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1625,7 +1586,7 @@ a_{1},a_{2},\cdot\cdot\cdot,a_{n}</script><p>现在有 $q$ 次询问，每次将
   </span>
   <span class="author" itemprop="copyrightHolder">XLor</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.1.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0

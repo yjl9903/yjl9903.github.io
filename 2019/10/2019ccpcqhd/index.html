@@ -4,7 +4,7 @@
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.1">
+<meta name="generator" content="Hexo 6.1.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -50,15 +50,15 @@
   };
 </script>
 
-  <meta name="description" content="rank solved A B C D E F G H I J K L     ? 9 Ø Ø Ø O . O . Ø O O O .">
+  <meta name="description" content="rank solved A B C D E F G H I J K L    ? 9 Ø Ø Ø O . O . Ø O O O .">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2019 年 CCPC 秦皇岛现场赛复现赛">
 <meta property="og:url" content="https://xlor.cn/2019/10/2019ccpcqhd/index.html">
 <meta property="og:site_name" content="XLor&#39;s Blog">
-<meta property="og:description" content="rank solved A B C D E F G H I J K L     ? 9 Ø Ø Ø O . O . Ø O O O .">
+<meta property="og:description" content="rank solved A B C D E F G H I J K L    ? 9 Ø Ø Ø O . O . Ø O O O .">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-10-04T09:41:57.000Z">
-<meta property="article:modified_time" content="2022-03-25T17:51:16.540Z">
+<meta property="article:modified_time" content="2022-03-25T17:53:58.847Z">
 <meta property="article:author" content="XLor">
 <meta property="article:tag" content="Trainings">
 <meta property="article:tag" content="DP">
@@ -266,7 +266,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+                <time title="修改时间：2022-03-26 01:53:58" itemprop="dateModified" datetime="2022-03-26T01:53:58+08:00">2022-03-26</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -298,47 +298,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <div class="table-container">
-<table>
+        <table>
 <thead>
 <tr>
-<th style="text-align:center">rank</th>
-<th style="text-align:center">solved</th>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">C</th>
-<th style="text-align:center">D</th>
-<th style="text-align:center">E</th>
-<th style="text-align:center">F</th>
-<th style="text-align:center">G</th>
-<th style="text-align:center">H</th>
-<th style="text-align:center">I</th>
-<th style="text-align:center">J</th>
-<th style="text-align:center">K</th>
-<th style="text-align:center">L</th>
+<th align="center">rank</th>
+<th align="center">solved</th>
+<th align="center">A</th>
+<th align="center">B</th>
+<th align="center">C</th>
+<th align="center">D</th>
+<th align="center">E</th>
+<th align="center">F</th>
+<th align="center">G</th>
+<th align="center">H</th>
+<th align="center">I</th>
+<th align="center">J</th>
+<th align="center">K</th>
+<th align="center">L</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">?</td>
-<td style="text-align:center">9</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
-<td style="text-align:center">Ø</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">O</td>
-<td style="text-align:center">.</td>
+<tbody><tr>
+<td align="center">?</td>
+<td align="center">9</td>
+<td align="center">Ø</td>
+<td align="center">Ø</td>
+<td align="center">Ø</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">O</td>
+<td align="center">.</td>
+<td align="center">Ø</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">O</td>
+<td align="center">.</td>
 </tr>
-</tbody>
-</table>
-</div>
-<a id="more"></a>
+</tbody></table>
+<span id="more"></span>
+
 <h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><p>UpSolved by Henry.</p>
 <p>极角排序。</p>
 <h1 id="B"><a href="#B" class="headerlink" title="B"></a>B</h1><p>UpSolved by XLor.</p>
@@ -347,10 +344,10 @@
 <p>考虑存在相同权值的点对情况，容易证明深度小的点一定相对于大的点先选，并且先选浅的点能带来更多贡献，因此在转移贡献上多减去该点祖先上和该点权值相同的点个数，一起排序即可。</p>
 <h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><p>UpSolved by XLor.</p>
 <p>简化问题：求一个串的本质不同子序列。</p>
-<p>考虑 $dp[i]$，最后一个选 $i$ 位置产生的本质不同子序列个数，答案为 $\sum_{i=1}^n dp[i]$。</p>
+<p>考虑 $dp[i]$，最后一个选 $i$ 位置产生的本质不同子序列个数，答案为 $\sum_{i&#x3D;1}^n dp[i]$。</p>
 <p>记 $last[i]$ 表示 $i$ 之前最后一个与第 $i$ 位字母相同的位置，有转移方程：</p>
-<script type="math/tex; mode=display">
-dp[i]=\sum_{j=last[i]}^{i-1} dp[j]</script><p>子问题一：求一个串长度为 $len$ 本质不同子序列个数，$dp$ 时添加一维长度。</p>
+<p>$$<br>dp[i]&#x3D;\sum_{j&#x3D;last[i]}^{i-1} dp[j]<br>$$</p>
+<p>子问题一：求一个串长度为 $len$ 本质不同子序列个数，$dp$ 时添加一维长度。</p>
 <p>子问题二：两个子序列分别匹配到位置 $i$ 和 $j$ 时的方案数，且两个子序列长度相同且位置对应相同，类似于简化问题，只不过是维护两个最后位置，转移时选一个矩形框。</p>
 <p>子问题三：两个子序列从位置 $i$ 和 $j$ 开始匹配的方案数，且两个子序列长度相同，类似于子问题二，转移时选一个矩形框。</p>
 <p>回到原题，应用子问题一，得到第一个子序列长度严格大于第二个的方案数，应用子问题二三，用类似的二维矩形框的方式容斥掉前面相同的部分，乘上使用子问题三的后缀矩形框，得到两个子序列长度相同时的方案数。</p>
@@ -547,7 +544,7 @@ dp[i]=\sum_{j=last[i]}^{i-1} dp[j]</script><p>子问题一：求一个串长度�
   </span>
   <span class="author" itemprop="copyrightHolder">XLor</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.1.0
   </div>
   <span class="post-meta-divider">|</span>
   <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
