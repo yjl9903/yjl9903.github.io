@@ -1,0 +1,32 @@
+{
+  "name": "xlor-blog",
+  "private": true,
+  "scripts": {
+    "bangumi": "hexo bangumi -u",
+    "build": "hexo generate",
+    "deploy": "hexo deploy",
+    "dev": "hexo server"
+  },
+  "dependencies": {
+    "hexo": "^4.2.1",
+    "hexo-asset-image": "^1.0.0",
+    "hexo-bilibili-bangumi": "^1.7.4",
+    "hexo-blog-encrypt": "^3.0.12",
+    "hexo-deployer-git": "^2.1.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^1.0.0",
+    "hexo-generator-searchdb": "^1.0.8",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-inject": "^1.0.0",
+    "hexo-leancloud-counter-security": "^1.5.0",
+    "hexo-renderer-ejs": "^1.0.0",
+    "hexo-renderer-kramed": "^0.1.4",
+    "hexo-renderer-mathjax": "^0.6.0",
+    "hexo-renderer-stylus": "^1.1.0",
+    "hexo-server": "^1.0.0"
+  },
+  "hexo": {
+    "version": "4.2.1"
+  }
+}
