@@ -11,12 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v2
-      - run: npm install
+        with:
+          node_version: 16
+          cache: pnpm
+      - run: pnpm install
       - name: Build
         run: |
-          npm run bangumi
-          npm run build
+          pnpm run bangumi
+          pnpm run build
       - name: Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
