@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="XLor&#39;s Blog">
+<meta property="og:url" content="https://xlor.cn/page/20/index.html">
+<meta property="og:site_name" content="XLor&#39;s Blog">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="XLor">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://xlor.cn/page/20/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>XLor's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150361094-2"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-150361094-2');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XLor's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">跃迁引擎启动</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-训练">
+
+    <a href="/trainings/" rel="section"><i class="fa fa-fw fa-keyboard-o"></i>训练</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/LinearBase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/LinearBase/" class="post-title-link" itemprop="url">线性基</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-13 00:38:58" itemprop="dateCreated datePublished" datetime="2019-02-13T00:38:58+08:00">2019-02-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index">
+                    <span itemprop="name">数学</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/LinearBase/" class="post-meta-item leancloud_visitors" data-flag-title="线性基" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p><a href="https://oi.men.ci/linear-basis-notes/" target="_blank" rel="noopener">Menci</a></p>
+<h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LinearBase</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> maxl = <span class="number">63</span>;</span><br><span class="line">    ll a[maxl + <span class="number">5</span>];</span><br><span class="line">    <span class="keyword">int</span> cnt;</span><br><span class="line">    LinearBase() &#123; cnt=<span class="number">0</span>; ms(a, <span class="number">0</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123; cnt=<span class="number">0</span>; ms(a, <span class="number">0</span>); &#125;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x &amp; (<span class="number">1l</span>l &lt;&lt; i)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[i]) x ^= a[i];</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; i; k++) </span><br><span class="line">                        <span class="keyword">if</span> (x &amp; (<span class="number">1l</span>l &lt;&lt; k)) x ^= a[k];</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> k = i + <span class="number">1</span>; k &lt; maxl; k++) </span><br><span class="line">                        <span class="keyword">if</span> (a[k] &amp; (<span class="number">1l</span>l &lt;&lt; i)) a[k] ^= x;</span><br><span class="line">                    a[i] = x; cnt++;</span><br><span class="line">                    <span class="keyword">return</span> ;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(ll x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x &gt;&gt; i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[i]) x ^= a[i];</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ll <span class="title">qmax</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        ll res = x;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = maxl - <span class="number">1</span> ; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> ((res ^ a[i]) &gt; res) res ^= a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// #define QUERY_KTH</span></span><br><span class="line">    <span class="meta">#<span class="meta-keyword">ifdef</span> QUERY_KTH</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;ll&gt; v;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init_kth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        v.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxl; i++) <span class="keyword">if</span> (a[i]) v.push_back(a[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ll <span class="title">query</span><span class="params">(ll k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (v.<span class="built_in">size</span>() != n) k--;</span><br><span class="line">        <span class="keyword">if</span> (k &gt;= (<span class="number">1l</span>l &lt;&lt; v.<span class="built_in">size</span>())) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        ll ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>(); i++) <span class="keyword">if</span> (k &amp; (<span class="number">1l</span>l &lt;&lt; i))</span><br><span class="line">            ans ^= v[i];</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="区间线性基"><a href="#区间线性基" class="headerlink" title="区间线性基"></a>区间线性基</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LinearBase</span> &#123;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keyword">int</span> M = <span class="number">30</span>;</span><br><span class="line">    <span class="keyword">int</span> a[M + <span class="number">1</span>], pos[M + <span class="number">1</span>];</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ms(a, <span class="number">0</span>); ms(pos, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    LinearBase() &#123; </span><br><span class="line">        <span class="built_in">clear</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> id = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = M; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (x &gt;&gt; i &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[i]) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (id &gt; pos[i]) swap(id, pos[i]), swap(x, a[i]);</span><br><span class="line">                    x ^= a[i];</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    a[i] = x; pos[i] = id;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> l)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = x;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = M; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (pos[i] &lt; l) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> ((ans ^ a[i]) &gt;= ans) ans ^= a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="线性基求交"><a href="#线性基求交" class="headerlink" title="线性基求交"></a>线性基求交</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinearBase <span class="title">intersect</span><span class="params">(<span class="keyword">const</span> LinearBase&amp; A, <span class="keyword">const</span> LinearBase&amp; B)</span> </span>&#123;</span><br><span class="line">	LinearBase all, C, D;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		all.a[i] = A.a[i];</span><br><span class="line">		D.a[i] = <span class="number">1l</span>l &lt;&lt; i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = maxl - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span> (B.a[i]) &#123;</span><br><span class="line">			ll v = B.a[i], k = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">bool</span> can = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">60</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">				<span class="keyword">if</span> (v &amp; (<span class="number">1l</span>l &lt;&lt; j)) &#123;</span><br><span class="line">					<span class="keyword">if</span> (all.a[j]) &#123;</span><br><span class="line">						v ^= all.a[j];</span><br><span class="line">						k ^= D.a[j];</span><br><span class="line">					&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">						can = <span class="literal">false</span>;</span><br><span class="line">						all.a[j] = v;</span><br><span class="line">						D.a[j] = k;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (can) &#123;</span><br><span class="line">				ll v = <span class="number">0</span>;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">60</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">					<span class="keyword">if</span> (k &amp; (<span class="number">1l</span>l &lt;&lt; j)) &#123;</span><br><span class="line">						v ^= A.a[j];</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">				C.insert(v);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/LinearBase/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/steinerTree/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/steinerTree/" class="post-title-link" itemprop="url">斯坦纳树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-12 00:10:20" itemprop="dateCreated datePublished" datetime="2019-02-12T00:10:20+08:00">2019-02-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/steinerTree/" class="post-meta-item leancloud_visitors" data-flag-title="斯坦纳树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>给定带权图 $G$，求让 $k$ 个关键点联通的权值最小的子图（$1 \le k \le 10$）。</p>
+<p>关键点的个数很少，考虑状压 $dp$。</p>
+<p>设 $dp[mask][i]$ 表示关键点的点集 $mask$ 连到顶点 $i$ 最小权值和。</p>
+<p>转移的时候有两种情况：</p>
+<ol>
+<li><p>固定顶点 $i$，合并 $mask$ 的子集 $T$ 和 $T$ 的补集两个 $dp$ 状态，相当于顶点分叉。</p>
+</li>
+<li><p>固定点集 $mask$，顶点 $i$ 向周围的点用最短路进行转移，相当于节点向外生长。</p>
+</li>
+</ol>
+<p>时间复杂度：$O(3^k \cdot n+2^k \cdot m \log n)$。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/steinerTree/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round538/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/round538/" class="post-title-link" itemprop="url">Codeforces Round 538 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-11 18:07:27" itemprop="dateCreated datePublished" datetime="2019-02-11T18:07:27+08:00">2019-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/round538/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 538 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Got-Any-Grapes"><a href="#A-Got-Any-Grapes" class="headerlink" title="A Got Any Grapes?"></a>A Got Any Grapes?</h1><h1 id="B-Yet-Another-Array-Partitioning-Task"><a href="#B-Yet-Another-Array-Partitioning-Task" class="headerlink" title="B Yet Another Array Partitioning Task"></a>B Yet Another Array Partitioning Task</h1><p>给一个序列，分成恰好 $k$ 个连续段，每个连续段至少有 $m$ 个，每个段的贡献是其前 $m$ 大之和，求所有段贡献之和的最大值。</p>
+<p>所有值拖进去排序，取前 $mk$ 大之和就是答案。</p>
+<p>构造只需要维护哪些位置是前 $mk$ 大即可。</p>
+<p>证明的话，考虑把除了前 $mk$ 大的元素都删除，他们的有无对于答案没有影响。</p>
+<p>全场最难。</p>
+<h1 id="C-Trailing-Loves-or-L’oeufs"><a href="#C-Trailing-Loves-or-L’oeufs" class="headerlink" title="C Trailing Loves (or L’oeufs?)"></a>C Trailing Loves (or L’oeufs?)</h1><p>求十进制数 $n!$ 在 $b$ 进制下有多少个尾 $0$。</p>
+<p>题目等价于求最大的 $x$，使得 $n! =k \cdot b^x$ 成立，等价于对 $b$ 质因数分解后的每一个素因子，$n!$ 中对应素因子的幂次与其幂次之比的最小值。</p>
+<p>于是，我们需要计算出 $n!$ 对于一个素因子 $p$ 的幂次。</p>
+<p>显然，$1$ 到 $n$ 中 $p$ 的倍数有 $n \over p$ 个，$p^2$ 的倍数有 $n \over p^2$ 个，又由于 $p^2$ 的倍数在前面一次已经计算过一个了，只需要加上 $n \over p^2$ 即可。以此类推，于是有</p>
+<script type="math/tex; mode=display">
+\alpha=\sum {n \over p^i}</script><p>注意别爆掉 $long long$。</p>
+<h1 id="D-Flood-Fill"><a href="#D-Flood-Fill" class="headerlink" title="D Flood Fill"></a>D Flood Fill</h1><p>给一个序列，一串连续的相同数字视作一个联通块，你需要先选择一个联通块，然后每次将这个联通块颜色变成另外一个以此扩大一开始的联通块，直到所有颜色都相同，求最小操作次数。</p>
+<p>考虑 $dp[l][r][0/1]$，表示将 $[l,r]$ 区间全部变成 $l$ 处或者 $r$ 处的颜色所需要的最小操作次数。</p>
+<p>因为只有一个起点，每次操作只需要考虑扩大一个位置即可，即 $dp[l][r][0/1]$ 只会从 $dp[l+1][r][0/1]$ 和 $dp[l][r-1][0/1]$ 转移过来。</p>
+<p>不妨令第三个维度为 $0$，只有三种情况：</p>
+<ol>
+<li><p>$[l+1,r]$ 全部变成 $l+1$ 处的颜色，如果 $l+1$ 和 $l$ 处颜色不同，那么需要多操作一次；</p>
+</li>
+<li><p>$[l+1,r]$ 全部变成 $r$ 处颜色，也是类似；</p>
+</li>
+<li><p>$[l,r-1]$ 全部变成 $l$ 处颜色，如果 $l$ 和 $r$ 处颜色不同，我们需要一次操作将 $[l,r-1]$ 先变成 $r$ 处的颜色，再一次操作变回 $l$ 处的颜色。</p>
+</li>
+</ol>
+<p>第三种情况考虑错了 T^T。</p>
+<h1 id="E-Arithmetic-Progression"><a href="#E-Arithmetic-Progression" class="headerlink" title="E Arithmetic Progression"></a>E Arithmetic Progression</h1><p>交互题，给定长度 $n$，$60$ 次询问，猜一个打乱过位置的等差数列的首项和公差，有两种询问方式：</p>
+<ol>
+<li><p><code>? i</code>：询问位置 $i$ 上的数字；</p>
+</li>
+<li><p><code>&gt; x</code>：询问是否有大于 $x$ 的数字。</p>
+</li>
+</ol>
+<p>先用 $30$ 次询问二分出最大值，然后随机取 $30$ 个位置，做差后全部 $gcd$ 起来就是公差。</p>
+<p>随机别用 <code>rand()</code>， 用 <code>mt19937</code>。</p>
+<h1 id="F-Please-another-Queries-on-Array"><a href="#F-Please-another-Queries-on-Array" class="headerlink" title="F Please, another Queries on Array?"></a>F Please, another Queries on Array?</h1><p>给一个序列 $a$，其中 $1 \le a_i \le 300$，维护区间乘，询问区间乘的欧拉函数。</p>
+<p>线段树裸题（误。</p>
+<p>由于小于 $300$ 的素数只有 $62$ 个，欧拉函数算的时候只和乘积后的值以及这个值有哪些素因子有关。</p>
+<p>因此只需要用 <code>bitset</code> 维护有哪些素因子，线段树维护乘法即可。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/round538/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/zoj4059/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/zoj4059/" class="post-title-link" itemprop="url">ZOJ4059 Kawa Exam</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-11 16:07:23" itemprop="dateCreated datePublished" datetime="2019-02-11T16:07:23+08:00">2019-02-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">题解</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/zoj4059/" class="post-meta-item leancloud_visitors" data-flag-title="ZOJ4059 Kawa Exam" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给一个无向图，每个顶点本身有一个颜色 $a_i$，现在要给所有顶点分别染色，满足一个联通块内的顶点染的颜色必须相同。</p>
+<p>对于每条边，分别询问删除这条边后，最多有多少顶点染的颜色和其本来的颜色相同。</p>
+<script type="math/tex; mode=display">
+1 \le n,m,a_i \le 10^5, \sum n, \sum m \le 10^6</script><h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>在一个联通块内，如果这条边在一个环内，删除这条边后，原联通块仍然联通。只有对于桥边，删除后会变成两个联通块，才会对答案有影响。</p>
+<p>因此，首先需要用边双联通分量缩点，形成一个森林。</p>
+<p>对于，森林内的每棵树，我们需要计算删除每一条树边后，子树内和子树外出现次数最多的次数，加上森林内其他树的答案即可。</p>
+<p>对于子树内的众数，这是树上启发式合并，同样对于子树外的众数，反过来维护即可。</p>
+<p>修改和查询最大值时，复杂度需要 $O(1)$。这里因为修改都是 $+1$ 或 $-1$，因此维护每种出现次数的个数即可。</p>
+<p>注意：树上启发式合并时，缩点大小最好设置为对应块的大小。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/zoj4059/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/global1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/global1/" class="post-title-link" itemprop="url">Codeforces Global Round 1 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-08 18:11:38" itemprop="dateCreated datePublished" datetime="2019-02-08T18:11:38+08:00">2019-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/global1/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Global Round 1 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>场外云选手，全程智障。</p>
+<h1 id="A-Parity"><a href="#A-Parity" class="headerlink" title="A Parity"></a>A Parity</h1><p>数据范围小，快速幂随便搞一下。</p>
+<h1 id="B-Tape"><a href="#B-Tape" class="headerlink" title="B Tape"></a>B Tape</h1><p>有一段长度为 $m$ 的序列，其中一些位置坏掉了，现在可以用最多 $k$ 个线段覆盖这些坏掉的位置，求最小的覆盖线段总长度。</p>
+<p>考虑反面，用 $k$ 段覆盖这些位置，等价于将 $n-k$ 个坏掉位置合并，合并后变成 $k$ 个连续段。</p>
+<p>差分一下，拖出来排序，取前 $n-k$ 个。</p>
+<p>云选手以为要二分，显然有单调性，但是并不能贪心构造。</p>
+<h1 id="C-Meaningless-Operations"><a href="#C-Meaningless-Operations" class="headerlink" title="C Meaningless Operations"></a>C Meaningless Operations</h1><p>求 $f(a)=\max_{0 &lt; b &lt; a} \gcd(a \oplus b, a \text{&amp;} b)$。</p>
+<p>考虑 $a$ 的二进制表示，如果里面有 $0$，那么 $b$ 相应位置设为 $1$，这样 $a \text{&amp;} b$ 为 $0$， $a \oplus b$ 为 $2^k-1$，显然最大。</p>
+<p>所有只需要考虑 $a=2^k-1$ 的情况，只有 $25$ 种，打个表即可。</p>
+<h1 id="D-Jongmah"><a href="#D-Jongmah" class="headerlink" title="D Jongmah"></a>D Jongmah</h1><p>给定一个序列 $a$，$1 \le a_i \le m$，将序列内元素组成一些三元组，满足三元组三个元素为三个连续整数或三个相同整数，求最大能组成多少三元组。</p>
+<p>设 $dp[i][j][k]$ 表示考虑到 $i$ 个位置，以第 $i$ 个位置为首组成 $j$ 个连续三元组，第 $i-1$ 个位置为首组成 $k$ 个连续三元组。</p>
+<p>然后，观察到组成 $j+3$ 个连续三元组实际上和组成 $j$ 个连续三元组等价，因为可以把横行变成竖列，数目相同，因此只需要考虑 $0 \le j&lt;3, 0 \le k&lt;3$。</p>
+<p>转移方程</p>
+<script type="math/tex; mode=display">
+dp[i][j][k]=\max(dp[i][j][k], dp[i-1][k][h]+{(cnt[i]-j-k-h) \over 3}+j), j+k+h \le cnt[i]</script><p>云选手没注意到这个结论。</p>
+<h1 id="E-Magic-Stones"><a href="#E-Magic-Stones" class="headerlink" title="E Magic Stones"></a>E Magic Stones</h1><p>给定一个序列 $c$，每次操作可以选择除了首尾的一个位置 $i$，执行</p>
+<script type="math/tex; mode=display">
+c_i=c_{i-1}+c_{i+1}-c_i</script><p>判断一下 $c$ 通过这样的操作变成 $t$。</p>
+<p>注意到每次这个操作，实际上是交换了左右的差分值，因此只需要判断 $c,t$ 的差分数组排完序是否相同即可。</p>
+<p>注意特判首尾位置。</p>
+<p>云选手以为要大讨论。</p>
+<h1 id="F-Nearest-Leaf"><a href="#F-Nearest-Leaf" class="headerlink" title="F Nearest Leaf"></a>F Nearest Leaf</h1><p>顶点编号按照 $dfs$ 序给出一棵带边权的有根树，每次在编号 $[l,r]$ 范围内，询问距离顶点 $v$ 最近的叶子的距离。</p>
+<p>离线所有询问，$dfs$ 到一棵子树的时候，相当于子树内所有叶子的距离减去这条边的长度，子树外所有叶子的距离加上这条边的长度，线段树维护即可。</p>
+<p>裸题没人做是什么情况？</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/global1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round537/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/round537/" class="post-title-link" itemprop="url">Codeforces Round 537 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-06 00:16:31" itemprop="dateCreated datePublished" datetime="2019-02-06T00:16:31+08:00">2019-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/round537/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 537 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Superhero-Transformation"><a href="#A-Superhero-Transformation" class="headerlink" title="A Superhero Transformation"></a>A Superhero Transformation</h1><h1 id="B-Average-Superhero-Gang-Power"><a href="#B-Average-Superhero-Gang-Power" class="headerlink" title="B Average Superhero Gang Power"></a>B Average Superhero Gang Power</h1><p>给一个序列，你有 $m$ 次操作，每次操作可以选择删除一个数或者给某一个数 $+1$，但是一个数最多被加 $k$ 次，要求序列平均值的最大值。</p>
+<p>显然，排个序，枚举删除了多少个，剩下的全部都是加到后面即可。</p>
+<p>注意，加到哪个数并不重要，总量不超过上限即可。</p>
+<p>Hackforces，插了 $5$ 个，最后又 FST 了上千个2333。</p>
+<h1 id="C-Creative-Snap"><a href="#C-Creative-Snap" class="headerlink" title="C Creative Snap"></a>C Creative Snap</h1><p>一排长度为 $2^n$ 的位置，某些位置上有人占领（一个位置可以被多人占领），现在你要毁灭整个区间，你有两种毁灭方式：</p>
+<ol>
+<li>将当前要毁灭的区间分成左右两部分，分别毁灭；</li>
+<li>毁灭当前区间，如果区间内没人占领，费用为 $A$，如果区间内有人占领，费用为 $B \times m \times l$，其中 $A,B$ 为常数，$m$ 为当前区间内的人数，$l$ 为区间长度。</li>
+</ol>
+<p>求最小花费。</p>
+<p>直接根据题意模拟分治过程即可。</p>
+<p>关键是要询问一个区间内的人数，对所有人的位置排序，询问时做两次二分即可。</p>
+<p>分治时，注意两个细节：</p>
+<ol>
+<li>区间内没人时，直接返回，无需分治；</li>
+<li>区间长度为 $1$ 时，注意这个位置可能有很多人。</li>
+</ol>
+<p>第二点 $wa$ 了一年 T^T。</p>
+<h1 id="E-Tree"><a href="#E-Tree" class="headerlink" title="E Tree"></a>E Tree</h1><p>给一棵无根树，现在有 $q$ 次询问，每次询问无根树以 $r$ 为根时，有 $k$ 个关键点，将关键点分为最多 $m$ 块，要求满足每块内没有点对互为这棵有根树上的子孙，求这样的分块方案。</p>
+<p>其中 $n, q,\sum k \le 1e5,m\le300$。</p>
+<p>首先，考虑根固定为 $1$ 的做法，将关键点按照 $dfs$ 序排序，设 $h[i]$ 表示关键内是 $i$ 的祖先节点的个数，$dp[i][j]$ 表示前 $i$ 个点分成 $j$ 块的方案数，有转移方程</p>
+<script type="math/tex; mode=display">
+dp[i][j]=dp[i-1][j-1]+(j-h[i])dp[i-1][j](j>h[i])</script><p>因此，对于每个关键点，我们只需要知道有多少关键点是它的祖先即可，这部分可以搞出 $dfs$ 序，在树状数组上差分即可。</p>
+<p>之后，我们考虑这个 $dp$ 的正确性条件，必须满足计算 $i$ 的 $dp$ 状态时，他的祖先必须全部都计算过了。然后，这个条件实际上不需要用 $dfs$ 序来排序，可以考虑用深度或者说祖先的个数来排序，按照这个顺序 $dp$ 即可。</p>
+<p>最后，我们考虑换根操作，换根后我们实质上是询问了，某个关键点到根的路径上出现了多少关键点，这个部分用 $LCA​$ 差分即可。</p>
+<p>好！</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/round537/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/yxstone/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/yxstone/" class="post-title-link" itemprop="url">异象石</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-04 15:59:45" itemprop="dateCreated datePublished" datetime="2019-02-04T15:59:45+08:00">2019-02-04</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/yxstone/" class="post-meta-item leancloud_visitors" data-flag-title="异象石" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给一棵带边权的无根树，维护关键点的增加和删除，询问使得所有关键点联通的最小边集的权值和。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>考虑 $dfs$ 遍历一棵树的过程，每一条树边恰好一进一出，走过了两次。</p>
+<p>对于树的一个子联通块，遍历的过程也是如此，按照 $dfs$ 序经过了其最小边集中的每条边两次。</p>
+<p>于是，我们只需要按照 $dfs$ 序维护一个 $set$，增加和删除时根据前驱和后继更新答案即可。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/yxstone/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/trie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/trie/" class="post-title-link" itemprop="url">字典树</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-02 18:22:03" itemprop="dateCreated datePublished" datetime="2019-02-02T18:22:03+08:00">2019-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/%E5%AD%97%E5%85%B8%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">字典树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/trie/" class="post-meta-item leancloud_visitors" data-flag-title="字典树" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> ch[maxn][<span class="number">2</span>], val[maxn], tot = <span class="number">0</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> now = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; s[i]; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (ch[now][s[i] - <span class="string">'0'</span>]) now = ch[now][s[i] - <span class="string">'0'</span>];</span><br><span class="line">        <span class="keyword">else</span> now = ch[now][s[i] - <span class="string">'0'</span>] = ++tot;</span><br><span class="line">    &#125;</span><br><span class="line">    val[now]++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/trie/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/cf1097G/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/cf1097G/" class="post-title-link" itemprop="url">Codeforces 1097G Vladislav and a Great Legend 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-01 22:13:49" itemprop="dateCreated datePublished" datetime="2019-02-01T22:13:49+08:00">2019-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%A0%91/" itemprop="url" rel="index">
+                    <span itemprop="name">树</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/cf1097G/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces 1097G Vladislav and a Great Legend 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>传送门：<a href="http://codeforces.com/problemset/problem/1097/G" target="_blank" rel="noopener">Hello 2019 G. Vladislav and a Great Legend</a></p>
+<h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>给一棵有根树 $T=(V,E)$，$X$ 是 $V$ 的非空子集，记 $f(X)$ 表示 $T$ 中使得点集 $X$ 联通的最小联通子图中的边数，求</p>
+<script type="math/tex; mode=display">
+\sum_{X\subseteq V,X \neq \varnothing} (f(X))^k</script><p>其中，$3 \le |V| \le 10^5,1\le k \le 200$ 。</p>
+<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>显然，$k=1$ 直接扫一遍算贡献即可。</p>
+<p>考虑 $k&gt;1$ 的情况，由第二类斯特林数展开</p>
+<script type="math/tex; mode=display">
+(f(X))^k=\sum_{i=0}^{k}S(k,i)i!{f(X) \choose i}</script><p>前面一部分可以预处理，也就是要求对于 $i (0\le i \le k)​$</p>
+<script type="math/tex; mode=display">
+\sum_{X\subseteq V,X \neq \varnothing} {f(X) \choose i}</script><p>设 $E’ \subseteq E$ 且 $|E’|=i$，$E_X$ 为 $f(X)$ 对应联通块的边集，上式可以写成</p>
+<script type="math/tex; mode=display">
+\sum_{X\subseteq V,X \neq \varnothing} \sum_{e_j \in E',1\le j \le i} [e_1,e_2,\dots,e_i \in E_X]</script><p>于是，交换求和顺序</p>
+<script type="math/tex; mode=display">
+\sum_{e_j \in E',1\le j \le i} \sum_{X\subseteq V,X \neq \varnothing} [e_1,e_2,\dots,e_i \in E_X]</script><p>上式含义是枚举边集 $E$ 的大小为 $i$ 的子集 $E’$，计算 $E’$ 出现在多少个点集 $V$ 的非空子集 $X$ 对应的联通块内。</p>
+<p>考虑 $dp(i,j)$ 表示以 $i$ 为根的子树内大小为 $j$ 的边集，在子树内对上式的贡献。</p>
+<p>设当前计算的根为 $u$，有三种情况：</p>
+<ol>
+<li>$u​$ 到子树的边单独构成边集。</li>
+<li>$u$ 到子树的边与这棵子树的边集合并。</li>
+<li>$u$ 的子树的边集之间合并，子树的边集包含前两种情况。</li>
+</ol>
+<p>对于以 $v$ 为根的子树，更新 $v$ 的 $dp$ 状态，情况一就是 $dp(v,1)+2^{size(v)}-1$，而情况二是用 $dp(v,i)$ 更新 $dp(u,i+1)$ 。得到每一个子树 $v$ 的 $dp$ 状态，做一个卷积即可得到根 $u$ 的 $dp$ 状态。</p>
+<p>考虑卷积的过程，如果 $v_1$ 和 $v_2$ 合并，没有考虑到 $u$ 的其它子树对其的贡献。</p>
+<p>为了解决这个问题，卷积过程中对于 $0$ 次项，设置其为 $2^{size(v)}$，这样没有参与合并的子树贡献就被计算进去了，注意这个部分的贡献不需要 $-1$。因为只要参与了合并，那么只有端点的子树才是必须非空，路径上的点都是可取可不取。</p>
+<p>但是，状态转移的过程中，实际上已经对最终答案产生贡献，因为 $dp(i,j)$ 考虑的点集都是以 $i$ 为 $LCA$ 的。</p>
+<p>对答案的贡献也有类似的三种情况。</p>
+<p>情况一和情况二只需要考虑 $u$ 外的节点是否被取，更新答案即可。</p>
+<p>情况三需要考虑合并后的边集对答案贡献，注意到卷积后实际上有一些是没有合并的，我们需要从 $u$ 的 $dp$ 状态中减去前两种情况，这有卷积结果就只剩下参与过合并的边集了。这部分边集同样是考虑 $u$ 外的节点是否选取。</p>
+<p>于是，我们就得到了一个 $ans$ 数组表示大小为 $i$ 的边集 $E’$ 的贡献，使用第二类斯特林数即可得到最终答案。</p>
+<p>时间复杂度 $O(nk^2)$。</p>
+<p>最后参考<a href="https://xlor.cn/2019/1/treebag/">树形依赖背包</a>的优化原理，上面的卷积过程，实际上与子树大小有关，用类似的方法，我们最终得到时间复杂度为 $O(nk)​$ 的解法。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/cf1097G/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/2/round536/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2019/2/round536/" class="post-title-link" itemprop="url">Codeforces Round 536 题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-01 13:31:40" itemprop="dateCreated datePublished" datetime="2019-02-01T13:31:40+08:00">2019-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Codeforces/" itemprop="url" rel="index">
+                    <span itemprop="name">Codeforces</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/2/round536/" class="post-meta-item leancloud_visitors" data-flag-title="Codeforces Round 536 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="A-Lunar-New-Year-and-Cross-Counting"><a href="#A-Lunar-New-Year-and-Cross-Counting" class="headerlink" title="A Lunar New Year and Cross Counting"></a>A Lunar New Year and Cross Counting</h1><p>模拟一下（第一发写错了符号还能过样例是什么鬼？</p>
+<h1 id="B-Lunar-New-Year-and-Food-Ordering"><a href="#B-Lunar-New-Year-and-Food-Ordering" class="headerlink" title="B Lunar New Year and Food Ordering"></a>B Lunar New Year and Food Ordering</h1><h1 id="C-Lunar-New-Year-and-Number-Division"><a href="#C-Lunar-New-Year-and-Number-Division" class="headerlink" title="C Lunar New Year and Number Division"></a>C Lunar New Year and Number Division</h1><p>把 $n$ 个划分成好多个集合（ $n$ 为偶数），记 $S_j$ 表示第 $j$ 个集合内数的和的平方，要求最小化 $\sum S_j$。</p>
+<p>显然，排个序，最大的和最小的组成一组即可（容易证明）。</p>
+<h1 id="D-Lunar-New-Year-and-a-Wander"><a href="#D-Lunar-New-Year-and-a-Wander" class="headerlink" title="D Lunar New Year and a Wander"></a>D Lunar New Year and a Wander</h1><p>一个人在图上走，每次走到一个未经过的点，将其记录下来，求走遍这个图记录下的字典序最小的序列。</p>
+<p>显然，直接贪心地 $dfs$ 是不行的。我们可以用优先队列做一个类似 $Prim$ 的过程，维护一下当前可以走到哪些没有走过的点。</p>
+<h1 id="E-Lunar-New-Year-and-Red-Envelopes"><a href="#E-Lunar-New-Year-and-Red-Envelopes" class="headerlink" title="E Lunar New Year and Red Envelopes"></a>E Lunar New Year and Red Envelopes</h1><p>给一个长度为 $n$ 的时间轴，有 $k$ 个红包，每个红包可以在 $[s,t]$ 的时间内被领取，领取后获得价值 $w$，领取后直到 $d+1$ 时间才能继续领红包。</p>
+<p>一个人贪心的领取红包，能领红包的话，就领价值最大且 $d$ 最大的那个。</p>
+<p>你现在有 $m$ 次机会阻止他在某一个时间拿红包，你非常聪明，求这个人能获得的最小价值。</p>
+<p>首先，线段树（ $set$ + 扫描线）预处理每个位置拿的红包 $a_i$。</p>
+<p>考虑 $dp[i][j]$ 表示在前 $i$ 个时间内，被阻止了 $j$ 次获得的最小价值，转移方程</p>
+<script type="math/tex; mode=display">
+dp[1][0]=0 \\
+dp[i+1][j+1]=min(dp[i+1][j+1],dp[i][j]) \\
+dp[a[i].d + 1][j]=min(dp[a[i].d+1][j], dp[i][j]+a[i].w)</script>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2019/2/round536/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/19/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="extend next" rel="next" href="/page/21/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XLor"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">XLor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">296</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yjl9903" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yjl9903@vip.qq.com" title="E-Mail &amp;rarr; mailto:yjl9903@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://einsturing.top/" title="http:&#x2F;&#x2F;einsturing.top&#x2F;" rel="noopener" target="_blank">Einsturing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://houwenda.github.io/" title="http:&#x2F;&#x2F;houwenda.github.io&#x2F;" rel="noopener" target="_blank">漏断</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://hadeseve.github.io/" title="http:&#x2F;&#x2F;hadeseve.github.io&#x2F;" rel="noopener" target="_blank">Hadeseve</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/guaguastandup" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XLor</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz',
+            'X-LC-Key': 'L1NlHmYVsJjI0IDUy2337S8I',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>

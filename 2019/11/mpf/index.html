@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="问题给定一个字符串 $s(1\le |s| \le 10^5)$ ，求最小的 $k$ ，使得存在 $s_1,s_2,\dots,s_k$ ，满足 $s_i(1\le i \le k)$ 均为回文串，且 $s_1,s_2, \dots ,s_k$ 依次连接后得到的字符串等于 $s$ 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最小回文划分">
+<meta property="og:url" content="https://xlor.cn/2019/11/mpf/index.html">
+<meta property="og:site_name" content="XLor&#39;s Blog">
+<meta property="og:description" content="问题给定一个字符串 $s(1\le |s| \le 10^5)$ ，求最小的 $k$ ，使得存在 $s_1,s_2,\dots,s_k$ ，满足 $s_i(1\le i \le k)$ 均为回文串，且 $s_1,s_2, \dots ,s_k$ 依次连接后得到的字符串等于 $s$ 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/11/21/4wKDW3qp2umJkSG.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/21/7p9AVEJFOCTnQMW.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/21/UxQ6pqB4cviJ7t1.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/21/E7vTYWlpw2PHLNx.png">
+<meta property="article:published_time" content="2019-11-21T09:39:47.000Z">
+<meta property="article:modified_time" content="2022-03-25T17:51:16.552Z">
+<meta property="article:author" content="XLor">
+<meta property="article:tag" content="String">
+<meta property="article:tag" content="Palindrome">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/21/4wKDW3qp2umJkSG.png">
+
+<link rel="canonical" href="https://xlor.cn/2019/11/mpf/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>最小回文划分 | XLor's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150361094-2"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-150361094-2');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XLor's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">跃迁引擎启动</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-训练">
+
+    <a href="/trainings/" rel="section"><i class="fa fa-fw fa-keyboard-o"></i>训练</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2019/11/mpf/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          最小回文划分
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-11-21 17:39:47" itemprop="dateCreated datePublished" datetime="2019-11-21T17:39:47+08:00">2019-11-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-26 01:51:16" itemprop="dateModified" datetime="2022-03-26T01:51:16+08:00">2022-03-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2019/11/mpf/" class="post-meta-item leancloud_visitors" data-flag-title="最小回文划分" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>给定一个字符串 $s(1\le |s| \le 10^5)$ ，求最小的 $k$ ，使得存在 $s_1,s_2,\dots,s_k$ ，满足 $s_i(1\le i \le k)$ 均为回文串，且 $s_1,s_2, \dots ,s_k$ 依次连接后得到的字符串等于 $s$ 。</p>
+<a id="more"></a>
+<h1 id="暴力做法"><a href="#暴力做法" class="headerlink" title="暴力做法"></a>暴力做法</h1><p>考虑动态规划，记 $dp[i]$ 表示 $s$ 长度为 $i$ 的前缀的最小划分数，转移只需要枚举以第 $i$ 个字符结尾的所有回文串</p>
+<script type="math/tex; mode=display">
+dp[i]=1+\min_{ s[j+1..i] \text{ 为回文串} } dp[j]</script><p>由于一个字符串最多会有 $O(n^2)$ 个回文子串，因此上述算法的时间复杂度为 $O(n^2)$。</p>
+<h1 id="引理与证明"><a href="#引理与证明" class="headerlink" title="引理与证明"></a>引理与证明</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>由于一个字符串最多会有 $O(n^2)$ 个回文子串，因此上述算法的时间复杂度为 $O(n^2)$ ，无法接受，为了优化转移过程，下面给出一些引理。</p>
+<p>记字符串 $s$ 长度为 $i$ 的前缀为 $pre(s,i)$ ，长度为 $i$ 的后缀为 $suf(s,i)$ 。</p>
+<p>周期：若 $0&lt; p \le |s|$ ， $\forall 1 \le i \le |s|-p,s[i]=s[i+p]$ ，就称 $p$ 是 $s$ 的周期。</p>
+<p>border：若 $0 \le r &lt; |s|$ ， $pre(s,r)=suf(s,r)$ ，就称 $pre(s,r)$ 是 $s$ 的 border。</p>
+<h2 id="周期和-border-的关系"><a href="#周期和-border-的关系" class="headerlink" title="周期和 border 的关系"></a>周期和 border 的关系</h2><p>$t$ 是 $s$ 的 border，当且仅当 $|s|-|t|$ 是 $s$ 的周期。</p>
+<p>证明：</p>
+<p>若 $t$ 是 $s$ 的 border，那么 $pre(s,|t|)=suf(s,|t|)$ ，因此 $\forall 1\le i \le |t|, s[i]=s[|s|-|t|+i]$ ，所以 $|s|-|t|$ 就是 $s$ 的周期。</p>
+<p>若 $|s|-|t|$ 为 $s$ 周期，则 $\forall 1 \le i \le |s|-(|s|-|t|)=|t|,s[i]=s[|s|-|t|+i]$ ，因此 $pre(s,|t|)=suf(s,|t|)$ ，所以 $t$ 是 $s$ 的 border。</p>
+<h2 id="引理-1"><a href="#引理-1" class="headerlink" title="引理 1"></a>引理 1</h2><p>$t$ 是回文串 $s$ 的后缀， $t$ 是 $s$ 的 border 当且仅当 $t$ 是回文串。</p>
+<p>证明：</p>
+<p>对于 $1 \le i \le |t|$ ，由 $s$ 和 $t$ 为回文串，因此有 $s[i]=s[|s|-i+1]=s[|s|-|t|+i]$ ，所以 $t$ 是 $s$ 的 border。</p>
+<p>对于 $1 \le i \le |t|$ ，由 $t$ 是 $s$ 的 border，有 $s[i]=s[|s|-|t|+i]$ ，由 $s$ 是回文串，有 $s[i]=s[|s|-i+1]$ ，因此 $s[|s|-i+1]=s[|s|-|t|+i]$ ，所以 $t$ 是回文串。</p>
+<p>下图中，相同颜色的位置表示字符对应相同。</p>
+<p><img src="https://i.loli.net/2019/11/21/4wKDW3qp2umJkSG.png" alt=""></p>
+<h2 id="引理-2"><a href="#引理-2" class="headerlink" title="引理 2"></a>引理 2</h2><p>$t$ 是回文串 $s$ 的 border ( $|s|\le 2|t|$ )， $s$ 是回文串当且仅当 $t$ 是回文串。</p>
+<p>证明：</p>
+<p>若 $s$ 是回文串，由引理 $1$ ， $t$ 也是回文串。</p>
+<p>若 $t$ 是回文串，由 $t$ 是 $s$ 的 border，因此 $\forall 1 \le i \le |t|, s[i]=s[|s|-|t|+i]=s[|s|-i+1]$ ，因为 $|s| \le 2|t|$ ，所以 $s$ 也是回文串。</p>
+<h2 id="引理-3"><a href="#引理-3" class="headerlink" title="引理 3"></a>引理 3</h2><p>$t$ 是字符串 $s$ 的 border，则 $|s|-|t|$ 是 $s$ 的周期， $|s|-|t|$ 为 $s$ 的最小周期，当且仅当 $t$ 是 $s$ 的最长回文真后缀。</p>
+<h2 id="引理-4"><a href="#引理-4" class="headerlink" title="引理 4"></a>引理 4</h2><p>$x$ 是一个回文串，$y$ 是 $x$ 的最长回文真后缀，$z$ 是 $y$ 的最长回文真后缀。令 $u,v$ 分别为满足 $x=uy,y=vz$ 的字符串，则有下面三条性质</p>
+<ol>
+<li><p>$|u| \ge |v|$ ；</p>
+</li>
+<li><p>如果 $|u| &gt; |v|$ ，那么 $|u| &gt; |z|$ ；</p>
+</li>
+<li><p>如果 $|u| = |v|$ ，那么 $u=v$。</p>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2019/11/21/7p9AVEJFOCTnQMW.png" alt=""></p>
+<p>证明：</p>
+<ol>
+<li><p>由引理 $3$ 的推论， $|u|=|x|-|y|$ 是 $x$ 的最小周期， $|v|=|y|-|z|$ 是 $y$ 的最小周期。考虑反证法，假设 $|u| &lt; |v|$ ，因为 $y$ 是 $x$ 的后缀，所以 $u$ 既是 $x$ 的周期，也是 $y$ 的周期，而 $|v|$ 是 $y$ 的最小周期，矛盾。所以 $|u| \ge |v|$ 。</p>
+</li>
+<li><p>因为 $y$ 是 $x$ 的 border，所以 $v$ 是 $x$ 的前缀，设字符串 $w$ ，满足 $x=vw$ （如下图所示），其中 $z$ 是 $w$ 的 border。考虑反证法，假设 $|u| \le |z|$ ，那么 $|zu| \le 2|z|$ ，所以由引理 $2$ ， $w$ 是回文串，由引理 $1$ ， $w$ 是 $x$ 的 border，又因为 $|u| &gt; |v|$ ，所以 $|w| &gt; |y|$ ，矛盾。所以 $|u| &gt; |z|$ 。</p>
+</li>
+<li><p>$u,v$ 都是 $x$ 的前缀， $|u|=|v|$ ，所以 $u=v$ 。</p>
+</li>
+</ol>
+<p><img src="https://i.loli.net/2019/11/21/UxQ6pqB4cviJ7t1.png" alt=""></p>
+<h2 id="推论"><a href="#推论" class="headerlink" title="推论"></a>推论</h2><p>$s$ 的所有回文后缀按照长度排序后，可以划分成 $\log |s|$ 段等差数列。</p>
+<p>证明：</p>
+<p>设 $s$ 的所有回文后缀长度从小到大排序为 $l<em>1,l_2,\dots,l_k$ 。对于任意 $2 \le i \le k-1$ ，若 $l</em>{i}-l<em>{i-1}=l</em>{i+1}-l<em>{i}$ ，则 $l</em>{i-1},l<em>{i},l</em>{i+1}$ 构成一个等差数列。否则 $l<em>{i}-l</em>{i-1}\neq l<em>{i+1}-l</em>{i}$ ，由引理 $4$ ，有 $l<em>{i+1}-l</em>{i}&gt;l<em>{i}-l</em>{i-1}$ ，且 $l<em>{i+1}-l</em>{i}&gt;l<em>{i-1}$ ， $l</em>{i+1}&gt;2l_{i-1}$ 。因此，若相邻两对回文后缀的长度之差发生变化，那么这个最大长度一定会相对于最小长度翻一倍。显然，长度翻倍最多只会发生 $O(\log |s|)$ 次，也就是 $s$ 的回文后缀长度可以划分成 $\log |s|$ 段等差数列。</p>
+<p>该推论也可以通过使用弱周期引理，对 $s$ 的最长回文后缀的所有 border 按照长度 $x$ 分类， $x \in [2^0,2^1),[2^1,2^2),\dots,[2^k,n)$ ，考虑这 $\log |s|$ 组内每组的最长 border 进行证明。详细证明可以参考金策的《字符串算法选讲》和陈孙立的 2019 年 IOI 国家候选队论文《子串周期查询问题的相关算法及其应用》。</p>
+<h1 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h1><p>有了上述结论后，我们现在可以考虑如何优化 $dp$ 的转移。</p>
+<p>回文树上的每个节点 $u$ 需要多维护两个信息， $diff[u]$ 和 $slink[u]$ 。 $diff[u]$ 表示节点 $u$ 和 $fail[u]$ 所代表的回文串的长度差，即 $len[u]-len[fail[u]]$ 。 $slink[u]$ 表示 $u$ 一直沿着 fail 向上跳到第一个节点 $v$ ，使得 $diff[v] \neq diff[u]$ ，也就是 $u$ 所在等差数列中长度最小的那个节点。</p>
+<p>根据上面证明的结论，如果使用 $slink$ 指针向上跳的话，每向后填加一个字符，只需要向上跳 $O(\log |s|)$ 次。因此，可以考虑将一个等差数列表示的所有回文串的 $dp$ 值之和（在原问题中指 $\min$ ），记录到最长的那一个回文串对应节点上。</p>
+<p> $g[v]$ 表示 $v$ 所在等差数列的 $dp$ 值之和，且 $v$ 是这个等差数列中长度最长的节点，则 $g[v]=\sum_{slink[x]=v} dp[i-len[x]]$ 。</p>
+<p>下面我们考虑如何更新 $g$ 数组和 $dp$ 数组。以下图为例，假设当前枚举到第 $i$ 个字符，回文树上对应节点为 $x$ 。 $g[x]$ 为橙色三个位置的 $dp$ 值之和（最短的回文串 $slink[x]$ 算在下一个等差数列中）。 $fail[x]$ 上一次出现位置是 $i-diff[x]$ （在 $i-diff[x]$ 处结束）， $g[fail[x]]$ 包含的 $dp$ 值是蓝色位置。因此， $g[x]$ 实际上等于 $g[fail[x]]$ 和多出来一个位置的 $dp$ 值之和，多出来的位置是 $i-(slink[x]+diff[x])$ 。最后再用 $g[x]$ 去更新 $dp[i]$ ，这部分等差数列的贡献就计算完毕了，不断跳 $slink[x]$ ，重复这个过程即可。具体实现方式可参考例题代码。</p>
+<p><img src="https://i.loli.net/2019/11/21/E7vTYWlpw2PHLNx.png" alt=""></p>
+<p>最后，上述做法的正确性依赖于：如果 $x$ 和 $fail[x]$ 属于同一个等差数列，那么 $fail[x]$ 上一次出现位置是 $i-diff[x]$ 。</p>
+<blockquote>
+<p>证明：</p>
+<p>根据引理 $1$ ， $fail[x]$ 是 $x$ 的 border，因此其在 $i-diff[x]$ 处出现。</p>
+<p>假设 $fail[x]$ 在 $(i-diff[x],i)$ 中的 $j$ 位置出现。由于 $x$ 和 $fail[x]$ 属于同一个等差数列，因此 $2|fail[x]| \ge x$ 。多余的 $fail[x]$ 和 $i-diff[x]$ 处的 $fail[x]$ 有交集，记交集为 $w$ ，设串 $u$ 满足 $uw=fail[x]$ 。用类似引理 $1$ 的方式可以证明， $w$ 是回文串，而 $x$ 的前缀 $s[i-len[x]+1..j]=uwu$ 也是回文串，这与 $fail[x]$ 是 $x$ 的最长回文前缀（后缀）矛盾。</p>
+</blockquote>
+<h1 id="Codeforces-932G-Palindrome-Partition"><a href="#Codeforces-932G-Palindrome-Partition" class="headerlink" title="Codeforces 932G Palindrome Partition"></a><a href="https://codeforces.com/problemset/problem/932/G" target="_blank" rel="noopener">Codeforces 932G Palindrome Partition</a></h1><p>构造字符串 $t= s[0]s[n - 1]s[1]s[n - 2]s[2]s[n - 3] \dots s[n / 2 - 1]s[n / 2]$ ，问题等价于求 $t$ 的偶回文划分方案数，把上面的转移方程改成求和形式并且只在偶数位置更新 $dp$ 数组即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000000</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">  x += y;</span><br><span class="line">  <span class="keyword">return</span> x &gt;= mod ? x -= mod : x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> pam &#123;</span><br><span class="line">  <span class="keyword">int</span> sz, tot, last;</span><br><span class="line">  <span class="keyword">int</span> ch[maxn][<span class="number">26</span>], len[maxn], fail[maxn];</span><br><span class="line">  <span class="keyword">int</span> cnt[maxn], dep[maxn], dif[maxn], slink[maxn];</span><br><span class="line">  <span class="keyword">char</span> s[maxn];</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">node</span><span class="params">(<span class="keyword">int</span> l)</span> </span>&#123;</span><br><span class="line">    sz++; </span><br><span class="line">    <span class="built_in">memset</span>(ch[sz], <span class="number">0</span>, <span class="keyword">sizeof</span>(ch[sz]));</span><br><span class="line">    len[sz] = l; </span><br><span class="line">    fail[sz] = <span class="number">0</span>;</span><br><span class="line">    cnt[sz] = <span class="number">0</span>;</span><br><span class="line">    dep[sz] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> sz;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    sz = <span class="number">-1</span>; last = <span class="number">0</span>;</span><br><span class="line">    s[tot = <span class="number">0</span>] = <span class="string">'$'</span>;</span><br><span class="line">    node(<span class="number">0</span>); node(<span class="number">-1</span>);</span><br><span class="line">    fail[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">getfail</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (s[tot - len[x] - <span class="number">1</span>] != s[tot]) x = fail[x];</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">char</span> c)</span> </span>&#123;</span><br><span class="line">    s[++tot] = c;</span><br><span class="line">    <span class="keyword">int</span> now = getfail(last);</span><br><span class="line">    <span class="keyword">if</span> (!ch[now][c - <span class="string">'a'</span>]) &#123;</span><br><span class="line">      <span class="keyword">int</span> x = node(len[now] + <span class="number">2</span>);</span><br><span class="line">      fail[x] = ch[getfail(fail[now])][c - <span class="string">'a'</span>];</span><br><span class="line">      dep[x] = dep[fail[x]] + <span class="number">1</span>;</span><br><span class="line">      ch[now][c - <span class="string">'a'</span>] = x;</span><br><span class="line"></span><br><span class="line">      dif[x] = len[x] - len[fail[x]];</span><br><span class="line">      <span class="keyword">if</span> (dif[x] == dif[fail[x]]) slink[x] = slink[fail[x]];</span><br><span class="line">      <span class="keyword">else</span> slink[x] = fail[x];</span><br><span class="line">    &#125;</span><br><span class="line">    last = ch[now][c - <span class="string">'a'</span>];</span><br><span class="line">    cnt[last]++;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">using</span> pam::len;</span><br><span class="line"><span class="keyword">using</span> pam::fail;</span><br><span class="line"><span class="keyword">using</span> pam::slink;</span><br><span class="line"><span class="keyword">using</span> pam::dif;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, dp[maxn], g[maxn]; <span class="keyword">char</span> s[maxn], t[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  pam::clear();</span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s + <span class="number">1</span>); </span><br><span class="line">  n = <span class="built_in">strlen</span>(s + <span class="number">1</span>);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>, j = <span class="number">0</span>; i &lt;= n; i++) t[++j] = s[i], t[++j] = s[n - i + <span class="number">1</span>];</span><br><span class="line">  dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    pam::insert(t[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> x = pam::last; x &gt; <span class="number">1</span>; x = slink[x]) &#123;</span><br><span class="line">      g[x] = dp[i - len[slink[x]] - dif[x]];</span><br><span class="line">      <span class="keyword">if</span> (dif[x] == dif[fail[x]]) g[x] = add(g[x], g[fail[x]]);</span><br><span class="line">      <span class="keyword">if</span> (i % <span class="number">2</span> == <span class="number">0</span>) dp[i] = add(dp[i], g[x]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%d"</span>, dp[n]);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ul>
+<li><p><a href="https://arxiv.org/pdf/1506.04862" target="_blank" rel="noopener">EERTREE: An Efficient Data Structure for Processing Palindromes in Strings</a> </p>
+</li>
+<li><p><a href="http://adilet.org/blog/palindromic-tree/" target="_blank" rel="noopener">Palindromic tree</a> </p>
+</li>
+<li><p>2017 年 IOI 国家候选队论文集 回文树及其应用 翁文涛</p>
+</li>
+<li><p>2019 年 IOI 国家候选队论文集 子串周期查询问题的相关算法及其应用 陈孙立</p>
+</li>
+<li><p>字符串算法选讲 金策</p>
+</li>
+<li><p><a href="https://codeforces.com/blog/entry/19193" target="_blank" rel="noopener">A bit more about palindromes</a> </p>
+</li>
+<li><p><a href="https://arxiv.org/pdf/1403.2431.pdf" target="_blank" rel="noopener">A Subquadratic Algorithm for Minimum Palindromic Factorization</a></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>XLor
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xlor.cn/2019/11/mpf/" title="最小回文划分">https://xlor.cn/2019/11/mpf/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/String/" rel="tag"># String</a>
+              <a href="/tags/Palindrome/" rel="tag"># Palindrome</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2019/11/2019syonsite/" rel="next" title="2019 ICPC 沈阳现场赛">
+                  <i class="fa fa-chevron-left"></i> 2019 ICPC 沈阳现场赛
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2019/12/2019xzonsite/" rel="prev" title="2019 ICPC 徐州现场赛 复现">
+                  2019 ICPC 徐州现场赛 复现 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#暴力做法"><span class="nav-number">2.</span> <span class="nav-text">暴力做法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引理与证明"><span class="nav-number">3.</span> <span class="nav-text">引理与证明</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#周期和-border-的关系"><span class="nav-number">3.2.</span> <span class="nav-text">周期和 border 的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理-1"><span class="nav-number">3.3.</span> <span class="nav-text">引理 1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理-2"><span class="nav-number">3.4.</span> <span class="nav-text">引理 2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理-3"><span class="nav-number">3.5.</span> <span class="nav-text">引理 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引理-4"><span class="nav-number">3.6.</span> <span class="nav-text">引理 4</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推论"><span class="nav-number">3.7.</span> <span class="nav-text">推论</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#做法"><span class="nav-number">4.</span> <span class="nav-text">做法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Codeforces-932G-Palindrome-Partition"><span class="nav-number">5.</span> <span class="nav-text">Codeforces 932G Palindrome Partition</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">5.1.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XLor"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">XLor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">296</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yjl9903" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yjl9903@vip.qq.com" title="E-Mail &amp;rarr; mailto:yjl9903@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://einsturing.top/" title="http:&#x2F;&#x2F;einsturing.top&#x2F;" rel="noopener" target="_blank">Einsturing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://houwenda.github.io/" title="http:&#x2F;&#x2F;houwenda.github.io&#x2F;" rel="noopener" target="_blank">漏断</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://hadeseve.github.io/" title="http:&#x2F;&#x2F;hadeseve.github.io&#x2F;" rel="noopener" target="_blank">Hadeseve</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/guaguastandup" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XLor</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz',
+            'X-LC-Key': 'L1NlHmYVsJjI0IDUy2337S8I',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+    
+
+  
+
+</body>
+</html>

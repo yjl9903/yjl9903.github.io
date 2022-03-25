@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="我是谁 NJUST 计科 | 退役 XCPCer     广告欢迎使用 XLorPaste ！ 树论 PPT。 GraphEditor。 命题记录第 11 届山东省程序设计竞赛2021 Shandong Provincial Collegiate Programming Contest 题面 榜单 第 12 届南京理工大学程序设计大赛题面 题解   blog里面有什么乱七八糟的个人算法模板。 日常">
+<meta property="og:type" content="website">
+<meta property="og:title" content="关于本站">
+<meta property="og:url" content="https://xlor.cn/about/index.html">
+<meta property="og:site_name" content="XLor&#39;s Blog">
+<meta property="og:description" content="我是谁 NJUST 计科 | 退役 XCPCer     广告欢迎使用 XLorPaste ！ 树论 PPT。 GraphEditor。 命题记录第 11 届山东省程序设计竞赛2021 Shandong Provincial Collegiate Programming Contest 题面 榜单 第 12 届南京理工大学程序设计大赛题面 题解   blog里面有什么乱七八糟的个人算法模板。 日常">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://cfrating.ihcr.top/?user=XLor">
+<meta property="og:image" content="https://i.loli.net/2021/04/05/Rp6y7kd1D9PHAZu.png">
+<meta property="article:published_time" content="2018-09-14T14:35:10.000Z">
+<meta property="article:modified_time" content="2022-03-25T17:51:16.556Z">
+<meta property="article:author" content="XLor">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://cfrating.ihcr.top/?user=XLor">
+
+<link rel="canonical" href="https://xlor.cn/about/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: false,
+    isPage: true,
+    isArchive: false
+  };
+</script>
+
+  <title>关于本站 | XLor's Blog
+  </title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150361094-2"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-150361094-2');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XLor's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">跃迁引擎启动</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-训练">
+
+    <a href="/trainings/" rel="section"><i class="fa fa-fw fa-keyboard-o"></i>训练</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+  
+  
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+    
+    
+    
+    <div class="post-block" lang="zh-CN">
+      <header class="post-header">
+
+<h2 class="post-title" itemprop="name headline">关于本站
+</h2>
+
+<div class="post-meta">
+  
+
+</div>
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+          <h1 id="我是谁"><a href="#我是谁" class="headerlink" title="我是谁"></a>我是谁</h1><center> NJUST 计科 <strong>|</strong> 退役 XCPCer </center>
+
+<p><img src="http://cfrating.ihcr.top/?user=XLor" alt=""></p>
+<hr>
+<h1 id="广告"><a href="#广告" class="headerlink" title="广告"></a>广告</h1><p>欢迎使用 <a href="https://xlorpaste.cn" target="_blank" rel="noopener">XLorPaste</a> ！</p>
+<p><a href="https://xlor.cn/uploads/ppt/index.html">树论 PPT</a>。</p>
+<p><a href="https://xlor.cn/uploads/graph/index.html">GraphEditor</a>。</p>
+<h1 id="命题记录"><a href="#命题记录" class="headerlink" title="命题记录"></a>命题记录</h1><h2 id="第-11-届山东省程序设计竞赛"><a href="#第-11-届山东省程序设计竞赛" class="headerlink" title="第 11 届山东省程序设计竞赛"></a>第 11 届山东省程序设计竞赛</h2><p><a href="http://codeforces.com/gym/103118" target="_blank" rel="noopener">2021 Shandong Provincial Collegiate Programming Contest</a></p>
+<p><a href="http://codeforces.com/gym/103118/attachments/download/13785/stmt-en.pdf" target="_blank" rel="noopener">题面</a></p>
+<p><a href="http://codeforces.com/gym/103118/standings" target="_blank" rel="noopener">榜单</a></p>
+<h2 id="第-12-届南京理工大学程序设计大赛"><a href="#第-12-届南京理工大学程序设计大赛" class="headerlink" title="第 12 届南京理工大学程序设计大赛"></a>第 12 届南京理工大学程序设计大赛</h2><p><a href="/uploads/pdf/第 12 届南京理工大学程序设计大赛.pdf">题面</a></p>
+<p><a href="/uploads/pdf/题解 - 第 12 届南京理工大学程序设计大赛.pdf">题解</a></p>
+<p><img src="https://i.loli.net/2021/04/05/Rp6y7kd1D9PHAZu.png" alt="得分分布"></p>
+<hr>
+<h1 id="blog里面有什么"><a href="#blog里面有什么" class="headerlink" title="blog里面有什么"></a>blog里面有什么</h1><p>乱七八糟的个人算法模板。</p>
+<p>日常 Codeforces 的<del>掉分</del>记录。</p>
+<p>一些有用的思路\套路\好题的题解。</p>
+<p><a href="/bangumis/">追番列表</a>。</p>
+<hr>
+<h1 id="一些记忆"><a href="#一些记忆" class="headerlink" title="一些记忆"></a>一些记忆</h1><h2 id="2019"><a href="#2019" class="headerlink" title="2019"></a>2019</h2><h2 id="November"><a href="#November" class="headerlink" title="November"></a>November</h2><p>2019 年 ICPC 沈阳站 Rank 30，银牌，尽力了，就是菜而已。</p>
+<h2 id="October"><a href="#October" class="headerlink" title="October"></a>October</h2><p>2019 年 CCPC 哈尔滨站 Rank 9，金牌。</p>
+<p>2019 年 ICPC 南京站 Rank 38，捡了个金牌。</p>
+<h2 id="June"><a href="#June" class="headerlink" title="June"></a>June</h2><p>2019 年 ICPC 南昌邀请赛 Rank 9，金牌。</p>
+<h2 id="May"><a href="#May" class="headerlink" title="May"></a>May</h2><p>2019 年江苏省赛 Rank 11，金牌。</p>
+<h2 id="January"><a href="#January" class="headerlink" title="January"></a>January</h2><p>三场手速 ABCD = <span style="color:#a0a;font-weight:bold;">Candidate Master</span>。</p>
+<h2 id="2018"><a href="#2018" class="headerlink" title="2018"></a>2018</h2><h3 id="December"><a href="#December" class="headerlink" title="December"></a>December</h3><p>自闭。</p>
+<h3 id="November-1"><a href="#November-1" class="headerlink" title="November"></a>November</h3><p>2018 ICPC 青岛，组队首银。</p>
+<h3 id="October-1"><a href="#October-1" class="headerlink" title="October"></a>October</h3><p>CF 蓝名，达成。</p>
+<p>人生第一场 regional，2018 ACM-ICPC Asia Nanjing Regional Contest，遗憾打铜，辣鸡计算几何，辣鸡字符串。</p>
+<p>CCPC桂林银牌。</p>
+<h3 id="September"><a href="#September" class="headerlink" title="September"></a>September</h3><p>继续单人打网络赛。</p>
+<p>日常CF，分继续加www。</p>
+<p>正式和 wb 组队。</p>
+<p>第一场焦作网络赛成功 7 题。</p>
+<h3 id="August"><a href="#August" class="headerlink" title="August"></a>August</h3><p>多校自闭。</p>
+<p>补数据结构，主席树，平衡树，Link-Cut Tree，树链剖分。</p>
+<p>blog正式建立。</p>
+<p>CCPC网络赛，单人四题，虽然听了不少隔壁的思路，还行？</p>
+<h3 id="July"><a href="#July" class="headerlink" title="July"></a>July</h3><p>单人校内集训，多校训练。</p>
+<p>我怎么什么都不会做，我好菜啊.jpg。</p>
+<p>保持每天的刷题，每周补各种算法。</p>
+<h3 id="June-1"><a href="#June-1" class="headerlink" title="June"></a>June</h3><p>提前放假，刷题开始。</p>
+<p>配置了一套 VSCode 刷题环境。</p>
+<p>日常CF开始 + 疯狂掉分。</p>
+<h3 id="May-1"><a href="#May-1" class="headerlink" title="May"></a>May</h3><p>校赛 rank18，二等奖，成功进入校 ACM 集训队。</p>
+<p>紫书外，开始慢慢补一些算法。</p>
+<h3 id="January-1"><a href="#January-1" class="headerlink" title="January"></a>January</h3><p>正式开始学习 ACM。</p>
+<p>紫书，打开。</p>
+<p>VS，启动。</p>
+
+      </div>
+      
+      
+      
+    </div>
+    
+
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#我是谁"><span class="nav-number">1.</span> <span class="nav-text">我是谁</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#广告"><span class="nav-number">2.</span> <span class="nav-text">广告</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命题记录"><span class="nav-number">3.</span> <span class="nav-text">命题记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第-11-届山东省程序设计竞赛"><span class="nav-number">3.1.</span> <span class="nav-text">第 11 届山东省程序设计竞赛</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第-12-届南京理工大学程序设计大赛"><span class="nav-number">3.2.</span> <span class="nav-text">第 12 届南京理工大学程序设计大赛</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#blog里面有什么"><span class="nav-number">4.</span> <span class="nav-text">blog里面有什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些记忆"><span class="nav-number">5.</span> <span class="nav-text">一些记忆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2019"><span class="nav-number">5.1.</span> <span class="nav-text">2019</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#November"><span class="nav-number">5.2.</span> <span class="nav-text">November</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#October"><span class="nav-number">5.3.</span> <span class="nav-text">October</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#June"><span class="nav-number">5.4.</span> <span class="nav-text">June</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#May"><span class="nav-number">5.5.</span> <span class="nav-text">May</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#January"><span class="nav-number">5.6.</span> <span class="nav-text">January</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2018"><span class="nav-number">5.7.</span> <span class="nav-text">2018</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#December"><span class="nav-number">5.7.1.</span> <span class="nav-text">December</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#November-1"><span class="nav-number">5.7.2.</span> <span class="nav-text">November</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#October-1"><span class="nav-number">5.7.3.</span> <span class="nav-text">October</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#September"><span class="nav-number">5.7.4.</span> <span class="nav-text">September</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#August"><span class="nav-number">5.7.5.</span> <span class="nav-text">August</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#July"><span class="nav-number">5.7.6.</span> <span class="nav-text">July</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#June-1"><span class="nav-number">5.7.7.</span> <span class="nav-text">June</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#May-1"><span class="nav-number">5.7.8.</span> <span class="nav-text">May</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#January-1"><span class="nav-number">5.7.9.</span> <span class="nav-text">January</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XLor"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">XLor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">296</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yjl9903" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yjl9903@vip.qq.com" title="E-Mail &amp;rarr; mailto:yjl9903@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://einsturing.top/" title="http:&#x2F;&#x2F;einsturing.top&#x2F;" rel="noopener" target="_blank">Einsturing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://houwenda.github.io/" title="http:&#x2F;&#x2F;houwenda.github.io&#x2F;" rel="noopener" target="_blank">漏断</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://hadeseve.github.io/" title="http:&#x2F;&#x2F;hadeseve.github.io&#x2F;" rel="noopener" target="_blank">Hadeseve</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/guaguastandup" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XLor</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz',
+            'X-LC-Key': 'L1NlHmYVsJjI0IDUy2337S8I',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
