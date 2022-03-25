@@ -160,3 +160,13 @@ categories:
 | [2019 年 ICPC 南昌网络赛](https://xlor.cn/2019/9/2019nconline/) |  88  |   6    |  !  |  O  |  O  |  .  |  O  |  O  |  O  |  O  |  .  |
 | [2019 年 ICPC 沈阳网络赛](https://xlor.cn/2019/9/2019syonline/) |  31  |   10   |  O  |  O  |  O  |  O  |  O  |  O  |  O  |  O  |  .  |  O  |  O  |
 | [2019 年 ICPC 上海网络赛](https://xlor.cn/2019/9/2019shonline/) |  74  |   7    |  O  |  O  |  !  |  O  |  O  |  O  |  !  |  .  |  .  |  O  |  .  |  O  |
+
+<style>
+table {
+  font-size: 0.7em;
+}
+
+td[align=center], th[align=center] {
+  text-align: center;
+}
+</style>
