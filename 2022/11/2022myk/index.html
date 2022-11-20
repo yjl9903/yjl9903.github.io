@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"mac"},
+    back2top: {"enable":true,"sidebar":true,"scrollpercent":true},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="题面求模板串 $S$ 在 $T$ 中的出现次数。 其中 $1 \le |S|, |T| \le 10^7$. 时间限制 $5$ 秒, 内存限制 $\mathbf{1}$ MB, 且输入只能读取一次. 题解KMP 模板题 题目让你在一个空间受限的背景下, 进行流式字符串匹配. 本题无论模板串还是询问串都无法放进内存, 你必须流式的一个一个读取. 首先, 回忆 Rabin-Karp 算法是怎么样的.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022 CCPC 绵阳现场赛 K Pattern Matching in A Minor Low Space 题解">
+<meta property="og:url" content="https://xlor.cn/2022/11/2022myk/index.html">
+<meta property="og:site_name" content="XLor&#39;s Blog">
+<meta property="og:description" content="题面求模板串 $S$ 在 $T$ 中的出现次数。 其中 $1 \le |S|, |T| \le 10^7$. 时间限制 $5$ 秒, 内存限制 $\mathbf{1}$ MB, 且输入只能读取一次. 题解KMP 模板题 题目让你在一个空间受限的背景下, 进行流式字符串匹配. 本题无论模板串还是询问串都无法放进内存, 你必须流式的一个一个读取. 首先, 回忆 Rabin-Karp 算法是怎么样的.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/11/20/qwBMaPnbYAeflgW.png">
+<meta property="article:published_time" content="2022-11-20T11:11:04.000Z">
+<meta property="article:modified_time" content="2022-11-20T11:12:34.103Z">
+<meta property="article:author" content="XLor">
+<meta property="article:tag" content="String">
+<meta property="article:tag" content="KMP">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/20/qwBMaPnbYAeflgW.png">
+
+<link rel="canonical" href="https://xlor.cn/2022/11/2022myk/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>2022 CCPC 绵阳现场赛 K Pattern Matching in A Minor Low Space 题解 | XLor's Blog</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150361094-2"></script>
+    <script>
+      var host = window.location.hostname;
+      if (host !== "localhost" || !true) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-150361094-2');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">XLor's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">跃迁引擎启动</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-训练">
+
+    <a href="/trainings/" rel="section"><i class="fa fa-fw fa-keyboard-o"></i>训练</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2022/11/2022myk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          2022 CCPC 绵阳现场赛 K Pattern Matching in A Minor Low Space 题解
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-11-20 19:11:04 / 修改时间：19:12:34" itemprop="dateCreated datePublished" datetime="2022-11-20T19:11:04+08:00">2022-11-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/" itemprop="url" rel="index">
+                    <span itemprop="name">字符串</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2022/11/2022myk/" class="post-meta-item leancloud_visitors" data-flag-title="2022 CCPC 绵阳现场赛 K Pattern Matching in A Minor Low Space 题解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>求模板串 $S$ 在 $T$ 中的出现次数。</p>
+<p>其中 $1 \le |S|, |T| \le 10^7$.</p>
+<p>时间限制 $5$ 秒, <strong>内存限制</strong> $\mathbf{1}$ MB, 且<strong>输入只能读取一次</strong>.</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p><del>KMP 模板题</del></p>
+<p>题目让你在一个空间受限的背景下, 进行<strong>流式字符串匹配</strong>. 本题无论模板串还是询问串都无法放进内存, 你必须流式的一个一个读取.</p>
+<p>首先, 回忆 Rabin-Karp 算法是怎么样的. 它对模板串 $S$ 求了一个 hash 值, 然后使用<strong>滑动窗口</strong> 维护询问串所有长度 $S$ 的子串的 hash 值, 这里时间复杂度是 $O(|T|)$ 的, 但是空间复杂度是 $O(|S|)$ 的 (需要存下整个窗口, 以供删除开头的字符). 显然无法满足本题的要求.</p>
+<p>官方题解的做法:</p>
+<ol>
+<li>读入模板串 $S$, 计算出长度为 $\lfloor \sqrt{n} \rfloor$ 的前缀 hash 值和完整串的 hash 值, 时间复杂度 $O(|S|)$, 空间复杂度 $O(1)$;</li>
+<li>读入询问串 $T$, 维护 $\lfloor \sqrt{n} \rfloor$ 大小的滑动窗口, 可以求出询问串中所有和这个根号前缀匹配的位置. 相当于, 筛出去了一些必不可能匹配上的位置, 留下来一些位置需要求出相应的全长度的 hash 值.<ul>
+<li>注意到, 直到这里实际上还没有本质的改善, 一是匹配上的位置仍然很多, 二是难以搞出相应的全串 hash 值.</li>
+<li>根据 <strong>(Weak) Periodicity Lemm</strong>, 我们可以把匹配上的位置分成至多 $\lceil \sqrt{n} \rceil$ 组<strong>等差数列</strong>. 具体的, 每组中所有匹配的子串是一个顺次有重叠的列表, 相邻出现位置的距离差相等 (也就是所谓的构成等差数列, 进一步, 重叠部分其实就是根号前缀的 border). 于是, 记录匹配位置的空间被压缩到了 $O(\lfloor \sqrt{n} \rfloor)$.</li>
+<li>下一个问题是, 我们不仅需要记录匹配的位置, 还需要记录匹配处的前缀 hash 值, 等到处理到该次可能匹配的结束位置时来进行全串的比对. 同样根据上述引理的结论, 同一组等差数列内部, 相邻 2 个匹配位置之间的 hash 值是固定的, 我们只需要记录等差数列的<strong>起点, 公差, 终点, 起点的 hash 值, 公差对应字符串部分的 hash 值</strong>, 就能表示出这一个等差数列的所有位置信息和 hash 值信息.</li>
+</ul>
+</li>
+</ol>
+<p>最终, 时间复杂度 $O(n)$, 空间复杂度 $O(\lfloor \sqrt{n} \rfloor)$, 一是维护滑动窗口, 二是维护所有等差数列.</p>
+<blockquote>
+<p>周期相关理论的参考文献:</p>
+<ul>
+<li>金策, 《字符串算法选讲》</li>
+<li>2019 年集训队论文, 陈孙立, 《子串周期查询问题的相关算法及其应用》</li>
+</ul>
+</blockquote>
+<h3 id="官方题解"><a href="#官方题解" class="headerlink" title="官方题解"></a>官方题解</h3><p><img src="https://s2.loli.net/2022/11/20/qwBMaPnbYAeflgW.png" alt="official tutorial"></p>
+<h3 id="分块-KMP"><a href="#分块-KMP" class="headerlink" title="分块 KMP"></a>分块 KMP</h3><blockquote>
+<p>一个不要 period 的做法, 大概是把模式串分成 sqrt 个字符一块, 每块合并成一个大字符，然后关于大字符跑 sqrt 个并排的 kmp</p>
+</blockquote>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;random&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> base = <span class="number">131</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> SZ = <span class="number">3162</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> cap = <span class="number">4096</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> &#123;</span><br><span class="line">  <span class="comment">// biv = base^&#123;-1&#125;, bsziv = base^&#123;-SZ+1&#125;</span></span><br><span class="line">  <span class="type">int</span> mod, biv, bsizv;</span><br><span class="line"></span><br><span class="line">  random_device rd;</span><br><span class="line">  <span class="function">mt19937 <span class="title">rnd</span><span class="params">(rd())</span></span>;</span><br><span class="line">  uniform_int_distribution&lt;&gt; <span class="built_in">gen</span>(<span class="number">100000000</span>, <span class="number">900000000</span>);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">isPrime</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n % <span class="number">2</span> == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="type">int</span> sq = (<span class="type">int</span>) <span class="built_in">sqrt</span>(n) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">3</span>; i &lt;= sq; i += <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (n % i == <span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    a += b;</span><br><span class="line">    <span class="keyword">if</span> (a &gt;= mod) a -= mod;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">sub</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    a -= b;</span><br><span class="line">    <span class="keyword">if</span> (a &lt; <span class="number">0</span>) a += mod;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">mul</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1ll</span> * a * b % mod;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">int</span> <span class="title">qpow</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> r = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (n) &#123;</span><br><span class="line">      <span class="keyword">if</span> (n &amp; <span class="number">1</span>) r = <span class="built_in">mul</span>(r, x);</span><br><span class="line">      n &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">      x = <span class="built_in">mul</span>(x, x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">      mod = <span class="built_in">gen</span>(rnd);</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">isPrime</span>(mod)) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    biv = <span class="built_in">qpow</span>(base, mod - <span class="number">2</span>);</span><br><span class="line">    bsizv = <span class="built_in">qpow</span>(<span class="built_in">qpow</span>(base, SZ - <span class="number">1</span>), mod - <span class="number">2</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n, m, preh = <span class="number">0</span>, allh = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Ring</span> &#123;</span><br><span class="line">  <span class="type">char</span> buf[cap];</span><br><span class="line">  <span class="type">int</span> head = <span class="number">0</span>, tail = <span class="number">0</span>, size = <span class="number">0</span>, len;</span><br><span class="line">  <span class="type">int</span> hsh = <span class="number">0</span>, xp = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    len = n;</span><br><span class="line">    hsh = <span class="number">0</span>;</span><br><span class="line">    head = tail = size = <span class="number">0</span>;</span><br><span class="line">    xp = <span class="number">1</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">char</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    size--;</span><br><span class="line">    <span class="type">char</span> x = buf[(head++) % cap];</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">push</span><span class="params">(<span class="type">char</span> x)</span> </span>&#123;</span><br><span class="line">    size++;</span><br><span class="line">    buf[(tail++) % cap] = x;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">void</span> <span class="title">append</span><span class="params">(<span class="type">char</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">push</span>(c);</span><br><span class="line">    hsh = <span class="built_in">add</span>(<span class="built_in">mul</span>(c, xp), hsh);</span><br><span class="line">    <span class="keyword">if</span> (size &gt; len) &#123;</span><br><span class="line">      hsh = <span class="built_in">sub</span>(hsh, <span class="built_in">pop</span>());</span><br><span class="line">      hsh = <span class="built_in">mul</span>(hsh, biv);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      xp = <span class="built_in">mul</span>(xp, base);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125; f;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Per</span> &#123;</span><br><span class="line">  <span class="type">int</span> start, delta = <span class="number">-1</span>, end = <span class="number">-1</span>;</span><br><span class="line">  <span class="type">int</span> xp, hsh, dhsh = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">Per</span>(<span class="type">int</span> p, <span class="type">int</span> x, <span class="type">int</span> h) : <span class="built_in">start</span>(p + <span class="number">1</span> - SZ) &#123;</span><br><span class="line">    end = start;</span><br><span class="line">    xp = <span class="built_in">mul</span>(x, bsizv);</span><br><span class="line">    hsh = <span class="built_in">sub</span>(h, <span class="built_in">mul</span>(preh, xp));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">next</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> curx, <span class="type">int</span> curh)</span> </span>&#123;</span><br><span class="line">    p = p + <span class="number">1</span> - SZ;</span><br><span class="line">    <span class="keyword">if</span> (delta == <span class="number">-1</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (p - start &gt;= SZ) &#123;</span><br><span class="line">        <span class="comment">// it should have overlap part</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// set delta</span></span><br><span class="line">        end = p;</span><br><span class="line">        delta = end - start;</span><br><span class="line">        curh = <span class="built_in">sub</span>(curh, <span class="built_in">mul</span>(preh, <span class="built_in">mul</span>(curx, bsizv)));</span><br><span class="line">        dhsh = <span class="built_in">sub</span>(curh, hsh);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (p - end == delta) &#123;</span><br><span class="line">        end = p;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="type">bool</span> <span class="title">match</span><span class="params">(<span class="type">int</span> pos, <span class="type">int</span> curv)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (start + n - <span class="number">1</span> == pos) &#123;</span><br><span class="line">      <span class="type">int</span> target = <span class="built_in">sub</span>(curv, hsh);</span><br><span class="line">      <span class="type">bool</span> ok = target == <span class="built_in">mul</span>(allh, xp);</span><br><span class="line">      <span class="keyword">if</span> (delta != <span class="number">-1</span>) &#123;</span><br><span class="line">        start += delta;</span><br><span class="line">        <span class="type">int</span> dxp = <span class="built_in">qpow</span>(base, delta);</span><br><span class="line">        xp = <span class="built_in">mul</span>(xp, dxp);</span><br><span class="line">        hsh = <span class="built_in">add</span>(hsh, dhsh);</span><br><span class="line">        dhsh = <span class="built_in">mul</span>(dhsh, dxp);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">return</span> ok;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="built_in">init</span>();</span><br><span class="line"></span><br><span class="line">  <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">  <span class="built_in">getchar</span>(); <span class="comment">// end of line</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, xp = <span class="number">1</span>; i &lt;= n; i++, xp = <span class="built_in">mul</span>(xp, base)) &#123;</span><br><span class="line">    <span class="type">char</span> c = <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="type">int</span> val = <span class="built_in">mul</span>(c, xp);</span><br><span class="line">    <span class="keyword">if</span> (i &lt;= SZ) &#123;</span><br><span class="line">      preh = <span class="built_in">add</span>(preh, val);</span><br><span class="line">    &#125;</span><br><span class="line">    allh = <span class="built_in">add</span>(allh, val);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">getchar</span>(); <span class="comment">// end of line</span></span><br><span class="line"></span><br><span class="line">  f.<span class="built_in">init</span>(n &lt;= SZ ? n : SZ);</span><br><span class="line">  <span class="type">int</span> ans = <span class="number">0</span>, curv = <span class="number">0</span>, matched = <span class="number">0</span>;</span><br><span class="line">  vector&lt;Per&gt; ps;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, xp = <span class="number">1</span>; i &lt;= m; i++, xp = <span class="built_in">mul</span>(xp, base)) &#123;</span><br><span class="line">    <span class="type">char</span> c = <span class="built_in">getchar</span>();</span><br><span class="line">    f.<span class="built_in">append</span>(c);</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= SZ) &#123;</span><br><span class="line">      ans += f.size == n &amp;&amp; f.hsh == allh;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      curv = <span class="built_in">add</span>(curv, <span class="built_in">mul</span>(c, xp));</span><br><span class="line">      <span class="keyword">if</span> (f.size == SZ &amp;&amp; f.hsh == preh) &#123;</span><br><span class="line">        <span class="comment">// match the sqrt prefix</span></span><br><span class="line">        <span class="comment">// extend the last group or create a new group</span></span><br><span class="line">        <span class="keyword">if</span> (ps.<span class="built_in">empty</span>() || !ps.<span class="built_in">back</span>().<span class="built_in">next</span>(i, xp, curv)) &#123;</span><br><span class="line">          ps.<span class="built_in">emplace_back</span>(i, xp, curv);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (matched &lt; ps.<span class="built_in">size</span>()) &#123;</span><br><span class="line">        ans += ps[matched].<span class="built_in">match</span>(i, curv);</span><br><span class="line">        <span class="keyword">if</span> (ps[matched].end + n - <span class="number">1</span> == i) &#123;</span><br><span class="line">          matched++;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>XLor
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://xlor.cn/2022/11/2022myk/" title="2022 CCPC 绵阳现场赛 K Pattern Matching in A Minor Low Space 题解">https://xlor.cn/2022/11/2022myk/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/null" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/String/" rel="tag"># String</a>
+              <a href="/tags/KMP/" rel="tag"># KMP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2021/7/2020syb/" rel="next" title="2020 ICPC 沈阳现场赛 B Whispers of the Old Gods 题解">
+                  <i class="fa fa-chevron-left"></i> 2020 ICPC 沈阳现场赛 B Whispers of the Old Gods 题解
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E9%A2%98%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">官方题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E5%9D%97-KMP"><span class="nav-number">2.2.</span> <span class="nav-text">分块 KMP</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="XLor"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">XLor</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">297</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">38</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">53</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yjl9903" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;yjl9903" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yjl9903@vip.qq.com" title="E-Mail &amp;rarr; mailto:yjl9903@vip.qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title">
+      <i class="fa fa-fw fa-link"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="http://einsturing.top/" title="http:&#x2F;&#x2F;einsturing.top&#x2F;" rel="noopener" target="_blank">Einsturing</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://houwenda.github.io/" title="http:&#x2F;&#x2F;houwenda.github.io&#x2F;" rel="noopener" target="_blank">漏断</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://hadeseve.github.io/" title="http:&#x2F;&#x2F;hadeseve.github.io&#x2F;" rel="noopener" target="_blank">Hadeseve</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.cnblogs.com/guaguastandup" title="https:&#x2F;&#x2F;www.cnblogs.com&#x2F;guaguastandup" rel="noopener" target="_blank">Guaguastandup</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XLor</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v6.1.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.5.0
+  </div>
+
+        
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': 'dIlkELFC1m1jaSEfQMqGorAG-gzGzoHsz',
+            'X-LC-Key': 'L1NlHmYVsJjI0IDUy2337S8I',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  
+  <script color='0,0,0' opacity='0.5' zIndex='-1' count='99' src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1/canvas-nest.min.js"></script>
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
+
+  
+
+</body>
+</html>
