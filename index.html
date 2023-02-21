@@ -224,6 +224,145 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2023/2/breadc/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="XLor">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="XLor's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/2/breadc/" class="post-title-link" itemprop="url">为 cac / commander.js API 风格的 CLI 框架添加 TypeScript 类型推导</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-01 13:57:28" itemprop="dateCreated datePublished" datetime="2023-02-01T13:57:28+08:00">2023-02-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F/" itemprop="url" rel="index">
+                    <span itemprop="name">乱七八糟</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2023/2/breadc/" class="post-meta-item leancloud_visitors" data-flag-title="为 cac / commander.js API 风格的 CLI 框架添加 TypeScript 类型推导" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a target="_blank" rel="noopener" href="https://github.com/cacjs/cac">cac</a> &#x2F; <a target="_blank" rel="noopener" href="https://github.com/tj/commander.js">commander.js</a> 提供了一个简单直接的 API 来创建命令行应用，你只需要指定用户应该如何使用你的程序参数，就能生成出一个相应的 CLI 应用，包含参数传递，选项解析，版本和帮助命令的自动生成等等。</p>
+<p>我从零实现了一个使用类似 cac &#x2F; commander.js 的 API 风格的 CLI 应用框架 —— <a target="_blank" rel="noopener" href="https://github.com/yjl9903/Breadc">Breadc</a>，但是相比于 cac ：</p>
+<ul>
+<li>添加了 TypeScript 类型推导</li>
+<li>移除了部分类型不友好的参数解析</li>
+<li>添加了多层 sub-commands 的实现</li>
+</ul>
+<p>本文主要讲解 Bread 如何添加 TypeScript 类型推导，如何使用 Template Literal Type 进行类型体操。</p>
+<h2 id="使用-Breadc-创建一个命令行-CLI-应用"><a href="#使用-Breadc-创建一个命令行-CLI-应用" class="headerlink" title="使用 Breadc 创建一个命令行 CLI 应用"></a>使用 Breadc 创建一个命令行 CLI 应用</h2><p>首先，看以下示例代码如何使用 Breadc 创建 CLI 应用。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> breadc <span class="keyword">from</span> <span class="string">&#x27;breadc&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cli = <span class="title function_">breadc</span>(<span class="string">&#x27;echo&#x27;</span>, &#123; <span class="attr">version</span>: <span class="string">&#x27;1.0.0&#x27;</span> &#125;)</span><br><span class="line">  .<span class="title function_">option</span>(<span class="string">&#x27;--host &lt;host&gt;&#x27;</span>, &#123; <span class="attr">default</span>: <span class="string">&#x27;localhost&#x27;</span> &#125;)</span><br><span class="line">  .<span class="title function_">option</span>(<span class="string">&#x27;-p, --port &lt;port&gt;&#x27;</span>, &#123; <span class="attr">default</span>: <span class="string">&#x27;3000&#x27;</span>, <span class="attr">cast</span>: <span class="function"><span class="params">p</span> =&gt;</span> +p &#125;)</span><br><span class="line"></span><br><span class="line">cli</span><br><span class="line">  .<span class="title function_">command</span>(<span class="string">&#x27;[message]&#x27;</span>, <span class="string">&#x27;Say something!&#x27;</span>)</span><br><span class="line">  .<span class="title function_">option</span>(<span class="string">&#x27;--dev&#x27;</span>)</span><br><span class="line">  .<span class="title function_">action</span>(<span class="function">(<span class="params">message, option</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> host = option.<span class="property">host</span></span><br><span class="line">    <span class="keyword">const</span> port = option.<span class="property">port</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Host: <span class="subst">$&#123;host&#125;</span>`</span>)</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Port: <span class="subst">$&#123;port&#125;</span>`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">cli.<span class="title function_">run</span>(process.<span class="property">argv</span>.<span class="title function_">slice</span>(<span class="number">2</span>)).<span class="title function_">catch</span>(<span class="function"><span class="params">err</span> =&gt;</span> <span class="variable language_">console</span>.<span class="title function_">error</span>(err))</span><br></pre></td></tr></table></figure>
+
+<p>第 3-5 行，<code>breadc(&#39;echo&#39;)</code> 创建了一个 Breadc 对象，并注册了 <code>--host</code> 和 <code>-p, --port</code> 两个全局的接受字符串值的选项。这两个选项字符串的含义，其实就是我们运行 CLI 时如何进行使用，例如可以通过 <code>echo --host 1.1.1.1</code> ，<code>echo --port 3001</code> 这样的使用方式来向命令传递参数。</p>
+<p>第 8 行，<code>cli.command(&#39;[message]&#39;, &#39;Say something!&#39;)</code> 创建了一个默认命令，接受一个可选参数 <code>message</code> 。例如你可以直接使用 <code>echo</code> ，那么 <code>message</code> 的值默认为空串；或者 <code>echo hello</code> ，那么 <code>message</code> 的值传递进 <code>hello</code>l</p>
+<p>第 9 行，<code>cli.option(&#39;--dev&#39;)</code> 创建了一个名为 <code>dev</code> 的布尔值选项，默认为 <code>false</code>。</p>
+<p>第 10 行，<code>cli.action((message, option) =&gt; &#123; ... &#125;)</code> 指定运行这个命令后触发的回调函数，参数列表依次为 <code>cli.command()</code> 时指定的参数列表，然后接上一个对象表示收到的所有 <code>option</code> 。在上面的例子里，回调函数的第一个参数是可选参数 <code>[message]</code>，类型是 <code>string</code>，而第二个参数是选项对象，类型应该是 <code>&#123; host: string, port: string, dev: boolean, &#39;--&#39;: string[] &#125;</code>。</p>
+<p>但实际上，在 cac 和未添加 TypeScript 支持扩展的 commander.js 中，都没有办法自动推导出回调函数的参数类型。而 Breadc，可以看到类型无需任何标注，已经被自动推导出来了：</p>
+<p>这就是本文的目标，让 TypeScript 能够自动从上下文的 fluent builder API 提供的模板字符串中，推导出命令回调函数的参数类型列表！</p>
+<blockquote>
+<p>commander.js 的 TypeScript 类型推导扩展： <a target="_blank" rel="noopener" href="https://github.com/commander-js/extra-typings">commander-js&#x2F;extra-typings</a> Breadc 最初版本实现的时候还没有这个东西，我撰写本文搜索资料时发现 commander.js 后来也实现和本文内容类似的推导功能。)</p>
+</blockquote>
+<h2 id="Breadc-的-API"><a href="#Breadc-的-API" class="headerlink" title="Breadc 的 API"></a>Breadc 的 API</h2><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Breadc</span> &#123;</span><br><span class="line">  <span class="title function_">option</span>(<span class="attr">format</span>: <span class="built_in">string</span>): <span class="title class_">Breadc</span>;</span><br><span class="line">  <span class="title function_">command</span>(<span class="attr">format</span>: <span class="built_in">string</span>): <span class="title class_">Command</span>;</span><br><span class="line">  <span class="title function_">run</span>(<span class="attr">args</span>: <span class="built_in">string</span>[]): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Command</span> &#123;</span><br><span class="line">  <span class="title function_">option</span>(<span class="attr">format</span>: <span class="built_in">string</span>): <span class="title class_">Command</span>;</span><br><span class="line">  <span class="title function_">action</span>(<span class="attr">fn</span>: <span class="function">(<span class="params">...args: <span class="built_in">any</span>[]</span>) =&gt;</span> <span class="built_in">any</span>): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Breadc 简要的 fluent API 如上图所示，interface Breadc 表示我们整个命令行程序，interface Command 表示命令行程序的 sub-command 子命令。</p>
+<p>通过 <code>Breadc.option(format: string): Breadc</code> 来添加一个全局的选项，通过 <code>Breadc.command(format: string): Command</code> 来添加一个 sub-command。所有创建工作完成后，使用 <code>Breadc.run(args: string[]): void</code> 运行命令行程序。</p>
+<p>Command 也可以类似的通过 <code>Command.option(format: string): Command</code> 添加子命令自己的选项，通过 <code>Command.action(fn: (...args: any[]) =&gt; any): void</code> 添加子命令的回调函数。</p>
+<p>之后，我们主要操作的就是这两个 interface，最终为 <code>action</code> 方法推导相应的类型参数。</p>
+<h2 id="Option-模板字符串的类型推导"><a href="#Option-模板字符串的类型推导" class="headerlink" title="Option 模板字符串的类型推导"></a>Option 模板字符串的类型推导</h2><p>Option 支持两种输入形式，<code>--option</code> 表示一个 boolean 开关选项，<code>--option</code> 表示这个选项后面必须接一个字符串参数，同时还支持 option 的单字母缩写，<code>-o, --option</code> 使用 <code>-o</code> 或者 <code>--option</code> 都表示这个选项。</p>
+<p>我们首先提取 Option 的类型，先看这个不考虑缩写的实现：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">ExtractOptionType</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span>&gt; =</span><br><span class="line">  T <span class="keyword">extends</span> <span class="string">`--<span class="subst">$&#123;infer P&#125;</span> &lt;infer Q&gt;`</span> ? <span class="built_in">string</span> :</span><br><span class="line">  T <span class="keyword">extends</span> <span class="string">`--<span class="subst">$&#123;infer P&#125;</span>`</span> ? <span class="built_in">boolean</span> :</span><br><span class="line">  <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
+
+<p>如果参数模板字符串参数 T，形如 <code>--xxx</code> 这样子那么这个选项就是一个字符串选项，如果形如 <code>--xxx</code> ，则是一个布尔选项，否则用 <code>never</code> 表示啥也不是提取失败。</p>
+<p><strong>注意：</strong>这里两个东西判断顺序是不可以调换，因为 <code>--$&#123;infer P&#125;</code> 这个 pattern 其实能够匹配 <code>--xxx</code> 形式的东西，即 <code>P: &#39;xxx &#39;</code> ，这是不符合我们期望的。这个问题在后续的实现中，也会经常出现，因为很显然，TypeScript 在类型检查的时候，是按照顺序一条一条判断能否匹配的，在进行多条匹配的时候必须注意 patterns 之间的重叠关系。</p>
+<p>于是，类似的可以写出一个考虑上单字母缩写的版本：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">ExtractOptionType</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span>&gt; =</span><br><span class="line">  T <span class="keyword">extends</span> <span class="string">`-<span class="subst">$&#123;Letter&#125;</span>, --<span class="subst">$&#123;infer R&#125;</span> &lt;<span class="subst">$&#123;infer U&#125;</span>&gt;`</span></span><br><span class="line">    ? <span class="built_in">string</span></span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`-<span class="subst">$&#123;Letter&#125;</span>, --<span class="subst">$&#123;infer R&#125;</span>`</span></span><br><span class="line">    ? <span class="built_in">boolean</span></span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`--<span class="subst">$&#123;infer R&#125;</span> &lt;<span class="subst">$&#123;infer U&#125;</span>&gt;`</span></span><br><span class="line">    ? <span class="built_in">string</span></span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`--<span class="subst">$&#123;infer R&#125;</span>`</span></span><br><span class="line">    ? <span class="built_in">boolean</span></span><br><span class="line">    : <span class="built_in">string</span> | <span class="built_in">boolean</span>; <span class="comment">// fallback</span></span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>Letter</code> 是一个辅助类型，表示所有小写英文字母，即 <code>type Letter = &#39;a&#39; | &#39;b&#39; | ... | &#39;z&#39;</code>。</p>
+<p>依葫芦画瓢，我们可以继续写出提取 Option 名称的类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">ExtractOptionName</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span>&gt; =</span><br><span class="line">  T <span class="keyword">extends</span> <span class="string">`-<span class="subst">$&#123;Letter&#125;</span>, --<span class="subst">$&#123;infer R&#125;</span> &lt;<span class="subst">$&#123;infer U&#125;</span>&gt;`</span></span><br><span class="line">    ? R</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`-<span class="subst">$&#123;Letter&#125;</span>, --<span class="subst">$&#123;infer R&#125;</span>`</span></span><br><span class="line">    ? R</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`--<span class="subst">$&#123;infer R&#125;</span> &lt;<span class="subst">$&#123;infer U&#125;</span>&gt;`</span></span><br><span class="line">    ? R</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`--<span class="subst">$&#123;infer R&#125;</span>`</span></span><br><span class="line">    ? R</span><br><span class="line">    : <span class="built_in">string</span>; <span class="comment">// fallback</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>课后练习： <code>type FS: ExtractOptionName&lt;&#39;--allow-fs&#39;&gt; = &#39;allowFs&#39;</code> 实现将 kebab case 转换为 camel case 的类型。</p>
+</blockquote>
+<h2 id="Command-模板字符串的类型推导"><a href="#Command-模板字符串的类型推导" class="headerlink" title="Command 模板字符串的类型推导"></a>Command 模板字符串的类型推导</h2><p>一点小插曲，Breadc 最初版本实现时，可能由于使用的 VS Code 插件版本等未知问题，并没有支持递归类型，所以有了一个非递归的实现，已经足以应对大部分使用情况。</p>
+<p>具体思路是，首先考虑最简单的情形，Command 的模板字符串只有一个东西（没有空格分割），有以下 5 种情况，按照重叠顺序依次匹配。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> type <span class="title class_">ExtractCommand</span>&lt;T <span class="keyword">extends</span> string&gt; =</span><br><span class="line">    T <span class="keyword">extends</span> <span class="string">`[...<span class="subst">$&#123;infer P1&#125;</span>]`</span></span><br><span class="line">    ? [string[]]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`[<span class="subst">$&#123;infer P1&#125;</span>]`</span></span><br><span class="line">    ? [string | <span class="literal">undefined</span>]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`&lt;<span class="subst">$&#123;infer P1&#125;</span>&gt;`</span></span><br><span class="line">    ? [string]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer P1&#125;</span>`</span></span><br><span class="line">    ? []</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">``</span></span><br><span class="line">    ? []</span><br><span class="line">    : never;</span><br></pre></td></tr></table></figure>
+
+<p>然后，Command 的模板字符串在大部分使用情况下，不会分出太多块（如果需要传递很长的参数列表，那么为什么不用 Option 呢，无需有记忆参数顺序的负担）。</p>
+<p>因此可以比如暴力搜索一下长度不超过 2 的所有可能性，有如下的字符串匹配 pattern：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">ExtractArg</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span>&gt; =</span><br><span class="line">    T <span class="keyword">extends</span> <span class="string">`&lt;<span class="subst">$&#123;infer P1&#125;</span>&gt; [...<span class="subst">$&#123;infer P2&#125;</span>]`</span></span><br><span class="line">    ? [<span class="built_in">string</span>, <span class="built_in">string</span>[]]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`&lt;<span class="subst">$&#123;infer P1&#125;</span>&gt; [<span class="subst">$&#123;infer P2&#125;</span>]`</span></span><br><span class="line">    ? [<span class="built_in">string</span>, <span class="built_in">string</span> | <span class="literal">undefined</span>]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`&lt;<span class="subst">$&#123;infer P1&#125;</span>&gt; &lt;<span class="subst">$&#123;infer P2&#125;</span>&gt;`</span></span><br><span class="line">    ? [<span class="built_in">string</span>, <span class="built_in">string</span>]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer P1&#125;</span> [...<span class="subst">$&#123;infer P2&#125;</span>]`</span></span><br><span class="line">    ? [<span class="built_in">string</span>[]]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer P1&#125;</span> [<span class="subst">$&#123;infer P2&#125;</span>]`</span></span><br><span class="line">    ? [<span class="built_in">string</span> | <span class="literal">undefined</span>]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer P1&#125;</span> &lt;<span class="subst">$&#123;infer P2&#125;</span>&gt;`</span></span><br><span class="line">    ? [<span class="built_in">string</span>]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer P1&#125;</span> <span class="subst">$&#123;infer P2&#125;</span>`</span></span><br><span class="line">    ? []</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`[...<span class="subst">$&#123;infer P1&#125;</span>]`</span></span><br><span class="line">    ? [<span class="built_in">string</span>[]]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`[<span class="subst">$&#123;infer P1&#125;</span>]`</span></span><br><span class="line">    ? [<span class="built_in">string</span> | <span class="literal">undefined</span>]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`&lt;<span class="subst">$&#123;infer P1&#125;</span>&gt;`</span></span><br><span class="line">    ? [<span class="built_in">string</span>]</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer P1&#125;</span>`</span></span><br><span class="line">    ? []</span><br><span class="line">    : T <span class="keyword">extends</span> <span class="string">``</span></span><br><span class="line">    ? []</span><br><span class="line">    : <span class="built_in">never</span>;</span><br></pre></td></tr></table></figure>
+
+<p>展开了 5 层的版本：<a target="_blank" rel="noopener" href="https://github.com/yjl9903/Breadc/blob/573587e5960b55386ee476fbb372cf15950633e9/packages/breadc/src/types/extract.ts#L61-L159">https://github.com/yjl9903/Breadc/blob/573587e5960b55386ee476fbb372cf15950633e9/packages/breadc/src/types/extract.ts#L61-L159</a></p>
+<p>这个代码当然不可能是手写的，写了个代码生成这个长度的类型定义：<a target="_blank" rel="noopener" href="https://github.com/yjl9903/Breadc/blob/573587e5960b55386ee476fbb372cf15950633e9/examples/genType.ts">https://github.com/yjl9903/Breadc/blob/573587e5960b55386ee476fbb372cf15950633e9/examples/genType.ts</a></p>
+<p>生成匹配 pattern 时，考虑到方便 CLI parser 的实现，过滤掉了诸如 <code>cli [p1]</code> 这样可选参数放在前面的情况，强制指定可选的参数一定是放在最后的，这样方便最后 parser 的传递参数；并且减少了生成类型定义的状态总数，使得即使我们展开了 5 层，它的总状态数没有太过指数爆炸。</p>
+<p>当然，非递归的版本虽然能够解决我们的问题，但总归是不够 robust，比如真的有很长的参数列表就会坏掉。所以在最新版本 4.9.5 的 TypeScript 上实验，已经可以使用如下的递归类型：</p>
+<p><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/play#code/KYDwDg9gTgLgBDAnmYcCiIZQIYGMYCCUA5gDwAqcoMwAdgCYDOcjWAlrcQHxwC8cAKDjC4lanSZwABqQAkAbw4AzYFDgAlAL48Fy1XACqmqXAD8cANqsoHYgBo4AOmcYseQiVIGuAXTgAuQRFRKkwJZildWhU1LTgomMNjM3RMHHwiMm8AoJExMIYIi2dHBP0tHxNzK3ZOCx8-QKE80JpC6Qsy2M1KlJqbTjgAHzgAVwZgJQ5gekbc4Xy2yRkujW0qy2tbOfqAbgEBJBQ4Aj5UtwzPAHJsOAAjOFwrrkPkVAAhM9d0jzIb+8ecFI9C4z1exwAwl80u5MqR-g9cECQUDgDwLEofGCjqgACLQi6-eG3RHInikNGWEqYsFAA">https://www.typescriptlang.org/play?#code/KYDwDg9gTgLgBDAnmYcCiIZQIYGMYCCUA5gDwAqcoMwAdgCYDOcjWAlrcQHxwC8cAKDjC4lanSZwABqQAkAbw4AzYFDgAlAL48Fy1XACqmqXAD8cANqsoHYgBo4AOmcYseQiVIGuAXTgAuQRFRKkwJZildWhU1LTgomMNjM3RMHHwiMm8AoJExMIYIi2dHBP0tHxNzK3ZOCx8-QKE80JpC6Qsy2M1KlJqbTjgAHzgAVwZgJQ5gekbc4Xy2yRkujW0qy2tbOfqAbgEBJBQ4Aj5UtwzPAHJsOAAjOFwrrkPkVAAhM9d0jzIb+8ecFI9C4z1exwAwl80u5MqR-g9cECQUDgDwLEofGCjqgACLQi6-eG3RHInikNGWEqYsFAA</a></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">type</span> <span class="title class_">ExtractArg</span>&lt;T <span class="keyword">extends</span> <span class="built_in">string</span>&gt; = </span><br><span class="line">    T <span class="keyword">extends</span> <span class="string">`&lt;<span class="subst">$&#123;infer R&#125;</span>&gt; <span class="subst">$&#123;infer U&#125;</span>`</span> ? [<span class="built_in">string</span>, ...<span class="title class_">ExtractArg</span>&lt;U&gt;] : </span><br><span class="line">    T <span class="keyword">extends</span> <span class="string">`<span class="subst">$&#123;infer R&#125;</span> <span class="subst">$&#123;infer U&#125;</span>`</span> ? <span class="title class_">ExtractArg</span>&lt;U&gt; : </span><br><span class="line">    T <span class="keyword">extends</span> <span class="string">`[...<span class="subst">$&#123;infer R&#125;</span>]`</span> ? [<span class="built_in">string</span>[]] : </span><br><span class="line">    T <span class="keyword">extends</span> <span class="string">`[<span class="subst">$&#123;infer R&#125;</span>]`</span> ? [<span class="built_in">string</span> | <span class="literal">undefined</span>] : </span><br><span class="line">    T <span class="keyword">extends</span> <span class="string">`&lt;<span class="subst">$&#123;infer R&#125;</span>&gt;`</span> ? [<span class="built_in">string</span>] : [];</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> A = <span class="title class_">ExtractArg</span>&lt;<span class="string">&#x27;a b c&#x27;</span>&gt; <span class="comment">// []</span></span><br><span class="line"><span class="keyword">type</span> B = <span class="title class_">ExtractArg</span>&lt;<span class="string">&#x27;a b c &lt;d&gt;&#x27;</span>&gt; <span class="comment">// [string]</span></span><br><span class="line"><span class="keyword">type</span> C = <span class="title class_">ExtractArg</span>&lt;<span class="string">&#x27;a b c &lt;d&gt; &lt;e&gt; [f]&#x27;</span>&gt; <span class="comment">// [string, string, string | undefined]</span></span><br><span class="line"><span class="keyword">type</span> D = <span class="title class_">ExtractArg</span>&lt;<span class="string">&#x27;a b c &lt;d&gt; &lt;e&gt; [...f]&#x27;</span>&gt;  <span class="comment">// [string, string, string[]]</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="回调函数的类型推导"><a href="#回调函数的类型推导" class="headerlink" title="回调函数的类型推导"></a>回调函数的类型推导</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://xlor.cn/2022/11/2022myk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -255,7 +394,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -361,7 +500,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -453,7 +592,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
 
           
@@ -534,7 +673,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -661,7 +800,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -761,7 +900,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -866,7 +1005,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -989,7 +1128,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1085,7 +1224,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
+                <time title="修改时间：2023-02-22 01:49:02" itemprop="dateModified" datetime="2023-02-22T01:49:02+08:00">2023-02-22</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1128,108 +1267,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/1/namomocamp2021d1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://xlor.cn/2020/12/2020ccpconlineA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="XLor">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="XLor's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/2020ccpconlineA/" class="post-title-link" itemprop="url">2020 CCPC 网络选拔赛 A Art Class</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-21 01:00:30" itemprop="dateCreated datePublished" datetime="2020-12-21T01:00:30+08:00">2020-12-21</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-12-04 23:00:44" itemprop="dateModified" datetime="2022-12-04T23:00:44+08:00">2022-12-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index">
-                    <span itemprop="name">数据结构</span>
-                  </a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%AE%B5%E6%A0%91/" itemprop="url" rel="index">
-                    <span itemprop="name">线段树</span>
-                  </a>
-                </span>
-            </span>
-
-          
-            <span id="/2020/12/2020ccpconlineA/" class="post-meta-item leancloud_visitors" data-flag-title="2020 CCPC 网络选拔赛 A Art Class" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h1><p>依次将 $n$ 个下边界在 $x$ 轴上的矩形涂黑，求每次涂色后总图形的周长。</p>
-<p>其中 $1 \le n \le 2 \times 10^5$。</p>
-<h1 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h1><p>横线部分就是线段覆盖，这是平凡的。</p>
-<p>竖线部分，更新操作就是区间取 $\max$，对于线段树节点 $[l,r]$，需要维护 $\sum_{i&#x3D;l}^{r-1} |a_{i}-a_{i+1}|$。</p>
-<p>考虑 Segment Tree Beats，我们在线段树节点维护了区间最小值和区间次小值。当最大值更新为 $x$，$x$ 小于节点次大值，将区间内所有最小值提升为 $x$，可以发现这个过程中改变的是最小值和相邻高点之间的差。因此，我们对于一个线段树节点区间，维护所有相邻的是否是最小值导致间断点，假设我们维护了这样的间断点个数，那么对于区间答案的容易进行更新。</p>
-<p>间断点的个数容易维护，首先它可能从左右子树上传得到，然后在考虑将左右区间拼接点的贡献即可。</p>
-<p>最后，注意我们区间覆盖最小值时打的标记，也包含了懒标记效果，记得下传信息。注意维护次小值的细节。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/2020ccpconlineA/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1299,7 +1336,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">297</span>
+          <span class="site-state-item-count">298</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1369,7 +1406,7 @@
 <div class="copyright">
   
   &copy; 2018 – 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
