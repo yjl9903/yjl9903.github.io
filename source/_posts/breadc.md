@@ -18,6 +18,8 @@ categories:
 
 本文主要讲解 Bread 如何添加 TypeScript 类型推导，如何使用 Template Literal Type 进行类型体操。
 
+<!--more-->
+
 ## 使用 Breadc 创建一个命令行 CLI 应用
 
 首先，看以下示例代码如何使用 Breadc 创建 CLI 应用。
