@@ -31,9 +31,9 @@ date: 2018-09-14 22:35:10
 
 ## 第 12 届南京理工大学程序设计大赛
 
-[题面](/uploads/pdf/第 12 届南京理工大学程序设计大赛.pdf)
+[题面](/uploads/pdf/%E7%AC%AC%2012%20%E5%B1%8A%E5%8D%97%E4%BA%AC%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%A4%A7%E8%B5%9B.pdf)
 
-[题解](/uploads/pdf/题解 - 第 12 届南京理工大学程序设计大赛.pdf)
+[题解](/uploads/pdf/%E9%A2%98%E8%A7%A3%20-%20%E7%AC%AC%2012%20%E5%B1%8A%E5%8D%97%E4%BA%AC%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%A4%A7%E8%B5%9B.pdf)
 
 ![得分分布](https://i.loli.net/2021/04/05/Rp6y7kd1D9PHAZu.png)
 
